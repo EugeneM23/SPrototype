@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e0fe3a830f4b06b76c526b92001d91, type: 3}
+  m_Name: EnemyChargeInstaller
+  m_EditorClassIdentifier: 
+  _chargeEffect: {fileID: 4972666229003341087, guid: 1609cad8196d145cfb72905642923d0d, type: 3}
+  _detectionLayer:
+    serializedVersion: 2
+    m_Bits: 1024
