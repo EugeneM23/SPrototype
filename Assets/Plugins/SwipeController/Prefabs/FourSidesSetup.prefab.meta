@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b5c302f2b5eaca849ba48e9024e8603e
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Prefabs/FourSidesSetup.prefab
+  uploadId: 353821

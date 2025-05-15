@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: bf255b6d8527160429df5e56826f7d29
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Scripts/Examples/MoveOnSwipe_Vector.cs
+  uploadId: 353821

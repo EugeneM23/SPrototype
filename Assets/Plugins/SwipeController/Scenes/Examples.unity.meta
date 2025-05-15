@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: f415fdcf3f9065d4d8714689912eec92
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Scenes/Examples.unity
+  uploadId: 353821

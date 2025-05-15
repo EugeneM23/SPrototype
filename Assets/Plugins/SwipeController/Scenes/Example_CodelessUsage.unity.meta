@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7d0b387f93bcae647a15fb1bfaa89c43
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Scenes/Example_CodelessUsage.unity
+  uploadId: 353821

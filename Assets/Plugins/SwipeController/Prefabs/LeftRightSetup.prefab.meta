@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c18f0fa6c376c554694606da022707c6
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Prefabs/LeftRightSetup.prefab
+  uploadId: 353821

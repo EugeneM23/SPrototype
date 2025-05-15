@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 77f8b8bfe7661aa41aadf61f9dd83e1b
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Materials/HexGrid.mat
+  uploadId: 353821

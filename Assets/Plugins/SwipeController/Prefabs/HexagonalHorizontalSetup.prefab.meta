@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 216fb57e09016b6468b65c7655641fe4
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Prefabs/HexagonalHorizontalSetup.prefab
+  uploadId: 353821

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1357aaa688331ae4ca28e1c6d11afe72
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Prefabs/EightSidesSetup.prefab
+  uploadId: 353821

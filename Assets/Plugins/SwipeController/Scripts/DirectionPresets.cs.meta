@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 8e8a6b651ce25ab499066e2dde9f2f08
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 163378
+  packageName: Swipe Controller
+  packageVersion: 1.0
+  assetPath: Assets/SwipeController/Scripts/DirectionPresets.cs
+  uploadId: 353821
