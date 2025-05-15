@@ -10,10 +10,11 @@ namespace Gameplay
         public event Action OnShoot;
         public Transform Target { get; set; }
 
+        public int Damage { get; }
+
         private readonly CharacterController _characterController;
         private readonly LookAtComponent _lookAtComponent;
         private readonly LeanComponent _leanComponent;
-
         public bool IsMoving => GetVelocity() != Vector3.zero;
 
         public Player(

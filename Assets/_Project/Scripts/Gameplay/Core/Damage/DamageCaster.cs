@@ -1,18 +1,16 @@
-using Modules;
 using UnityEngine;
-using Zenject;
 
 namespace Gameplay
 {
     public class DamageCaster : MonoBehaviour
     {
-        [Inject] private readonly EnemyBlackBoard _damageComponent;
-
-        [SerializeField] private Transform sourceObject;
         [SerializeField] private float radius;
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private GameObject _characterSkeleton;
 
+        private int _damage;
         private bool _shouldCast;
+        private Transform sourceObject;
 
         private void OnEnable() => _shouldCast = false;
 
@@ -33,7 +31,7 @@ namespace Gameplay
                     var damageable = hitCollider[0].GetComponentInParent<IDamageable>();
                     if (damageable != null)
                     {
-                        damageable.TakeDamage(_damageComponent.Damage);
+                        damageable.TakeDamage(_damage);
                         return true;
                     }
                 }
@@ -42,9 +40,16 @@ namespace Gameplay
             return false;
         }
 
-        public void EnebleDamageCast(int shouldCast)
+        public void CastOn(Transform root, int damage)
         {
-            _shouldCast = shouldCast > 0;
+            _damage = damage;
+            sourceObject = root;
+            _shouldCast = true;
+        }
+
+        public void CastOff()
+        {
+            _shouldCast = false;
         }
 
         void OnDrawGizmos()

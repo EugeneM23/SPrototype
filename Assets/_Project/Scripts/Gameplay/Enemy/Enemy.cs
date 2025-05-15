@@ -8,8 +8,9 @@ namespace Gameplay
     {
         public event Action OnShoot;
         public Transform Target { get; set; }
+        public int Damage { get; }
 
-        private PlayerCharacterProvider _character;
+        private readonly PlayerCharacterProvider _character;
 
         public Enemy(PlayerCharacterProvider character)
         {

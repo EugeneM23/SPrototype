@@ -26,6 +26,7 @@ namespace Gameplay
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly ChargeRaySensor _chargeRaySensor;
         private readonly DelayedAction _delayedAction;
+        private readonly ChargeDamageCaster _damageCaster;
 
         private float _timer;
         private bool _isChargeCompleted;
@@ -38,7 +39,8 @@ namespace Gameplay
             TranslateComponent translateComponent,
             EnemyAttackAssistComponent assistComponent,
             ChargeRaySensor chargeRaySensor,
-            DelayedAction delayedAction)
+            DelayedAction delayedAction,
+            ChargeDamageCaster damageCaster)
         {
             _blackBoard = blackBoard;
             _navMeshAgent = navMeshAgent;
@@ -47,6 +49,7 @@ namespace Gameplay
             _assistComponent = assistComponent;
             _chargeRaySensor = chargeRaySensor;
             _delayedAction = delayedAction;
+            _damageCaster = damageCaster;
         }
 
         public void OnEnter()
@@ -80,6 +83,7 @@ namespace Gameplay
 
         private void PerformCharge()
         {
+            _damageCaster.ChargeDamageCast("root", 200);
             _isChargeCompleted = true;
             _translateComponent.Translate(_chargeTargetPosition, ChargeDuration, ChargeSpeed);
 
@@ -90,6 +94,7 @@ namespace Gameplay
 
         private void ResetState()
         {
+            _damageCaster.DisableDamageCast();
             _timer = InitialTimerValue;
             _blackBoard.CanPush = true;
             _navMeshAgent.enabled = true;
