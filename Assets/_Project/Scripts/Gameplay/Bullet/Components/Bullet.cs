@@ -27,9 +27,7 @@ namespace Gameplay
         public void Hit(Collision collision)
         {
             if (collision.gameObject.TryGetComponent(out IEntity entity))
-            {
                 _actions.ForEach(action => action.Invoke(entity));
-            }
             else
                 _enviromentHit.SpawnImpactEffect(collision);
 

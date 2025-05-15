@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay.Installers
@@ -6,12 +7,12 @@ namespace Gameplay.Installers
     [CreateAssetMenu(fileName = "EnemyChargeInstaller", menuName = "Installers/AI/EnemyChargeInstaller")]
     public class EnemyChargeInstaller : ScriptableObjectInstaller<EnemyChargeInstaller>
     {
-        [SerializeField] private ChargeEffect _chargeEffect;
+        [FormerlySerializedAs("_chargeEffect")] [SerializeField] private ChargeEffectMarker chargeEffectMarker;
         [SerializeField] private LayerMask _detectionLayer;
 
         public override void InstallBindings()
         {
-            Container.Bind<ChargeEffect>().FromComponentInNewPrefab(_chargeEffect).AsSingle().NonLazy();
+            Container.Bind<ChargeEffectMarker>().FromComponentInNewPrefab(chargeEffectMarker).AsSingle().NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<EnemyChargeState>()

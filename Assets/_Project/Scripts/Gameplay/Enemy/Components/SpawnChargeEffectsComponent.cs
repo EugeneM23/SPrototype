@@ -6,21 +6,21 @@ namespace Gameplay
 {
     public class SpawnChargeEffectsComponent : EnemyChargeState.IAction
     {
-        private readonly ChargeEffect _chargeEffect;
+        private readonly ChargeEffectMarker _chargeEffectMarker;
 
-        public SpawnChargeEffectsComponent(ChargeEffect chargeEffect)
+        public SpawnChargeEffectsComponent(ChargeEffectMarker chargeEffectMarker)
         {
-            _chargeEffect = chargeEffect;
+            _chargeEffectMarker = chargeEffectMarker;
         }
 
         public void EnterActions()
         {
-            _chargeEffect.gameObject.SetActive(true);
+            _chargeEffectMarker.gameObject.SetActive(true);
         }
 
         public void ExitActions()
         {
-            _chargeEffect.gameObject.SetActive(false);
+            _chargeEffectMarker.gameObject.SetActive(false);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container
-                .Bind<CharacterMoveComponent>()
+                .Bind<PlayerMoveComponent>()
                 .AsSingle()
                 .WithArguments(_playerSetings.RunSpeed)
                 .NonLazy();

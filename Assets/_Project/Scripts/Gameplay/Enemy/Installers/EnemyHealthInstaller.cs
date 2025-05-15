@@ -42,7 +42,7 @@ namespace Gameplay.Installers
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<HPBarPComponent>()
+                .BindInterfacesAndSelfTo<HPBarComponent>()
                 .AsSingle().WithArguments(gameObject.transform, new Vector3(0f, 4, 0f))
                 .NonLazy();
         }

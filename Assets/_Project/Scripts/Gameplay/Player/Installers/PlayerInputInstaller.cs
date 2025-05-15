@@ -7,7 +7,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container
-                .Bind<PlayerInput>()
+                .Bind<GameInput>()
                 .AsSingle()
                 .NonLazy();
         }

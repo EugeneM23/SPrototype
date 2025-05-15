@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay.Loot
 {
-    public class CoinInstaller : MonoInstaller
+    /*public class CoinInstaller : MonoInstaller
     {
         [SerializeField] private int _rotationSpeed;
         [SerializeField] private Transform _coinPrefab;
@@ -11,5 +11,5 @@ namespace Gameplay.Loot
         public override void InstallBindings()
         {
         }
-    }
+    }*/
 }

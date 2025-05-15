@@ -53,7 +53,7 @@ namespace Gameplay
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<HPBarPComponent>()
+                .BindInterfacesAndSelfTo<HPBarComponent>()
                 .AsSingle().WithArguments(_hpBarOffset, _parent)
                 .NonLazy();
         }

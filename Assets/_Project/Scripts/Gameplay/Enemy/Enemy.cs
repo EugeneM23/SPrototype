@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class Enemy : ITickable, ICharacter
+    public class Enemy : ICharacter
     {
         public event Action OnShoot;
         public Transform Target { get; set; }
@@ -15,10 +15,6 @@ namespace Gameplay
         {
             _character = character;
             Target = _character.Character.transform;
-        }
-
-        public void Tick()
-        {
         }
 
         public void Shoot()

@@ -6,10 +6,10 @@ namespace Gameplay
     {
         public override void InstallBindings()
         {
-            Container
+            /*Container
                 .BindInterfacesAndSelfTo<PlayerAnimationBehaviour>()
                 .AsSingle()
-                .NonLazy();
+                .NonLazy();*/
         }
     }
 }
