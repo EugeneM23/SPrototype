@@ -13,10 +13,10 @@ namespace Gameplay
 
             foreach (var cast in Manager.GetActiveCasts())
             {
-                if (cast.Request?.Source == null) continue;
+                if (cast.Parameters?.Source == null) continue;
 
                 Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(cast.Request.Source.position, cast.Request.Radius);
+                Gizmos.DrawWireSphere(cast.Parameters.Source.position, cast.Parameters.Radius);
             }
         }
     }

@@ -15,8 +15,8 @@ namespace Gameplay
 
         public void EnebleDamageCast(string castRoot)
         {
-            _damageCasterManager.CastDamage(100, 2, 1, _layerMask.value, _damageRoot);
-            Debug.Log("Enebled damage cast");
+            DamageCastParams damageCast = new DamageCastParams(_blackBoard.Damage, 1, 1, _layerMask.value, _damageRoot);
+            _damageCasterManager.CastDamage(damageCast);
         }
     }
 }

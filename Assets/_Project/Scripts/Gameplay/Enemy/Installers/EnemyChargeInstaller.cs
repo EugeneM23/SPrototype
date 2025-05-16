@@ -7,12 +7,33 @@ namespace Gameplay.Installers
     [CreateAssetMenu(fileName = "EnemyChargeInstaller", menuName = "Installers/AI/EnemyChargeInstaller")]
     public class EnemyChargeInstaller : ScriptableObjectInstaller<EnemyChargeInstaller>
     {
-        [FormerlySerializedAs("_chargeEffect")] [SerializeField] private ChargeEffectMarker chargeEffectMarker;
-        [SerializeField] private LayerMask _detectionLayer;
+        [SerializeField] private ChargeEffectMarker chargeEffectMarker;
+        [SerializeField] private LayerMask _detectionEnviromentLayer;
+
+        [SerializeField] private LayerMask _damageLayer;
+        [SerializeField] private int _chargeDamage;
+        [SerializeField] private float _damageCastDuration;
+        [SerializeField] private float _damageCastRadius;
+        [Inject] private readonly Entity _entity;
 
         public override void InstallBindings()
         {
-            Container.Bind<ChargeEffectMarker>().FromComponentInNewPrefab(chargeEffectMarker).AsSingle().NonLazy();
+            Container
+                .BindInterfacesAndSelfTo<ChargeDamageCast>()
+                .AsSingle()
+                .WithArguments(new DamageCastParams(
+                    _chargeDamage,
+                    _damageCastRadius,
+                    _damageCastDuration,
+                    _damageLayer,
+                    _entity.transform))
+                .NonLazy();
+
+            Container
+                .Bind<ChargeEffectMarker>()
+                .FromComponentInNewPrefab(chargeEffectMarker)
+                .AsSingle()
+                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<EnemyChargeState>()
@@ -23,6 +44,7 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<EnemyChargeAttackReasoner>()
                 .AsSingle()
                 .NonLazy();
+
 
             Container
                 .BindInterfacesAndSelfTo<SpawnChargeEffectsComponent>()
@@ -37,7 +59,7 @@ namespace Gameplay.Installers
             Container
                 .Bind<ChargeRaySensor>()
                 .AsSingle()
-                .WithArguments(_detectionLayer)
+                .WithArguments(_detectionEnviromentLayer)
                 .NonLazy();
         }
     }

@@ -8,29 +8,22 @@ namespace Gameplay
     {
         public class TimedCast
         {
-            public DamageCastRequest Request;
+            public DamageCastParams Parameters;
             public float Timer;
 
-            public TimedCast(DamageCastRequest request)
+            public TimedCast(DamageCastParams parameters)
             {
-                Request = request;
-                Timer = request.Time;
+                Parameters = parameters;
+                Timer = parameters.Time;
             }
         }
 
         private readonly List<TimedCast> _activeCasts = new();
         public IEnumerable<TimedCast> GetActiveCasts() => _activeCasts;
 
-        public void CastDamage(int damage, float radius, float time, LayerMask layerMask, Transform source)
+        public void CastDamage(DamageCastParams parameters)
         {
-            _activeCasts.Add(new TimedCast(new DamageCastRequest
-            {
-                Damage = damage,
-                Radius = radius,
-                Time = time,
-                LayerMask = layerMask,
-                Source = source
-            }));
+            _activeCasts.Add(new TimedCast(parameters));
         }
 
         public void Tick()
@@ -43,9 +36,9 @@ namespace Gameplay
                 bool damageApplied = false;
 
                 Collider[] hitColliders = Physics.OverlapSphere(
-                    cast.Request.Source.position,
-                    cast.Request.Radius,
-                    cast.Request.LayerMask
+                    cast.Parameters.Source.position,
+                    cast.Parameters.Radius,
+                    cast.Parameters.LayerMask
                 );
 
                 foreach (var hit in hitColliders)
@@ -53,7 +46,7 @@ namespace Gameplay
                     IDamageable damageable = hit.GetComponent<IDamageable>();
                     if (damageable != null)
                     {
-                        damageable.TakeDamage(cast.Request.Damage);
+                        damageable.TakeDamage(cast.Parameters.Damage);
                         damageApplied = true;
                         break;
                     }

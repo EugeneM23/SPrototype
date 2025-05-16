@@ -94,8 +94,6 @@ namespace Gameplay
             _blackBoard.CanPush = true;
             _navMeshAgent.enabled = true;
             _blackBoard.IsBusy = false;
-
-            ExecuteActions(a => a.ExitActions());
         }
 
         private void ExecuteActions(System.Action<IAction> action)

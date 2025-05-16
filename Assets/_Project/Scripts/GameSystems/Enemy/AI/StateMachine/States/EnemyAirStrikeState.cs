@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Gameplay
 {
@@ -17,6 +18,7 @@ namespace Gameplay
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Animator _animator;
         private readonly PlayerCharacterProvider _playerCharacterProvider;
+        private readonly DiContainer _container;
 
         private float _timer;
         private bool _isComplete;
@@ -26,13 +28,14 @@ namespace Gameplay
             NavMeshAgent navMeshAgent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
-            PlayerCharacterProvider playerCharacterProvider)
+            PlayerCharacterProvider playerCharacterProvider, DiContainer container)
         {
             _blackBoard = blackBoard;
             _navMeshAgent = navMeshAgent;
             _assistComponent = assistComponent;
             _animator = animator;
             _playerCharacterProvider = playerCharacterProvider;
+            _container = container;
         }
 
         public void OnEnter()
@@ -65,7 +68,7 @@ namespace Gameplay
         {
             _navMeshAgent.enabled = true;
             _timer = AirStrikeDelay;
-            
+
             SetBlackBoardFlags(isBusy: false, isAttacking: false, canPush: true);
         }
 
@@ -78,7 +81,9 @@ namespace Gameplay
         {
             var airStrikePrefab = Resources.Load<GameObject>(AirStrikePrefabPath);
             Vector3 targetPosition = _playerCharacterProvider.Character.transform.position;
-            Object.Instantiate(airStrikePrefab, targetPosition, Quaternion.identity);
+            GameObject go = _container.InstantiatePrefab(airStrikePrefab);
+            go.transform.SetParent(null);
+            go.transform.position = targetPosition;
         }
 
         private void SetBlackBoardFlags(bool isBusy, bool isAttacking, bool canPush)
