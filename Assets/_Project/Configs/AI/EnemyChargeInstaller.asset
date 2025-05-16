@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e0fe3a830f4b06b76c526b92001d91, type: 3}
   m_Name: EnemyChargeInstaller
   m_EditorClassIdentifier: 
-  _chargeEffect: {fileID: 4972666229003341087, guid: 1609cad8196d145cfb72905642923d0d, type: 3}
-  _detectionLayer:
+  chargeEffectMarker: {fileID: 4972666229003341087, guid: 1609cad8196d145cfb72905642923d0d, type: 3}
+  _detectionEnviromentLayer:
     serializedVersion: 2
     m_Bits: 1024
+  _damageLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  _chargeDamage: 300
+  _damageCastDuration: 0.5
+  _damageCastRadius: 3
+  _chargeRotaionSpeed: 10
+  _chargeRotaionDuration: 1

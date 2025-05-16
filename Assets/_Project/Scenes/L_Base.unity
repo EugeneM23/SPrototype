@@ -725,6 +725,7 @@ GameObject:
   - component: {fileID: 929216154}
   - component: {fileID: 929216159}
   - component: {fileID: 929216160}
+  - component: {fileID: 929216161}
   m_Layer: 0
   m_Name: '[SYSTEM]'
   m_TagString: Untagged
@@ -811,6 +812,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 952261607}
+--- !u!114 &929216161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929216152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8516487bf63499dba4e18edf80003ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &952261605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1658,7 +1671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _startCount
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

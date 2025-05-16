@@ -1,14 +1,10 @@
-using UnityEditor.Experimental.GraphView;
-using UnityEngine;
-using Zenject;
-
 namespace Gameplay
 {
-    public class SpawnChargeEffectsComponent : EnemyChargeState.IAction
+    public class ChargeEffectsHandler : EnemyChargeState.IAction
     {
         private readonly ChargeEffectMarker _chargeEffectMarker;
 
-        public SpawnChargeEffectsComponent(ChargeEffectMarker chargeEffectMarker)
+        public ChargeEffectsHandler(ChargeEffectMarker chargeEffectMarker)
         {
             _chargeEffectMarker = chargeEffectMarker;
         }
@@ -19,6 +15,10 @@ namespace Gameplay
         }
 
         public void ExitActions()
+        {
+        }
+
+        public void ExecuteActions()
         {
             _chargeEffectMarker.gameObject.SetActive(false);
         }
