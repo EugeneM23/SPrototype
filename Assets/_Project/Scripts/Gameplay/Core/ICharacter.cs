@@ -8,5 +8,7 @@ namespace Gameplay
         public event Action OnShoot;
 
         public Transform Target { get; set; }
+
+        public void Shoot();
     }
 }

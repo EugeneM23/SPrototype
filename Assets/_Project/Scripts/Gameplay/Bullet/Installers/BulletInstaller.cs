@@ -6,7 +6,6 @@ public class BulletInstaller : MonoInstaller
 {
     [SerializeField] private ParticleSystem _impactEffect;
     [SerializeField] private CollisionComponent _collisionComponent;
-    [SerializeField] private Entity _entity;
 
     public override void InstallBindings()
     {
@@ -19,7 +18,6 @@ public class BulletInstaller : MonoInstaller
         Container
             .Bind<Bullet>()
             .AsSingle()
-            .WithArguments(_entity)
             .NonLazy();
 
         /*Container
@@ -37,12 +35,6 @@ public class BulletInstaller : MonoInstaller
             .BindInterfacesAndSelfTo<EnviromentHitEffectComponent>()
             .AsSingle()
             .WithArguments(_impactEffect)
-            .NonLazy();
-
-        Container
-            .BindInterfacesAndSelfTo<BulletMoveComponent>()
-            .AsSingle()
-            .WithArguments(this.transform)
             .NonLazy();
     }
 }

@@ -19,8 +19,11 @@ MonoBehaviour:
   _damageLayer:
     serializedVersion: 2
     m_Bits: 2048
+  _chargeDuration: 2
   _chargeDamage: 300
   _damageCastDuration: 0.5
   _damageCastRadius: 3
   _chargeRotaionSpeed: 10
-  _chargeRotaionDuration: 1
+  _chargeRotaionDuration: 1.7
+  _chargeMoveDuration: 1
+  _chargeMoveSpeed: 50

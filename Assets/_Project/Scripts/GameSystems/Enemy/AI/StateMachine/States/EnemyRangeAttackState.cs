@@ -13,6 +13,7 @@ namespace Gameplay
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly DelayedAction _delayedAction;
         private readonly EnemyCharacterProvider _characterProvider;
+        private readonly Enemy _enemy;
 
         private readonly Dictionary<string, AnimationClip> _animationClips = new();
 
@@ -26,7 +27,7 @@ namespace Gameplay
             EnemyBlackBoard blackboard,
             Animator animator,
             EnemyAttackAssistComponent assistComponent,
-            DelayedAction delayedAction, EnemyCharacterProvider characterProvider)
+            DelayedAction delayedAction, EnemyCharacterProvider characterProvider, Enemy enemy)
         {
             _navMeshAgent = navMeshAgent;
             _blackboard = blackboard;
@@ -34,6 +35,7 @@ namespace Gameplay
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
             _characterProvider = characterProvider;
+            _enemy = enemy;
         }
 
         public void Initialize()
@@ -44,10 +46,13 @@ namespace Gameplay
 
         public void OnEnter()
         {
-            Debug.Log("sadsadsa");
-            _navMeshAgent.speed = 0f;
+            _navMeshAgent.enabled = false;
             _blackboard.IsBusy = true;
-            PlayAttack();
+
+            _animationLength = PlayAttackAnimation();
+
+            _delayedAction.Schedule(_animationLength - 0.1f, () => _blackboard.IsBusy = false);
+            _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _animationLength);
         }
 
         public void OnExit()
@@ -61,26 +66,20 @@ namespace Gameplay
             _timer -= deltaTime;
 
             if (_timer <= 0f)
-                PlayAttack();
+                PlayAttackAnimation();
         }
 
-        private void PlayAttack()
+        private float PlayAttackAnimation()
         {
-            _characterProvider.Character.Get<Enemy>().Shoot();
             if (!_animationClips.TryGetValue(AttackAnimationName, out var clip))
-            {
-                Debug.LogWarning($"Animation clip '{AttackAnimationName}' not found.");
-                return;
-            }
+                return 0;
 
             _animator.Play(AttackAnimationName);
 
             _animationLength = clip.length;
-            _timer = 0.1f;
+            _timer = _animationLength;
 
-            _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, 0.1f);
-
-            _delayedAction.Schedule(0.1f, () => _blackboard.IsBusy = false);
+            return _animationLength;
         }
     }
 }

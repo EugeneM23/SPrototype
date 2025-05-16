@@ -34,8 +34,10 @@ namespace Gameplay
             if (IsMoving || Target == null) return;
 
             if (_lookAtComponent.LookAtAndCheck(Target.position))
-                OnShoot?.Invoke();
+                Shoot();
         }
+
+        public void Shoot() => OnShoot?.Invoke();
 
         public Vector3 GetVelocity() => _characterController.velocity;
     }

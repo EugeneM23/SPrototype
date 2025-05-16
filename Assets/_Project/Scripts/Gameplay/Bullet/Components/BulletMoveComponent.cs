@@ -3,22 +3,41 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BulletMoveComponent : ITickable
+    public class BulletMoveComponent : IBulletMoveComponent
     {
-        private readonly Transform _bulletTransform;
-        private Vector3 _direction;
+        private readonly Entity _bullet;
         private readonly WeaponSetings _setings;
+        private Vector3 _direction;
 
-        public BulletMoveComponent(Transform bulletTransform, WeaponSetings setings)
+        public BulletMoveComponent(Entity bullet, WeaponSetings setings)
         {
-            _bulletTransform = bulletTransform;
+            _bullet = bullet;
             _setings = setings;
         }
 
+        public void Move()
+        {
+            _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _setings.BulletSpeed;
+        }
+    }
+
+    public interface IBulletMoveComponent
+    {
+        void Move();
+    }
+
+    public class BulletMoveController : ITickable
+    {
+        private readonly IBulletMoveComponent _bulletMoveComponent;
+
+        public BulletMoveController(IBulletMoveComponent bulletMoveComponent)
+        {
+            _bulletMoveComponent = bulletMoveComponent;
+        }
 
         public void Tick()
         {
-            _bulletTransform.position += _bulletTransform.forward * Time.deltaTime * _setings.BulletSpeed;
+            _bulletMoveComponent.Move();
         }
     }
 }

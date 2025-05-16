@@ -1950,8 +1950,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4ee32150883455d9e3678f6113d167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponPrefab: {fileID: 4987170329088819174, guid: 1bf563c14777544ddac16edc52566f13, type: 3}
+  _weaponPrefab: {fileID: 4987170329088819174, guid: 8c08b3337e72c48569e29d72184393f8, type: 3}
   _hitEffect: {fileID: 4992397611402000643}
+  _waeponRoot: {fileID: 4102329774744441994}
 --- !u!114 &7474303141457973273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2126,12 +2127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 6f3aaec77e1f14c19988d010e011d4fb, type: 2}
-  - {fileID: 11400000, guid: 67a2197a23a254120a49f97e79d4cd1b, type: 2}
   - {fileID: 11400000, guid: 5ac810c3b277140128ec3c51a1fbc493, type: 2}
   - {fileID: 11400000, guid: 872db6379cc8b456b96a9c409d02cbb6, type: 2}
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
+  - {fileID: 11400000, guid: 3ee60df9306a34d02ba1280c7c9c66ac, type: 2}
   - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
-  - {fileID: 11400000, guid: c7024dc2a82474142ba67b1672e5cb2a, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}
@@ -2151,7 +2151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ChaseRange>k__BackingField: 15
-  <AttckRange>k__BackingField: 10
+  <AttckRange>k__BackingField: 15
   <ChaseSpeed>k__BackingField: 8
   <PatrolSpeed>k__BackingField: 3
   <AttakRotationSpeed>k__BackingField: 10

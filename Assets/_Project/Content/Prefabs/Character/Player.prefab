@@ -5038,7 +5038,6 @@ MonoBehaviour:
     <MaxHealth>k__BackingField: 1000
   _healtBarOffset: {x: 0, y: 2, z: -2.5}
   _weaponPrefabs:
-  - {fileID: 9184137841470919376, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
   - {fileID: 8504467924791662847, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
   _popupPrefab: {fileID: 1259023133563206875, guid: bc1bb8c54137147a6b63b144771df4cf, type: 3}
   _healthComponent: {fileID: 962201619078096505}

@@ -7,9 +7,16 @@ namespace Gameplay.Installers
     {
         [SerializeField] private GameObject _weaponPrefab;
         [SerializeField] private ParticleSystem _hitEffect;
+        [SerializeField] private Transform _waeponRoot;
 
         public override void InstallBindings()
         {
+            Container
+                .BindInterfacesAndSelfTo<WeaponManager>()
+                .AsSingle()
+                .WithArguments(_weaponPrefab, _waeponRoot)
+                .NonLazy();
+
             Container
                 .BindInterfacesAndSelfTo<EnemyAnimationBehaviour>()
                 .AsSingle()
@@ -34,13 +41,6 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<Enemy>()
                 .AsSingle()
                 .NonLazy();
-
-            /*Container
-                .Bind<WeaponManager>()
-                .AsSingle()
-                .WithArguments(Container, _weaponPrefab)
-                .NonLazy();*/
-
 
             Container
                 .BindInterfacesAndSelfTo<PushableObjectController>()

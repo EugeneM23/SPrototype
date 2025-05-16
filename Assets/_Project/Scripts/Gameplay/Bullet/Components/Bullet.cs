@@ -34,9 +34,12 @@ namespace Gameplay
             Dispose();
         }
 
-        private void Dispose()
+        public void Dispose()
         {
             OnDispose?.Invoke(_entity);
+
+            if (_entity.TryGet<BulletProjectileMoveComponent>(out var component))
+                component.Initialized = false;
         }
     }
 }

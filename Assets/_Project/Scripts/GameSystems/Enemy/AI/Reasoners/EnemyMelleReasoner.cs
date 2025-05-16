@@ -6,8 +6,11 @@ namespace Gameplay
     {
         public override int Priority => 7;
 
-        public EnemyMelleReasoner(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
-            Entity entity, EnemyBlackBoard blackboard)
+        public EnemyMelleReasoner(
+            PlayerCharacterProvider provider,
+            EnemyStateMachine stateMachine,
+            Entity entity,
+            EnemyBlackBoard blackboard)
             : base(provider, stateMachine, entity, blackboard)
         {
         }

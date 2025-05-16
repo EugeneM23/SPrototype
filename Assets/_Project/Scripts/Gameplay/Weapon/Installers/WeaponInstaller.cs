@@ -11,7 +11,6 @@ namespace Gameplay
         [SerializeField] private ParticleSystem _muzzleFlash;
         [SerializeField] private Entity _bulletPrefab;
         [SerializeField] private Entity _shellPrefab;
-        [SerializeField] private Entity _weponModel;
 
         public override void InstallBindings()
         {

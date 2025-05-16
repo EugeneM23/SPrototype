@@ -17,7 +17,7 @@ namespace Gameplay.Installers
         [SerializeField] private float _damageCastRadius;
         [SerializeField] private int _chargeRotaionSpeed;
         [SerializeField] private float _chargeRotaionDuration;
-        [SerializeField]private float _chargeMoveDuration;
+        [SerializeField] private float _chargeMoveDuration;
         [SerializeField] private float _chargeMoveSpeed;
 
         [Inject] private readonly Entity _entity;
@@ -79,12 +79,13 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .WithArguments(_chargeRotaionSpeed, _chargeRotaionDuration)
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<ChargeTranslateHandler>()
                 .AsSingle()
                 .WithArguments(_chargeMoveDuration, _chargeMoveSpeed)
                 .NonLazy();
+            
             Container
                 .BindInterfacesAndSelfTo<ChargeCompletionHandler>()
                 .AsSingle()
