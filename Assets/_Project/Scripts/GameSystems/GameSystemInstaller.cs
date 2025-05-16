@@ -18,6 +18,11 @@ namespace Gameplay
             UIInstaller.Install(Container, _HUD);
             CameraInstaller.Install(Container, _cameraSmoothTime, _camera);
             PlayerSpawnInstaller.Install(Container, _playerPrefab);
+
+            Container
+                .BindInterfacesAndSelfTo<DamageCasterManager>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
