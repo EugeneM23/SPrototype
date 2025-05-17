@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.TextCore.Text;
 
 namespace Gameplay
@@ -33,10 +34,13 @@ namespace Gameplay
 
         public void Shoot()
         {
+
             if (!CanShoot()) return;
 
             foreach (var item in _actions)
                 item.Invoke();
         }
     }
+
+    
 }

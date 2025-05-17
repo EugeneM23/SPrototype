@@ -52,7 +52,7 @@ namespace Gameplay
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<WeaponColldownComponent>()
+                .BindInterfacesAndSelfTo<WeaponCooldownComponent>()
                 .AsSingle()
                 .WithArguments(_setings);
 

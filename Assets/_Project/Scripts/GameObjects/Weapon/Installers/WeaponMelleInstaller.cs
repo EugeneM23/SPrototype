@@ -1,3 +1,5 @@
+using System.ComponentModel;
+using Gameplay.Installers;
 using UnityEngine;
 using Zenject;
 
@@ -23,21 +25,16 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container
+            /*Container
                 .BindInterfacesTo<WeaponMuzzleFlashComponent>()
                 .AsSingle()
                 .WithArguments(_muzzleFlash)
-                .NonLazy();
+                .NonLazy();*/
 
             Container
                 .Bind<WeaponShootComponent>()
                 .AsSingle()
                 .NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<WeaponColldownComponent>()
-                .AsSingle()
-                .WithArguments(_setings);
 
             Container
                 .BindInterfacesAndSelfTo<WeaponFireController>()
@@ -58,6 +55,42 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<WeaponMelleAttack>()
                 .AsSingle()
                 .NonLazy();
+
+
+            Container
+                .BindInterfacesAndSelfTo<TestComponent>()
+                .AsSingle()
+                .WithArguments(_muzzleFlash)
+                .NonLazy();
+        }
+    }
+
+    public class TestComponent
+    {
+        private readonly ICharacterProvider _character;
+        private readonly ParticleSystem _slashEffect;
+
+        public TestComponent(ICharacterProvider character, ParticleSystem slashEffect)
+        {
+            _character = character;
+            _slashEffect = slashEffect;
+
+            if (_character.Character.TryGet<AnimationEventProvider>(out var eventProvider))
+            {
+                eventProvider.OnCall += PlaySlawEffect;
+            }
+        }
+
+        private void PlaySlawEffect(string eventName)
+        {
+            if (eventName == "SlashEffect")
+            {
+                var go = Object.Instantiate(_slashEffect);
+                Transform root = _character.Character.Get<DiContainer>()
+                    .ResolveId<Transform>(ComponentsID.MelleWeaponRoot);
+
+                go.transform.position = root.position;
+            }
         }
     }
 }

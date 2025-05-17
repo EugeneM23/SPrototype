@@ -90,7 +90,7 @@ MonoBehaviour:
     <FireRate>k__BackingField: 0.1
     <Scatter>k__BackingField: 0
     <FireRange>k__BackingField: 3
-    <Damage>k__BackingField: 0
+    <Damage>k__BackingField: 300
     <BulletSpeed>k__BackingField: 0
     <CameraShakeDuration>k__BackingField: 0
     <CameraShakeMagnitude>k__BackingField: 0
@@ -98,6 +98,6 @@ MonoBehaviour:
     <RacoilPower>k__BackingField: 0
     <ProjectileCount>k__BackingField: 0
     <MaxRicochetCount>k__BackingField: 0
-  _muzzleFlash: {fileID: 198188663277021424, guid: c20bd0c5ad9ba473994c49d35194736c, type: 3}
+  _muzzleFlash: {fileID: 198741542255655676, guid: 234a1000ebc9c477d8be55c7b8c0f575, type: 3}
   _weponModel: {fileID: 0}
   _weaponBone: {fileID: 0}

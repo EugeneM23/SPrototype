@@ -3,12 +3,12 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class WeaponColldownComponent : WeaponShootComponent.ICondition, WeaponShootComponent.IAction, ITickable
+    public class WeaponCooldownComponent : WeaponShootComponent.ICondition, WeaponShootComponent.IAction, ITickable
     {
         private float lastTimeShoot;
         private WeaponSetings _setings;
 
-        public WeaponColldownComponent(WeaponSetings setings)
+        public WeaponCooldownComponent(WeaponSetings setings)
         {
             _setings = setings;
         }
