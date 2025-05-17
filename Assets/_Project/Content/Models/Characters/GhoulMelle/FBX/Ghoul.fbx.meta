@@ -1060,5 +1060,5 @@ AssetOrigin:
   productId: 215081
   packageName: Enemy Ghoul
   packageVersion: 1.0.0
-  assetPath: Assets/asd/Character/Enemy Ghoul/Models/Ghoul.fbx
+  assetPath: Assets/_Project/Content/Models/Characters/GhoulMelle/FBX/Ghoul.fbx
   uploadId: 618687

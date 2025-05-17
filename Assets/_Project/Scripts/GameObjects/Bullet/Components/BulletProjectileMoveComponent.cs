@@ -8,7 +8,7 @@ namespace Gameplay
         private readonly PlayerCharacterProvider _player;
         private readonly WeaponSetings _setings;
         private readonly PlayerSpeedObserver _playerSpeed;
-        private float height = 5f;
+        private float height = 10f;
 
         private Vector3 _startPosition;
         private Vector3 _endPosition;

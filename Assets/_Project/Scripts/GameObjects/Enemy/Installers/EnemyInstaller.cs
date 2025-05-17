@@ -5,17 +5,14 @@ namespace Gameplay.Installers
 {
     public class EnemyInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _weaponPrefab;
         [SerializeField] private ParticleSystem _hitEffect;
-        [SerializeField] private Transform _waeponRoot;
+        [SerializeField] private Transform _melleWeaponRoot;
+        [SerializeField] private Transform _rangeweaponRoot;
 
         public override void InstallBindings()
         {
-            /*Container
-                .BindInterfacesAndSelfTo<WeaponManager>()
-                .AsSingle()
-                .WithArguments(_weaponPrefab, _waeponRoot)
-                .NonLazy();*/
+            Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(ComponentsID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
 
             Container
                 .BindInterfacesAndSelfTo<EnemyAnimationBehaviour>()

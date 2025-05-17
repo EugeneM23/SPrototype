@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f719c53bc34031a9aa3ce239732fb8, type: 3}
   m_Name: EnemyMelleInstaller
   m_EditorClassIdentifier: 
+  _weaponPrefab: {fileID: 9184137841470919376, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
