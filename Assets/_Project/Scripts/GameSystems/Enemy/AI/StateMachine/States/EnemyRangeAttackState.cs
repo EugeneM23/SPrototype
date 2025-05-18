@@ -63,10 +63,7 @@ namespace Gameplay
 
         public void OnUpdate(float deltaTime)
         {
-            _timer -= deltaTime;
-
-            if (_timer <= 0f)
-                PlayAttackAnimation();
+         
         }
 
         private float PlayAttackAnimation()

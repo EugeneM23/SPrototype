@@ -1665,6 +1665,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GhoulSpawner (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3326396690045667204, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _isCycle
       value: 0

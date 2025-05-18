@@ -66,8 +66,8 @@ ModelImporter:
       curves: []
       events:
       - time: 0.4022558
-        functionName: Shoot
-        data: 
+        functionName: SendEvent
+        data: Shoot
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0

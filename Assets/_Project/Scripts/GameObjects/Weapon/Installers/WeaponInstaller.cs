@@ -1,3 +1,4 @@
+using Gameplay.Installers;
 using UnityEngine;
 using Zenject;
 
@@ -88,6 +89,11 @@ namespace Gameplay
 
             Container
                 .Bind<WeaponTargetComponent>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .BindInterfacesAndSelfTo<RangeProjectileSpawn>()
                 .AsSingle()
                 .NonLazy();
         }

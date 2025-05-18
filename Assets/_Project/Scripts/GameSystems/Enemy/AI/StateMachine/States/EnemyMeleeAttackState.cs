@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -12,25 +13,27 @@ namespace Gameplay
         private readonly Animator _animator;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly NavMeshAgent _navMeshAgent;
+        private readonly Enemy _enemy;
 
         private readonly Dictionary<string, AnimationClip> _animationClips = new();
         private float _animationLength;
         private float _timer;
 
-        private const string AttackAnimationName = "Attack_Right";
+        private const string AttackAnimationName = "MelleAttack";
 
         public EnemyMeleeAttackState(
             EnemyBlackBoard blackboard,
             Animator animator,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction attackSwitcher,
-            NavMeshAgent navMeshAgent)
+            NavMeshAgent navMeshAgent, Enemy enemy)
         {
             _blackboard = blackboard;
             _animator = animator;
             _assistComponent = assistComponent;
             _attackSwitcher = attackSwitcher;
             _navMeshAgent = navMeshAgent;
+            _enemy = enemy;
         }
 
         public void Initialize()
@@ -43,7 +46,6 @@ namespace Gameplay
         {
             _navMeshAgent.enabled = false;
             SetBlackboardState(isBusy: true, isAttacking: true);
-            PlayAttackAnimation();
         }
 
         public void OnExit()
@@ -56,20 +58,17 @@ namespace Gameplay
         {
             _timer -= deltaTime;
             if (_timer <= 0f)
-                PlayAttackAnimation();
-        }
-
-        private void PlayAttackAnimation()
-        {
-            _animator.Play(AttackAnimationName);
-
-            if (_animationClips.TryGetValue(AttackAnimationName, out var clip))
             {
-                _animationLength = clip.length;
-                _timer = _animationLength;
+                _enemy.Shoot();
 
-                _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _animationLength);
-                _attackSwitcher.Schedule(_animationLength - 0.01f, () => _blackboard.IsBusy = false);
+                if (_animationClips.TryGetValue(AttackAnimationName, out var clip))
+                {
+                    _animationLength = clip.length;
+                    _timer = _animationLength;
+
+                    _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _animationLength);
+                    _attackSwitcher.Schedule(_animationLength - 0.01f, () => _blackboard.IsBusy = false);
+                }
             }
         }
 

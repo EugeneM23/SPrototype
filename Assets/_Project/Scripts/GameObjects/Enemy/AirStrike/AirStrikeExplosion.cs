@@ -6,7 +6,7 @@ namespace Gameplay
     public class AirStrikeExplosion : MonoBehaviour
     {
         [SerializeField] private ParticleSystem _particleSystem;
-        [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private DamageCastLayer _layerMask;
         [Inject] private readonly DamageCasterManager _damageCasterManager;
 
         private void OnEnable() => _particleSystem.Stop();

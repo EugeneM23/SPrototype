@@ -10,7 +10,7 @@ namespace Gameplay.Installers
         [SerializeField] private ChargeEffectMarker chargeEffectMarker;
         [SerializeField] private LayerMask _detectionEnviromentLayer;
 
-        [SerializeField] private LayerMask _damageLayer;
+        [SerializeField] private DamageCastLayer _damageLayer;
         [SerializeField] private float _chargeDuration;
         [SerializeField] private int _chargeDamage;
         [SerializeField] private float _damageCastDuration;

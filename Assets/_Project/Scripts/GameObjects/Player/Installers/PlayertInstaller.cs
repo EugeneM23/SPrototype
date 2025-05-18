@@ -1,8 +1,7 @@
 using DamageNumbersPro;
 using Game;
-using Modules;
+using Gameplay.Installers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -17,9 +16,12 @@ namespace Gameplay
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private HealthComponentBase _healthComponent;
         [SerializeField] private Transform _weaponBone;
+        [SerializeField] private Transform _melleWeaponRoot;
 
         public override void InstallBindings()
         {
+            Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+
             Container
                 .BindInterfacesAndSelfTo<HealthComponentBase>()
                 .FromInstance(_healthComponent)
@@ -47,7 +49,7 @@ namespace Gameplay
             Container
                 .BindInterfacesAndSelfTo<PlayerWeaponManager>()
                 .AsSingle()
-                .WithArguments(Container,_weaponPrefabs, _weaponBone)
+                .WithArguments(Container, _weaponPrefabs, _weaponBone)
                 .NonLazy();
 
             Container

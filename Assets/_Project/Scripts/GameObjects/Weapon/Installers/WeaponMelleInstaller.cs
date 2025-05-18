@@ -7,13 +7,15 @@ namespace Gameplay
 {
     public class WeaponMelleInstaller : MonoInstaller
     {
+        [SerializeField] private DamageCastLayer _damageCastLayer;
         [SerializeField] private WeaponSetings _setings;
         [SerializeField] private ParticleSystem _muzzleFlash;
-        [SerializeField] private Entity _weponModel;
-        [SerializeField] private Transform _weaponBone;
+        [SerializeField] private Transform _damageRoot;
 
         public override void InstallBindings()
         {
+            Container.Bind<Transform>().WithId(ComponentsID.WeaponDamageRoot).FromInstance(_damageRoot).AsCached();
+
             Container
                 .Bind<WeaponSetings>()
                 .FromInstance(_setings)
@@ -25,11 +27,6 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            /*Container
-                .BindInterfacesTo<WeaponMuzzleFlashComponent>()
-                .AsSingle()
-                .WithArguments(_muzzleFlash)
-                .NonLazy();*/
 
             Container
                 .Bind<WeaponShootComponent>()
@@ -52,45 +49,33 @@ namespace Gameplay
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<WeaponMelleAttack>()
+                .BindInterfacesAndSelfTo<WeaponMelleAttackAction>()
                 .AsSingle()
                 .NonLazy();
 
-
             Container
-                .BindInterfacesAndSelfTo<TestComponent>()
+                .BindInterfacesAndSelfTo<WeaponSlashEffectHandler>()
                 .AsSingle()
                 .WithArguments(_muzzleFlash)
                 .NonLazy();
-        }
-    }
 
-    public class TestComponent
-    {
-        private readonly ICharacterProvider _character;
-        private readonly ParticleSystem _slashEffect;
+            Container
+                .BindInterfacesAndSelfTo<DamageCastHandler>()
+                .AsSingle()
+                .WithArguments(_damageCastLayer, _setings.Damage)
+                .NonLazy();
 
-        public TestComponent(ICharacterProvider character, ParticleSystem slashEffect)
-        {
-            _character = character;
-            _slashEffect = slashEffect;
+            Container
+                .BindInterfacesAndSelfTo<WeaponDamageCastController>()
+                .AsSingle()
+                .NonLazy();
 
-            if (_character.Character.TryGet<AnimationEventProvider>(out var eventProvider))
-            {
-                eventProvider.OnCall += PlaySlawEffect;
-            }
-        }
+            Container
+                .BindInterfacesAndSelfTo<WeaponInRangeCondition>()
+                .AsSingle()
+                .NonLazy();
 
-        private void PlaySlawEffect(string eventName)
-        {
-            if (eventName == "SlashEffect")
-            {
-                var go = Object.Instantiate(_slashEffect);
-                Transform root = _character.Character.Get<DiContainer>()
-                    .ResolveId<Transform>(ComponentsID.MelleWeaponRoot);
-
-                go.transform.position = root.position;
-            }
+            
         }
     }
 }

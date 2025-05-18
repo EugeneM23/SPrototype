@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -26,6 +27,31 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .WithArguments(_weaponPrefab)
                 .NonLazy();
+
+            
+        }
+    }
+
+    public class RangeProjectileSpawn : IInitializable
+    {
+        private readonly AnimationEventProvider _animationEvent;
+        private readonly WeaponShootComponent _weaponShootComponent;
+
+        public RangeProjectileSpawn(AnimationEventProvider animationEvent, WeaponShootComponent weaponShootComponent)
+        {
+            _animationEvent = animationEvent;
+            _weaponShootComponent = weaponShootComponent;
+        }
+
+        public void Initialize()
+        {
+            _animationEvent.OnCall += SpawnProjectile;
+        }
+
+        private void SpawnProjectile(string eventName)
+        {
+            if (eventName == "Shoot")
+                _weaponShootComponent.Shoot();
         }
     }
 }

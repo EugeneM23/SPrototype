@@ -4,5 +4,6 @@ namespace Gameplay.Installers
     {
         MelleWeaponRoot,
         RangeWeaponRoot,
+        WeaponDamageRoot
     }
 }

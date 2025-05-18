@@ -34,7 +34,6 @@ namespace Gameplay
 
         public void Shoot()
         {
-
             if (!CanShoot()) return;
 
             foreach (var item in _actions)
@@ -42,5 +41,23 @@ namespace Gameplay
         }
     }
 
-    
+    public class WeaponInRangeCondition : WeaponShootComponent.ICondition
+    {
+        private readonly WeaponSetings _setings;
+        private readonly ICharacterProvider _character;
+
+        public WeaponInRangeCondition(WeaponSetings setings, ICharacterProvider character)
+        {
+            _setings = setings;
+            _character = character;
+        }
+
+        public bool Invoke()
+        {
+            float distance = Vector3.Distance(_character.Character.transform.position,
+                _character.Character.Get<ICharacter>().Target.transform.position);
+
+            return distance <= _setings.FireRange;
+        }
+    }
 }

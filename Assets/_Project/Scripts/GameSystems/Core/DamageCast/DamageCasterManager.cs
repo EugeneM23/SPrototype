@@ -59,4 +59,10 @@ namespace Gameplay
             }
         }
     }
+
+    public enum DamageCastLayer
+    {
+        Enemy,
+        Player,
+    }
 }

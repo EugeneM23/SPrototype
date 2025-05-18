@@ -21,10 +21,12 @@ namespace Gameplay.Installers
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<MellWeaponManager>()
+                .BindInterfacesAndSelfTo<EnemyMellWeaponManager>()
                 .AsSingle()
                 .WithArguments(_weaponPrefab)
                 .NonLazy();
+            
+            
         }
     }
 }
