@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5215295857785136043}
   - component: {fileID: 8689783308582159464}
   - component: {fileID: 7487418093101285224}
+  - component: {fileID: 6203890669384559494}
   - component: {fileID: 3750572362710063219}
   - component: {fileID: 6898676644082228745}
   m_Layer: 0
@@ -201,9 +202,33 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 3750572362710063219}
+  - {fileID: 6203890669384559494}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
+--- !u!114 &6203890669384559494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504467924791662847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0.3
+  scatter: 10
+  fireRange: 10
+  damage: 10
+  bulletSpeed: 50
+  ShakeDuration: 0.1
+  shakeMagnitude: 0.2
+  shellImpulse: 4
+  recoilPower: 0
+  projectileCount: 0
+  maxRicochetCount: 0
 --- !u!114 &3750572362710063219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,22 +243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 5448337597900957643}
   _shellPoint: {fileID: 966996490262518290}
-  _setings:
-    <FireRate>k__BackingField: 0.1
-    <Scatter>k__BackingField: 12
-    <FireRange>k__BackingField: 10
-    <Damage>k__BackingField: 50
-    <BulletSpeed>k__BackingField: 70
-    <CameraShakeDuration>k__BackingField: 0.1
-    <CameraShakeMagnitude>k__BackingField: 0.1
-    <ShellImpulse>k__BackingField: 4
-    <RacoilPower>k__BackingField: 0.5
-    <ProjectileCount>k__BackingField: 1
-    <MaxRicochetCount>k__BackingField: 3
   _muzzleFlash: {fileID: 1759777164314975648}
   _bulletPrefab: {fileID: 8699156800269933710, guid: 6ab5ae5c0cf164047ac58cf63c71cf9a, type: 3}
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
-  _weponModel: {fileID: 6898676644082228745}
 --- !u!114 &6898676644082228745
 MonoBehaviour:
   m_ObjectHideFlags: 0

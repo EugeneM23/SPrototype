@@ -5,13 +5,10 @@ namespace Gameplay
 {
     public class WeaponCooldownComponent : WeaponShootComponent.ICondition, WeaponShootComponent.IAction, ITickable
     {
-        private float lastTimeShoot;
-        private WeaponSetings _setings;
+        [Inject(Id = WeaponParameterID.FireRate)]
+        private float _fireRate;
 
-        public WeaponCooldownComponent(WeaponSetings setings)
-        {
-            _setings = setings;
-        }
+        private float lastTimeShoot;
 
         bool WeaponShootComponent.ICondition.Invoke()
         {
@@ -20,7 +17,7 @@ namespace Gameplay
 
         void WeaponShootComponent.IAction.Invoke()
         {
-            lastTimeShoot = _setings.FireRate;
+            lastTimeShoot = _fireRate;
         }
 
         public void Tick()

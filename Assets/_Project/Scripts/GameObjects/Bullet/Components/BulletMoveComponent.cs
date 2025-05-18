@@ -5,19 +5,20 @@ namespace Gameplay
 {
     public class BulletMoveComponent : IBulletMoveComponent
     {
+        [Inject(Id = WeaponParameterID.BulletSpeed)]
+        private float _bulletSpeed;
+
         private readonly Entity _bullet;
-        private readonly WeaponSetings _setings;
         private Vector3 _direction;
 
-        public BulletMoveComponent(Entity bullet, WeaponSetings setings)
+        public BulletMoveComponent(Entity bullet)
         {
             _bullet = bullet;
-            _setings = setings;
         }
 
         public void Move()
         {
-            _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _setings.BulletSpeed;
+            _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _bulletSpeed;
         }
     }
 

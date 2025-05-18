@@ -1,22 +1,17 @@
-using Modules;
-using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
     public class BulletDamageComponent : Bullet.IAction
     {
-        private readonly WeaponSetings _setings;
-
-        public BulletDamageComponent(WeaponSetings setings)
-        {
-            _setings = setings;
-        }
+        [Inject(Id = WeaponParameterID.Damage)]
+        private int _damage;
 
         public void Invoke(IEntity entity)
         {
             if (entity.TryGet(out IDamageable damageable))
             {
-                damageable.TakeDamage(_setings.Damage);
+                damageable.TakeDamage(_damage);
             }
         }
     }

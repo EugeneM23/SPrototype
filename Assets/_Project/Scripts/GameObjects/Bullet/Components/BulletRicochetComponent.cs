@@ -5,16 +5,17 @@ namespace Gameplay
 {
     public class BulletRicochetComponent
     {
-        private readonly WeaponSetings _setings;
+        [Inject(Id = WeaponParameterID.MaxRicochetCount)]
+        private int _maxRicochetCount;
+
         private readonly Transform _transform;
         private int _currentRicochetCount;
 
-        public bool CanRicochet => _currentRicochetCount < _setings.MaxRicochetCount;
+        public bool CanRicochet => _currentRicochetCount < _maxRicochetCount;
 
-        public BulletRicochetComponent( Transform transform, WeaponSetings setings)
+        public BulletRicochetComponent(Transform transform)
         {
             _transform = transform;
-            _setings = setings;
         }
 
         public void Reset() => _currentRicochetCount = 0;

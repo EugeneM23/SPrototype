@@ -8,7 +8,6 @@ namespace Gameplay
     {
         [SerializeField] private Transform _firePoint;
         [SerializeField] private Transform _shellPoint;
-        [SerializeField] private WeaponSetings _setings;
         [SerializeField] private ParticleSystem _muzzleFlash;
         [SerializeField] private Entity _bulletPrefab;
         [SerializeField] private Entity _shellPrefab;
@@ -17,12 +16,6 @@ namespace Gameplay
         {
             GameObject go = new GameObject("BulletPool");
 
-
-            Container
-                .Bind<WeaponSetings>()
-                .FromInstance(_setings)
-                .AsSingle()
-                .NonLazy();
 
             Container
                 .BindInterfacesTo<WeaponShellSpawnComponent>()
@@ -49,13 +42,12 @@ namespace Gameplay
 
             Container
                 .BindInterfacesTo<WeaponBulletSpawnComponent>()
-                .AsSingle().WithArguments(_firePoint, _setings)
+                .AsSingle().WithArguments(_firePoint)
                 .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<WeaponCooldownComponent>()
-                .AsSingle()
-                .WithArguments(_setings);
+                .AsSingle();
 
             Container
                 .BindMemoryPool<Entity, BulletPool>()

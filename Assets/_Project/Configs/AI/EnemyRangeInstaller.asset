@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2da113a7fa4ce1a15ddbeaae36b1b4, type: 3}
   m_Name: EnemyRangeInstaller
   m_EditorClassIdentifier: 
-  _weaponPrefab: {fileID: 4987170329088819174, guid: 8c08b3337e72c48569e29d72184393f8, type: 3}
+  _weaponPrefab: {fileID: 0}

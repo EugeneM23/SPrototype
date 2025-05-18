@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 7969624372058240327}
   - component: {fileID: 6254490439261344806}
   - component: {fileID: 5737323738552138633}
+  - component: {fileID: 4401673994607787896}
   m_Layer: 8
   m_Name: Melle_Weapon_Dummy
   m_TagString: Untagged
@@ -90,6 +91,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 5737323738552138633}
+  - {fileID: 4401673994607787896}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -119,17 +121,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageCastLayer: 1
-  _setings:
-    <FireRate>k__BackingField: 2
-    <Scatter>k__BackingField: 0
-    <FireRange>k__BackingField: 3
-    <Damage>k__BackingField: 50
-    <BulletSpeed>k__BackingField: 0
-    <CameraShakeDuration>k__BackingField: 0
-    <CameraShakeMagnitude>k__BackingField: 0
-    <ShellImpulse>k__BackingField: 0
-    <RacoilPower>k__BackingField: 0
-    <ProjectileCount>k__BackingField: 0
-    <MaxRicochetCount>k__BackingField: 0
   _muzzleFlash: {fileID: 198741542255655676, guid: 234a1000ebc9c477d8be55c7b8c0f575, type: 3}
   _damageRoot: {fileID: 133675112324052069}
+--- !u!114 &4401673994607787896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184137841470919376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 1
+  scatter: 1
+  fireRange: 3
+  damage: 50
+  bulletSpeed: 0
+  ShakeDuration: 0
+  shakeMagnitude: 0
+  shellImpulse: 0
+  recoilPower: 0
+  projectileCount: 0
+  maxRicochetCount: 0

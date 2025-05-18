@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using Zenject;
 
 namespace Gameplay
 {
@@ -43,12 +44,13 @@ namespace Gameplay
 
     public class WeaponInRangeCondition : WeaponShootComponent.ICondition
     {
-        private readonly WeaponSetings _setings;
+        [Inject(Id = WeaponParameterID.FireRange)]
+        private float _fireRange;
+
         private readonly ICharacterProvider _character;
 
-        public WeaponInRangeCondition(WeaponSetings setings, ICharacterProvider character)
+        public WeaponInRangeCondition(ICharacterProvider character)
         {
-            _setings = setings;
             _character = character;
         }
 
@@ -57,7 +59,7 @@ namespace Gameplay
             float distance = Vector3.Distance(_character.Character.transform.position,
                 _character.Character.Get<ICharacter>().Target.transform.position);
 
-            return distance <= _setings.FireRange;
+            return distance <= _fireRange;
         }
     }
 }

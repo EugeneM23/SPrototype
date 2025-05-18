@@ -1,26 +1,26 @@
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
     public class BulletProjectileMoveComponent : IBulletMoveComponent
     {
+        [Inject(Id = WeaponParameterID.BulletSpeed)]
+        private float _bulletSpeed;
+
         private readonly Entity _bullet;
         private readonly PlayerCharacterProvider _player;
-        private readonly WeaponSetings _setings;
         private readonly PlayerSpeedObserver _playerSpeed;
         private float height = 10f;
-
         private Vector3 _startPosition;
         private Vector3 _endPosition;
         private float startTime;
         private float totalDistance;
-
         public bool Initialized = false;
 
-        public BulletProjectileMoveComponent(WeaponSetings setings, Entity bullet, PlayerCharacterProvider player,
+        public BulletProjectileMoveComponent(Entity bullet, PlayerCharacterProvider player,
             PlayerSpeedObserver playerSpeed)
         {
-            _setings = setings;
             _bullet = bullet;
             _player = player;
             _playerSpeed = playerSpeed;
@@ -32,7 +32,7 @@ namespace Gameplay
                 InitTrajectory();
 
             float timePassed = Time.time - startTime;
-            float distanceCovered = timePassed * _setings.BulletSpeed;
+            float distanceCovered = timePassed * _bulletSpeed;
             float t = distanceCovered / totalDistance;
             t = Mathf.Clamp01(t);
 
@@ -68,7 +68,7 @@ namespace Gameplay
             Vector3 toPlayer = playerPosition - _bullet.transform.position;
             float distance = toPlayer.magnitude;
 
-            float timeToReachTarget = distance / _setings.BulletSpeed;
+            float timeToReachTarget = distance / _bulletSpeed;
             Vector3 playerDirection = _player.Character.transform.forward;
 
             return playerPosition + playerDirection * playerSpeed * timeToReachTarget;

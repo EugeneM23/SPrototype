@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 3750572362710063219}
   - component: {fileID: 6898676644082228745}
   - component: {fileID: -3602079578523501718}
+  - component: {fileID: -6930198440719094116}
   m_Layer: 0
   m_Name: AR_EnemyTest
   m_TagString: Untagged
@@ -203,6 +204,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 3750572362710063219}
   - {fileID: -3602079578523501718}
+  - {fileID: -6930198440719094116}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -220,18 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firePoint: {fileID: 5448337597900957643}
   _shellPoint: {fileID: 966996490262518290}
-  _setings:
-    <FireRate>k__BackingField: 0.1
-    <Scatter>k__BackingField: 0
-    <FireRange>k__BackingField: 10
-    <Damage>k__BackingField: 50
-    <BulletSpeed>k__BackingField: 30
-    <CameraShakeDuration>k__BackingField: 0.1
-    <CameraShakeMagnitude>k__BackingField: 0.1
-    <ShellImpulse>k__BackingField: 4
-    <RacoilPower>k__BackingField: 0.5
-    <ProjectileCount>k__BackingField: 1
-    <MaxRicochetCount>k__BackingField: 3
   _muzzleFlash: {fileID: 1759777164314975648}
   _bulletPrefab: {fileID: 8699156800269933710, guid: c76f0d1e41a09439381c563faab04975, type: 3}
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
@@ -260,6 +250,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529b1ecc87154959befa9520ef59da12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6930198440719094116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504467924791662847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 0
+  scatter: 0
+  fireRange: 0
+  damage: 0
+  bulletSpeed: 0
+  ShakeDuration: 0
+  shakeMagnitude: 0
+  shellImpulse: 0
+  recoilPower: 0
+  projectileCount: 0
+  maxRicochetCount: 0
 --- !u!1 &9137652681675294895
 GameObject:
   m_ObjectHideFlags: 0

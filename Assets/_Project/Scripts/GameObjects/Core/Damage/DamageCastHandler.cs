@@ -12,13 +12,14 @@ namespace Gameplay
         [Inject(Id = ComponentsID.WeaponDamageRoot)]
         private Transform _damageRoot;
 
+        [Inject(Id = WeaponParameterID.Damage)]
         private int _damage;
 
-        public DamageCastHandler(DamageCasterManager damageCasterManager, DamageCastLayer damageCastLayer, int damage)
+        public DamageCastHandler(DamageCasterManager damageCasterManager, DamageCastLayer damageCastLayer)
         {
             _damageCasterManager = damageCasterManager;
+            Debug.Log("asdas");
             _damageCastLayer = damageCastLayer;
-            _damage = damage;
         }
 
         public void EnebleDamageCast()

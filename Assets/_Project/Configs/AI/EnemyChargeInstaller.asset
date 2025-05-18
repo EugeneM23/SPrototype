@@ -16,9 +16,7 @@ MonoBehaviour:
   _detectionEnviromentLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _damageLayer:
-    serializedVersion: 2
-    m_Bits: 2048
+  _damageLayer: 1
   _chargeDuration: 2
   _chargeDamage: 300
   _damageCastDuration: 0.5
