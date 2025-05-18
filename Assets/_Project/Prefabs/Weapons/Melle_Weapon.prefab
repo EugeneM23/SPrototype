@@ -123,7 +123,7 @@ MonoBehaviour:
   _setings:
     <FireRate>k__BackingField: 1
     <Scatter>k__BackingField: 0
-    <FireRange>k__BackingField: 0
+    <FireRange>k__BackingField: 3
     <Damage>k__BackingField: 10
     <BulletSpeed>k__BackingField: 0
     <CameraShakeDuration>k__BackingField: 0
