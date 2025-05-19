@@ -13,10 +13,7 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<DelayedAction>()
-                .AsSingle()
-                .NonLazy();
+            
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Gameplay
             }
         }
 
-        private readonly List<ScheduledAction> _scheduledActions = new List<ScheduledAction>();
+        private readonly List<ScheduledAction> _scheduledActions = new();
 
         public void Schedule(float delay, Action action)
         {

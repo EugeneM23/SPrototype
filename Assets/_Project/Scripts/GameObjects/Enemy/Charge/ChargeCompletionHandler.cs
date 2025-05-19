@@ -28,7 +28,7 @@ namespace Gameplay
         {
             if (!_isScheduled)
             {
-                _delayedAction.Schedule(_chargeDuration, () => _blackBoard.IsBusy = false);
+                _delayedAction.Schedule(0.5f, () => _blackBoard.IsBusy = false);
                 _isScheduled = true;
             }
         }
