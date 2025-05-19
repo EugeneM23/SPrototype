@@ -21,24 +21,4 @@ namespace Gameplay
             _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _bulletSpeed;
         }
     }
-
-    public interface IBulletMoveComponent
-    {
-        void Move();
-    }
-
-    public class BulletMoveController : ITickable
-    {
-        private readonly IBulletMoveComponent _bulletMoveComponent;
-
-        public BulletMoveController(IBulletMoveComponent bulletMoveComponent)
-        {
-            _bulletMoveComponent = bulletMoveComponent;
-        }
-
-        public void Tick()
-        {
-            _bulletMoveComponent.Move();
-        }
-    }
 }

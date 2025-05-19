@@ -15,7 +15,7 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            return distance >= 2f && distance < 15f;
+            return distance >= 1f && distance < 15f;
         }
 
         protected override Type GetTargetState() => typeof(EnemyRangeAttackState);

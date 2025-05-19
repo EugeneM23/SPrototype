@@ -11,7 +11,7 @@ namespace Gameplay
         public event Action<int> OnHealthChanged;
         public event Action<HealthComponentBase> OnDespawn;
         public event Action<Entity> OnDespawnTest;
-        public event Action OnHit;
+        public event System.Action OnHit;
         public event Action<int> OnTakeDamaged;
 
         protected int _currentHealth;

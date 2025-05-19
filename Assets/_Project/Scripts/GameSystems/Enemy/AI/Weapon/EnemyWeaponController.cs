@@ -6,17 +6,18 @@ namespace Gameplay.Weapon
     public class EnemyWeaponController : IInitializable
     {
         private readonly WeaponFireController _fireController;
-        private readonly Enemy _enemy;
+        private readonly EnemyRangeAttackState _state;
 
-        public EnemyWeaponController(WeaponFireController fireController, Enemy enemy)
+        public EnemyWeaponController(WeaponFireController fireController, EnemyRangeAttackState state)
         {
             _fireController = fireController;
-            _enemy = enemy;
+            _state = state;
         }
 
         public void Initialize()
         {
-            _fireController.TurnOn();
+            _state.OnEnter += _fireController.TurnOn;
+            _state.OnExit += _fireController.TurnOff;
         }
     }
 }

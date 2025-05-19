@@ -1,82 +1,62 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
-using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyRangeAttackState : IState, IInitializable
+    public class EnemyRangeAttackState : IState
     {
+        public event System.Action OnEnter;
+        public event System.Action OnExit;
+
         private readonly NavMeshAgent _navMeshAgent;
         private readonly EnemyBlackBoard _blackboard;
-        private readonly Animator _animator;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly DelayedAction _delayedAction;
-        private readonly EnemyCharacterProvider _characterProvider;
         private readonly Enemy _enemy;
 
-        private readonly Dictionary<string, AnimationClip> _animationClips = new();
-
-        private float _animationLength;
+        private float _fireRate = 1;
         private float _timer;
-
-        private const string AttackAnimationName = "Attack_Left";
 
         public EnemyRangeAttackState(
             NavMeshAgent navMeshAgent,
             EnemyBlackBoard blackboard,
-            Animator animator,
             EnemyAttackAssistComponent assistComponent,
-            DelayedAction delayedAction, EnemyCharacterProvider characterProvider, Enemy enemy)
+            DelayedAction delayedAction, Enemy enemy)
         {
             _navMeshAgent = navMeshAgent;
             _blackboard = blackboard;
-            _animator = animator;
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
-            _characterProvider = characterProvider;
             _enemy = enemy;
         }
 
-        public void Initialize()
+        public void Enter()
         {
-            foreach (var clip in _animator.runtimeAnimatorController.animationClips)
-                _animationClips.TryAdd(clip.name, clip);
-        }
-
-        public void OnEnter()
-        {
+            OnEnter?.Invoke();
             _navMeshAgent.enabled = false;
             _blackboard.IsBusy = true;
-
-            _animationLength = PlayAttackAnimation();
-
-            _delayedAction.Schedule(_animationLength - 0.1f, () => _blackboard.IsBusy = false);
-            _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _animationLength);
         }
 
-        public void OnExit()
+        public void Update(float deltaTime)
         {
+            _timer -= Time.deltaTime;
+            if (_timer <= 0)
+            {
+                _enemy.Shoot();
+                _delayedAction.Schedule(_fireRate - 0.1f, () => _blackboard.IsBusy = false);
+                _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _fireRate);
+                _timer = _fireRate;
+            }
+        }
+
+        public void Exit()
+        {
+            OnExit?.Invoke();
             _navMeshAgent.enabled = true;
             _blackboard.IsBusy = false;
         }
 
-        public void OnUpdate(float deltaTime)
-        {
-         
-        }
-
-        private float PlayAttackAnimation()
-        {
-            if (!_animationClips.TryGetValue(AttackAnimationName, out var clip))
-                return 0;
-
-            _animator.Play(AttackAnimationName);
-
-            _animationLength = clip.length;
-            _timer = _animationLength;
-
-            return _animationLength;
-        }
+        public void SetFireRate(float fireRate) => _fireRate = fireRate;
     }
 }

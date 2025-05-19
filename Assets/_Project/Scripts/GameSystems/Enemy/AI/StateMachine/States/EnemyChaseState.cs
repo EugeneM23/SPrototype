@@ -22,20 +22,20 @@ namespace Gameplay
             _entity = entity;
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             SetAgentSpeed(_blackboard.ChaseSpeed);
             _blackboard.IsRunning = true;
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             if (_player?.Character == null) return;
 
             _navMeshAgent.SetDestination(_player.Character.transform.position);
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _blackboard.IsRunning = false;
         }

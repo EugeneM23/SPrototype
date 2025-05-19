@@ -4,7 +4,7 @@ namespace Gameplay
 {
     public class EnemyMelleReasoner : EnemyReasonerBase
     {
-        public override int Priority => 7;
+        public override int Priority => 8;
 
         public EnemyMelleReasoner(
             PlayerCharacterProvider provider,
@@ -15,7 +15,7 @@ namespace Gameplay
         {
         }
 
-        protected override bool IsOnCondition(float distance) => distance < 3f;
+        protected override bool IsOnCondition(float distance) => distance < 2f;
         protected override Type GetTargetState() => typeof(EnemyMeleeAttackState);
     }
 }

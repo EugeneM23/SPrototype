@@ -2,10 +2,10 @@ namespace Gameplay
 {
     public interface IState
     {
-        void OnEnter();
+        void Enter();
 
-        void OnUpdate(float deltaTime);
+        void Update(float deltaTime);
 
-        void OnExit();
+        void Exit();
     }
 }

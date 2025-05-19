@@ -17,10 +17,9 @@ namespace Gameplay
 
 
             Container
-                .BindInterfacesAndSelfTo<WeaponCameraShaceComponent>()
+                .BindInterfacesAndSelfTo<WeaponCameraShakeAction>()
                 .AsSingle()
                 .NonLazy();
-
 
             Container
                 .Bind<WeaponShootComponent>()
@@ -54,18 +53,19 @@ namespace Gameplay
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<DamageCastHandler>()
+                .BindInterfacesAndSelfTo<WeaponDamageCastAction>()
                 .AsSingle()
                 .WithArguments(_damageCastLayer)
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<WeaponDamageCastController>()
-                .AsSingle()
-                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<WeaponInRangeCondition>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .BindInterfacesAndSelfTo<WeaponCooldownAction>()
                 .AsSingle()
                 .NonLazy();
         }

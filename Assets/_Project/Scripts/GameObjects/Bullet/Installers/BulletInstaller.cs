@@ -20,12 +20,6 @@ public class BulletInstaller : MonoInstaller
             .AsSingle()
             .NonLazy();
 
-        /*Container
-            .BindInterfacesAndSelfTo<BulletPushComponent>()
-            .AsSingle()
-            .WithArguments(gameObject.GetComponent<Entity>())
-            .NonLazy();*/
-
         Container
             .BindInterfacesAndSelfTo<BulletDamageComponent>()
             .AsSingle()

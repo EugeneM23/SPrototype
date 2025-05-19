@@ -6,69 +6,55 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyMeleeAttackState : IState, IInitializable
+    public class EnemyMeleeAttackState : IState
     {
         private readonly DelayedAction _attackSwitcher;
         private readonly EnemyBlackBoard _blackboard;
-        private readonly Animator _animator;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly Enemy _enemy;
 
-        private readonly Dictionary<string, AnimationClip> _animationClips = new();
-        private float _animationLength;
         private float _timer;
-
-        private const string AttackAnimationName = "MelleAttack";
+        private bool _isEnable;
 
         public EnemyMeleeAttackState(
             EnemyBlackBoard blackboard,
-            Animator animator,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction attackSwitcher,
-            NavMeshAgent navMeshAgent, Enemy enemy)
+            NavMeshAgent navMeshAgent,
+            Enemy enemy)
         {
             _blackboard = blackboard;
-            _animator = animator;
             _assistComponent = assistComponent;
             _attackSwitcher = attackSwitcher;
             _navMeshAgent = navMeshAgent;
             _enemy = enemy;
         }
 
-        public void Initialize()
+        public void Enter()
         {
-            foreach (var clip in _animator.runtimeAnimatorController.animationClips)
-                _animationClips.TryAdd(clip.name, clip);
-        }
+            Debug.Log("sdasda");
 
-        public void OnEnter()
-        {
             _navMeshAgent.enabled = false;
             SetBlackboardState(isBusy: true, isAttacking: true);
+            _timer = 0.7f;
+            _isEnable = true;
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _navMeshAgent.enabled = true;
             SetBlackboardState(isBusy: false, isAttacking: false);
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
-            _timer -= deltaTime;
-            if (_timer <= 0f)
+            if (_isEnable)
             {
+                _isEnable = false;
                 _enemy.Shoot();
-
-                if (_animationClips.TryGetValue(AttackAnimationName, out var clip))
-                {
-                    _animationLength = clip.length;
-                    _timer = _animationLength;
-
-                    _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _animationLength);
-                    _attackSwitcher.Schedule(_animationLength - 0.01f, () => _blackboard.IsBusy = false);
-                }
+                _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, 0.7f);
+                _attackSwitcher.Schedule(0.7f, () => _blackboard.IsBusy = false);
             }
         }
 

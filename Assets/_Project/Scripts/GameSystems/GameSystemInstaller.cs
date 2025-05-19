@@ -15,12 +15,18 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Application.targetFrameRate = _maximumFPS;
+            
             UIInstaller.Install(Container, _HUD);
             CameraInstaller.Install(Container, _cameraSmoothTime, _camera);
             PlayerSpawnInstaller.Install(Container, _playerPrefab);
 
             Container
                 .BindInterfacesAndSelfTo<DamageCasterManager>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
+                .BindInterfacesAndSelfTo<GameInput>()
                 .AsSingle()
                 .NonLazy();
         }

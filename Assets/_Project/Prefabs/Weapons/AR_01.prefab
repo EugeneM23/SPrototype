@@ -150,10 +150,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5215295857785136043}
   - component: {fileID: 8689783308582159464}
+  - component: {fileID: 6898676644082228745}
   - component: {fileID: 7487418093101285224}
   - component: {fileID: 6203890669384559494}
   - component: {fileID: 3750572362710063219}
-  - component: {fileID: 6898676644082228745}
+  - component: {fileID: -1785734590832131113}
   m_Layer: 0
   m_Name: AR_01
   m_TagString: Untagged
@@ -187,6 +188,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8504467924791662847}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6898676644082228745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504467924791662847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b8b812c65e45c6bb1ce2958d1943a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _context: {fileID: 7487418093101285224}
 --- !u!114 &7487418093101285224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +219,7 @@ MonoBehaviour:
   - {fileID: 6203890669384559494}
   _installerPrefabs: []
   _autoRun: 1
-  _kernel: {fileID: 0}
+  _kernel: {fileID: -1785734590832131113}
 --- !u!114 &6203890669384559494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,16 +232,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.3
-  scatter: 10
-  fireRange: 10
+  fireRate: 0.1
+  projectileSpawnDelay: 0
   damage: 10
+  scatter: 30
+  fireRange: 10
   bulletSpeed: 50
   ShakeDuration: 0.1
-  shakeMagnitude: 0.2
+  shakeMagnitude: 0.1
   shellImpulse: 4
-  recoilPower: 0
-  projectileCount: 0
+  projectileCount: 1
   maxRicochetCount: 0
 --- !u!114 &3750572362710063219
 MonoBehaviour:
@@ -246,7 +260,7 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 1759777164314975648}
   _bulletPrefab: {fileID: 8699156800269933710, guid: 6ab5ae5c0cf164047ac58cf63c71cf9a, type: 3}
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
---- !u!114 &6898676644082228745
+--- !u!114 &-1785734590832131113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,10 +269,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8504467924791662847}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6b8b812c65e45c6bb1ce2958d1943a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _context: {fileID: 7487418093101285224}
+  _isEnable: 1
 --- !u!1 &9137652681675294895
 GameObject:
   m_ObjectHideFlags: 0

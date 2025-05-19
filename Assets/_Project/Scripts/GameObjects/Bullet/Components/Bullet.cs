@@ -26,6 +26,7 @@ namespace Gameplay
 
         public void Hit(Collision collision)
         {
+            Debug.Log($"OnCollisionEnter: {collision.gameObject.name}");
             if (collision.gameObject.TryGetComponent(out IEntity entity))
                 _actions.ForEach(action => action.Invoke(entity));
             else

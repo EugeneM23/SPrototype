@@ -25,7 +25,7 @@ namespace Gameplay
             _randomPosition = randomPosition;
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             _navMeshAgent.speed = _blackboard.ChaseSpeed;
             _blackboard.IsRunning = true;
@@ -36,14 +36,14 @@ namespace Gameplay
             _entity.Get<EnemyMoveComponent>().MoveTo(_destination);
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _blackboard.IsRunning = false;
             _blackboard.IsRetreat = false;
             _navMeshAgent.speed = _blackboard.ChaseSpeed;
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             var distance = Vector3.Distance(_entity.transform.position, _destination);
             if (distance < 2f)

@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6893362020184907372}
   - component: {fileID: -6308802520766017869}
   - component: {fileID: 8829005316818562555}
+  - component: {fileID: -3068079336801535404}
   m_Layer: 12
   m_Name: AR_Enemy_Bullet_01
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   - {fileID: 8829005316818562555}
   _installerPrefabs: []
   _autoRun: 1
-  _kernel: {fileID: 0}
+  _kernel: {fileID: -3068079336801535404}
 --- !u!114 &-1220255866714693891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,3 +318,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f6b8d9a15b4c828e555af0f23b8f8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3068079336801535404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962207347554665384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnable: 0

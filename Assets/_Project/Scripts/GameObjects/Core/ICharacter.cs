@@ -5,7 +5,7 @@ namespace Gameplay
 {
     public interface ICharacter
     {
-        public event Action OnShoot;
+        public event System.Action OnShoot;
 
         public Transform Target { get; set; }
 

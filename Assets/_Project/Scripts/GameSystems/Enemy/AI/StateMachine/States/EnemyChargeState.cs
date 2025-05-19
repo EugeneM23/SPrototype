@@ -23,7 +23,7 @@ namespace Gameplay
             _initialTime = initialTime;
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             _timer -= deltaTime;
 
@@ -34,13 +34,13 @@ namespace Gameplay
             }
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             ExecuteActions(a => a.EnterActions());
             _timer = _initialTime;
         }
 
-        public void OnExit()
+        public void Exit()
         {
             ExecuteActions(a => a.ExitActions());
             _timer = _initialTime;

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6663792270156425599}
   - component: {fileID: 6031757654120368584}
   - component: {fileID: 7763426347658224700}
+  - component: {fileID: 6728601646733904263}
   m_Layer: 12
   m_Name: Projectile_Bullet
   m_TagString: Untagged
@@ -65,7 +66,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 126
   m_CollisionDetection: 3
 --- !u!114 &3100162212723733663
 MonoBehaviour:
@@ -85,7 +86,7 @@ MonoBehaviour:
   - {fileID: 7763426347658224700}
   _installerPrefabs: []
   _autoRun: 1
-  _kernel: {fileID: 0}
+  _kernel: {fileID: 6728601646733904263}
 --- !u!114 &-1220255866714693891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,7 +145,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.25
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6031757654120368584
 MonoBehaviour:
@@ -176,6 +177,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffd6c263971492fb85055a2d37228b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6728601646733904263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5962207347554665384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnable: 1
 --- !u!1 &7553566312700618495
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +218,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51386, y: 0.51386, z: 0.43181506}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5669, y: 0.5669, z: 0.5669}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9168075164675188143}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

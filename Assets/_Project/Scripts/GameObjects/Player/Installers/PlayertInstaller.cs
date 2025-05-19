@@ -39,7 +39,7 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            PlayerInputInstaller.Install(Container);
+
             PlayerMovementInstaller.Install(Container, _playerSetings);
             PlayerHealthInstaller.Install(Container, _playerSetings.MaxHealth, _healtBarOffset, gameObject.transform,
                 healtBar, _popupPrefab);

@@ -6,7 +6,7 @@ namespace Gameplay
 {
     public class Enemy : ICharacter
     {
-        public event Action OnShoot;
+        public event System.Action OnShoot;
         public Transform Target { get; set; }
         public int Damage { get; }
 

@@ -19,21 +19,21 @@ namespace Gameplay
 
         public void Tick()
         {
-            _currentState?.OnUpdate(Time.deltaTime);
+            _currentState?.Update(Time.deltaTime);
         }
 
         public void SetState<T>()
         {
-            _currentState?.OnExit();
+            _currentState?.Exit();
             _currentState = _states[typeof(T)];
-            _currentState?.OnEnter();
+            _currentState?.Enter();
         }
 
         public void SetState(Type getTargetState)
         {
-            _currentState?.OnExit();
+            _currentState?.Exit();
             _currentState = _states[getTargetState];
-            _currentState?.OnEnter();
+            _currentState?.Enter();
         }
     }
 }

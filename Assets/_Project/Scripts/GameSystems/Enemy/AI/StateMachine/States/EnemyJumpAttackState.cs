@@ -35,7 +35,7 @@ namespace Gameplay
             _animator = animator;
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             _blackBoard.IsBusy = true;
             _blackBoard.IsAttacking = true;
@@ -53,7 +53,7 @@ namespace Gameplay
                 _blackBoard.Target.transform);
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             _timer -= deltaTime;
 
@@ -64,7 +64,7 @@ namespace Gameplay
             }
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _timer = InitialTimerValue;
             _blackBoard.CanPush = true;

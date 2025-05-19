@@ -1,0 +1,77 @@
+using UnityEngine;
+using Zenject;
+
+namespace Gameplay
+{
+    public class WeaponBulletSpawnAction : WeaponShootComponent.IAction, ITickable
+    {
+        [Inject(Id = WeaponParameterID.Scatter)]
+        private float _scater;
+
+        [Inject(Id = WeaponParameterID.ProjectileCount)]
+        private int _projectileCount;
+
+        [Inject(Id = WeaponParameterID.ProjectileSpawnDelay)]
+        private float _delay;
+
+        private readonly WeaponTargetComponent _targetComponent;
+        private readonly Transform _firePoint;
+        private IBulletSpawner _bulletSpawner;
+        private float _timer;
+        private bool _needSpawn;
+
+        public WeaponBulletSpawnAction(WeaponTargetComponent targetComponent, Transform firePoint,
+            IBulletSpawner bulletSpawner)
+        {
+            _targetComponent = targetComponent;
+            _firePoint = firePoint;
+            _bulletSpawner = bulletSpawner;
+        }
+
+        public void Tick()
+        {
+            if (!_needSpawn) return;
+
+            _timer -= Time.deltaTime;
+            if (_timer <= 0)
+            {
+                for (int i = 0; i < _projectileCount; i++)
+                {
+                    Quaternion rotation = CalculatRotation();
+                    Entity bullet = _bulletSpawner.Create();
+                    bullet.gameObject.transform.position = _firePoint.position;
+                    bullet.gameObject.transform.rotation = rotation;
+                }
+
+                _needSpawn = false;
+            }
+        }
+
+        void WeaponShootComponent.IAction.Invoke()
+        {
+            _needSpawn = true;
+            _timer = _delay;
+        }
+
+        private Quaternion CalculatRotation()
+        {
+            if (_targetComponent.Target == null) return Quaternion.identity;
+
+            Vector3 targetPosition = _targetComponent.Target.position + Vector3.up * 1.5f;
+
+            Vector3 directionToTarget = (targetPosition - _firePoint.position).normalized;
+
+            Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
+            float randomY = Random.Range(-_scater, _scater);
+            float randomX = Random.Range(-_scater, _scater);
+            Quaternion scatterRotation = Quaternion.Euler(randomX, randomY, 0f);
+            Quaternion finalRotation = scatterRotation * lookRotation;
+            return finalRotation;
+        }
+    }
+
+    public class WeaponTargetComponent
+    {
+        public Transform Target;
+    }
+}

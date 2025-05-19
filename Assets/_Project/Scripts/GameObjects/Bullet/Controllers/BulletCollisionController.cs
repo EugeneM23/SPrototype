@@ -21,7 +21,7 @@ namespace Gameplay
 
         public void Dispose()
         {
-            _collisionComponent.OnCollision -= _bullet.Hit;
+            //_collisionComponent.OnCollision -= _bullet.Hit;
         }
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -6,27 +7,37 @@ namespace Gameplay
 {
     public class DelayedAction : ITickable
     {
-        private float _timer;
-        private bool _isActive;
-        private Action _action;
+        private class ScheduledAction
+        {
+            public float Timer;
+            public Action Action;
+
+            public ScheduledAction(float delay, Action action)
+            {
+                Timer = delay;
+                Action = action;
+            }
+        }
+
+        private readonly List<ScheduledAction> _scheduledActions = new List<ScheduledAction>();
 
         public void Schedule(float delay, Action action)
         {
-            _timer = delay;
-            _action = action;
-            _isActive = true;
+            _scheduledActions.Add(new ScheduledAction(delay, action));
         }
 
         public void Tick()
         {
-            if (!_isActive) return;
-
-            _timer -= Time.deltaTime;
-            if (_timer <= 0f)
+            for (int i = _scheduledActions.Count - 1; i >= 0; i--)
             {
-                _isActive = false;
-                _action?.Invoke();
-                _action = null;
+                var scheduled = _scheduledActions[i];
+                scheduled.Timer -= Time.deltaTime;
+
+                if (scheduled.Timer <= 0f)
+                {
+                    scheduled.Action?.Invoke();
+                    _scheduledActions.RemoveAt(i);
+                }
             }
         }
     }

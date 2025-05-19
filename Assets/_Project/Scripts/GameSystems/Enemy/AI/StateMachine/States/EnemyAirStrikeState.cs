@@ -38,7 +38,7 @@ namespace Gameplay
             _container = container;
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             _navMeshAgent.enabled = false;
             _isComplete = false;
@@ -51,7 +51,7 @@ namespace Gameplay
             _assistComponent.RotateToTarget(_blackBoard.Target, _blackBoard.Enemy, RotationSpeed, RotationDuration);
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             if (_isComplete)
                 return;
@@ -64,7 +64,7 @@ namespace Gameplay
             }
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _navMeshAgent.enabled = true;
             _timer = AirStrikeDelay;

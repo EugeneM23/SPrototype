@@ -1911,7 +1911,8 @@ GameObject:
   - component: {fileID: 2483082337731817145}
   - component: {fileID: -6075899849557144983}
   - component: {fileID: 7471912196074680738}
-  - component: {fileID: 4694091871458075141}
+  - component: {fileID: 4052470104320523332}
+  - component: {fileID: 7313438444693956633}
   m_Layer: 7
   m_Name: Enemy_Ghoul
   m_TagString: Untagged
@@ -1929,7 +1930,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4992397611402000642}
@@ -2014,7 +2015,7 @@ MonoBehaviour:
   - {fileID: 7471912196074680738}
   - {fileID: 7553199498613522881}
   - {fileID: -7776074291255282540}
-  - {fileID: 4694091871458075141}
+  - {fileID: 4052470104320523332}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
@@ -2129,14 +2130,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6f3aaec77e1f14c19988d010e011d4fb, type: 2}
   - {fileID: 11400000, guid: 5ac810c3b277140128ec3c51a1fbc493, type: 2}
   - {fileID: 11400000, guid: 872db6379cc8b456b96a9c409d02cbb6, type: 2}
-  - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
+  - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}
   _installerPrefabs: []
   _autoRun: 1
-  _kernel: {fileID: 0}
+  _kernel: {fileID: 7313438444693956633}
 --- !u!114 &7471912196074680738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,9 +2150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229d26dedcb647f28616d175a971cd48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ChaseRange>k__BackingField: 15
+  <ChaseRange>k__BackingField: 10
   <AttckRange>k__BackingField: 15
-  <ChaseSpeed>k__BackingField: 8
+  <ChaseSpeed>k__BackingField: 15
   <PatrolSpeed>k__BackingField: 3
   <AttakRotationSpeed>k__BackingField: 10
   <Damage>k__BackingField: 50
@@ -2166,7 +2167,7 @@ MonoBehaviour:
   IsRunning: 0
   Target: {fileID: 0}
   Enemy: {fileID: 7553199498613522881}
---- !u!114 &4694091871458075141
+--- !u!114 &4052470104320523332
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2178,6 +2179,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a589e55341b4cd8be81bc1715e678ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7313438444693956633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481907973978787791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnable: 1
 --- !u!1 &5585570460900715633
 GameObject:
   m_ObjectHideFlags: 0

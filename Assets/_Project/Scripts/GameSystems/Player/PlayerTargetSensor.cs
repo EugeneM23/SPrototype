@@ -7,7 +7,7 @@ namespace Gameplay
 {
     public class PlayerTargetSensor : MonoBehaviour
     {
-        public event Action OnTargetChanget;
+        public event System.Action OnTargetChanget;
 
         [SerializeField] private float _refreshRate;
         [SerializeField] private LayerMask _layerMask;

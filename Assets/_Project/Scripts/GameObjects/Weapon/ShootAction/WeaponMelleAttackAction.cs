@@ -1,0 +1,26 @@
+using UnityEngine;
+using Zenject;
+
+namespace Gameplay
+{
+    public class WeaponMelleAttackAction : WeaponShootComponent.IAction
+    {
+        private readonly ICharacterProvider _character;
+
+        [Inject(Id = WeaponParameterID.AttackRate)]
+        private readonly float _attackRate;
+
+        public WeaponMelleAttackAction(ICharacterProvider character)
+        {
+            _character = character;
+        }
+
+        void WeaponShootComponent.IAction.Invoke()
+        {
+            float animationSpeed = 1f / _attackRate;
+
+            _character.Character.Get<Animator>().Play("MelleAttack");
+            _character.Character.Get<Animator>().SetFloat("AttackSpeed", animationSpeed);
+        }
+    }
+}

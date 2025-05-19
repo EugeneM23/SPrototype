@@ -25,7 +25,7 @@ namespace Gameplay
             _waypoints = _entity.Get<EnemyPatrolPoints>().GetWaypoints();
         }
 
-        public void OnEnter()
+        public void Enter()
         {
             _blackboard.IsWalking = true;
 
@@ -33,12 +33,12 @@ namespace Gameplay
                 agent.speed = _blackboard.PatrolSpeed;
         }
 
-        public void OnExit()
+        public void Exit()
         {
             _blackboard.IsWalking = false;
         }
 
-        public void OnUpdate(float deltaTime)
+        public void Update(float deltaTime)
         {
             if (_waypoints == null || _waypoints.Length == 0)
                 return;
