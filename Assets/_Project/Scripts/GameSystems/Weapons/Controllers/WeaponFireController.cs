@@ -1,7 +1,3 @@
-using System;
-using UnityEngine;
-using Zenject;
-
 namespace Gameplay
 {
     public class WeaponFireController
@@ -17,12 +13,12 @@ namespace Gameplay
 
         public void TurnOff()
         {
-            _character.Character.Get<ICharacter>().OnShoot -= _weaponShootComponent.Shoot;
+            _character.Character.Get<IShootable>().OnShoot -= _weaponShootComponent.Shoot;
         }
 
         public void TurnOn()
         {
-            _character.Character.Get<ICharacter>().OnShoot += _weaponShootComponent.Shoot;
+            _character.Character.Get<IShootable>().OnShoot += _weaponShootComponent.Shoot;
         }
     }
 }

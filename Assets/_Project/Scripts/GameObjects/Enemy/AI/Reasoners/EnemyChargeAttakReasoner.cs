@@ -4,14 +4,14 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyAirStikeReasoner : EnemyReasonerBase, ITickable
+    public class EnemyChargeAttackDecision : EnemyDecisionBase, ITickable
     {
         private float _timer;
         private bool _timerRunning = true;
 
-        public override int Priority => 11;
+        public override int Priority => 12;
 
-        public EnemyAirStikeReasoner(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyChargeAttackDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
             Entity entity, EnemyBlackBoard blackboard)
             : base(provider, stateMachine, entity, blackboard)
         {
@@ -25,13 +25,13 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            return _blackboard.IsRunning && _timer >= 7f;
+            return _blackboard.IsRunning && _timer >= 3f;
         }
 
         protected override Type GetTargetState()
         {
             _timer = 0f;
-            return typeof(EnemyAirStrikeState);
+            return typeof(EnemyChargeState);
         }
     }
 }

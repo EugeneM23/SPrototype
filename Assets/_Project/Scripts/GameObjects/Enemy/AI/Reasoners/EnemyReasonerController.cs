@@ -6,35 +6,35 @@ namespace Gameplay
 {
     public class EnemyReasonerController : ITickable
     {
-        private readonly List<IEnemyReasoner> _reasoners;
-        private IEnemyReasoner _currentReasoner;
+        private readonly List<IEnemyDecision> _reasoners;
+        private IEnemyDecision _currentDecision;
 
-        public EnemyReasonerController(List<IEnemyReasoner> reasoners)
+        public EnemyReasonerController(List<IEnemyDecision> reasoners)
         {
             if (reasoners.Count == 0) return;
 
             _reasoners = reasoners;
-            _currentReasoner = _reasoners[0];
+            _currentDecision = _reasoners[0];
         }
 
         public void Tick()
         {
             if (_reasoners == null) return;
 
-            IEnemyReasoner bestReasoner = _currentReasoner;
+            IEnemyDecision bestDecision = _currentDecision;
             int highestPriority = int.MinValue;
 
             foreach (var reasoner in _reasoners)
             {
-                if (reasoner.CanReason() && reasoner.Priority > highestPriority)
+                if (reasoner.IsValid() && reasoner.Priority > highestPriority)
                 {
-                    bestReasoner = reasoner;
+                    bestDecision = reasoner;
                     highestPriority = reasoner.Priority;
                 }
             }
 
-            _currentReasoner = bestReasoner;
-            _currentReasoner?.ApplyReasoning();
+            _currentDecision = bestDecision;
+            _currentDecision?. ApplyReasoning();
         }
     }
 }

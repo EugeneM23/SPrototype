@@ -76,17 +76,6 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<WeaponFireController>()
                 .AsSingle()
                 .NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<WeaponTargetController>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .Bind<WeaponTargetComponent>()
-                .AsSingle()
-                .NonLazy();
-
             
         }
     }

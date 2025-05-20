@@ -10,7 +10,7 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<EnemyJumpAttackReasoner>()
+                .BindInterfacesAndSelfTo<EnemyJumpAttackDecision>()
                 .AsSingle()
                 .NonLazy();
 

@@ -1,9 +1,9 @@
 namespace Gameplay
 {
-    public interface IEnemyReasoner
+    public interface IEnemyDecision
     {
         int Priority { get; }
-        bool CanReason();
+        bool IsValid();
         void ApplyReasoning();
     }
 }

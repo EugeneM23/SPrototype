@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public abstract class EnemyReasonerBase : IEnemyReasoner, IInitializable
+    public abstract class EnemyDecisionBase : IEnemyDecision, IInitializable
     {
         protected readonly Entity _entity;
         protected readonly EnemyStateMachine _stateMachine;
@@ -13,7 +13,7 @@ namespace Gameplay
 
         public abstract int Priority { get; }
 
-        protected EnemyReasonerBase(PlayerCharacterProvider playerCharacterProvider, EnemyStateMachine stateMachine,
+        protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider, EnemyStateMachine stateMachine,
             Entity entity, EnemyBlackBoard blackboard)
         {
             PlayerCharacterProvider = playerCharacterProvider;
@@ -27,7 +27,7 @@ namespace Gameplay
             _blackboard.Target = PlayerCharacterProvider.Character;
         }
 
-        public bool CanReason()
+        public bool IsValid()
         {
             float distance = DistanceToTarget();
             return IsOnCondition(distance);
@@ -36,12 +36,13 @@ namespace Gameplay
         public void ApplyReasoning()
         {
             if (_blackboard.IsBusy) return;
-                
+
             _stateMachine.SetState(GetTargetState());
         }
 
         protected float DistanceToTarget()
         {
+            if (PlayerCharacterProvider.Character == null || _entity == null) return float.PositiveInfinity;
             return Vector3.Distance(PlayerCharacterProvider.Character.transform.position, _entity.transform.position);
         }
 

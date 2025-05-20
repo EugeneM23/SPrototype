@@ -5,17 +5,13 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class Player : ITickable, ICharacter
+    public class Player : ITickable, IShootable
     {
-        public event System.Action OnShoot;
-        public Transform Target { get; set; }
-
-        public int Damage { get; }
+        public event Action OnShoot;
 
         private readonly CharacterController _characterController;
         private readonly LookAtComponent _lookAtComponent;
         private readonly LeanComponent _leanComponent;
-        public bool IsMoving => GetVelocity() != Vector3.zero;
 
         public Player(
             CharacterController characterController,
@@ -31,14 +27,10 @@ namespace Gameplay
         {
             _leanComponent.Lean();
 
-            if (IsMoving || Target == null) return;
+            if (_characterController.velocity != Vector3.zero) return;
 
-            if (_lookAtComponent.LookAtAndCheck(Target.position))
-                Shoot();
+            if (_lookAtComponent.LookAtAndCheck())
+                OnShoot?.Invoke();
         }
-
-        public void Shoot() => OnShoot?.Invoke();
-
-        public Vector3 GetVelocity() => _characterController.velocity;
     }
 }

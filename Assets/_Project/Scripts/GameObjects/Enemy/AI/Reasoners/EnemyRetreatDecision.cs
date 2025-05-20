@@ -2,11 +2,11 @@ using System;
 
 namespace Gameplay
 {
-    public class EnemyRetreatReasoner : EnemyReasonerBase
+    public class EnemyRetreatDecision : EnemyDecisionBase
     {
         public override int Priority => 11;
 
-        public EnemyRetreatReasoner(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyRetreatDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
             Entity entity, EnemyBlackBoard blackboard)
             : base(provider, stateMachine, entity, blackboard)
         {

@@ -18,7 +18,7 @@ namespace Gameplay
         public bool Invoke()
         {
             float distance = Vector3.Distance(_character.Character.transform.position,
-                _character.Character.Get<ICharacter>().Target.transform.position);
+                _character.Character.Get<TargetComponent>().Target.transform.position);
 
             return distance <= _fireRange;
         }

@@ -15,7 +15,7 @@ namespace Gameplay.Installers
                 .NonLazy();            
 
             Container
-                .BindInterfacesAndSelfTo<EnemyAirStikeReasoner>()
+                .BindInterfacesAndSelfTo<EnemyAirStikeDecision>()
                 .AsSingle()
                 .NonLazy();
 

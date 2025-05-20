@@ -14,13 +14,13 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.ProjectileSpawnDelay)]
         private float _delay;
 
-        private readonly WeaponTargetComponent _targetComponent;
+        private readonly TargetComponent _targetComponent;
         private readonly Transform _firePoint;
         private IBulletSpawner _bulletSpawner;
         private float _timer;
         private bool _needSpawn;
 
-        public WeaponBulletSpawnAction(WeaponTargetComponent targetComponent, Transform firePoint,
+        public WeaponBulletSpawnAction(TargetComponent targetComponent, Transform firePoint,
             IBulletSpawner bulletSpawner)
         {
             _targetComponent = targetComponent;
@@ -70,7 +70,7 @@ namespace Gameplay
         }
     }
 
-    public class WeaponTargetComponent
+    public class TargetComponent
     {
         public Transform Target;
     }

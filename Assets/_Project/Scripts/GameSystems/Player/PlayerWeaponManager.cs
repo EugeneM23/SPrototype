@@ -47,6 +47,8 @@ namespace Gameplay
 
         public void SwitchItem()
         {
+            if (_currentWeapon == null) return;
+            
             _currentWeapon.SetActive(false);
             _currentWeapon.GetComponent<Entity>().Get<WeaponFireController>().TurnOff();
             _index = (_index + 1) % _weaponPrefabs.Length;

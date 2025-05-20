@@ -12,7 +12,7 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<EnemyRangeReasoner>()
+                .BindInterfacesAndSelfTo<EnemyRangeDecision>()
                 .AsSingle()
                 .NonLazy();
 

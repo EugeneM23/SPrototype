@@ -48,7 +48,7 @@ namespace Gameplay.Installers
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<EnemyChargeAttackReasoner>()
+                .BindInterfacesAndSelfTo<EnemyChargeAttackDecision>()
                 .AsSingle()
                 .NonLazy();
 

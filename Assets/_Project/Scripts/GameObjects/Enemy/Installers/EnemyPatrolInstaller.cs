@@ -10,7 +10,7 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<EnemyPatrolReasoner>()
+                .BindInterfacesAndSelfTo<EnemyPatrolDecision>()
                 .AsSingle()
                 .NonLazy();
 

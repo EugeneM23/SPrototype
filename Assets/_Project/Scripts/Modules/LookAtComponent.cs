@@ -1,32 +1,38 @@
+using Gameplay;
 using UnityEngine;
 
 namespace Modules
 {
     public class LookAtComponent
     {
-        private readonly Transform _target;
+        private readonly Transform _root;
         private readonly float _aimingSpeed;
+        private readonly TargetComponent _targetComponent;
 
-        public LookAtComponent(Transform target, float aimingSpeed)
+        public LookAtComponent(Transform root, float aimingSpeed, TargetComponent targetComponent)
         {
-            _target = target;
+            _root = root;
             _aimingSpeed = aimingSpeed;
+            _targetComponent = targetComponent;
         }
 
-        public bool LookAtAndCheck(Vector3 targetPosition)
+        public bool LookAtAndCheck()
         {
-            Vector3 direction = targetPosition - _target.position;
+            if (_targetComponent.Target == null || _root == null) return false;
+            
+            Vector3 direction = _targetComponent.Target.position - _root.position;
             direction.y = 0f;
+
 
             if (direction == Vector3.zero)
                 return true;
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            _target.rotation = Quaternion.RotateTowards(_target.rotation, targetRotation,
+            _root.rotation = Quaternion.RotateTowards(_root.rotation, targetRotation,
                 _aimingSpeed * Time.deltaTime);
 
-            float angle = Quaternion.Angle(_target.rotation, targetRotation);
+            float angle = Quaternion.Angle(_root.rotation, targetRotation);
             bool complite = angle < 1f;
 
             return complite;

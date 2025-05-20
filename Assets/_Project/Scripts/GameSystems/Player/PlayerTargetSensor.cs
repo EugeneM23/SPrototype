@@ -7,21 +7,22 @@ namespace Gameplay
 {
     public class PlayerTargetSensor : MonoBehaviour
     {
-        public event System.Action OnTargetChanget;
+        public event Action OnTargetChanget;
 
         [SerializeField] private float _refreshRate;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private float _radius;
         [SerializeField] private bool _shouldCast = true;
 
-        [Inject] private Player _player;
+        [Inject] private CharacterController _player;
+        [Inject] private readonly TargetComponent _targetComponent;
 
         private Transform _target;
         private float _lastRefreshTime;
 
         private void Update()
         {
-            if (_player.IsMoving)
+            if (_player.velocity != Vector3.zero)
             {
                 _lastRefreshTime = 0;
                 return;
@@ -36,7 +37,7 @@ namespace Gameplay
                 _lastRefreshTime = _refreshRate;
                 DoSingleSphereHit(transform.position);
 
-                _player.Target = _target;
+                _targetComponent.Target = _target;
             }
         }
 

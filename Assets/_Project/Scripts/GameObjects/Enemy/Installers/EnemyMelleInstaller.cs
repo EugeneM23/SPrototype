@@ -11,7 +11,7 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<EnemyMelleReasoner>()
+                .BindInterfacesAndSelfTo<EnemyMelleDecision>()
                 .AsSingle()
                 .NonLazy();
 
@@ -21,7 +21,7 @@ namespace Gameplay.Installers
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<EnemyMellWeaponManager>()
+                .BindInterfacesAndSelfTo<EnemyMelleWeaponManager>()
                 .AsSingle()
                 .WithArguments(_weaponPrefab)
                 .NonLazy();

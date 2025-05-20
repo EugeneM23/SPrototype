@@ -68,6 +68,16 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<TranslateComponent>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container
+                .BindInterfacesAndSelfTo<EnemyTargetManager>()
+                .AsSingle()
+                .NonLazy();
+            
+            Container
+                .Bind<TargetComponent>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

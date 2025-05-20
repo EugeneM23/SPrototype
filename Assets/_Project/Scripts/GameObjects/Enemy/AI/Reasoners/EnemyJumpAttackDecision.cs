@@ -4,14 +4,14 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyJumpAttackReasoner : EnemyReasonerBase, ITickable
+    public class EnemyJumpAttackDecision : EnemyDecisionBase, ITickable
     {
         private float _timer;
         private bool _timerRunning = true;
 
         public override int Priority => 15;
 
-        public EnemyJumpAttackReasoner(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyJumpAttackDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
             Entity entity, EnemyBlackBoard blackboard)
             : base(provider, stateMachine, entity, blackboard)
         {

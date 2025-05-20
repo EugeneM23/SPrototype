@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class EnemyRangeReasoner : EnemyReasonerBase
+    public class EnemyRangeDecision : EnemyDecisionBase
     {
         public override int Priority => 7;
 
-        public EnemyRangeReasoner(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyRangeDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
             Entity entity, EnemyBlackBoard blackboard)
             : base(provider, stateMachine, entity, blackboard)
         {

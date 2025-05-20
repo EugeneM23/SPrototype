@@ -56,6 +56,11 @@ namespace Gameplay
                 .Bind<PlayerCameraController>()
                 .AsSingle()
                 .NonLazy();
+            
+            Container
+                .Bind<TargetComponent>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }
