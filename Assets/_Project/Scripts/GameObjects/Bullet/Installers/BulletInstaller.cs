@@ -10,14 +10,9 @@ public class BulletInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container
-            .BindInterfacesAndSelfTo<BulletCollisionController>()
+            .BindInterfacesAndSelfTo<Bullet>()
             .AsSingle()
             .WithArguments(_collisionComponent)
-            .NonLazy();
-
-        Container
-            .Bind<Bullet>()
-            .AsSingle()
             .NonLazy();
 
         Container

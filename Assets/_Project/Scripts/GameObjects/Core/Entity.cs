@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public interface IEntity
+    public interface IEntity 
     {
         T Get<T>();
 
