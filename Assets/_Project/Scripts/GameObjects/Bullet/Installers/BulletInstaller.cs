@@ -16,8 +16,13 @@ public class BulletInstaller : MonoInstaller
             .NonLazy();
 
         Container
-            .BindInterfacesAndSelfTo<BulletDamageComponent>()
+            .BindInterfacesAndSelfTo<BulletDamageEntiyCollisionAction>()
             .AsSingle()
+            .NonLazy();
+        Container
+            .BindInterfacesAndSelfTo<BulletEnviromentHitAction>()
+            .AsSingle()
+            .WithArguments(_impactEffect)
             .NonLazy();
 
         Container

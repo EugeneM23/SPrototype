@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BulletRicochetComponent
+    public class BulletRicochetAction
     {
         [Inject(Id = WeaponParameterID.MaxRicochetCount)]
         private int _maxRicochetCount;
@@ -13,7 +13,7 @@ namespace Gameplay
 
         public bool CanRicochet => _currentRicochetCount < _maxRicochetCount;
 
-        public BulletRicochetComponent(Transform transform)
+        public BulletRicochetAction(Transform transform)
         {
             _transform = transform;
         }

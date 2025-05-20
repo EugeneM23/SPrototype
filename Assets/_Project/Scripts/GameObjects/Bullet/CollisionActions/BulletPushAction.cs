@@ -1,12 +1,14 @@
+using UnityEngine;
+
 namespace Gameplay
 {
-    public class BulletPushComponent : Bullet.IAction
+    public class BulletPushEntiyCollisionAction : CollisionComponent.IEntiyCollisionAction
     {
         private readonly Entity _bullet;
         private readonly float _impulsePower = 50;
         private float _impulseTime = 0.2f;
 
-        public BulletPushComponent(Entity bullet)
+        public BulletPushEntiyCollisionAction(Entity bullet)
         {
             _bullet = bullet;
         }

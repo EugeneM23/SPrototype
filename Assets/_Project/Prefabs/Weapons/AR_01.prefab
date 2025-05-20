@@ -235,7 +235,7 @@ MonoBehaviour:
   fireRate: 0.1
   projectileSpawnDelay: 0
   damage: 10
-  scatter: 30
+  scatter: 10
   fireRange: 10
   bulletSpeed: 50
   ShakeDuration: 0.1

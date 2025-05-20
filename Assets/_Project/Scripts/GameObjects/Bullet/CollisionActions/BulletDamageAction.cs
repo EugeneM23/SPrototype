@@ -1,8 +1,9 @@
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
 {
-    public class BulletDamageComponent : Bullet.IAction
+    public class BulletDamageEntiyCollisionAction : CollisionComponent.IEntiyCollisionAction
     {
         [Inject(Id = WeaponParameterID.Damage)]
         private int _damage;
@@ -10,9 +11,7 @@ namespace Gameplay
         public void Invoke(IEntity entity)
         {
             if (entity.TryGet(out IDamageable damageable))
-            {
                 damageable.TakeDamage(_damage);
-            }
         }
     }
 }
