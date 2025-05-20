@@ -1,6 +1,6 @@
 namespace Gameplay
 {
-    public interface IDamageable
+    public interface ITakedamageComponent
     {
      public void TakeDamage(int damage);   
     }

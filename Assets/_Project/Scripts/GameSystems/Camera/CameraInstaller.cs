@@ -12,7 +12,7 @@ namespace DPrototype.Game
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<ObjectFollowComponent>()
+                .BindInterfacesAndSelfTo<FollowComponent>()
                 .AsSingle()
                 .WithArguments(_camera.transform, _smoothTime)
                 .NonLazy();

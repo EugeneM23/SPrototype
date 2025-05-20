@@ -10,7 +10,7 @@ namespace Gameplay
 
         public void Invoke(IEntity entity)
         {
-            if (entity.TryGet(out IDamageable damageable))
+            if (entity.TryGet(out ITakedamageComponent damageable))
                 damageable.TakeDamage(_damage);
         }
     }

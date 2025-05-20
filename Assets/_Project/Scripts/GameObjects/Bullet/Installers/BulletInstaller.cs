@@ -24,11 +24,6 @@ public class BulletInstaller : MonoInstaller
             .AsSingle()
             .WithArguments(_impactEffect)
             .NonLazy();
-
-        Container
-            .BindInterfacesAndSelfTo<EnviromentHitEffectComponent>()
-            .AsSingle()
-            .WithArguments(_impactEffect)
-            .NonLazy();
+        
     }
 }

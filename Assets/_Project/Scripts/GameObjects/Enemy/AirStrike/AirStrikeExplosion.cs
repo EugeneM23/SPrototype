@@ -13,7 +13,7 @@ namespace Gameplay
 
         public void Explode()
         {
-            DamageCastParams cast = new DamageCastParams(50, 2, 1, _layerMask, gameObject.transform);
+            DamageCastParams cast = new DamageCastParams(50, 2, 0.5f, _layerMask, gameObject.transform);
             _particleSystem.Play();
             _damageCasterManager.CastDamage(cast);
         }

@@ -30,6 +30,8 @@ namespace Gameplay
         {
             for (int i = _activeCasts.Count - 1; i >= 0; i--)
             {
+                if (_activeCasts[i] == null) continue;
+                
                 TimedCast cast = _activeCasts[i];
                 cast.Timer -= Time.deltaTime;
 
@@ -43,16 +45,16 @@ namespace Gameplay
 
                 foreach (var hit in hitColliders)
                 {
-                    IDamageable damageable = hit.GetComponent<IDamageable>();
-                    if (damageable != null)
+                    ITakedamageComponent takedamageComponent = hit.GetComponent<ITakedamageComponent>();
+                    if (takedamageComponent != null)
                     {
-                        damageable.TakeDamage(cast.Parameters.Damage);
+                        takedamageComponent.TakeDamage(cast.Parameters.Damage);
                         damageApplied = true;
                         break;
                     }
                 }
 
-                if (damageApplied || cast.Timer <= 0f)
+                if (damageApplied || cast.Timer <= 0f || cast == null)
                 {
                     _activeCasts.RemoveAt(i);
                 }

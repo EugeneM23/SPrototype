@@ -4,14 +4,14 @@ using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
-    public class HealthComponentBase : MonoBehaviour, IDamageable
+    public class HealthComponentBase : MonoBehaviour, ITakedamageComponent
     {
         [SerializeField] private int _maxHealth;
         [SerializeField] private GameObject[] _deathEffectPrefab;
         public event Action<int> OnHealthChanged;
         public event Action<HealthComponentBase> OnDespawn;
         public event Action<Entity> OnDespawnTest;
-        public event System.Action OnHit;
+        public event Action OnHit;
         public event Action<int> OnTakeDamaged;
 
         protected int _currentHealth;

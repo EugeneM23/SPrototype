@@ -4,10 +4,10 @@ namespace Gameplay
 {
     public class PlayerCameraController
     {
-        private readonly ObjectFollowComponent _cameraController;
+        private readonly FollowComponent _cameraController;
         private readonly Entity _playerTransform;
 
-        public PlayerCameraController(ObjectFollowComponent cameraController, Entity playerTransform)
+        public PlayerCameraController(FollowComponent cameraController, Entity playerTransform)
         {
             _cameraController = cameraController;
             _playerTransform = playerTransform;

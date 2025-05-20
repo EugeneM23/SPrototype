@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Modules
 {
-    public class ObjectFollowComponent : ITickable
+    public class FollowComponent : ITickable
     {
         private readonly Transform _folowObject;
         private readonly float _smoothTime;
@@ -13,7 +13,7 @@ namespace Modules
 
         private Vector3 _velocity = Vector3.zero;
 
-        public ObjectFollowComponent(Transform folowObject, float smoothTime)
+        public FollowComponent(Transform folowObject, float smoothTime)
         {
             _smoothTime = smoothTime;
             _folowObject = folowObject;
