@@ -8,10 +8,9 @@ namespace Gameplay
 
         public EnemyMelleDecision(
             PlayerCharacterProvider provider,
-            EnemyStateMachine stateMachine,
             Entity entity,
             EnemyConditions conditions)
-            : base(provider, stateMachine, entity, conditions)
+            : base(provider, entity, conditions)
         {
         }
 

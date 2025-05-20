@@ -8,40 +8,40 @@ namespace Gameplay
     {
         [Inject(Id = EnemyParameterID.ChaseSpeed)]
         private readonly float _chaseSpeed;
-        
+
         private readonly NavMeshAgent _navMeshAgent;
-        private readonly PlayerCharacterProvider _player;
-        private readonly EnemyConditions _blackboard;
+        private readonly EnemyConditions _conditions;
         private readonly Entity _entity;
+        private Transform _target;
 
         public EnemyChaseState(
             NavMeshAgent navMeshAgent,
-            PlayerCharacterProvider player,
-            EnemyConditions blackboard,
+            EnemyConditions conditions,
             Entity entity)
         {
             _navMeshAgent = navMeshAgent;
-            _player = player;
-            _blackboard = blackboard;
+            _conditions = conditions;
             _entity = entity;
         }
 
         public void Enter()
         {
             SetAgentSpeed(_chaseSpeed);
-            _blackboard.IsRunning = true;
+            _conditions.IsRunning = true;
         }
 
         public void Update(float deltaTime)
         {
-            if (_player?.Character == null) return;
+            _target = _entity.Get<TargetComponent>().Target.transform;
 
-            _navMeshAgent.SetDestination(_player.Character.transform.position);
+            if (_target == null) return;
+
+            _navMeshAgent.SetDestination(_target.position);
         }
 
         public void Exit()
         {
-            _blackboard.IsRunning = false;
+            _conditions.IsRunning = false;
         }
 
         private void SetAgentSpeed(float speed)

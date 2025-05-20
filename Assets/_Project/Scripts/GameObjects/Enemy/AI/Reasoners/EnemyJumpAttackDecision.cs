@@ -11,9 +11,9 @@ namespace Gameplay
 
         public override int Priority => 15;
 
-        public EnemyJumpAttackDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyJumpAttackDecision(PlayerCharacterProvider provider,
             Entity entity, EnemyConditions conditions)
-            : base(provider, stateMachine, entity, conditions)
+            : base(provider, entity, conditions)
         {
         }
 

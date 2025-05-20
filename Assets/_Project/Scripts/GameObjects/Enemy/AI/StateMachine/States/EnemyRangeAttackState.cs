@@ -16,7 +16,6 @@ namespace Gameplay
         private readonly Enemy _enemy;
 
         
-        private readonly TargetComponent _targetComponent;
         private readonly Entity _entity;
         
         private float _fireRate = 1;

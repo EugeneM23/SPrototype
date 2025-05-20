@@ -14,7 +14,6 @@ namespace Gameplay
         private readonly NavMeshAgent _navMeshAgent;
         private readonly Enemy _enemy;
 
-        private readonly TargetComponent _targetComponent;
         private readonly Entity _entity;
         
         private float _timer;

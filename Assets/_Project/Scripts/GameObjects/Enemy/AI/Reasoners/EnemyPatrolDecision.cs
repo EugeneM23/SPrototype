@@ -7,11 +7,12 @@ namespace Gameplay
     {
         [Inject(Id = EnemyParameterID.ChaseRange)]
         private readonly float _chaseRange;
+
         public override int Priority => 2;
 
-        public EnemyPatrolDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyPatrolDecision(PlayerCharacterProvider provider,
             Entity entity, EnemyConditions conditions)
-            : base(provider, stateMachine, entity, conditions)
+            : base(provider, entity, conditions)
         {
         }
 

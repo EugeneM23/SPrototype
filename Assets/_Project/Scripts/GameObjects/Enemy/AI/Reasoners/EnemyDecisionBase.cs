@@ -7,25 +7,21 @@ namespace Gameplay
     public abstract class EnemyDecisionBase : IEnemyDecision, IInitializable
     {
         protected readonly Entity _entity;
-        protected readonly EnemyStateMachine _stateMachine;
         protected readonly PlayerCharacterProvider PlayerCharacterProvider;
         protected readonly EnemyConditions _conditions;
-        protected readonly TargetComponent _targetComponent;
 
         public abstract int Priority { get; }
 
-        protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider, EnemyStateMachine stateMachine,
+        protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider,
             Entity entity, EnemyConditions conditions)
         {
             PlayerCharacterProvider = playerCharacterProvider;
-            _stateMachine = stateMachine;
             _entity = entity;
             _conditions = conditions;
         }
 
         public virtual void Initialize()
         {
-            //_targetComponent.Target = PlayerCharacterProvider.Character.transform;
         }
 
         public bool IsValid()
@@ -34,11 +30,11 @@ namespace Gameplay
             return IsOnCondition(distance);
         }
 
-        public void ApplyReasoning()
+        public Type GetState()
         {
-            if (_conditions.IsBusy) return;
+            if (_conditions.IsBusy) return null;
 
-            _stateMachine.SetState(GetTargetState());
+            return GetTargetState();
         }
 
         protected float DistanceToTarget()

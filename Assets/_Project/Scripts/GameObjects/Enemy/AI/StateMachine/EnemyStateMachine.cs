@@ -8,32 +8,52 @@ namespace Gameplay
 {
     public class EnemyStateMachine : ITickable
     {
-        private IState _currentState;
-
         private readonly Dictionary<Type, IState> _states;
+        private readonly List<IEnemyDecision> _decisions;
 
-        public EnemyStateMachine(List<IState> states)
+        private IState _currentState;
+        private IEnemyDecision _currentDecision;
+
+        public EnemyStateMachine(List<IState> states, List<IEnemyDecision> decisions)
         {
+            _decisions = decisions;
             _states = states.ToDictionary(state => state.GetType(), state => state);
+            _currentDecision = _decisions[0];
         }
 
         public void Tick()
         {
+            EvaluateDecisions();
             _currentState?.Update(Time.deltaTime);
         }
 
-        public void SetState<T>()
+        public void SetState(Type state)
         {
+            if (_currentState == state || state == null) return;
+
             _currentState?.Exit();
-            _currentState = _states[typeof(T)];
+            _currentState = _states[state];
             _currentState?.Enter();
         }
 
-        public void SetState(Type getTargetState)
+        private void EvaluateDecisions()
         {
-            _currentState?.Exit();
-            _currentState = _states[getTargetState];
-            _currentState?.Enter();
+            if (_decisions == null) return;
+
+            IEnemyDecision bestDecision = _currentDecision;
+            int highestPriority = int.MinValue;
+
+            foreach (var reasoner in _decisions)
+            {
+                if (reasoner.IsValid() && reasoner.Priority > highestPriority)
+                {
+                    bestDecision = reasoner;
+                    highestPriority = reasoner.Priority;
+                }
+            }
+
+            _currentDecision = bestDecision;
+            SetState(_currentDecision.GetState());
         }
     }
 }

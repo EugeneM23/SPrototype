@@ -19,7 +19,6 @@ namespace Gameplay
         private readonly Animator _animator;
         private readonly DiContainer _container;
 
-        private readonly TargetComponent _target;
         private readonly Entity _root;
 
         private float _timer;

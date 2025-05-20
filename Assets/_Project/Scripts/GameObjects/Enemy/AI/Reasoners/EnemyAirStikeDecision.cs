@@ -11,9 +11,9 @@ namespace Gameplay
 
         public override int Priority => 11;
 
-        public EnemyAirStikeDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
+        public EnemyAirStikeDecision(PlayerCharacterProvider provider,
             Entity entity, EnemyConditions conditions)
-            : base(provider, stateMachine, entity, conditions)
+            : base(provider, entity, conditions)
         {
         }
 
