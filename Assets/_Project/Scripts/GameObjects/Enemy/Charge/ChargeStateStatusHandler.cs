@@ -4,29 +4,29 @@ namespace Gameplay
 {
     public class ChargeStateStatusHandler : EnemyChargeState.IAction
     {
-        private readonly EnemyBlackBoard _blackBoard;
+        private readonly EnemyConditions _conditions;
         private readonly NavMeshAgent _navMeshAgent;
 
-        public ChargeStateStatusHandler(EnemyBlackBoard blackBoard, NavMeshAgent navMeshAgent)
+        public ChargeStateStatusHandler(EnemyConditions conditions, NavMeshAgent navMeshAgent)
         {
-            _blackBoard = blackBoard;
+            _conditions = conditions;
             _navMeshAgent = navMeshAgent;
         }
 
         public void EnterActions()
         {
-            _blackBoard.IsBusy = true;
-            _blackBoard.IsAttacking = true;
-            _blackBoard.CanPush = false;
+            _conditions.IsBusy = true;
+            _conditions.IsAttacking = true;
+            _conditions.CanPush = false;
             _navMeshAgent.enabled = false;
         }
 
         public void ExitActions()
         {
-            _blackBoard.CanPush = true;
+            _conditions.CanPush = true;
             _navMeshAgent.enabled = true;
-            _blackBoard.IsBusy = false;
-            _blackBoard.IsAttacking = false;
+            _conditions.IsBusy = false;
+            _conditions.IsAttacking = false;
         }
 
         public void ExecuteActions()

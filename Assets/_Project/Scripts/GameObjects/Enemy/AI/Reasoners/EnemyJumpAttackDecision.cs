@@ -12,14 +12,14 @@ namespace Gameplay
         public override int Priority => 15;
 
         public EnemyJumpAttackDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
-            Entity entity, EnemyBlackBoard blackboard)
-            : base(provider, stateMachine, entity, blackboard)
+            Entity entity, EnemyConditions conditions)
+            : base(provider, stateMachine, entity, conditions)
         {
         }
 
         public void Tick()
         {
-            if (_timerRunning && _blackboard.IsRunning)
+            if (_timerRunning && _conditions.IsRunning)
                 _timer += Time.deltaTime;
         }
 

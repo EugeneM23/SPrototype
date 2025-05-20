@@ -7,17 +7,19 @@ namespace Gameplay
 {
     public class EnemyPatrolState : IState, IInitializable
     {
-        private readonly Entity _entity;
-        private readonly EnemyBlackBoard _blackboard;
+        [Inject(Id = EnemyParameterID.PatrolSpeed)]
+        private readonly float _patrolSpeed;
 
+        private readonly Entity _entity;
+        private readonly EnemyConditions _conditions;
         private Transform[] _waypoints;
         private int _currentWaypointIndex;
         private const float StoppingDistance = 3f;
 
-        public EnemyPatrolState(Entity entity, EnemyBlackBoard blackboard)
+        public EnemyPatrolState(Entity entity, EnemyConditions conditions)
         {
             _entity = entity;
-            _blackboard = blackboard;
+            _conditions = conditions;
         }
 
         public void Initialize()
@@ -27,15 +29,15 @@ namespace Gameplay
 
         public void Enter()
         {
-            _blackboard.IsWalking = true;
+            _conditions.IsWalking = true;
 
-            if (_entity.TryGet<NavMeshAgent>(out var agent)) 
-                agent.speed = _blackboard.PatrolSpeed;
+            if (_entity.TryGet<NavMeshAgent>(out var agent))
+                agent.speed = _patrolSpeed;
         }
 
         public void Exit()
         {
-            _blackboard.IsWalking = false;
+            _conditions.IsWalking = false;
         }
 
         public void Update(float deltaTime)

@@ -7,8 +7,8 @@ namespace Gameplay
         public override int Priority => 11;
 
         public EnemyRetreatDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
-            Entity entity, EnemyBlackBoard blackboard)
-            : base(provider, stateMachine, entity, blackboard)
+            Entity entity, EnemyConditions conditions)
+            : base(provider, stateMachine, entity, conditions)
         {
         }
 

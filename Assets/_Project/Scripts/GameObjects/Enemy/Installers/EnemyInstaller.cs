@@ -14,6 +14,7 @@ namespace Gameplay.Installers
             Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(ComponentsID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
 
+            Container.Bind<EnemyConditions>().AsSingle().NonLazy();
             Container
                 .BindInterfacesAndSelfTo<EnemyAnimationBehaviour>()
                 .AsSingle()
@@ -68,12 +69,12 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<TranslateComponent>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<EnemyTargetManager>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .Bind<TargetComponent>()
                 .AsSingle()

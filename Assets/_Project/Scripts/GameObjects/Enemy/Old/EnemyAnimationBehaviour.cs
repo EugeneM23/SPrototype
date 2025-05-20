@@ -6,13 +6,13 @@ namespace Gameplay
     public class EnemyAnimationBehaviour : ITickable
     {
         private readonly Animator _animator;
-        private readonly EnemyBlackBoard _blackboard;
+        private readonly EnemyConditions _blackboard;
 
         private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
         private static readonly int IsRunningHash = Animator.StringToHash("IsRunning");
         private static readonly int IsAttackingHash = Animator.StringToHash("IsAttaking");
 
-        public EnemyAnimationBehaviour(Animator animator, EnemyBlackBoard blackboard)
+        public EnemyAnimationBehaviour(Animator animator, EnemyConditions blackboard)
         {
             _animator = animator;
             _blackboard = blackboard;

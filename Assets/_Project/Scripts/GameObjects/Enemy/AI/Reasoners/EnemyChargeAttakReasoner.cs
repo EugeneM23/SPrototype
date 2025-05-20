@@ -12,20 +12,20 @@ namespace Gameplay
         public override int Priority => 12;
 
         public EnemyChargeAttackDecision(PlayerCharacterProvider provider, EnemyStateMachine stateMachine,
-            Entity entity, EnemyBlackBoard blackboard)
-            : base(provider, stateMachine, entity, blackboard)
+            Entity entity, EnemyConditions conditions)
+            : base(provider, stateMachine, entity, conditions)
         {
         }
 
         public void Tick()
         {
-            if (_timerRunning && _blackboard.IsRunning)
+            if (_timerRunning && _conditions.IsRunning)
                 _timer += Time.deltaTime;
         }
 
         protected override bool IsOnCondition(float distance)
         {
-            return _blackboard.IsRunning && _timer >= 3f;
+            return _conditions.IsRunning && _timer >= 3f;
         }
 
         protected override Type GetTargetState()

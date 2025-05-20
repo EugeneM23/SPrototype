@@ -7,7 +7,7 @@ namespace Gameplay
     public class HealtBar : MonoBehaviour
     {
         [SerializeField] private Slider _healthSlider;
-        [Inject] private readonly int _maxHealth;
+        [Inject(Id = EnemyParameterID.Health)] private readonly int _maxHealth;
 
         private int _currentHealth;
 

@@ -1901,6 +1901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8136789233410780891}
   - component: {fileID: 8882518856053437140}
+  - component: {fileID: 7313438444693956633}
   - component: {fileID: 7474303141457973273}
   - component: {fileID: 7553199498613522881}
   - component: {fileID: -7776074291255282540}
@@ -1910,9 +1911,7 @@ GameObject:
   - component: {fileID: 5332799809238412975}
   - component: {fileID: 2483082337731817145}
   - component: {fileID: -6075899849557144983}
-  - component: {fileID: 7471912196074680738}
-  - component: {fileID: 4052470104320523332}
-  - component: {fileID: 7313438444693956633}
+  - component: {fileID: -7242182617438852645}
   m_Layer: 7
   m_Name: Enemy_Ghoul
   m_TagString: Untagged
@@ -1954,6 +1953,19 @@ MonoBehaviour:
   _hitEffect: {fileID: 4992397611402000643}
   _melleWeaponRoot: {fileID: 2199219673647584743}
   _rangeweaponRoot: {fileID: 4102329774744441994}
+--- !u!114 &7313438444693956633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481907973978787791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isEnable: 1
 --- !u!114 &7474303141457973273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1967,7 +1979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageNumbers: {fileID: 1259023133563206875, guid: aea097f0b68cc4868a93469220296bdf, type: 3}
-  _maxHealth: 1000
   _healtBar: {fileID: -227575839315736592, guid: 87a8bc1dc97aa4d03b9a0d1ce960971e, type: 3}
 --- !u!114 &7553199498613522881
 MonoBehaviour:
@@ -1994,7 +2005,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1000
+  _maxHealth: 100
   _deathEffectPrefab: []
 --- !u!114 &2815754463479340632
 MonoBehaviour:
@@ -2012,10 +2023,10 @@ MonoBehaviour:
   - {fileID: 3196630611226905001}
   - {fileID: 5053622383324445560}
   - {fileID: 5332799809238412975}
-  - {fileID: 7471912196074680738}
+  - {fileID: 0}
   - {fileID: 7553199498613522881}
   - {fileID: -7776074291255282540}
-  - {fileID: 4052470104320523332}
+  - {fileID: 0}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
@@ -2137,10 +2148,11 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}
+  - {fileID: -7242182617438852645}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 7313438444693956633}
---- !u!114 &7471912196074680738
+--- !u!114 &-7242182617438852645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2149,51 +2161,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5481907973978787791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229d26dedcb647f28616d175a971cd48, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e0d5fcff4045d582774c0e913723a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ChaseRange>k__BackingField: 10
-  <AttckRange>k__BackingField: 15
-  <ChaseSpeed>k__BackingField: 8
-  <PatrolSpeed>k__BackingField: 3
-  <AttakRotationSpeed>k__BackingField: 10
-  <Damage>k__BackingField: 50
-  <Health>k__BackingField: 100
-  <IsPushable>k__BackingField: 1
-  <AttckAnimations>k__BackingField: []
-  IsAttacking: 0
-  IsRetreat: 0
-  CanPush: 0
-  IsBusy: 0
-  IsWalking: 0
-  IsRunning: 0
-  Target: {fileID: 0}
-  Enemy: {fileID: 7553199498613522881}
---- !u!114 &4052470104320523332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481907973978787791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a589e55341b4cd8be81bc1715e678ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7313438444693956633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481907973978787791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isEnable: 1
+  _chaseRange: 10
+  _attackRange: 3
+  _chaseSpeed: 10
+  _patrolSpeed: 2
+  _attackRotationSpeed: 10
+  _damage: 10
+  _health: 100
+  _isPushable: 0
 --- !u!1 &5585570460900715633
 GameObject:
   m_ObjectHideFlags: 0

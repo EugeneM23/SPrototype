@@ -10,8 +10,8 @@ namespace Gameplay
             PlayerCharacterProvider provider,
             EnemyStateMachine stateMachine,
             Entity entity,
-            EnemyBlackBoard blackboard)
-            : base(provider, stateMachine, entity, blackboard)
+            EnemyConditions conditions)
+            : base(provider, stateMachine, entity, conditions)
         {
         }
 

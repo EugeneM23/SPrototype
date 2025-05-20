@@ -1,19 +1,23 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Gameplay
 {
     public class EnemyChaseState : IState
     {
+        [Inject(Id = EnemyParameterID.ChaseSpeed)]
+        private readonly float _chaseSpeed;
+        
         private readonly NavMeshAgent _navMeshAgent;
         private readonly PlayerCharacterProvider _player;
-        private readonly EnemyBlackBoard _blackboard;
+        private readonly EnemyConditions _blackboard;
         private readonly Entity _entity;
 
         public EnemyChaseState(
             NavMeshAgent navMeshAgent,
             PlayerCharacterProvider player,
-            EnemyBlackBoard blackboard,
+            EnemyConditions blackboard,
             Entity entity)
         {
             _navMeshAgent = navMeshAgent;
@@ -24,7 +28,7 @@ namespace Gameplay
 
         public void Enter()
         {
-            SetAgentSpeed(_blackboard.ChaseSpeed);
+            SetAgentSpeed(_chaseSpeed);
             _blackboard.IsRunning = true;
         }
 

@@ -13,29 +13,32 @@ namespace Gameplay
         private const string AirStrikePrefabPath = "Prefabs/AirStrike";
         private const string ChargeAnimation = "Charge";
 
-        private readonly EnemyBlackBoard _blackBoard;
+        private readonly EnemyConditions _conditions;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Animator _animator;
-        private readonly PlayerCharacterProvider _playerCharacterProvider;
         private readonly DiContainer _container;
+
+        private readonly TargetComponent _target;
+        private readonly Entity _root;
 
         private float _timer;
         private bool _isComplete;
 
         public EnemyAirStrikeState(
-            EnemyBlackBoard blackBoard,
+            EnemyConditions conditions,
             NavMeshAgent navMeshAgent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
-            PlayerCharacterProvider playerCharacterProvider, DiContainer container)
+            DiContainer container, TargetComponent target, Entity root)
         {
-            _blackBoard = blackBoard;
+            _conditions = conditions;
             _navMeshAgent = navMeshAgent;
             _assistComponent = assistComponent;
             _animator = animator;
-            _playerCharacterProvider = playerCharacterProvider;
             _container = container;
+            _target = target;
+            _root = root;
         }
 
         public void Enter()
@@ -48,7 +51,7 @@ namespace Gameplay
             SpawnAirStrike();
             SetBlackBoardFlags(isBusy: true, isAttacking: true, canPush: false);
 
-            _assistComponent.RotateToTarget(_blackBoard.Target, _blackBoard.Enemy, RotationSpeed, RotationDuration);
+            _assistComponent.RotateToTarget(_target.Target, _root.transform, RotationSpeed, RotationDuration);
         }
 
         public void Update(float deltaTime)
@@ -60,7 +63,7 @@ namespace Gameplay
             if (_timer <= 0f)
             {
                 _isComplete = true;
-                _blackBoard.IsBusy = false;
+                _conditions.IsBusy = false;
             }
         }
 
@@ -80,7 +83,7 @@ namespace Gameplay
         private void SpawnAirStrike()
         {
             var airStrikePrefab = Resources.Load<GameObject>(AirStrikePrefabPath);
-            Vector3 targetPosition = _playerCharacterProvider.Character.transform.position;
+            Vector3 targetPosition = _target.Target.transform.position;
             GameObject go = _container.InstantiatePrefab(airStrikePrefab);
             go.transform.SetParent(null);
             go.transform.position = targetPosition;
@@ -88,9 +91,9 @@ namespace Gameplay
 
         private void SetBlackBoardFlags(bool isBusy, bool isAttacking, bool canPush)
         {
-            _blackBoard.IsBusy = isBusy;
-            _blackBoard.IsAttacking = isAttacking;
-            _blackBoard.CanPush = canPush;
+            _conditions.IsBusy = isBusy;
+            _conditions.IsAttacking = isAttacking;
+            _conditions.CanPush = canPush;
         }
     }
 }

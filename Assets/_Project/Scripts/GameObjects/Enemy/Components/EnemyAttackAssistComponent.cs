@@ -5,7 +5,6 @@ namespace Gameplay
 {
     public class EnemyAttackAssistComponent : ITickable
     {
-        private readonly EnemyBlackBoard _blackBoard;
 
         private Transform _target;
         private Transform _root;
@@ -13,12 +12,8 @@ namespace Gameplay
         private float _time;
         private bool _go;
 
-        public EnemyAttackAssistComponent(EnemyBlackBoard blackBoard)
-        {
-            _blackBoard = blackBoard;
-        }
 
-        public void RotateToTarget(Entity target, Entity enemy, int speed, float time)
+        public void RotateToTarget(Transform target, Transform enemy, int speed, float time)
         {
             _target = target.transform;
             _root = enemy.transform;

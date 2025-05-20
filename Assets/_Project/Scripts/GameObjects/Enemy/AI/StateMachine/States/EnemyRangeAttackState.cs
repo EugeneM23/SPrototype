@@ -6,29 +6,35 @@ namespace Gameplay
 {
     public class EnemyRangeAttackState : IState
     {
-        public event System.Action OnEnter;
-        public event System.Action OnExit;
+        public event Action OnEnter;
+        public event Action OnExit;
 
         private readonly NavMeshAgent _navMeshAgent;
-        private readonly EnemyBlackBoard _blackboard;
+        private readonly EnemyConditions _blackboard;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly DelayedAction _delayedAction;
         private readonly Enemy _enemy;
 
+        
+        private readonly TargetComponent _targetComponent;
+        private readonly Entity _entity;
+        
         private float _fireRate = 1;
         private float _timer;
 
         public EnemyRangeAttackState(
             NavMeshAgent navMeshAgent,
-            EnemyBlackBoard blackboard,
+            EnemyConditions blackboard,
             EnemyAttackAssistComponent assistComponent,
-            DelayedAction delayedAction, Enemy enemy)
+            DelayedAction delayedAction, Enemy enemy, TargetComponent targetComponent, Entity entity)
         {
             _navMeshAgent = navMeshAgent;
             _blackboard = blackboard;
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
             _enemy = enemy;
+            _targetComponent = targetComponent;
+            _entity = entity;
         }
 
         public void Enter()
@@ -45,7 +51,7 @@ namespace Gameplay
             {
                 _enemy.Shoot();
                 _delayedAction.Schedule(_fireRate - 0.1f, () => _blackboard.IsBusy = false);
-                _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, _fireRate);
+                _assistComponent.RotateToTarget(_targetComponent.Target, _entity.transform, 10, _fireRate);
                 _timer = _fireRate;
             }
         }

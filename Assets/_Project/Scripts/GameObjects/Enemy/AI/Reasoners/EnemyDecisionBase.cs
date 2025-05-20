@@ -9,22 +9,23 @@ namespace Gameplay
         protected readonly Entity _entity;
         protected readonly EnemyStateMachine _stateMachine;
         protected readonly PlayerCharacterProvider PlayerCharacterProvider;
-        protected readonly EnemyBlackBoard _blackboard;
+        protected readonly EnemyConditions _conditions;
+        protected readonly TargetComponent _targetComponent;
 
         public abstract int Priority { get; }
 
         protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider, EnemyStateMachine stateMachine,
-            Entity entity, EnemyBlackBoard blackboard)
+            Entity entity, EnemyConditions conditions)
         {
             PlayerCharacterProvider = playerCharacterProvider;
             _stateMachine = stateMachine;
             _entity = entity;
-            _blackboard = blackboard;
+            _conditions = conditions;
         }
 
         public virtual void Initialize()
         {
-            _blackboard.Target = PlayerCharacterProvider.Character;
+            //_targetComponent.Target = PlayerCharacterProvider.Character.transform;
         }
 
         public bool IsValid()
@@ -35,7 +36,7 @@ namespace Gameplay
 
         public void ApplyReasoning()
         {
-            if (_blackboard.IsBusy) return;
+            if (_conditions.IsBusy) return;
 
             _stateMachine.SetState(GetTargetState());
         }

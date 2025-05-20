@@ -9,26 +9,31 @@ namespace Gameplay
     public class EnemyMeleeAttackState : IState
     {
         private readonly DelayedAction _attackSwitcher;
-        private readonly EnemyBlackBoard _blackboard;
+        private readonly EnemyConditions _blackboard;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly Enemy _enemy;
 
+        private readonly TargetComponent _targetComponent;
+        private readonly Entity _entity;
+        
         private float _timer;
         private bool _isEnable;
 
         public EnemyMeleeAttackState(
-            EnemyBlackBoard blackboard,
+            EnemyConditions blackboard,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction attackSwitcher,
             NavMeshAgent navMeshAgent,
-            Enemy enemy)
+            Enemy enemy, TargetComponent targetComponent, Entity entity)
         {
             _blackboard = blackboard;
             _assistComponent = assistComponent;
             _attackSwitcher = attackSwitcher;
             _navMeshAgent = navMeshAgent;
             _enemy = enemy;
+            _targetComponent = targetComponent;
+            _entity = entity;
         }
 
         public void Enter()
@@ -53,7 +58,7 @@ namespace Gameplay
             {
                 _isEnable = false;
                 _enemy.Shoot();
-                _assistComponent.RotateToTarget(_blackboard.Target, _blackboard.Enemy, 10, 0.7f);
+                _assistComponent.RotateToTarget(_targetComponent.Target, _entity.transform, 10, 0.7f);
                 _attackSwitcher.Schedule(0.7f, () => _blackboard.IsBusy = false);
             }
         }

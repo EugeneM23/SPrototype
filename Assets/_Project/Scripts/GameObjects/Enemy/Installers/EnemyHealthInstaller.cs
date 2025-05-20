@@ -7,7 +7,6 @@ namespace Gameplay.Installers
     public class EnemyHealthInstaller : MonoInstaller
     {
         [SerializeField] private DamageNumber _damageNumbers;
-        [SerializeField] private int _maxHealth;
         [SerializeField] private HealtBar _healtBar;
 
         public override void InstallBindings()
@@ -38,7 +37,6 @@ namespace Gameplay.Installers
                 .FromComponentInNewPrefab(_healtBar)
                 .UnderTransform(gameObject.transform)
                 .AsSingle()
-                .WithArguments(_maxHealth)
                 .NonLazy();
 
             Container

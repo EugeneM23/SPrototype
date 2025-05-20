@@ -7,9 +7,9 @@ namespace Gameplay
     {
         private readonly PushComponent _pushComponent;
         private readonly HealthComponentBase _healthComponent;
-        private readonly EnemyBlackBoard _blackboard;
+        private readonly EnemyConditions _blackboard;
 
-        public PushableObjectController(PushComponent pushComponent, EnemyBlackBoard blackboard)
+        public PushableObjectController(PushComponent pushComponent, EnemyConditions blackboard)
         {
             _pushComponent = pushComponent;
             _blackboard = blackboard;

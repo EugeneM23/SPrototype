@@ -11,46 +11,51 @@ namespace Gameplay
         private const int RotationSpeed = 5;
         private const float RotationDuration = 1.5f;
 
-        private readonly EnemyBlackBoard _blackBoard;
+        private readonly EnemyConditions _conditions;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly TranslateComponent _translateComponent;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Animator _animator;
 
+        private readonly TargetComponent _targetComponent;
+        private readonly Entity _entity;
+        
         private float _timer;
         private bool _isCompleted;
         private Vector3 _jumpTargetPosition;
 
         public EnemyJumpAttackState(
-            EnemyBlackBoard blackBoard,
+            EnemyConditions conditions,
             NavMeshAgent navMeshAgent,
             TranslateComponent translateComponent,
             EnemyAttackAssistComponent assistComponent,
-            Animator animator)
+            Animator animator, TargetComponent targetComponent, Entity entity)
         {
-            _blackBoard = blackBoard;
+            _conditions = conditions;
             _navMeshAgent = navMeshAgent;
             _translateComponent = translateComponent;
             _assistComponent = assistComponent;
             _animator = animator;
+            _targetComponent = targetComponent;
+            _entity = entity;
         }
 
         public void Enter()
         {
-            _blackBoard.IsBusy = true;
-            _blackBoard.IsAttacking = true;
-            _blackBoard.CanPush = false;
+            _conditions.IsBusy = true;
+            _conditions.IsAttacking = true;
+            _conditions.CanPush = false;
 
             _isCompleted = false;
             _timer = InitialTimerValue;
             _navMeshAgent.enabled = false;
 
-            _jumpTargetPosition = _blackBoard.Target.transform.position;
+            _jumpTargetPosition = _targetComponent.Target.transform.position;
 
             _animator.Play("JumpAttack");
-            _assistComponent.RotateToTarget(_blackBoard.Target, _blackBoard.Enemy, RotationSpeed, RotationDuration);
+            _assistComponent.RotateToTarget(_targetComponent.Target, _entity.transform, RotationSpeed, RotationDuration);
             _translateComponent.Translate(_jumpTargetPosition, JumpDuration, JumpSpeed, 0,
-                _blackBoard.Target.transform);
+                _targetComponent.Target.transform);
         }
 
         public void Update(float deltaTime)
@@ -60,15 +65,15 @@ namespace Gameplay
             if (_timer <= 0f && !_isCompleted)
             {
                 _isCompleted = true;
-                _blackBoard.IsBusy = false;
+                _conditions.IsBusy = false;
             }
         }
 
         public void Exit()
         {
             _timer = InitialTimerValue;
-            _blackBoard.CanPush = true;
-            _blackBoard.IsBusy = false;
+            _conditions.CanPush = true;
+            _conditions.IsBusy = false;
             _navMeshAgent.enabled = true;
         }
     }
