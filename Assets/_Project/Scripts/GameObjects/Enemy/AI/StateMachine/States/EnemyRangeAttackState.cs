@@ -25,14 +25,14 @@ namespace Gameplay
             NavMeshAgent navMeshAgent,
             EnemyConditions blackboard,
             EnemyAttackAssistComponent assistComponent,
-            DelayedAction delayedAction, Enemy enemy, TargetComponent targetComponent, Entity entity)
+            DelayedAction delayedAction, Enemy enemy, 
+            Entity entity)
         {
             _navMeshAgent = navMeshAgent;
             _blackboard = blackboard;
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
             _enemy = enemy;
-            _targetComponent = targetComponent;
             _entity = entity;
         }
 
@@ -50,7 +50,7 @@ namespace Gameplay
             {
                 _enemy.Shoot();
                 _delayedAction.Schedule(_fireRate - 0.1f, () => _blackboard.IsBusy = false);
-                _assistComponent.RotateToTarget(_targetComponent.Target, _entity.transform, 10, _fireRate);
+                _assistComponent.RotateToTarget(_entity.Get<TargetComponent>().Target, _entity.transform, 10, _fireRate);
                 _timer = _fireRate;
             }
         }

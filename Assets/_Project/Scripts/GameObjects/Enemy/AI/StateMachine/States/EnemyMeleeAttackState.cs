@@ -24,14 +24,15 @@ namespace Gameplay
             EnemyAttackAssistComponent assistComponent,
             DelayedAction attackSwitcher,
             NavMeshAgent navMeshAgent,
-            Enemy enemy, TargetComponent targetComponent, Entity entity)
+            Enemy enemy, 
+            Entity entity
+            )
         {
             _blackboard = blackboard;
             _assistComponent = assistComponent;
             _attackSwitcher = attackSwitcher;
             _navMeshAgent = navMeshAgent;
             _enemy = enemy;
-            _targetComponent = targetComponent;
             _entity = entity;
         }
 
@@ -57,7 +58,7 @@ namespace Gameplay
             {
                 _isEnable = false;
                 _enemy.Shoot();
-                _assistComponent.RotateToTarget(_targetComponent.Target, _entity.transform, 10, 0.7f);
+                _assistComponent.RotateToTarget(_entity.Get<TargetComponent>().Target, _entity.transform, 10, 0.7f);
                 _attackSwitcher.Schedule(0.7f, () => _blackboard.IsBusy = false);
             }
         }

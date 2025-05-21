@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
-namespace Gameplay.Installers
+namespace Gameplay
 {
-    public class EnemyMoveComponent
+    public class EnemyMoveComponent : ITickable
     {
         private readonly NavMeshAgent _agent;
 
@@ -15,6 +16,11 @@ namespace Gameplay.Installers
         public void MoveTo(Vector3 destination)
         {
             _agent.SetDestination(destination);
+        }
+
+        public void Tick()
+        {
+            
         }
     }
 }

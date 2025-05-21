@@ -69,9 +69,4 @@ namespace Gameplay
             return finalRotation;
         }
     }
-
-    public class TargetComponent
-    {
-        public Transform Target;
-    }
 }

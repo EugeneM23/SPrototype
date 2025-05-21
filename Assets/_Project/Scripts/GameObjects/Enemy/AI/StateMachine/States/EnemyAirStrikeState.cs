@@ -29,14 +29,14 @@ namespace Gameplay
             NavMeshAgent navMeshAgent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
-            DiContainer container, TargetComponent target, Entity root)
+            DiContainer container, 
+            Entity root)
         {
             _conditions = conditions;
             _navMeshAgent = navMeshAgent;
             _assistComponent = assistComponent;
             _animator = animator;
             _container = container;
-            _target = target;
             _root = root;
         }
 
@@ -50,7 +50,7 @@ namespace Gameplay
             SpawnAirStrike();
             SetBlackBoardFlags(isBusy: true, isAttacking: true, canPush: false);
 
-            _assistComponent.RotateToTarget(_target.Target, _root.transform, RotationSpeed, RotationDuration);
+            _assistComponent.RotateToTarget(_root.Get<TargetComponent>().Target, _root.transform, RotationSpeed, RotationDuration);
         }
 
         public void Update(float deltaTime)
@@ -82,7 +82,7 @@ namespace Gameplay
         private void SpawnAirStrike()
         {
             var airStrikePrefab = Resources.Load<GameObject>(AirStrikePrefabPath);
-            Vector3 targetPosition = _target.Target.transform.position;
+            Vector3 targetPosition = _root.Get<TargetComponent>().Target.transform.position;
             GameObject go = _container.InstantiatePrefab(airStrikePrefab);
             go.transform.SetParent(null);
             go.transform.position = targetPosition;
