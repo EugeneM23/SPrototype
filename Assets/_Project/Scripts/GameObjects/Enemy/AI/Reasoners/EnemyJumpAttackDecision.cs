@@ -19,7 +19,7 @@ namespace Gameplay
 
         public void Tick()
         {
-            if (_timerRunning && _conditions.IsRunning)
+            if (_timerRunning && _conditions.IsChasing)
                 _timer += Time.deltaTime;
         }
 

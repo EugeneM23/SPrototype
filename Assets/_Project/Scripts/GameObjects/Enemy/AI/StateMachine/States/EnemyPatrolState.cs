@@ -29,15 +29,12 @@ namespace Gameplay
 
         public void Enter()
         {
-            _conditions.IsWalking = true;
-
-            if (_entity.TryGet<NavMeshAgent>(out var agent))
-                agent.speed = _patrolSpeed;
+            _conditions.IsPatroling = true;
         }
 
         public void Exit()
         {
-            _conditions.IsWalking = false;
+            _conditions.IsPatroling = false;
         }
 
         public void Update(float deltaTime)

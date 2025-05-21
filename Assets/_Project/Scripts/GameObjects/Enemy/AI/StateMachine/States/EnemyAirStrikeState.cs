@@ -91,7 +91,6 @@ namespace Gameplay
         private void SetBlackBoardFlags(bool isBusy, bool isAttacking, bool canPush)
         {
             _conditions.IsBusy = isBusy;
-            _conditions.IsAttacking = isAttacking;
             _conditions.CanPush = canPush;
         }
     }

@@ -10,31 +10,29 @@ namespace Gameplay
     {
         [Inject(Id = EnemyParameterID.ChaseSpeed)]
         private readonly float _chaseSpeed;
-        
+
         private readonly Entity _entity;
-        private readonly NavMeshAgent _navMeshAgent;
-        private readonly EnemyConditions _blackboard;
+        private readonly EnemyConditions _enemyConditions;
         private readonly RandomPositionGenerator _randomPosition;
 
         private float animationLength;
         private float timer;
         private Vector3 _destination;
 
-        public EnemyRetreatState(NavMeshAgent navMeshAgent, EnemyConditions blackboard, Entity entity,
-            RandomPositionGenerator randomPosition)
+        public EnemyRetreatState(
+            EnemyConditions enemyConditions,
+            Entity entity,
+            RandomPositionGenerator randomPosition
+        )
         {
-            _navMeshAgent = navMeshAgent;
-            _blackboard = blackboard;
+            _enemyConditions = enemyConditions;
             _entity = entity;
             _randomPosition = randomPosition;
         }
 
         public void Enter()
         {
-            _navMeshAgent.speed = _chaseSpeed;
-            _blackboard.IsRunning = true;
-            _blackboard.IsRetreat = true;
-            _blackboard.IsBusy = true;
+            _enemyConditions.IsChasing = true;
 
             _destination = _randomPosition.GetRandomPositionInSquare();
             _entity.Get<EnemyMoveComponent>().MoveTo(_destination);
@@ -42,9 +40,7 @@ namespace Gameplay
 
         public void Exit()
         {
-            _blackboard.IsRunning = false;
-            _blackboard.IsRetreat = false;
-            _navMeshAgent.speed = _chaseSpeed;
+            _enemyConditions.IsChasing = false;
         }
 
         public void Update(float deltaTime)
@@ -52,8 +48,7 @@ namespace Gameplay
             var distance = Vector3.Distance(_entity.transform.position, _destination);
             if (distance < 2f)
             {
-                _blackboard.IsBusy = false;
-                _blackboard.IsRetreat = false;
+                _enemyConditions.IsBusy = false;
             }
         }
     }

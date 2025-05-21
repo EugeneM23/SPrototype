@@ -20,8 +20,8 @@ namespace Gameplay
 
         public void Tick()
         {
-            _animator.SetBool(IsWalkingHash, _blackboard.IsWalking);
-            _animator.SetBool(IsRunningHash, _blackboard.IsRunning);
+            _animator.SetBool(IsWalkingHash, _blackboard.IsPatroling);
+            _animator.SetBool(IsRunningHash, _blackboard.IsChasing);
             //_animator.SetBool(IsAttackingHash, _conditions.IsAttacking);
         }
     }

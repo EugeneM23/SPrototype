@@ -16,7 +16,6 @@ namespace Gameplay
         public void EnterActions()
         {
             _conditions.IsBusy = true;
-            _conditions.IsAttacking = true;
             _conditions.CanPush = false;
             _navMeshAgent.enabled = false;
         }
@@ -26,7 +25,6 @@ namespace Gameplay
             _conditions.CanPush = true;
             _navMeshAgent.enabled = true;
             _conditions.IsBusy = false;
-            _conditions.IsAttacking = false;
         }
 
         public void ExecuteActions()

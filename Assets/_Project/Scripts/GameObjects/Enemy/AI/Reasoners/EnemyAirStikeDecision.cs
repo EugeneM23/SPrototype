@@ -19,13 +19,13 @@ namespace Gameplay
 
         public void Tick()
         {
-            if (_timerRunning && _conditions.IsRunning)
+            if (_timerRunning && _conditions.IsChasing)
                 _timer += Time.deltaTime;
         }
 
         protected override bool IsOnCondition(float distance)
         {
-            return _conditions.IsRunning && _timer >= 7f;
+            return _conditions.IsChasing && _timer >= 7f;
         }
 
         protected override Type GetTargetState()

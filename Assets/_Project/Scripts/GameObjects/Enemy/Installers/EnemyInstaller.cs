@@ -1,7 +1,9 @@
+using System.ComponentModel;
+using Gameplay.Installers;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Installers
+namespace Gameplay
 {
     public class EnemyInstaller : MonoInstaller
     {
@@ -11,6 +13,8 @@ namespace Gameplay.Installers
 
         public override void InstallBindings()
         {
+            EnemyMovementInstaller.Install(Container);
+
             Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(ComponentsID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
 
@@ -47,11 +51,6 @@ namespace Gameplay.Installers
 
             Container
                 .BindInterfacesAndSelfTo<PushComponent>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .Bind<EnemyMoveComponent>()
                 .AsSingle()
                 .NonLazy();
 
