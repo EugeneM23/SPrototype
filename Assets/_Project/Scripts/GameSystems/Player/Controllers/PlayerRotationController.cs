@@ -6,17 +6,17 @@ namespace Gameplay
     public class PlayerRotationController : ITickable
     {
         private readonly GameInput _gameInput;
-        private readonly RotationComponent _rotationComponent;
+        private readonly PlayerCharacterProvider _player;
 
-        public PlayerRotationController(GameInput gameInput, RotationComponent rotationComponent)
+        public PlayerRotationController(GameInput gameInput, PlayerCharacterProvider player)
         {
             _gameInput = gameInput;
-            _rotationComponent = rotationComponent;
+            _player = player;
         }
 
         public void Tick()
         {
-            _rotationComponent.Ratation(_gameInput.Axis.normalized);
+            _player.Character.Get<RotationComponent>().Ratation(_gameInput.Axis.normalized);
         }
     }
 }

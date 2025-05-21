@@ -1,23 +1,23 @@
+using System;
 using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerDeathController : IInitializable
+    public class PlayerDeathController : IInitializable, IDisposable
     {
-        private readonly PlayerCharacterProvider _playerCharacterProvider;
+        private readonly PlayerCharacterProvider _player;
 
-        public PlayerDeathController(PlayerCharacterProvider playerCharacterProvider)
+        public PlayerDeathController(PlayerCharacterProvider player)
         {
-            _playerCharacterProvider = playerCharacterProvider;
+            _player = player;
         }
 
-        public void Initialize()
-        {
-            _playerCharacterProvider.Character.Get<HealthComponentBase>().OnDespawn += Despaw;
-        }
+        public void Initialize() => _player.Character.Get<HealthComponentBase>().OnDespawn += Despawn;
 
-        private void Despaw(HealthComponentBase obj)
+        public void Dispose() => _player.Character.Get<HealthComponentBase>().OnDespawn -= Despawn;
+
+        private void Despawn(HealthComponentBase obj)
         {
             SceneManager.LoadScene("L_Base");
         }

@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace DPrototype.Game
 {
-    public class CameraShakeComponent : ITickable, IInitializable
+    public class CameraShaker : ITickable, IInitializable
     {
         private readonly Transform _camera;
         private float _shakeMagnitude;
@@ -14,7 +14,7 @@ namespace DPrototype.Game
         private bool _isReturning;
         private float maxAngle = 2;
 
-        public CameraShakeComponent(Camera camera) => _camera = camera.transform;
+        public CameraShaker(Camera camera) => _camera = camera.transform;
 
         public void Initialize() => _originalRotation = _camera.localRotation;
 

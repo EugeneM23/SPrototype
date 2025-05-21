@@ -1,4 +1,4 @@
-using DPrototype.Game;
+  using DPrototype.Game;
 using Zenject;
 
 namespace Gameplay
@@ -11,17 +11,17 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.ShakeDuration)]
         private float _cameraShakeDuration;
 
-        private readonly CameraShakeComponent _cameraShakeComponent;
+        private readonly CameraShaker _cameraShaker;
 
-        public WeaponCameraShakeAction(CameraShakeComponent cameraShakeComponent)
+        public WeaponCameraShakeAction(CameraShaker cameraShaker)
 
         {
-            _cameraShakeComponent = cameraShakeComponent;
+            _cameraShaker = cameraShaker;
         }
 
         public void Invoke()
         {
-            _cameraShakeComponent.CameraShake(_cameraShakeMagnitude, _cameraShakeDuration);
+            _cameraShaker.CameraShake(_cameraShakeMagnitude, _cameraShakeDuration);
         }
     }
 }

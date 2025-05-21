@@ -18,7 +18,7 @@ namespace DPrototype.Game
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<CameraShakeComponent>()
+                .BindInterfacesAndSelfTo<CameraShaker>()
                 .AsSingle()
                 .WithArguments(_camera)
                 .NonLazy();

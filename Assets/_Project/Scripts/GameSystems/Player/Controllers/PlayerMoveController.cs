@@ -1,23 +1,21 @@
-using Modules;
-using UnityEngine.TextCore.Text;
-using Zenject;
+ using Zenject;
 
 namespace Gameplay
 {
     public class PlayerMoveController : ITickable
     {
         private readonly GameInput _gameInput;
-        private readonly PlayerMoveComponent _moveComponent;
+        private readonly PlayerCharacterProvider _player;
 
-        public PlayerMoveController(GameInput gameInput, PlayerMoveComponent moveComponent)
+        public PlayerMoveController(GameInput gameInput, PlayerCharacterProvider player)
         {
             _gameInput = gameInput;
-            _moveComponent = moveComponent;
+            _player = player;
         }
 
         public void Tick()
         {
-            _moveComponent.Move(_gameInput.Axis.normalized);
+            _player.Character.Get<PlayerMoveComponent>().Move(_gameInput.Axis.normalized);
         }
     }
 }
