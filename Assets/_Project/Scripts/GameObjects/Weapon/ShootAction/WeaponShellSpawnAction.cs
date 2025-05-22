@@ -20,7 +20,7 @@ namespace Gameplay
         void WeaponShootComponent.IAction.Invoke()
         {
             _shellSpawner.Create(_shellPoint.position, Quaternion.identity,
-                _shellImpulse * _shellPoint.right, 1);
+                _shellImpulse * (_shellPoint.right + _shellPoint.up), 1);
         }
     }
 }
