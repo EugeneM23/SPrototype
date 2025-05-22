@@ -22,7 +22,7 @@ namespace Modules
         public void Tick()
         {
             if (_target == null) return;
-            
+
             Vector3 targetPosition = _target.transform.position + _offset;
             _folowObject.position =
                 Vector3.SmoothDamp(_folowObject.position, targetPosition, ref _velocity, _smoothTime);

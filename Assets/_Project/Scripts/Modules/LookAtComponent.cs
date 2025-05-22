@@ -19,7 +19,7 @@ namespace Modules
         public bool LookAtAndCheck()
         {
             if (_targetComponent.Target == null || _root == null) return false;
-            
+
             Vector3 direction = _targetComponent.Target.position - _root.position;
             direction.y = 0f;
 

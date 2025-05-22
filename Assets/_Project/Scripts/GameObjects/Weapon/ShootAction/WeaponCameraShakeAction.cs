@@ -1,4 +1,4 @@
-  using DPrototype.Game;
+using DPrototype.Game;
 using Zenject;
 
 namespace Gameplay

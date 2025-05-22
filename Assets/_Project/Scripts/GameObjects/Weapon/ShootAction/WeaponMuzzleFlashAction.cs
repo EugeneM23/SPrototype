@@ -14,7 +14,7 @@ namespace Gameplay
         public void Invoke()
         {
             if (_particle == null) return;
-            
+
             _particle.Play(true);
         }
     }

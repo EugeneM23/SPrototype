@@ -29,7 +29,7 @@ namespace Gameplay
             NavMeshAgent navMeshAgent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
-            DiContainer container, 
+            DiContainer container,
             Entity root)
         {
             _conditions = conditions;
@@ -50,7 +50,8 @@ namespace Gameplay
             SpawnAirStrike();
             SetBlackBoardFlags(isBusy: true, isAttacking: true, canPush: false);
 
-            _assistComponent.RotateToTarget(_root.Get<TargetComponent>().Target, _root.transform, RotationSpeed, RotationDuration);
+            _assistComponent.RotateToTarget(_root.Get<TargetComponent>().Target, _root.transform, RotationSpeed,
+                RotationDuration);
         }
 
         public void Update(float deltaTime)

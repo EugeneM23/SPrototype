@@ -12,8 +12,6 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<EnemyStateMachine>()
                 .AsSingle()
                 .NonLazy();
-
-            
         }
     }
 }

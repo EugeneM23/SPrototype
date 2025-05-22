@@ -12,6 +12,11 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
+                .BindInterfacesAndSelfTo<TakeDamageComponent>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
                 .BindInterfacesAndSelfTo<TakeDamageNumberSpawController>()
                 .AsSingle()
                 .NonLazy();

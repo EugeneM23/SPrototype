@@ -2,6 +2,7 @@ using DamageNumbersPro;
 using Game;
 using Gameplay.Installers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -14,17 +15,20 @@ namespace Gameplay
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private GameObject[] _weaponPrefabs;
         [SerializeField] private DamageNumber _popupPrefab;
-        [SerializeField] private HealthComponentBase _healthComponent;
+
+        [FormerlySerializedAs("collision")] [FormerlySerializedAs("colision")] [FormerlySerializedAs("_healthComponent")] [SerializeField]
+        private CollisionComponent collisionComponent;
+
         [SerializeField] private Transform _weaponBone;
         [SerializeField] private Transform _melleWeaponRoot;
 
         public override void InstallBindings()
         {
-            Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
 
             Container
-                .BindInterfacesAndSelfTo<HealthComponentBase>()
-                .FromInstance(_healthComponent)
+                .BindInterfacesAndSelfTo<CollisionComponent>()
+                .FromInstance(collisionComponent)
                 .AsSingle()
                 .NonLazy();
 
@@ -56,7 +60,7 @@ namespace Gameplay
                 .Bind<PlayerCameraController>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .Bind<TargetComponent>()
                 .AsSingle()

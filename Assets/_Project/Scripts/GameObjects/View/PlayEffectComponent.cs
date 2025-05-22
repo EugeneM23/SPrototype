@@ -8,10 +8,12 @@ namespace Gameplay
 
         public PlayEffectComponent(ParticleSystem particleSystem) => _particleSystem = particleSystem;
 
-        public void Play()
+        public void Play(Collision collision)
         {
             _particleSystem.gameObject.SetActive(true);
             _particleSystem.Play();
         }
+
+        
     }
 }

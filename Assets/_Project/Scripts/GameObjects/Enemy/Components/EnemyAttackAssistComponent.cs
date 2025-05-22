@@ -5,13 +5,10 @@ namespace Gameplay
 {
     public class EnemyAttackAssistComponent : ITickable
     {
-
         private Transform _target;
         private Transform _root;
         private float _speed;
         private float _time;
-        private bool _go;
-
 
         public void RotateToTarget(Transform target, Transform enemy, int speed, float time)
         {
@@ -19,7 +16,6 @@ namespace Gameplay
             _root = enemy.transform;
             _speed = speed;
             _time = time;
-            _go = true;
         }
 
         public void Tick()

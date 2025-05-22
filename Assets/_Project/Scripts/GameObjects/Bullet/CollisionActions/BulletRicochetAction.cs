@@ -20,7 +20,7 @@ namespace Gameplay
 
         public void Reset() => _currentRicochetCount = 0;
 
-        public Vector3 Ricochet(Collision collision)
+        public Vector3 Ricochet(UnityEngine.Collision collision)
         {
             Vector3 newDirection = Vector3.Reflect(_transform.forward, collision.contacts[0].normal).normalized;
             _transform.forward = newDirection;

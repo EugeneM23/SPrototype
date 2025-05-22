@@ -15,12 +15,12 @@ namespace Gameplay
         {
             EnemyMovementInstaller.Install(Container);
 
-            Container.Bind<Transform>().WithId(ComponentsID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
-            Container.Bind<Transform>().WithId(ComponentsID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
 
             Container.Bind<EnemyConditions>().AsSingle().NonLazy();
             Container
-                .BindInterfacesAndSelfTo<EnemyAnimationBehaviour>()
+                .BindInterfacesAndSelfTo<EnemyAnimationController>()
                 .AsSingle()
                 .NonLazy();
 

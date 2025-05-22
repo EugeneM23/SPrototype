@@ -1,4 +1,4 @@
-using Gameplay.Installers;
+using Gameplay.Weapon;
 using UnityEngine;
 using Zenject;
 
@@ -15,6 +15,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             GameObject go = new GameObject("BulletPool");
+
 
             Container
                 .Bind<WeaponShootComponent>()
@@ -76,7 +77,6 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<WeaponFireController>()
                 .AsSingle()
                 .NonLazy();
-            
         }
     }
 }

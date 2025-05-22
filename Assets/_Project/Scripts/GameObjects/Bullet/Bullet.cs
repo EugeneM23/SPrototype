@@ -18,14 +18,17 @@ namespace Gameplay
             _collisionComponent = collisionComponent;
         }
 
-        public void Initialize() => _collisionComponent.OnCollision += Hit;
+        public void Initialize() => _collisionComponent.OnHit += Collision;
 
-        public void Hit(Collision collision) => Dispose();
+        public void Collision(Collision collision)
+        {
+            Dispose();
+        }
 
         public void Dispose()
         {
             OnDispose?.Invoke(_entity);
-            _collisionComponent.OnCollision -= Hit;
+            _collisionComponent.OnHit -= Collision;
 
             if (_entity.TryGet<BulletProjectileMoveComponent>(out var component))
                 component.Initialized = false;

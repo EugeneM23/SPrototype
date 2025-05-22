@@ -29,7 +29,7 @@ namespace Gameplay
 
         public void SetState(Type state)
         {
-            if (_currentState == state || state == null) return;
+            if (_currentState?.GetType() == state || state == null) return;
 
             _currentState?.Exit();
             _currentState = _states[state];

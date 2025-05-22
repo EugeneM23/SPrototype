@@ -15,7 +15,6 @@ namespace Gameplay
 
         private readonly Entity _entity;
 
-        private float _timer;
         private bool _isEnable;
 
         public EnemyMeleeAttackState(
@@ -36,7 +35,6 @@ namespace Gameplay
         public void Enter()
         {
             _enemyConditions.IsBusy = true;
-            _timer = 0.7f;
             _isEnable = true;
         }
 

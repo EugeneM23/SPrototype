@@ -4,7 +4,6 @@ using Zenject;
 namespace Gameplay.Installers
 {
     [CreateAssetMenu(fileName = "EnemyRetreatInstaller", menuName = "Installers/AI/EnemyRetreatInstaller")]
-
     public class EnemyRetreatInstaller : ScriptableObjectInstaller<EnemyRetreatInstaller>
     {
         public override void InstallBindings()
@@ -13,7 +12,7 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<EnemyRetreatDecision>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<EnemyRetreatState>()
                 .AsSingle()

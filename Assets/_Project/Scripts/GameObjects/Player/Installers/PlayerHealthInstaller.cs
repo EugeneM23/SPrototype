@@ -18,13 +18,18 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container
+                .BindInterfacesAndSelfTo<TakeDamageComponent>()
+                .AsSingle()
+                .NonLazy();
+
+            Container
                 .Bind<DamageNumberSpawner>()
                 .AsSingle()
                 .WithArguments(_damageNumber)
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<PlayerDeathController>()
+                .BindInterfacesAndSelfTo<PlayerDeathObserver>()
                 .AsSingle()
                 .NonLazy();
 
@@ -32,12 +37,12 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<TakeDamageNumberSpawController>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<TakeDamageEffectSpawnController>()
                 .AsSingle()
                 .NonLazy();
-            
+
 
             Container
                 .BindInterfacesAndSelfTo<TakeDamageHealthController>()

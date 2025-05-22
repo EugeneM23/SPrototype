@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class BulletPushEntiyCollisionAction : CollisionComponent.IEntiyCollisionAction
+    public class BulletPushEntiyCollisionAction : BulletHitComponent.IEntiyCollisionAction
     {
         private readonly Entity _bullet;
         private readonly float _impulsePower = 50;

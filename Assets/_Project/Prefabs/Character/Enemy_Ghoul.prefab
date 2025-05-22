@@ -2005,8 +2005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _deathEffectPrefab: []
 --- !u!114 &2815754463479340632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2023,10 +2021,8 @@ MonoBehaviour:
   - {fileID: 3196630611226905001}
   - {fileID: 5053622383324445560}
   - {fileID: 5332799809238412975}
-  - {fileID: 0}
   - {fileID: 7553199498613522881}
   - {fileID: -7776074291255282540}
-  - {fileID: 0}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}

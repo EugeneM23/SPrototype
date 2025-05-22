@@ -18,7 +18,7 @@ namespace Gameplay
             _healthSlider.value = _currentHealth;
         }
 
-        public void UpdateHealthComponentBase(int health)
+        public void UpdateHealthComponent(int health)
         {
             _healthSlider.value = health;
         }

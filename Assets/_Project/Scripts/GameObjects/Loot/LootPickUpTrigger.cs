@@ -1,5 +1,3 @@
-
-
 public class JumpToMovingTarget
 {
     /*[SerializeField] private GameObject _pickUpPrefab;

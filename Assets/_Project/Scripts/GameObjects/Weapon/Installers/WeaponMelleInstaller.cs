@@ -1,4 +1,3 @@
-using System.ComponentModel;
 using Gameplay.Installers;
 using UnityEngine;
 using Zenject;
@@ -13,7 +12,7 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<Transform>().WithId(ComponentsID.WeaponDamageRoot).FromInstance(_damageRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.WeaponDamageRoot).FromInstance(_damageRoot).AsCached();
 
 
             Container
@@ -38,12 +37,6 @@ namespace Gameplay
                 .NonLazy();
 
             Container
-                .BindInterfacesAndSelfTo<WeaponSlashEffectHandler>()
-                .AsSingle()
-                .WithArguments(_muzzleFlash)
-                .NonLazy();
-
-            Container
                 .BindInterfacesAndSelfTo<WeaponDamageCastAction>()
                 .AsSingle()
                 .WithArguments(_damageCastLayer)
@@ -54,7 +47,7 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<WeaponInRangeCondition>()
                 .AsSingle()
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<WeaponCooldownAction>()
                 .AsSingle()

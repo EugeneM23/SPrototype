@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class BulletEnviromentHitAction : CollisionComponent.IEnviromentCollisionAction
+    public class BulletEnviromentHitAction : BulletHitComponent.IEnviromentCollisionAction
     {
         private readonly ParticleSystem _particleSystem;
 
@@ -17,5 +17,6 @@ namespace Gameplay
             Quaternion rotation = Quaternion.LookRotation(point.normal);
             Object.Instantiate(_particleSystem, collision.contacts[0].point, rotation);
         }
+        
     }
 }

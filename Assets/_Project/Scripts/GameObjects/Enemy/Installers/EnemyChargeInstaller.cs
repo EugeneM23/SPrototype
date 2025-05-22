@@ -85,7 +85,7 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .WithArguments(_chargeMoveDuration, _chargeMoveSpeed)
                 .NonLazy();
-            
+
             Container
                 .BindInterfacesAndSelfTo<ChargeCompletionHandler>()
                 .AsSingle()

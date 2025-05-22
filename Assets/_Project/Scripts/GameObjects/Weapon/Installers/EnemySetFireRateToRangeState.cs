@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Gameplay.Weapon
+namespace Gameplay
 {
     public class EnemySetFireRateToRangeState : IInitializable
     {

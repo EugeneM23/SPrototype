@@ -6,19 +6,19 @@ public class RagDollSpawne : MonoBehaviour
 {
     [SerializeField] private GameObject _dollPrefab;
 
-    [Inject] private readonly HealthComponentBase _healthComponent;
+    [Inject] private readonly TakeDamageComponent _collision;
 
     private void OnEnable()
     {
-        _healthComponent.OnDespawn += Spawn;
+        _collision.OnDespawn += Spawn;
     }
 
     private void OnDisable()
     {
-        _healthComponent.OnDespawn -= Spawn;
+        _collision.OnDespawn -= Spawn;
     }
 
-    private void Spawn(HealthComponentBase obj)
+    private void Spawn(Entity entity)
     {
         var go = Instantiate(_dollPrefab, transform.position, transform.rotation);
 

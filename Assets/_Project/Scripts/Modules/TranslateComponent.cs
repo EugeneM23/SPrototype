@@ -14,7 +14,7 @@ namespace Gameplay
         private Transform _target;
         private float _stopingDistance;
 
-        public TranslateComponent(Entity root) 
+        public TranslateComponent(Entity root)
         {
             _root = root;
         }
@@ -33,8 +33,8 @@ namespace Gameplay
         public void Tick()
         {
             elapsedTime += Time.deltaTime;
-            
-            if (_target != null) 
+
+            if (_target != null)
                 targetPosition = _target.position;
 
             var distance = Vector3.Distance(_root.transform.position, targetPosition);

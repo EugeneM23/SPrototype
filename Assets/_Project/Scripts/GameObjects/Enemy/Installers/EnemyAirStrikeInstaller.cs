@@ -8,18 +8,15 @@ namespace Gameplay.Installers
     {
         public override void InstallBindings()
         {
-            
             Container
                 .BindInterfacesAndSelfTo<EnemyAirStrikeState>()
                 .AsSingle()
-                .NonLazy();            
+                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<EnemyAirStikeDecision>()
                 .AsSingle()
                 .NonLazy();
-
-            
         }
     }
 }

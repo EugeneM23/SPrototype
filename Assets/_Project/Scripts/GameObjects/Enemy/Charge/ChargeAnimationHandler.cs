@@ -18,12 +18,10 @@ namespace Gameplay
 
         public void ExitActions()
         {
-            
         }
 
         public void ExecuteActions()
         {
-            
         }
     }
 }
