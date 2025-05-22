@@ -7,12 +7,12 @@ namespace Gameplay
     public class EnemyChaseState : IState
     {
         private EnemyMoveComponent _moveComponent;
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly TargetComponent _targetComponent;
         private Transform _target;
 
         public EnemyChaseState(
-            EnemyConditions conditions,
+            CharacterConditions conditions,
             TargetComponent targetComponent,
             EnemyMoveComponent moveComponent
         )

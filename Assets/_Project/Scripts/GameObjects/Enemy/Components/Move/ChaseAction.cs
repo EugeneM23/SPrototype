@@ -6,13 +6,13 @@ namespace Gameplay
     public class ChaseAction : EnemyMoveComponent.IAction
     {
         private readonly float _chaseSpeed;
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _agent;
 
         public ChaseAction(
             [Inject(Id = EnemyParameterID.ChaseSpeed)]
             float chaseSpeed,
-            EnemyConditions conditions,
+            CharacterConditions conditions,
             NavMeshAgent agent)
         {
             _chaseSpeed = chaseSpeed;

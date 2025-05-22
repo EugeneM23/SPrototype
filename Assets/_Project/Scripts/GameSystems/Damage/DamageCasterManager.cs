@@ -43,9 +43,9 @@ namespace Gameplay
                     cast.Parameters.LayerMask
                 );
 
-                foreach (var hit in hitColliders)
+                foreach (Collider hit in hitColliders)
                 {
-                    IDamageable damageable = hit.GetComponent<IDamageable>();
+                    IDamageable damageable = hit.GetComponent<Entity>().Get<IDamageable>();
                     if (damageable != null)
                     {
                         damageable.TakeDamage(cast.Parameters.Damage);

@@ -11,7 +11,7 @@ namespace Gameplay
         public override int Priority => 2;
 
         public EnemyPatrolDecision(PlayerCharacterProvider provider,
-            Entity entity, EnemyConditions conditions)
+            Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {
         }

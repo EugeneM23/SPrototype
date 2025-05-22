@@ -6,13 +6,13 @@ namespace Gameplay
     public class PatrolAction : EnemyMoveComponent.IAction
     {
         private readonly float _patrolSpeed;
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _agent;
 
         public PatrolAction(
             [Inject(Id = EnemyParameterID.PatrolSpeed)]
             float patrolSpeed,
-            EnemyConditions conditions,
+            CharacterConditions conditions,
             NavMeshAgent agent)
         {
             _patrolSpeed = patrolSpeed;

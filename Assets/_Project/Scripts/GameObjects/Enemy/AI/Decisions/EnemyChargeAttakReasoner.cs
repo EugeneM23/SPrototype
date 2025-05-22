@@ -12,7 +12,7 @@ namespace Gameplay
         public override int Priority => 12;
 
         public EnemyChargeAttackDecision(PlayerCharacterProvider provider,
-            Entity entity, EnemyConditions conditions)
+            Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {
         }

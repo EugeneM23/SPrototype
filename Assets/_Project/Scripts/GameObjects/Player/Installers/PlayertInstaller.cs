@@ -15,10 +15,6 @@ namespace Gameplay
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private GameObject[] _weaponPrefabs;
         [SerializeField] private DamageNumber _popupPrefab;
-
-        [FormerlySerializedAs("collision")] [FormerlySerializedAs("colision")] [FormerlySerializedAs("_healthComponent")] [SerializeField]
-        private CollisionComponent collisionComponent;
-
         [SerializeField] private Transform _weaponBone;
         [SerializeField] private Transform _melleWeaponRoot;
 
@@ -26,11 +22,6 @@ namespace Gameplay
         {
             Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
 
-            Container
-                .BindInterfacesAndSelfTo<CollisionComponent>()
-                .FromInstance(collisionComponent)
-                .AsSingle()
-                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<Entity>()

@@ -8,7 +8,7 @@ namespace Gameplay
         public override int Priority => 7;
 
         public EnemyRangeDecision(PlayerCharacterProvider provider,
-            Entity entity, EnemyConditions conditions)
+            Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {
         }

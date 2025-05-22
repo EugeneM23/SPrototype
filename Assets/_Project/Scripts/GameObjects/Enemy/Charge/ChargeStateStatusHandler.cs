@@ -4,10 +4,10 @@ namespace Gameplay
 {
     public class ChargeStateStatusHandler : EnemyChargeState.IAction
     {
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _navMeshAgent;
 
-        public ChargeStateStatusHandler(EnemyConditions conditions, NavMeshAgent navMeshAgent)
+        public ChargeStateStatusHandler(CharacterConditions conditions, NavMeshAgent navMeshAgent)
         {
             _conditions = conditions;
             _navMeshAgent = navMeshAgent;

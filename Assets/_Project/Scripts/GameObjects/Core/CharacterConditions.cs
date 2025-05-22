@@ -5,7 +5,7 @@ namespace Gameplay
 {
     using System;
 
-    public class EnemyConditions
+    public class CharacterConditions
     {
         public event Action OnValueChanged;
 
@@ -13,6 +13,13 @@ namespace Gameplay
         private bool _isBusy;
         private bool _isPatroling;
         private bool _isChasing;
+        private bool _isAdling;
+
+        public bool IsAdling
+        {
+            get => _isAdling;
+            set => SetField(ref _isAdling, value);
+        }
 
         public bool CanPush
         {

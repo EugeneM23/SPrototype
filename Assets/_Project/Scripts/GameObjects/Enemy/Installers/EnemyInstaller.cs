@@ -18,9 +18,9 @@ namespace Gameplay
             Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
 
-            Container.Bind<EnemyConditions>().AsSingle().NonLazy();
+            Container.Bind<CharacterConditions>().AsSingle().NonLazy();
             Container
-                .BindInterfacesAndSelfTo<EnemyAnimationController>()
+                .BindInterfacesAndSelfTo<CharacterAnimationController>()
                 .AsSingle()
                 .NonLazy();
 

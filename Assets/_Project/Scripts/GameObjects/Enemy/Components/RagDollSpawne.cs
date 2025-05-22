@@ -6,7 +6,7 @@ public class RagDollSpawne : MonoBehaviour
 {
     [SerializeField] private GameObject _dollPrefab;
 
-    [Inject] private readonly TakeDamageComponent _collision;
+    [Inject] private readonly HealthComponent _collision;
 
     private void OnEnable()
     {

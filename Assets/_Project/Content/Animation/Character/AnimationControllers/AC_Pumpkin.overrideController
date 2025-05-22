@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pumpkin
+  m_Name: AC_Pumpkin
   m_Controller: {fileID: 9100000, guid: 9628b84204719477880f3c2f32fabcce, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 2556646596122092305, guid: efd6571448f1f954d8a2cf7b5b0b1cb5, type: 3}

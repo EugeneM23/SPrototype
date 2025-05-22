@@ -232,17 +232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.1
+  fireRate: 0.2
   projectileSpawnDelay: 0
   damage: 10
   scatter: 10
-  fireRange: 10
+  fireRange: 2
   bulletSpeed: 50
   ShakeDuration: 0.1
   shakeMagnitude: 0.1
-  shellImpulse: 4
+  shellImpulse: 15
   projectileCount: 1
-  maxRicochetCount: 0
+  maxRicochetCount: 2
 --- !u!114 &3750572362710063219
 MonoBehaviour:
   m_ObjectHideFlags: 0

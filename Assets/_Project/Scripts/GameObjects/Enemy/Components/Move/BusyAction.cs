@@ -4,10 +4,10 @@ namespace Gameplay
 {
     public class BusyAction : EnemyMoveComponent.IAction
     {
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _agent;
 
-        public BusyAction(EnemyConditions conditions, NavMeshAgent agent)
+        public BusyAction(CharacterConditions conditions, NavMeshAgent agent)
         {
             _conditions = conditions;
             _agent = agent;

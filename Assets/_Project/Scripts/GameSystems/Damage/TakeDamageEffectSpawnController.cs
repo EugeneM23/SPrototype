@@ -4,18 +4,18 @@ namespace Gameplay
 {
     public class TakeDamageEffectSpawnController : IInitializable
     {
-        private readonly CollisionComponent _playerHealth;
+        private readonly CollisionComponent _component;
         private PlayEffectComponent _playEffectComponentSpawner;
 
-        public TakeDamageEffectSpawnController(PlayEffectComponent playEffectComponentSpawner, CollisionComponent playerHealth)
+        public TakeDamageEffectSpawnController(PlayEffectComponent playEffectComponentSpawner, CollisionComponent component)
         {
             _playEffectComponentSpawner = playEffectComponentSpawner;
-            _playerHealth = playerHealth;
+            _component = component;
         }
 
         public void Initialize()
         {
-            _playerHealth.OnHit += _playEffectComponentSpawner.Play;
+            _component.OnHit += _playEffectComponentSpawner.Play;
         }
     }
 }

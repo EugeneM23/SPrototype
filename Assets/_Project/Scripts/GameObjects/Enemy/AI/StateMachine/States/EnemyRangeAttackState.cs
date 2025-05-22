@@ -9,7 +9,7 @@ namespace Gameplay
         public event Action OnEnter;
         public event Action OnExit;
 
-        private readonly EnemyConditions _enemyConditions;
+        private readonly CharacterConditions _characterConditions;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly DelayedAction _delayedAction;
         private readonly Enemy _enemy;
@@ -20,13 +20,13 @@ namespace Gameplay
         private float _timer;
 
         public EnemyRangeAttackState(
-            EnemyConditions enemyConditions,
+            CharacterConditions characterConditions,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction delayedAction, Enemy enemy,
             Entity entity
         )
         {
-            _enemyConditions = enemyConditions;
+            _characterConditions = characterConditions;
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
             _enemy = enemy;
@@ -36,7 +36,7 @@ namespace Gameplay
         public void Enter()
         {
             OnEnter?.Invoke();
-            _enemyConditions.IsBusy = true;
+            _characterConditions.IsBusy = true;
         }
 
         public void Update(float deltaTime)
@@ -45,7 +45,7 @@ namespace Gameplay
             if (_timer <= 0)
             {
                 _enemy.Shoot();
-                _delayedAction.Schedule(_fireRate - 0.1f, () => _enemyConditions.IsBusy = false);
+                _delayedAction.Schedule(_fireRate - 0.1f, () => _characterConditions.IsBusy = false);
                 _assistComponent.RotateToTarget(_entity.Get<TargetComponent>().Target, _entity.transform, 10,
                     _fireRate);
                 _timer = _fireRate;
@@ -55,7 +55,7 @@ namespace Gameplay
         public void Exit()
         {
             OnExit?.Invoke();
-            _enemyConditions.IsBusy = false;
+            _characterConditions.IsBusy = false;
         }
 
         public void SetFireRate(float fireRate) => _fireRate = fireRate;

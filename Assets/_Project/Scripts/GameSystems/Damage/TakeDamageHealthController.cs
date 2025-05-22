@@ -4,21 +4,21 @@ namespace Gameplay
 {
     public class TakeDamageHealthController : IInitializable
     {
-        private readonly TakeDamageComponent _takeDamageComponent;
+        private readonly HealthComponent _healthComponent;
         private HealtBar _healtBar;
 
         public TakeDamageHealthController(
             HealtBar healtBar,
-            TakeDamageComponent takeDamageComponent
+            HealthComponent healthComponent
         )
         {
             _healtBar = healtBar;
-            _takeDamageComponent = takeDamageComponent;
+            _healthComponent = healthComponent;
         }
 
         public void Initialize()
         {
-            _takeDamageComponent.OnHealthChanged += _healtBar.UpdateHealthComponent;
+            _healthComponent.OnHealthChanged += _healtBar.UpdateHealthComponent;
         }
     }
 }

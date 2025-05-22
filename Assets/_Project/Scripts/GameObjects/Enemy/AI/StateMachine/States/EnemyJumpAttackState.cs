@@ -11,7 +11,7 @@ namespace Gameplay
         private const int RotationSpeed = 5;
         private const float RotationDuration = 1.5f;
 
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly TranslateComponent _translateComponent;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Animator _animator;
@@ -24,7 +24,7 @@ namespace Gameplay
         private Vector3 _jumpTargetPosition;
 
         public EnemyJumpAttackState(
-            EnemyConditions conditions,
+            CharacterConditions conditions,
             TranslateComponent translateComponent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,

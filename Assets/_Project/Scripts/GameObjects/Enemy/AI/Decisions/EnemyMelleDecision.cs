@@ -9,7 +9,7 @@ namespace Gameplay
         public EnemyMelleDecision(
             PlayerCharacterProvider provider,
             Entity entity,
-            EnemyConditions conditions)
+            CharacterConditions conditions)
             : base(provider, entity, conditions)
         {
         }

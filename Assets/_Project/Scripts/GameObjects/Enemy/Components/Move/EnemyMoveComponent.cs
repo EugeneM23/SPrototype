@@ -15,10 +15,10 @@ namespace Gameplay
         }
 
         private readonly NavMeshAgent _agent;
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly List<IAction> _actions;
 
-        public EnemyMoveComponent(NavMeshAgent agent, EnemyConditions conditions, List<IAction> actions)
+        public EnemyMoveComponent(NavMeshAgent agent, CharacterConditions conditions, List<IAction> actions)
         {
             _agent = agent;
             _conditions = conditions;

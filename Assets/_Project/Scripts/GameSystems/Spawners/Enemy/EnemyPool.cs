@@ -16,14 +16,14 @@ namespace Gameplay
         protected override void OnSpawned(Entity enemy)
         {
             base.OnSpawned(enemy);
-            enemy.Get<TakeDamageComponent>().OnDespawn += Despawn;
+            enemy.Get<HealthComponent>().OnDespawn += Despawn;
             enemy.gameObject.SetActive(true);
         }
 
         protected override void OnDespawned(Entity enemy)
         {
             base.OnDespawned(enemy);
-            enemy.Get<TakeDamageComponent>().OnDespawn -= Despawn;
+            enemy.Get<HealthComponent>().OnDespawn -= Despawn;
             enemy.gameObject.SetActive(false);
         }
     }

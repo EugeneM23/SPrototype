@@ -2,12 +2,12 @@ namespace Gameplay
 {
     public class ChargeCompletionHandler : EnemyChargeState.IAction
     {
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly DelayedAction _delayedAction;
         private readonly float _chargeDuration;
         private bool _isScheduled;
 
-        public ChargeCompletionHandler(EnemyConditions conditions, DelayedAction delayedAction, float chargeDuration)
+        public ChargeCompletionHandler(CharacterConditions conditions, DelayedAction delayedAction, float chargeDuration)
         {
             _conditions = conditions;
             _delayedAction = delayedAction;

@@ -17,8 +17,10 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
+            Container.Bind<int>().WithId(EnemyParameterID.Health).FromInstance(_maxHealth).AsCached();
+
             Container
-                .BindInterfacesAndSelfTo<TakeDamageComponent>()
+                .BindInterfacesAndSelfTo<HealthComponent>()
                 .AsSingle()
                 .NonLazy();
 

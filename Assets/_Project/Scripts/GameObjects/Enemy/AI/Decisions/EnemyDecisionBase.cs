@@ -8,12 +8,12 @@ namespace Gameplay
     {
         protected readonly Entity _entity;
         protected readonly PlayerCharacterProvider PlayerCharacterProvider;
-        protected readonly EnemyConditions _conditions;
+        protected readonly CharacterConditions _conditions;
 
         public abstract int Priority { get; }
 
         protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider,
-            Entity entity, EnemyConditions conditions)
+            Entity entity, CharacterConditions conditions)
         {
             PlayerCharacterProvider = playerCharacterProvider;
             _entity = entity;

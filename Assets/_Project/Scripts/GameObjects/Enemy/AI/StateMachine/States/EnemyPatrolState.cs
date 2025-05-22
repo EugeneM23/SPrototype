@@ -11,12 +11,12 @@ namespace Gameplay
         private readonly float _patrolSpeed;
 
         private readonly Entity _entity;
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private Transform[] _waypoints;
         private int _currentWaypointIndex;
         private const float StoppingDistance = 3f;
 
-        public EnemyPatrolState(Entity entity, EnemyConditions conditions)
+        public EnemyPatrolState(Entity entity, CharacterConditions conditions)
         {
             _entity = entity;
             _conditions = conditions;

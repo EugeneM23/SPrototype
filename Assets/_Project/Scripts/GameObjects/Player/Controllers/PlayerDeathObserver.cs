@@ -13,9 +13,9 @@ namespace Gameplay
             _player = player;
         }
 
-        public void Initialize() => _player.Character.Get<TakeDamageComponent>().OnDespawn += Despawn;
+        public void Initialize() => _player.Character.Get<HealthComponent>().OnDespawn += Despawn;
 
-        public void Dispose() => _player.Character.Get<TakeDamageComponent>().OnDespawn -= Despawn;
+        public void Dispose() => _player.Character.Get<HealthComponent>().OnDespawn -= Despawn;
 
         private void Despawn(Entity entity)
         {

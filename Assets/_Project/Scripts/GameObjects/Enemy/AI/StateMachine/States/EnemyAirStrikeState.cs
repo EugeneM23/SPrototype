@@ -13,7 +13,7 @@ namespace Gameplay
         private const string AirStrikePrefabPath = "Prefabs/AirStrike";
         private const string ChargeAnimation = "Charge";
 
-        private readonly EnemyConditions _conditions;
+        private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _navMeshAgent;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Animator _animator;
@@ -25,7 +25,7 @@ namespace Gameplay
         private bool _isComplete;
 
         public EnemyAirStrikeState(
-            EnemyConditions conditions,
+            CharacterConditions conditions,
             NavMeshAgent navMeshAgent,
             EnemyAttackAssistComponent assistComponent,
             Animator animator,

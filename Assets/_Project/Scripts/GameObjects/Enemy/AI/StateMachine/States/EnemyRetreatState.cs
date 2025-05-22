@@ -12,7 +12,7 @@ namespace Gameplay
         private readonly float _chaseSpeed;
 
         private readonly Entity _entity;
-        private readonly EnemyConditions _enemyConditions;
+        private readonly CharacterConditions _characterConditions;
         private readonly RandomPositionGenerator _randomPosition;
 
         private float animationLength;
@@ -20,19 +20,19 @@ namespace Gameplay
         private Vector3 _destination;
 
         public EnemyRetreatState(
-            EnemyConditions enemyConditions,
+            CharacterConditions characterConditions,
             Entity entity,
             RandomPositionGenerator randomPosition
         )
         {
-            _enemyConditions = enemyConditions;
+            _characterConditions = characterConditions;
             _entity = entity;
             _randomPosition = randomPosition;
         }
 
         public void Enter()
         {
-            _enemyConditions.IsChasing = true;
+            _characterConditions.IsChasing = true;
 
             _destination = _randomPosition.GetRandomPositionInSquare();
             _entity.Get<EnemyMoveComponent>().MoveTo(_destination);
@@ -40,7 +40,7 @@ namespace Gameplay
 
         public void Exit()
         {
-            _enemyConditions.IsChasing = false;
+            _characterConditions.IsChasing = false;
         }
 
         public void Update(float deltaTime)
@@ -48,7 +48,7 @@ namespace Gameplay
             var distance = Vector3.Distance(_entity.transform.position, _destination);
             if (distance < 2f)
             {
-                _enemyConditions.IsBusy = false;
+                _characterConditions.IsBusy = false;
             }
         }
     }

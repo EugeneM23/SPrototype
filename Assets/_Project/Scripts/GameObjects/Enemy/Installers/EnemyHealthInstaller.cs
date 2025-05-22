@@ -12,7 +12,7 @@ namespace Gameplay.Installers
         public override void InstallBindings()
         {
             Container
-                .BindInterfacesAndSelfTo<TakeDamageComponent>()
+                .BindInterfacesAndSelfTo<HealthComponent>()
                 .AsSingle()
                 .NonLazy();
 

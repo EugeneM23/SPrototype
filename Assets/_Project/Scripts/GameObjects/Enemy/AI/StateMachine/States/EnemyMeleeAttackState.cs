@@ -9,7 +9,7 @@ namespace Gameplay
     public class EnemyMeleeAttackState : IState
     {
         private readonly DelayedAction _attackSwitcher;
-        private readonly EnemyConditions _enemyConditions;
+        private readonly CharacterConditions _characterConditions;
         private readonly EnemyAttackAssistComponent _assistComponent;
         private readonly Enemy _enemy;
 
@@ -18,14 +18,14 @@ namespace Gameplay
         private bool _isEnable;
 
         public EnemyMeleeAttackState(
-            EnemyConditions enemyConditions,
+            CharacterConditions characterConditions,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction attackSwitcher,
             Enemy enemy,
             Entity entity
         )
         {
-            _enemyConditions = enemyConditions;
+            _characterConditions = characterConditions;
             _assistComponent = assistComponent;
             _attackSwitcher = attackSwitcher;
             _enemy = enemy;
@@ -34,13 +34,13 @@ namespace Gameplay
 
         public void Enter()
         {
-            _enemyConditions.IsBusy = true;
+            _characterConditions.IsBusy = true;
             _isEnable = true;
         }
 
         public void Exit()
         {
-            _enemyConditions.IsBusy = false;
+            _characterConditions.IsBusy = false;
         }
 
         public void Update(float deltaTime)
@@ -50,7 +50,7 @@ namespace Gameplay
                 _isEnable = false;
                 _enemy.Shoot();
                 _assistComponent.RotateToTarget(_entity.Get<TargetComponent>().Target, _entity.transform, 10, 0.7f);
-                _attackSwitcher.Schedule(0.7f, () => _enemyConditions.IsBusy = false);
+                _attackSwitcher.Schedule(1f, () => _characterConditions.IsBusy = false);
             }
         }
     }
