@@ -15,6 +15,11 @@ namespace Gameplay
         MaxRicochetCount,
         ProjectileSpawnDelay,
         AttackRate,
-        DamageCastDelay
+        DamageCastDelay,
+        MaxCapacity,
+        ClipCapacity,
+        ReloadTime,
+        BulletCount,
+        ReloadStatusUI
     }
 }

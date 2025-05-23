@@ -1,4 +1,4 @@
-namespace Gameplay.Installers
+namespace Gameplay
 {
     public enum DamageRootID
     {

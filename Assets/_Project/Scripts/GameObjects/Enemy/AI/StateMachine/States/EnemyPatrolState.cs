@@ -7,7 +7,7 @@ namespace Gameplay
 {
     public class EnemyPatrolState : IState, IInitializable
     {
-        [Inject(Id = EnemyParameterID.PatrolSpeed)]
+        [Inject(Id = CharacterParameterID.PatrolSpeed)]
         private readonly float _patrolSpeed;
 
         private readonly Entity _entity;

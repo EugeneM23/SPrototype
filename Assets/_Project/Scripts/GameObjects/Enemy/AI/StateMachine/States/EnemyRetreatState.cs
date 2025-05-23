@@ -8,7 +8,7 @@ namespace Gameplay
 {
     public class EnemyRetreatState : IState
     {
-        [Inject(Id = EnemyParameterID.ChaseSpeed)]
+        [Inject(Id = CharacterParameterID.ChaseSpeed)]
         private readonly float _chaseSpeed;
 
         private readonly Entity _entity;

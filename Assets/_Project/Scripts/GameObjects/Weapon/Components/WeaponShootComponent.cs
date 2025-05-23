@@ -18,9 +18,9 @@ namespace Gameplay
             void Invoke();
         }
 
-        [InjectLocal] private readonly List<ICondition> _conditions;
+        [Inject] private readonly List<ICondition> _conditions;
 
-        [InjectLocal] private readonly List<IAction> _actions;
+        [Inject] private readonly List<IAction> _actions;
 
         public bool CanShoot()
         {

@@ -10,7 +10,7 @@ namespace Gameplay
         private readonly NavMeshAgent _agent;
 
         public PatrolAction(
-            [Inject(Id = EnemyParameterID.PatrolSpeed)]
+            [Inject(Id = CharacterParameterID.PatrolSpeed)]
             float patrolSpeed,
             CharacterConditions conditions,
             NavMeshAgent agent)

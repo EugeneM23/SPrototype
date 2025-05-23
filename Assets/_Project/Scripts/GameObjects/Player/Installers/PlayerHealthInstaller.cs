@@ -17,7 +17,7 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<int>().WithId(EnemyParameterID.Health).FromInstance(_maxHealth).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.Health).FromInstance(_maxHealth).AsCached();
 
             Container
                 .BindInterfacesAndSelfTo<HealthComponent>()
@@ -57,11 +57,6 @@ namespace Gameplay
                 .UnderTransform(_parent)
                 .AsSingle()
                 .WithArguments(_maxHealth)
-                .NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<HPBarComponent>()
-                .AsSingle().WithArguments(_hpBarOffset, _parent)
                 .NonLazy();
         }
     }

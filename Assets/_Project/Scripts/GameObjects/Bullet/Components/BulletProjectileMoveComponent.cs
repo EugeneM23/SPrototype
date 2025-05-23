@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BulletProjectileMoveComponent : IBulletMoveComponent
+    public class BulletProjectileMoveComponent : IBulletMoveComponent, IInitializable
     {
         [Inject(Id = WeaponParameterID.BulletSpeed)]
         private float bulletSpeed;
@@ -22,6 +22,11 @@ namespace Gameplay
             this.player = player;
             this.playerSpeed = playerSpeed;
             this.curveMover = new BezierCurveMover(height: 10f); // Можно сделать параметром
+        }
+
+        public void Initialize()
+        {
+            bullet.Get<Bullet>().OnDispose += _ => Initialized = false;
         }
 
         public void Move()

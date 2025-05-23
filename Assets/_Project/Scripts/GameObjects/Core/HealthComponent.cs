@@ -10,7 +10,7 @@ namespace Gameplay
         public event Action<int> OnTakeDamaged;
         public event Action<Entity> OnDespawn;
 
-        [Inject(Id = EnemyParameterID.Health)] private int _maxhealth;
+        [Inject(Id = CharacterParameterID.Health)] private int _maxhealth;
 
         private int _currentHealth;
 

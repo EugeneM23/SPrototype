@@ -16,15 +16,15 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<float>().WithId(EnemyParameterID.ChaseRange).FromInstance(_chaseRange).AsCached();
-            Container.Bind<float>().WithId(EnemyParameterID.AttackRange).FromInstance(_attackRange).AsCached();
-            Container.Bind<float>().WithId(EnemyParameterID.ChaseSpeed).FromInstance(_chaseSpeed).AsCached();
-            Container.Bind<float>().WithId(EnemyParameterID.PatrolSpeed).FromInstance(_patrolSpeed).AsCached();
-            Container.Bind<float>().WithId(EnemyParameterID.AttackRotationSpeed).FromInstance(_attackRotationSpeed)
+            Container.Bind<float>().WithId(CharacterParameterID.ChaseRange).FromInstance(_chaseRange).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.AttackRange).FromInstance(_attackRange).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.ChaseSpeed).FromInstance(_chaseSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.PatrolSpeed).FromInstance(_patrolSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.AttackRotationSpeed).FromInstance(_attackRotationSpeed)
                 .AsCached();
-            Container.Bind<int>().WithId(EnemyParameterID.Damage).FromInstance(_damage).AsCached();
-            Container.Bind<int>().WithId(EnemyParameterID.Health).FromInstance(_health).AsCached();
-            Container.Bind<bool>().WithId(EnemyParameterID.IsPushable).FromInstance(_isPushable).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.Damage).FromInstance(_damage).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.Health).FromInstance(_health).AsCached();
+            Container.Bind<bool>().WithId(CharacterParameterID.IsPushable).FromInstance(_isPushable).AsCached();
         }
     }
 }

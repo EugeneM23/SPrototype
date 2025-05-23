@@ -10,7 +10,7 @@ namespace Gameplay
         private readonly NavMeshAgent _agent;
 
         public ChaseAction(
-            [Inject(Id = EnemyParameterID.ChaseSpeed)]
+            [Inject(Id = CharacterParameterID.ChaseSpeed)]
             float chaseSpeed,
             CharacterConditions conditions,
             NavMeshAgent agent)

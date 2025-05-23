@@ -30,8 +30,8 @@ namespace Gameplay
             OnDispose?.Invoke(_entity);
             _collisionComponent.OnHit -= Collision;
 
-            if (_entity.TryGet<BulletProjectileMoveComponent>(out var component)) ;
-               component.Initialized = false;
+            /*if (_entity.TryGet<BulletProjectileMoveComponent>(out var component)) ;
+               component.Initialized = false;*/
         }
     }
 }

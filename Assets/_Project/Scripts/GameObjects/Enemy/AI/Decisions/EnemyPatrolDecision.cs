@@ -5,7 +5,7 @@ namespace Gameplay
 {
     public class EnemyPatrolDecision : EnemyDecisionBase
     {
-        [Inject(Id = EnemyParameterID.ChaseRange)]
+        [Inject(Id = CharacterParameterID.ChaseRange)]
         private readonly float _chaseRange;
 
         public override int Priority => 2;

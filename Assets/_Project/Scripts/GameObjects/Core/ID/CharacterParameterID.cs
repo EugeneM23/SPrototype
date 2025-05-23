@@ -1,6 +1,6 @@
 namespace Gameplay
 {
-    public enum EnemyParameterID
+    public enum CharacterParameterID
     {
         ChaseRange,
         AttackRange,
