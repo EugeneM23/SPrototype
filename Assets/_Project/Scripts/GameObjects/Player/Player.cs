@@ -13,6 +13,7 @@ namespace Gameplay
         private readonly LookAtComponent _lookAtComponent;
         private readonly LeanComponent _leanComponent;
         private readonly CharacterConditions _characterConditions;
+        private float _timer = 0.05f;
 
         public Player(
             CharacterController characterController,
@@ -31,10 +32,11 @@ namespace Gameplay
         {
             _leanComponent.Lean();
 
-            if (_characterController.velocity != Vector3.zero)
+            if (_characterController.velocity.magnitude > 0.05f)
             {
                 _characterConditions.IsChasing = true;
                 _characterConditions.IsAdling = false;
+                _timer = 0.05f;
             }
             else
             {
@@ -42,7 +44,13 @@ namespace Gameplay
                 _characterConditions.IsAdling = true;
 
                 if (_lookAtComponent.LookAtAndCheck())
-                    OnShoot?.Invoke();
+                {
+                    _timer -= Time.deltaTime;
+                    if (_timer < 0)
+                    {
+                        OnShoot?.Invoke();
+                    }
+                }
             }
         }
     }

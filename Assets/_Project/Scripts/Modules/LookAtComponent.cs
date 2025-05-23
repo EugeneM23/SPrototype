@@ -33,7 +33,7 @@ namespace Modules
                 _aimingSpeed * Time.deltaTime);
 
             float angle = Quaternion.Angle(_root.rotation, targetRotation);
-            bool complite = angle < 1f;
+            bool complite = angle < 0.1f;
 
             return complite;
         }

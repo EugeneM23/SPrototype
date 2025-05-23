@@ -20,6 +20,8 @@ namespace Gameplay
         ClipCapacity,
         ReloadTime,
         BulletCount,
-        ReloadStatusUI
+        ReloadStatusUI,
+        MelleWeapon,
+        RangeWeapon
     }
 }

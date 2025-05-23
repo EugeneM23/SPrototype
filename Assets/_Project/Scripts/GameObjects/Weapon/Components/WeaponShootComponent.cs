@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.TextCore.Text;
 using Zenject;
 
 namespace Gameplay
@@ -19,7 +17,6 @@ namespace Gameplay
         }
 
         [Inject] private readonly List<ICondition> _conditions;
-
         [Inject] private readonly List<IAction> _actions;
 
         public bool CanShoot()

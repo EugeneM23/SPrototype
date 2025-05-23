@@ -6,7 +6,7 @@ namespace Gameplay
 {
     public class GameInput : ITickable
     {
-        public event System.Action OnPause;
+        public event Action OnPause;
         public Vector3 Axis => new(SimpleInput.GetAxisRaw("Horizontal"), 0, SimpleInput.GetAxisRaw("Vertical"));
 
         public void Tick()

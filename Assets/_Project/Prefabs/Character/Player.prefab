@@ -4917,6 +4917,7 @@ GameObject:
   - component: {fileID: -3092696866831824943}
   - component: {fileID: 2092574877954839100}
   - component: {fileID: 8851841367444768159}
+  - component: {fileID: 7387085180644060854}
   - component: {fileID: -1200308631884723926}
   - component: {fileID: 2625381723154630738}
   - component: {fileID: -4519202324036515794}
@@ -5014,6 +5015,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 8851841367444768159}
+  - {fileID: 7387085180644060854}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: -4519202324036515794}
@@ -5042,9 +5044,25 @@ MonoBehaviour:
   _weaponPrefabs:
   - {fileID: 9184137841470919376, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
   - {fileID: 8504467924791662847, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
+  - {fileID: 8504467924791662847, guid: e2b701b85bc0f41ad9adcb29567dbeb2, type: 3}
   _popupPrefab: {fileID: 1259023133563206875, guid: bc1bb8c54137147a6b63b144771df4cf, type: 3}
   _weaponBone: {fileID: 1230073187006417640}
   _melleWeaponRoot: {fileID: 1230073187006417640}
+--- !u!114 &7387085180644060854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969062347157005148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8842fc9d494ea1b84b3ffa06b1cc8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bulletCount: 100
+  _rangeWeapon: {fileID: 8504467924791662847, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
+  _melleWeapon: {fileID: 9184137841470919376, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5057,7 +5075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0575f59ee41f4035adc6bd6d563e6fdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _refreshRate: 0.3
+  _refreshRate: 0.1
   _layerMask:
     serializedVersion: 2
     m_Bits: 128

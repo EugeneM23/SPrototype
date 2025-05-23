@@ -14,6 +14,7 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.ProjectileSpawnDelay)]
         private float _delay;
 
+        private readonly Entity _entity;
         private readonly TargetComponent _targetComponent;
         private readonly Transform _firePoint;
         private IBulletSpawner _bulletSpawner;
@@ -21,11 +22,12 @@ namespace Gameplay
         private bool _needSpawn;
 
         public WeaponBulletSpawnAction(TargetComponent targetComponent, Transform firePoint,
-            IBulletSpawner bulletSpawner)
+            IBulletSpawner bulletSpawner, Entity entity)
         {
             _targetComponent = targetComponent;
             _firePoint = firePoint;
             _bulletSpawner = bulletSpawner;
+            _entity = entity;
         }
 
         public void Tick()
@@ -59,7 +61,8 @@ namespace Gameplay
 
             Vector3 targetPosition = _targetComponent.Target.position + Vector3.up * 1.5f;
 
-            Vector3 directionToTarget = (targetPosition - _firePoint.position).normalized;
+            Vector3 directionToTarget = (targetPosition - _entity.transform.position).normalized;
+            //Vector3 directionToTarget =  _firePoint.forward.normalized;
 
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
             float randomY = Random.Range(-_scater, _scater);

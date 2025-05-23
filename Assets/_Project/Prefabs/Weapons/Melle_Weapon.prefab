@@ -140,8 +140,8 @@ MonoBehaviour:
   _damageCastDelay: 0
   _damage: 50
   _range: 4
-  _shakeDuration: 0
-  _shakeMagnitude: 0
+  _shakeDuration: 0.2
+  _shakeMagnitude: 0.2
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

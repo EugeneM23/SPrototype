@@ -14,9 +14,8 @@ namespace Gameplay
 
         [SerializeField] private bool _isRelodeable;
         [SerializeField] private float _reloadTime;
-        [SerializeField] private int _maxCapacity;
         [SerializeField] private int _clipCapacity;
-        [SerializeField] private GameObject _reloadStatusUI;
+        [SerializeField] private ReloadStatusUI _reloadStatusPrefab;
 
         public override void InstallBindings()
         {
@@ -87,19 +86,15 @@ namespace Gameplay
             if (_isRelodeable)
             {
                 Debug.Log("sd");
-                Container.Bind<int>().WithId(WeaponParameterID.MaxCapacity).FromInstance(_maxCapacity).AsCached();
                 Container.Bind<int>().WithId(WeaponParameterID.ClipCapacity).FromInstance(_clipCapacity).AsCached();
                 Container.Bind<float>().WithId(WeaponParameterID.ReloadTime).FromInstance(_reloadTime).AsCached();
-                Container.Bind<int>().WithId(WeaponParameterID.BulletCount).FromInstance(_maxCapacity)
-                    .AsCached();
-                
-                Container.Bind<GameObject>().WithId(WeaponParameterID.ReloadStatusUI).FromInstance(_reloadStatusUI).AsCached();
-
                 Container.BindInterfacesAndSelfTo<WeaponReloadComponent>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<WeaponSootCounAction>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<ReloadAnimationAction>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().NonLazy();
-                Container.BindInterfacesAndSelfTo<ReloadStatusUI>().AsSingle().NonLazy();
+
+                Container.BindInterfacesAndSelfTo<ReloadStatusUI>().FromInstance(_reloadStatusPrefab).AsSingle()
+                    .NonLazy();
             }
         }
     }

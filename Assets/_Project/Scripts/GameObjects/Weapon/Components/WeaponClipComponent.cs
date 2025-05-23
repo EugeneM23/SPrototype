@@ -12,15 +12,9 @@ namespace Gameplay
         public int CLipCapacity { get; private set; }
         public int CurrentCapacity { get; private set; }
 
-        public WeaponClipComponent(
-            [Inject(Id = WeaponParameterID.ClipCapacity)]
-            int cLipCapacity,
-            [Inject(Id = WeaponParameterID.BulletCount)]
-            int bulletCount
-        )
+        public WeaponClipComponent([Inject(Id = WeaponParameterID.ClipCapacity)] int cLipCapacity)
         {
             CLipCapacity = cLipCapacity;
-            BulletCount = bulletCount;
             CurrentCapacity = CLipCapacity;
         }
 
@@ -40,8 +34,8 @@ namespace Gameplay
                 BulletCount -= CLipCapacity;
             else
             {
-                BulletCount = 0;
                 CurrentCapacity = BulletCount;
+                BulletCount = 0;
                 OnCurrentCapacityChanget?.Invoke(CurrentCapacity);
                 OnBulletCountChanget?.Invoke(BulletCount);
                 return;

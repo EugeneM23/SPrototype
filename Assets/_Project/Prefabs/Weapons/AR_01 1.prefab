@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: -1785734590832131113}
   - component: {fileID: 2275014208695314678}
   m_Layer: 0
-  m_Name: AR_01
+  m_Name: AR_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,16 +580,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.1
-  projectileSpawnDelay: 0.1
-  damage: 10
+  fireRate: 0.5
+  projectileSpawnDelay: 0
+  damage: 3
   scatter: 10
   fireRange: 2
   bulletSpeed: 50
-  ShakeDuration: 0.1
-  shakeMagnitude: 0.1
+  ShakeDuration: 0
+  shakeMagnitude: 0
   shellImpulse: 15
-  projectileCount: 1
+  projectileCount: 20
   maxRicochetCount: 2
 --- !u!114 &3750572362710063219
 MonoBehaviour:
@@ -610,7 +610,7 @@ MonoBehaviour:
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
   _isRelodeable: 1
   _reloadTime: 2
-  _clipCapacity: 30
+  _clipCapacity: 100
   _reloadStatusPrefab: {fileID: 8414824536449528546}
 --- !u!114 &-1785734590832131113
 MonoBehaviour:
@@ -871,15 +871,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.93
+      value: 3.4483309
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2586956
+      value: 2.2489114
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2586956
+      value: 2.2489114
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -925,6 +925,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fc9360045234a06911727a2c942abf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: fab663c6e1eab48fc807f810263ac0f8, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_Name
       value: AR_01_Mesh
