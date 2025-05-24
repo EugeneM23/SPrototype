@@ -4,13 +4,13 @@ namespace Gameplay
 {
     public class PlayerCharacterProvider : ICharacterProvider
     {
-        private readonly Entity _character;
+        private Entity _character;
 
         public Entity Character => _character;
 
-        public PlayerCharacterProvider([Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
+        public void SetCharacter(Entity getComponent)
         {
-            _character = entity;
+            _character = getComponent;
         }
     }
 

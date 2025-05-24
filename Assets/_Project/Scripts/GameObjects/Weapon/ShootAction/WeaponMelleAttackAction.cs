@@ -7,6 +7,9 @@ namespace Gameplay
     {
         private readonly ICharacterProvider _character;
 
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
+        private readonly Entity _characterEntity;
+
         [Inject(Id = WeaponParameterID.AttackRate)]
         private readonly float _attackRate;
 

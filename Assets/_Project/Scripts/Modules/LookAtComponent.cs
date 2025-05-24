@@ -1,17 +1,19 @@
 using Gameplay;
 using UnityEngine;
+using Zenject;
 
 namespace Modules
 {
     public class LookAtComponent
     {
-        private readonly Transform _root;
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
+        private readonly Entity _root;
+
         private readonly float _aimingSpeed;
         private readonly TargetComponent _targetComponent;
 
-        public LookAtComponent(Transform root, float aimingSpeed, TargetComponent targetComponent)
+        public LookAtComponent(float aimingSpeed, TargetComponent targetComponent)
         {
-            _root = root;
             _aimingSpeed = aimingSpeed;
             _targetComponent = targetComponent;
         }
@@ -20,7 +22,7 @@ namespace Modules
         {
             if (_targetComponent.Target == null || _root == null) return false;
 
-            Vector3 direction = _targetComponent.Target.position - _root.position;
+            Vector3 direction = _targetComponent.Target.position - _root.transform.position;
             direction.y = 0f;
 
 
@@ -29,10 +31,10 @@ namespace Modules
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            _root.rotation = Quaternion.RotateTowards(_root.rotation, targetRotation,
+            _root.transform.rotation = Quaternion.RotateTowards(_root.transform.rotation, targetRotation,
                 _aimingSpeed * Time.deltaTime);
 
-            float angle = Quaternion.Angle(_root.rotation, targetRotation);
+            float angle = Quaternion.Angle(_root.transform.rotation, targetRotation);
             bool complite = angle < 0.1f;
 
             return complite;

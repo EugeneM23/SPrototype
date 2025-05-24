@@ -15,11 +15,15 @@ namespace Gameplay
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private Transform _weaponBone;
-        [SerializeField] private Transform _melleWeaponRoot;
+        [SerializeField] private Entity _entityPrefab;
 
         public override void InstallBindings()
         {
-            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_weaponBone).AsCached();
+            
+            Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity)
+                .FromInstance(gameObject.GetComponent<Entity>())
+                .AsCached();
 
 
             Container
@@ -33,11 +37,10 @@ namespace Gameplay
             PlayerAnimationInstaller.Install(Container);
             PlayerEffectsInstaller.Install(Container, _hitEffect);
 
-            /*Container
+            Container
                 .BindInterfacesAndSelfTo<PlayerWeaponManager>()
                 .AsSingle()
-                .WithArguments(Container,  _weaponBone)
-                .NonLazy();*/
+                .NonLazy();
 
             Container
                 .Bind<PlayerCameraController>()

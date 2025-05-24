@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 3750572362710063219}
   - component: {fileID: -1785734590832131113}
   m_Layer: 0
-  m_Name: AR_01
+  m_Name: AR_01 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,14 +579,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.1
+  fireRate: 0.2
   projectileSpawnDelay: 0
-  damage: 10
+  damage: 3
   scatter: 10
   fireRange: 2
   bulletSpeed: 50
-  ShakeDuration: 0.1
-  shakeMagnitude: 0.1
+  ShakeDuration: 0
+  shakeMagnitude: 0
   shellImpulse: 15
   projectileCount: 1
   maxRicochetCount: 2
@@ -605,8 +605,8 @@ MonoBehaviour:
   _firePoint: {fileID: 5448337597900957643}
   _shellPoint: {fileID: 966996490262518290}
   _muzzleFlash: {fileID: 1759777164314975648}
-  _bulletPrefab: {fileID: 8699156800269933710, guid: 6ab5ae5c0cf164047ac58cf63c71cf9a, type: 3}
-  _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
+  _bulletPrefab: {fileID: 8699156800269933710, guid: 6be87cb0e008d4b6f8e4e58108162516, type: 3}
+  _shellPrefab: {fileID: 8371884576976455230, guid: 63ab3316566274d2e89006ee8e887c77, type: 3}
   _isRelodeable: 1
   _reloadTime: 2
   _clipCapacity: 10
@@ -856,15 +856,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.93
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2586956
+      value: 1.3043478
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2586956
+      value: 1.3043478
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -910,6 +910,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fc9360045234a06911727a2c942abf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d65467ad82ace4ac7b71435986cd109c, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fc9360045234a06911727a2c942abf, type: 3}
       propertyPath: m_Name
       value: AR_01_Mesh

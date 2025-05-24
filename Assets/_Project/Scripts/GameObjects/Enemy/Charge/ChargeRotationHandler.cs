@@ -1,3 +1,5 @@
+using Zenject;
+
 namespace Gameplay
 {
     public class ChargeRotationHandler : EnemyChargeState.IAction
@@ -7,18 +9,19 @@ namespace Gameplay
         private readonly float _rotationDuration;
 
         private readonly TargetComponent _targetComponent;
+
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _entity;
 
         public ChargeRotationHandler(
             EnemyAttackAssistComponent assistComponent,
             int rotationSpeed,
-            float rotationDuration, TargetComponent targetComponent, Entity entity)
+            float rotationDuration, TargetComponent targetComponent)
         {
             _assistComponent = assistComponent;
             _rotationSpeed = rotationSpeed;
             _rotationDuration = rotationDuration;
             _targetComponent = targetComponent;
-            _entity = entity;
         }
 
         public void EnterActions()

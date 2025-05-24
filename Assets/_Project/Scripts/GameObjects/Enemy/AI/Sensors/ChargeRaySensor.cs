@@ -1,16 +1,18 @@
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
     public class ChargeRaySensor
     {
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _entity;
+
         private readonly LayerMask _detectionLayer;
         private float rayLength = 20f;
 
-        public ChargeRaySensor(Entity entity, LayerMask detectionLayer)
+        public ChargeRaySensor(LayerMask detectionLayer)
         {
-            _entity = entity;
             _detectionLayer = detectionLayer;
         }
 

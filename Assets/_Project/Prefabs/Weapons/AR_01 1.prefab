@@ -609,7 +609,7 @@ MonoBehaviour:
   _shellPrefab: {fileID: 8371884576976455230, guid: 63ab3316566274d2e89006ee8e887c77, type: 3}
   _isRelodeable: 1
   _reloadTime: 2
-  _clipCapacity: 100
+  _clipCapacity: 10
   _reloadStatusPrefab: {fileID: 8414824536449528546}
 --- !u!114 &-1785734590832131113
 MonoBehaviour:

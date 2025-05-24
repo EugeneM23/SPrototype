@@ -5,6 +5,7 @@ namespace Gameplay
 {
     public class TranslateComponent : ITickable
     {
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _root;
 
         private float elapsedTime;
@@ -13,11 +14,6 @@ namespace Gameplay
         private float moveSpeed;
         private Transform _target;
         private float _stopingDistance;
-
-        public TranslateComponent([Inject(Id = CharacterParameterID.CharacterEntity)] Entity root)
-        {
-            _root = root;
-        }
 
         public void Translate(Vector3 targetPosition, float time, float speed, float stopingDistace = 0,
             Transform target = null)

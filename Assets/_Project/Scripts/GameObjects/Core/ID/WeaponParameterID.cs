@@ -21,7 +21,7 @@ namespace Gameplay
         ReloadTime,
         BulletCount,
         ReloadStatusUI,
-        MelleWeapon,
-        RangeWeapon
+        SecondWeapon,
+        FisrstWeapon
     }
 }

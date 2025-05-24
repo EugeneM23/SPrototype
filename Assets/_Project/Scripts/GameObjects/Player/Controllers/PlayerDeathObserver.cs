@@ -6,16 +6,12 @@ namespace Gameplay
 {
     public class PlayerDeathObserver : IInitializable, IDisposable
     {
-        private readonly PlayerCharacterProvider _player;
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
+        private readonly Entity _player;
 
-        public PlayerDeathObserver(PlayerCharacterProvider player)
-        {
-            _player = player;
-        }
+        public void Initialize() => _player.Get<HealthComponent>().OnDespawn += Despawn;
 
-        public void Initialize() => _player.Character.Get<HealthComponent>().OnDespawn += Despawn;
-
-        public void Dispose() => _player.Character.Get<HealthComponent>().OnDespawn -= Despawn;
+        public void Dispose() => _player.Get<HealthComponent>().OnDespawn -= Despawn;
 
         private void Despawn(Entity entity)
         {

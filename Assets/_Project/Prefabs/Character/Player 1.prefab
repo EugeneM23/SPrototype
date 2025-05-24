@@ -4923,7 +4923,7 @@ GameObject:
   - component: {fileID: -4519202324036515794}
   - component: {fileID: 4326042711198811838}
   m_Layer: 11
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5056,8 +5056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c8842fc9d494ea1b84b3ffa06b1cc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletCount: 300
-  _rangeWeapon: {fileID: 6898676644082228745, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
+  _bulletCount: 100
+  _rangeWeapon: {fileID: 6898676644082228745, guid: e2b701b85bc0f41ad9adcb29567dbeb2, type: 3}
   _melleWeapon: {fileID: 6254490439261344806, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
 --- !u!114 &-1200308631884723926
 MonoBehaviour:

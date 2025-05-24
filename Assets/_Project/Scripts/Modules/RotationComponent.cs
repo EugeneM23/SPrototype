@@ -1,15 +1,18 @@
+using Gameplay;
 using UnityEngine;
+using Zenject;
 
 namespace Modules
 {
     public class RotationComponent
     {
-        private readonly Transform _target;
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
+        private readonly Entity _target;
+
         private readonly float _speed;
 
-        public RotationComponent(Transform target, float speed)
+        public RotationComponent(float speed)
         {
-            _target = target;
             _speed = speed;
         }
 
@@ -21,8 +24,8 @@ namespace Modules
 
                 Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
 
-                _target.rotation =
-                    Quaternion.Slerp(_target.rotation, targetRotation, _speed * Time.deltaTime);
+                _target.transform.rotation =
+                    Quaternion.Slerp(_target.transform.rotation, targetRotation, _speed * Time.deltaTime);
             }
         }
     }

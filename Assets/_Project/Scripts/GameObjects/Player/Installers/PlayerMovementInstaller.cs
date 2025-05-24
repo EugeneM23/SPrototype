@@ -6,7 +6,6 @@ namespace Gameplay
 {
     public class PlayerMovementInstaller : Installer<PlayerSetings, PlayerMovementInstaller>
     {
-        [Inject] private PlayerCharacterProvider _player;
         [Inject] private PlayerSetings _playerSetings;
 
         public override void InstallBindings()
@@ -30,20 +29,19 @@ namespace Gameplay
             Container
                 .Bind<RotationComponent>()
                 .AsSingle()
-                .WithArguments(_player.Character.transform, _playerSetings.RotationSpeed)
+                .WithArguments( _playerSetings.RotationSpeed)
                 .NonLazy();
 
             Container
                 .Bind<LeanComponent>()
                 .AsSingle()
-                .WithArguments(_player.Character.transform)
                 .NonLazy();
 
 
             Container
                 .Bind<LookAtComponent>()
                 .AsSingle()
-                .WithArguments(_player.Character.transform, _playerSetings.LookAtSpeed)
+                .WithArguments(_playerSetings.LookAtSpeed)
                 .NonLazy();
         }
     }

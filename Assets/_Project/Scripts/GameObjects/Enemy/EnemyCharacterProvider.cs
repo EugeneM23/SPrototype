@@ -8,7 +8,7 @@ namespace Gameplay
 
         public Entity Character => _character;
 
-        public EnemyCharacterProvider([Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
+        public EnemyCharacterProvider(Entity entity)
         {
             _character = entity;
         }

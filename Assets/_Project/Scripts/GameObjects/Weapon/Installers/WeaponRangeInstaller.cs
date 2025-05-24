@@ -17,6 +17,7 @@ namespace Gameplay
         [SerializeField] private int _clipCapacity;
         [SerializeField] private ReloadStatusUI _reloadStatusPrefab;
 
+
         public override void InstallBindings()
         {
             GameObject go = new GameObject("BulletPool");

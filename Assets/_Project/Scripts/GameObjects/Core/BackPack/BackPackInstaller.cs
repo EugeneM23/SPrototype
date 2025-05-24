@@ -6,8 +6,8 @@ namespace Gameplay
     public class BackPackInstaller : MonoInstaller
     {
         [SerializeField] private int _bulletCount;
-        [SerializeField] private GameObject _rangeWeapon;
-        [SerializeField] private GameObject _melleWeapon;
+        [SerializeField] private Entity _rangeWeapon;
+        [SerializeField] private Entity _melleWeapon;
 
         public override void InstallBindings()
         {
@@ -17,20 +17,18 @@ namespace Gameplay
                 .AsCached();
 
             Container.Bind<Entity>()
-                .WithId(WeaponParameterID.MelleWeapon)
+                .WithId(WeaponParameterID.SecondWeapon)
                 .FromComponentInNewPrefab(_melleWeapon)
                 .AsCached()
                 .NonLazy();
 
             Container.Bind<Entity>()
-                .WithId(WeaponParameterID.RangeWeapon)
+                .WithId(WeaponParameterID.FisrstWeapon)
                 .FromComponentInNewPrefab(_rangeWeapon)
                 .AsCached()
                 .NonLazy();
-        }
-    }
 
-    public class BackPack
-    {
+            Container.BindInterfacesAndSelfTo<BackPack>().AsSingle().NonLazy();
+        }
     }
 }

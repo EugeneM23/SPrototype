@@ -10,20 +10,25 @@ namespace Gameplay
     {
         [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private Transform _melleWeaponRoot;
-        [SerializeField] private Transform _rangeweaponRoot;
+        [SerializeField] private Transform _rangeWeaponRoot;
         [SerializeField] private Entity _entity;
 
         public override void InstallBindings()
         {
-            EnemyMovementInstaller.Install(Container);
-            
+            Container
+                .BindInterfacesAndSelfTo<EnemyCharacterProvider>()
+                .AsSingle()
+                .NonLazy();
+
             Container
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)
-                .FromInstance(_entity).AsSingle().NonLazy();
+                .FromInstance(gameObject.GetComponent<Entity>())
+                .AsSingle()
+                .NonLazy();
 
             Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
-            Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeWeaponRoot).AsCached();
 
             Container.Bind<CharacterConditions>().AsSingle().NonLazy();
             Container
@@ -41,10 +46,6 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<EnemyCharacterProvider>()
-                .AsSingle()
-                .NonLazy();
 
             Container
                 .BindInterfacesAndSelfTo<Enemy>()
@@ -85,6 +86,8 @@ namespace Gameplay
                 .Bind<TargetComponent>()
                 .AsSingle()
                 .NonLazy();
+
+            EnemyMovementInstaller.Install(Container);
         }
     }
 }

@@ -10,13 +10,13 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            var asd = Container.InstantiatePrefab(_playerPrefab);
-
+            Entity entity = Container.InstantiatePrefab(_playerPrefab).GetComponent<Entity>();
+            _playerCharacterProvider.SetCharacter(entity);
 
             Container
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)
-                .FromInstance(asd.GetComponent<Entity>()).AsSingle().NonLazy();
+                .FromInstance(entity.GetComponent<Entity>()).AsSingle().NonLazy();
         }
     }
 }

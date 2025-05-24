@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitEffect: {fileID: 4992397611402000643}
   _melleWeaponRoot: {fileID: 2199219673647584743}
-  _rangeweaponRoot: {fileID: 4102329774744441994}
+  _rangeWeaponRoot: {fileID: 4102329774744441994}
   _entity: {fileID: 7553199498613522881}
 --- !u!114 &7313438444693956633
 MonoBehaviour:
@@ -2023,6 +2023,7 @@ MonoBehaviour:
   - {fileID: 5053622383324445560}
   - {fileID: 5332799809238412975}
   - {fileID: -7776074291255282540}
+  - {fileID: 7553199498613522881}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
@@ -2139,7 +2140,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   - {fileID: 11400000, guid: c7024dc2a82474142ba67b1672e5cb2a, type: 2}
-  - {fileID: 11400000, guid: 3ee60df9306a34d02ba1280c7c9c66ac, type: 2}
+  - {fileID: 11400000, guid: 67a2197a23a254120a49f97e79d4cd1b, type: 2}
+  - {fileID: 11400000, guid: c215007b38f3d4ddb839f4d14bceee4f, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}

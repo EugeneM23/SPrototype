@@ -8,11 +8,15 @@ namespace Gameplay
     {
         public event Action<int> OnCurrentCapacityChanget;
         public event Action<int> OnBulletCountChanget;
-        public int BulletCount { get; private set; }
+        public int BulletCount => _backpack.BulletCount;
         public int CLipCapacity { get; private set; }
         public int CurrentCapacity { get; private set; }
 
-        public WeaponClipComponent([Inject(Id = WeaponParameterID.ClipCapacity)] int cLipCapacity)
+        public BackPack _backpack;
+
+        public WeaponClipComponent([Inject(Id = WeaponParameterID.ClipCapacity)] int cLipCapacity,
+            [Inject(Id = WeaponParameterID.BulletCount)]
+            int bulletCount)
         {
             CLipCapacity = cLipCapacity;
             CurrentCapacity = CLipCapacity;
@@ -20,7 +24,6 @@ namespace Gameplay
 
         public void Count()
         {
-            Debug.Log(CurrentCapacity);
             if (CurrentCapacity > 0)
             {
                 CurrentCapacity--;
@@ -30,12 +33,13 @@ namespace Gameplay
 
         public void Reload()
         {
-            if (BulletCount >= CLipCapacity)
-                BulletCount -= CLipCapacity;
+            Debug.Log(_backpack.BulletCount);
+            if (_backpack.BulletCount >= CLipCapacity)
+                _backpack.BulletCount -= CLipCapacity;
             else
             {
-                CurrentCapacity = BulletCount;
-                BulletCount = 0;
+                CurrentCapacity = _backpack.BulletCount;
+                _backpack.BulletCount = 0;
                 OnCurrentCapacityChanget?.Invoke(CurrentCapacity);
                 OnBulletCountChanget?.Invoke(BulletCount);
                 return;
@@ -44,7 +48,7 @@ namespace Gameplay
             CurrentCapacity = CLipCapacity;
 
             OnCurrentCapacityChanget?.Invoke(CurrentCapacity);
-            OnBulletCountChanget?.Invoke(BulletCount);
+            OnBulletCountChanget?.Invoke(_backpack.BulletCount);
         }
     }
 }

@@ -15,6 +15,8 @@ namespace Gameplay
 
         public void Initialize()
         {
+            if (_playerCharacterProvider.Character == null) return;
+
             _targetComponent.Target = _playerCharacterProvider.Character.transform;
         }
     }
