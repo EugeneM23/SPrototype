@@ -10,5 +10,6 @@ namespace Gameplay
         Damage,
         Health,
         IsPushable,
+        CharacterEntity
     }
 }

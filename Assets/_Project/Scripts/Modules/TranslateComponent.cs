@@ -14,7 +14,7 @@ namespace Gameplay
         private Transform _target;
         private float _stopingDistance;
 
-        public TranslateComponent(Entity root)
+        public TranslateComponent([Inject(Id = CharacterParameterID.CharacterEntity)] Entity root)
         {
             _root = root;
         }

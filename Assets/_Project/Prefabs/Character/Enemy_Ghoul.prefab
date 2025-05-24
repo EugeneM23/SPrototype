@@ -1953,6 +1953,7 @@ MonoBehaviour:
   _hitEffect: {fileID: 4992397611402000643}
   _melleWeaponRoot: {fileID: 2199219673647584743}
   _rangeweaponRoot: {fileID: 4102329774744441994}
+  _entity: {fileID: 7553199498613522881}
 --- !u!114 &7313438444693956633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2021,7 +2022,6 @@ MonoBehaviour:
   - {fileID: 3196630611226905001}
   - {fileID: 5053622383324445560}
   - {fileID: 5332799809238412975}
-  - {fileID: 7553199498613522881}
   - {fileID: -7776074291255282540}
   _identifier: 
   _useSceneContext: 0
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _chaseRange: 10
   _attackRange: 3
-  _chaseSpeed: 7
+  _chaseSpeed: 5
   _patrolSpeed: 2
   _attackRotationSpeed: 10
   _damage: 10

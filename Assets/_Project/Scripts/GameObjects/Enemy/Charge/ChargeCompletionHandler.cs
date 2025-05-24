@@ -7,7 +7,8 @@ namespace Gameplay
         private readonly float _chargeDuration;
         private bool _isScheduled;
 
-        public ChargeCompletionHandler(CharacterConditions conditions, DelayedAction delayedAction, float chargeDuration)
+        public ChargeCompletionHandler(CharacterConditions conditions, DelayedAction delayedAction,
+            float chargeDuration)
         {
             _conditions = conditions;
             _delayedAction = delayedAction;

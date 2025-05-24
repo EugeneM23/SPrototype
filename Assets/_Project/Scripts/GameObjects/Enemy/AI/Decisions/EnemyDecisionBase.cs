@@ -13,6 +13,7 @@ namespace Gameplay
         public abstract int Priority { get; }
 
         protected EnemyDecisionBase(PlayerCharacterProvider playerCharacterProvider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity, CharacterConditions conditions)
         {
             PlayerCharacterProvider = playerCharacterProvider;

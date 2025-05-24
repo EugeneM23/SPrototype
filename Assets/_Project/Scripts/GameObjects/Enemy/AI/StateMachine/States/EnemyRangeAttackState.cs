@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Gameplay
 {
@@ -23,6 +24,7 @@ namespace Gameplay
             CharacterConditions characterConditions,
             EnemyAttackAssistComponent assistComponent,
             DelayedAction delayedAction, Enemy enemy,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity
         )
         {

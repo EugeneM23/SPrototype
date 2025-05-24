@@ -1,4 +1,5 @@
 using System;
+using Zenject;
 
 namespace Gameplay
 {
@@ -7,6 +8,7 @@ namespace Gameplay
         public override int Priority => 11;
 
         public EnemyRetreatDecision(PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {

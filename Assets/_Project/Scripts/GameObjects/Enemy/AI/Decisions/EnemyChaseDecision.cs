@@ -11,6 +11,7 @@ namespace Gameplay
         public override int Priority => 6;
 
         public EnemyChaseDecision(PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {

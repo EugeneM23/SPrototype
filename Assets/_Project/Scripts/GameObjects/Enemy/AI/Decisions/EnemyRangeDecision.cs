@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
@@ -8,6 +9,7 @@ namespace Gameplay
         public override int Priority => 7;
 
         public EnemyRangeDecision(PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {

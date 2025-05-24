@@ -11,14 +11,12 @@ namespace Gameplay
 
         private readonly DiContainer _container;
         private readonly GameObject _weaponPrefab;
-        private readonly Entity _enemy;
         public GameObject CurrentWeapon { get; private set; }
 
-        public MelleWeaponManager(DiContainer container, GameObject weaponPrefab, Entity enemy)
+        public MelleWeaponManager(DiContainer container, GameObject weaponPrefab)
         {
             _container = container;
             _weaponPrefab = weaponPrefab;
-            _enemy = enemy;
         }
 
         public void Initialize()

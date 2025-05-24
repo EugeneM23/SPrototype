@@ -27,7 +27,7 @@ namespace Gameplay
             _currentState?.Update(Time.deltaTime);
         }
 
-        public void SetState(Type state)
+        public void  SetState(Type state)
         {
             if (_currentState?.GetType() == state || state == null) return;
 

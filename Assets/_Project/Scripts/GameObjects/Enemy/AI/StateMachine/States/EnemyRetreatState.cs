@@ -21,6 +21,7 @@ namespace Gameplay
 
         public EnemyRetreatState(
             CharacterConditions characterConditions,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity,
             RandomPositionGenerator randomPosition
         )

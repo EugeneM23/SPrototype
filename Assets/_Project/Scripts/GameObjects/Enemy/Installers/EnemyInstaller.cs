@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using Gameplay.Installers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -10,10 +11,15 @@ namespace Gameplay
         [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private Transform _melleWeaponRoot;
         [SerializeField] private Transform _rangeweaponRoot;
+        [SerializeField] private Entity _entity;
 
         public override void InstallBindings()
         {
             EnemyMovementInstaller.Install(Container);
+            Container
+                .Bind<Entity>()
+                .WithId(CharacterParameterID.CharacterEntity)
+                .FromInstance(_entity).AsSingle().NonLazy();
 
             Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeweaponRoot).AsCached();

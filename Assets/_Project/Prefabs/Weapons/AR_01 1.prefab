@@ -500,7 +500,6 @@ GameObject:
   - component: {fileID: 6203890669384559494}
   - component: {fileID: 3750572362710063219}
   - component: {fileID: -1785734590832131113}
-  - component: {fileID: 2275014208695314678}
   m_Layer: 0
   m_Name: AR_01 1
   m_TagString: Untagged
@@ -607,7 +606,7 @@ MonoBehaviour:
   _shellPoint: {fileID: 966996490262518290}
   _muzzleFlash: {fileID: 1759777164314975648}
   _bulletPrefab: {fileID: 8699156800269933710, guid: 6ab5ae5c0cf164047ac58cf63c71cf9a, type: 3}
-  _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
+  _shellPrefab: {fileID: 8371884576976455230, guid: 63ab3316566274d2e89006ee8e887c77, type: 3}
   _isRelodeable: 1
   _reloadTime: 2
   _clipCapacity: 100
@@ -625,20 +624,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isEnable: 1
---- !u!114 &2275014208695314678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504467924791662847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49cc2e2ae07242d386e04377dd9523c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _first: {fileID: 1469027632866549139}
-  _second: {fileID: 934083812982130658}
 --- !u!1 &9081210453219009583
 GameObject:
   m_ObjectHideFlags: 0

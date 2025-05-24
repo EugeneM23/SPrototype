@@ -10,7 +10,8 @@ namespace Gameplay
         public event Action<int> OnTakeDamaged;
         public event Action<Entity> OnDespawn;
 
-        [Inject(Id = CharacterParameterID.Health)] private int _maxhealth;
+        [Inject(Id = CharacterParameterID.Health)]
+        private int _maxhealth;
 
         private int _currentHealth;
 
@@ -19,7 +20,7 @@ namespace Gameplay
             _currentHealth = _maxhealth;
         }
 
-        public HealthComponent(Entity entity)
+        public HealthComponent([Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
         {
             _entity = entity;
         }

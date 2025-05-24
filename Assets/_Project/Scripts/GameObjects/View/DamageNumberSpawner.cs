@@ -1,5 +1,6 @@
 using UnityEngine;
 using DamageNumbersPro;
+using Zenject;
 
 namespace Gameplay
 {
@@ -8,7 +9,11 @@ namespace Gameplay
         private DamageNumber _popupPrefab;
         private Entity _target;
 
-        public DamageNumberSpawner(DamageNumber popupPrefab, Entity target)
+        public DamageNumberSpawner(
+            DamageNumber popupPrefab,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
+            Entity target
+        )
         {
             _popupPrefab = popupPrefab;
             _target = target;

@@ -30,6 +30,7 @@ namespace Gameplay
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
             DiContainer container,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity root)
         {
             _conditions = conditions;

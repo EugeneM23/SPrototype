@@ -22,7 +22,7 @@ namespace Gameplay
         private bool _needSpawn;
 
         public WeaponBulletSpawnAction(TargetComponent targetComponent, Transform firePoint,
-            IBulletSpawner bulletSpawner, Entity entity)
+            IBulletSpawner bulletSpawner, [Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
         {
             _targetComponent = targetComponent;
             _firePoint = firePoint;

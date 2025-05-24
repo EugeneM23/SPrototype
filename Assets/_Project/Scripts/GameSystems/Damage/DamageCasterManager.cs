@@ -37,6 +37,8 @@ namespace Gameplay
 
                 bool damageApplied = false;
 
+                if (cast.Parameters.Source == null) return;
+
                 Collider[] hitColliders = Physics.OverlapSphere(
                     cast.Parameters.Source.position,
                     cast.Parameters.Radius,

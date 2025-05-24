@@ -13,7 +13,6 @@ namespace Gameplay
         [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private PlayerSetings _playerSetings;
         [SerializeField] private Vector3 _healtBarOffset;
-        [SerializeField] private GameObject[] _weaponPrefabs;
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private Transform _weaponBone;
         [SerializeField] private Transform _melleWeaponRoot;
@@ -24,16 +23,9 @@ namespace Gameplay
 
 
             Container
-                .BindInterfacesAndSelfTo<Entity>()
-                .FromComponentOn(gameObject)
-                .AsSingle()
-                .NonLazy();
-
-            Container
                 .BindInterfacesAndSelfTo<Player>()
                 .AsSingle()
                 .NonLazy();
-
 
             PlayerMovementInstaller.Install(Container, _playerSetings);
             PlayerHealthInstaller.Install(Container, _playerSetings.MaxHealth, _healtBarOffset, gameObject.transform,
@@ -41,11 +33,11 @@ namespace Gameplay
             PlayerAnimationInstaller.Install(Container);
             PlayerEffectsInstaller.Install(Container, _hitEffect);
 
-            Container
+            /*Container
                 .BindInterfacesAndSelfTo<PlayerWeaponManager>()
                 .AsSingle()
-                .WithArguments(Container, _weaponPrefabs, _weaponBone)
-                .NonLazy();
+                .WithArguments(Container,  _weaponBone)
+                .NonLazy();*/
 
             Container
                 .Bind<PlayerCameraController>()

@@ -1,4 +1,5 @@
 using System;
+using Zenject;
 
 namespace Gameplay
 {
@@ -8,6 +9,7 @@ namespace Gameplay
 
         public EnemyMelleDecision(
             PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity,
             CharacterConditions conditions)
             : base(provider, entity, conditions)

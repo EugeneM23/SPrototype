@@ -8,7 +8,7 @@ namespace Gameplay
     public class
         PlayerHealthInstaller : Installer<int, Vector3, Transform, HealtBar, DamageNumber, PlayerHealthInstaller>
     {
-        [Inject] Entity _player;
+       // [Inject] Entity _player;
         [Inject] private HealtBar _healtBar;
         [Inject] private Transform _parent;
         [Inject] private Vector3 _hpBarOffset;

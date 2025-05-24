@@ -43,8 +43,6 @@ namespace Gameplay.Installers
                 .UnderTransform(gameObject.transform)
                 .AsSingle()
                 .NonLazy();
-
-            
         }
     }
 }

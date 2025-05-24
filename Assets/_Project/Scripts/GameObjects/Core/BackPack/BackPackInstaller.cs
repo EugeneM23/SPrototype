@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerBackPackInstaller : MonoInstaller
+    public class BackPackInstaller : MonoInstaller
     {
         [SerializeField] private int _bulletCount;
         [SerializeField] private GameObject _rangeWeapon;
@@ -11,23 +11,26 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.
-                Bind<int>()
+            Container.Bind<int>()
                 .WithId(WeaponParameterID.BulletCount)
                 .FromInstance(_bulletCount)
                 .AsCached();
-            
-            Container.
-                Bind<Transform>()
+
+            Container.Bind<Entity>()
                 .WithId(WeaponParameterID.MelleWeapon)
                 .FromComponentInNewPrefab(_melleWeapon)
-                .AsCached();
-            
-            Container.
-                Bind<Transform>()
+                .AsCached()
+                .NonLazy();
+
+            /*Container.Bind<Entity>()
                 .WithId(WeaponParameterID.RangeWeapon)
                 .FromComponentInNewPrefab(_rangeWeapon)
-                .AsCached();
+                .AsCached()
+                .NonLazy();*/
         }
+    }
+
+    public class BackPack
+    {
     }
 }

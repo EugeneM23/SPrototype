@@ -8,7 +8,9 @@ namespace Gameplay
         private Camera _camera;
         [SerializeField] private GameObject _healthBar;
         [SerializeField] private Vector3 _offset;
-        [Inject] private readonly Entity _entity;
+
+        [Inject(Id = CharacterParameterID.CharacterEntity)]
+        private readonly Entity _entity;
 
         private void Start() => _camera = Camera.main;
 

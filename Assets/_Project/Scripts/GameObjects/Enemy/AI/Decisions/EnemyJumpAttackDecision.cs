@@ -12,6 +12,7 @@ namespace Gameplay
         public override int Priority => 15;
 
         public EnemyJumpAttackDecision(PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity, CharacterConditions conditions)
             : base(provider, entity, conditions)
         {

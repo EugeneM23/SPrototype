@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Gameplay
 {
@@ -29,6 +30,7 @@ namespace Gameplay
             EnemyAttackAssistComponent assistComponent,
             Animator animator,
             TargetComponent targetComponent,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity entity
         )
         {

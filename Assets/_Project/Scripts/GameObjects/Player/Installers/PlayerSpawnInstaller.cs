@@ -1,17 +1,19 @@
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerSpawnInstaller : Installer<Entity, PlayerSpawnInstaller>
+    public class PlayerSpawnInstaller : Installer<GameObject, PlayerSpawnInstaller>
     {
-        [Inject] private Entity _player;
+        [Inject] private GameObject _player;
 
         public override void InstallBindings()
         {
             Container
                 .Bind<Entity>()
+                .WithId(CharacterParameterID.CharacterEntity)
                 .FromComponentInNewPrefab(_player).AsSingle().NonLazy();
-
+           
             Container
                 .BindInterfacesAndSelfTo<PlayerCharacterProvider>()
                 .AsSingle()

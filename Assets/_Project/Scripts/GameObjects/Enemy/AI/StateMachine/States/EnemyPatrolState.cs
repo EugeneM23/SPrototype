@@ -16,7 +16,11 @@ namespace Gameplay
         private int _currentWaypointIndex;
         private const float StoppingDistance = 3f;
 
-        public EnemyPatrolState(Entity entity, CharacterConditions conditions)
+        public EnemyPatrolState(
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
+            Entity entity,
+            CharacterConditions conditions
+        )
         {
             _entity = entity;
             _conditions = conditions;
