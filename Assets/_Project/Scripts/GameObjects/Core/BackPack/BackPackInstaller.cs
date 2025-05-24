@@ -22,11 +22,11 @@ namespace Gameplay
                 .AsCached()
                 .NonLazy();
 
-            /*Container.Bind<Entity>()
+            Container.Bind<Entity>()
                 .WithId(WeaponParameterID.RangeWeapon)
                 .FromComponentInNewPrefab(_rangeWeapon)
                 .AsCached()
-                .NonLazy();*/
+                .NonLazy();
         }
     }
 

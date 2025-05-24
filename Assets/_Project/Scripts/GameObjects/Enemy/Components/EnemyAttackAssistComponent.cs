@@ -20,6 +20,8 @@ namespace Gameplay
 
         public void Tick()
         {
+            if (_target == null) return;
+            
             _time -= Time.deltaTime;
             if (_time > 0)
             {

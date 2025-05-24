@@ -16,6 +16,7 @@ namespace Gameplay
         public override void InstallBindings()
         {
             EnemyMovementInstaller.Install(Container);
+            
             Container
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)

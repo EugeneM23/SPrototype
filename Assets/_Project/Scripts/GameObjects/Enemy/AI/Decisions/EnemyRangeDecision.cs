@@ -10,7 +10,8 @@ namespace Gameplay
 
         public EnemyRangeDecision(PlayerCharacterProvider provider,
             [Inject(Id = CharacterParameterID.CharacterEntity)]
-            Entity entity, CharacterConditions conditions)
+            Entity entity, 
+            CharacterConditions conditions)
             : base(provider, entity, conditions)
         {
         }
