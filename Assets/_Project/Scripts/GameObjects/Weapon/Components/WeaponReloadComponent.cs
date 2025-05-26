@@ -21,6 +21,7 @@ namespace Gameplay
 
         private readonly List<ICondition> _conditions;
         private readonly List<IAction> _actions;
+
         private readonly WeaponClipComponent _clip;
         private readonly Entity _weaponEntity;
         private readonly Inventory _inventory;
@@ -41,8 +42,6 @@ namespace Gameplay
             _inventory = inventory;
         }
 
-        public event Action OnReload;
-
         public void Initialize() => _weaponEntity.OnEntityDisable += () => _isReloading = false;
 
         public void Tick()
@@ -55,7 +54,6 @@ namespace Gameplay
                     foreach (var item in _actions)
                         item.FinishReload();
 
-                    _clip.Reload();
                     _isReloading = false;
                 }
 
@@ -63,7 +61,7 @@ namespace Gameplay
             }
 
 
-            if (_clip.CurrentCapacity <= 0 && _inventory.BulletCount > 0 && CanReload())
+            if (_clip.CurrentCapacity == 0 && _inventory.BulletCount > 0 && CanReload())
                 StartReload();
         }
 

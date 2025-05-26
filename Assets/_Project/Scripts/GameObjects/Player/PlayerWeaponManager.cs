@@ -20,7 +20,7 @@ namespace Gameplay
 
                 return _currentWeapon;
             }
-            private set { }
+            private set => _currentWeapon = value;
         }
 
         private readonly Button _button;

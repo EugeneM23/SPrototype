@@ -12,7 +12,7 @@ namespace Gameplay.Loot.PickUpObjects
                 Entity go = other.GetComponent<Entity>();
 
                 Debug.Log(go.name);
-                go.Get<Inventory>().SetBullet(50);
+                go.Get<Inventory>().SetBullet(10);
                 go.Get<PlayerMoveComponent>().SetSpeed(2);
                 go.Get<HealthComponent>().Heal(500);
                 go.Get<HealthComponent>().Heal(500);

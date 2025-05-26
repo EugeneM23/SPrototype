@@ -1,24 +1,33 @@
 using System;
+using System.Data;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay
 {
-    public class WeaponClipComponent
+    public class WeaponClipComponent : IInitializable
     {
         public event Action<int> OnCurrentCapacityChanget;
-        public int CLipCapacity { get; private set; }
-        public int CurrentCapacity { get; private set; }
+        public int MaxCapacity;
 
-        private readonly Inventory _inventory;
+        private int _currentCapacity;
 
-        public WeaponClipComponent([Inject(Id = WeaponParameterID.ClipCapacity)] int cLipCapacity,
-            [Inject(Id = WeaponParameterID.BulletCount)]
-            int bulletCount, Inventory inventory)
+        public int CurrentCapacity
         {
-            CLipCapacity = cLipCapacity;
-            _inventory = inventory;
-            CurrentCapacity = CLipCapacity;
+            get { return _currentCapacity; }
+            set
+            {
+                if (value > MaxCapacity)
+                    throw new InvalidExpressionException();
+
+                _currentCapacity = value;
+            }
+        }
+
+        public WeaponClipComponent(int maxCapacity)
+        {
+            _currentCapacity = maxCapacity;
+            MaxCapacity = maxCapacity;
         }
 
         public void Count()
@@ -30,21 +39,6 @@ namespace Gameplay
             }
         }
 
-        public void Reload()
-        {
-            if (_inventory.BulletCount >= CLipCapacity)
-                _inventory.BulletCount -= CLipCapacity;
-            else
-            {
-                CurrentCapacity = _inventory.BulletCount;
-                _inventory.BulletCount = 0;
-                OnCurrentCapacityChanget?.Invoke(CurrentCapacity);
-                return;
-            }
-
-            CurrentCapacity = CLipCapacity;
-
-            OnCurrentCapacityChanget?.Invoke(CurrentCapacity);
-        }
+        public void Initialize() => _currentCapacity = MaxCapacity;
     }
 }

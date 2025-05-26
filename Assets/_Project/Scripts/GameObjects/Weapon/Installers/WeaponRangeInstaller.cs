@@ -15,8 +15,6 @@ namespace Gameplay
         [SerializeField] private bool _isRelodeable;
         [SerializeField] private float _reloadTime;
         [SerializeField] private int _clipCapacity;
-        [SerializeField] private ReloadStatusUI _reloadStatusPrefab;
-
 
         public override void InstallBindings()
         {
@@ -86,17 +84,13 @@ namespace Gameplay
 
             if (_isRelodeable)
             {
-                Debug.Log("sd");
-                Container.Bind<int>().WithId(WeaponParameterID.ClipCapacity).FromInstance(_clipCapacity).AsCached();
                 Container.Bind<float>().WithId(WeaponParameterID.ReloadTime).FromInstance(_reloadTime).AsCached();
                 Container.BindInterfacesAndSelfTo<WeaponReloadComponent>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<WeaponSootCounAction>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<ReloadAnimationAction>().AsSingle().NonLazy();
-                Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().NonLazy();
-                Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle().NonLazy();
-
-                Container.BindInterfacesAndSelfTo<ReloadStatusUI>().FromInstance(_reloadStatusPrefab).AsSingle()
+                Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().WithArguments(_clipCapacity)
                     .NonLazy();
+                Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle().NonLazy();
             }
         }
     }

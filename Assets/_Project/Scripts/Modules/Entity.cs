@@ -15,7 +15,11 @@ namespace Gameplay
     {
         public event Action OnEntityDisable;
         public event Action OnEntityEnable;
+        public event Action OnEntityStart;
+
         [SerializeField] private GameObjectContext _context;
+
+        private void Start() => OnEntityStart?.Invoke();
 
         private void OnEnable() => OnEntityEnable?.Invoke();
 

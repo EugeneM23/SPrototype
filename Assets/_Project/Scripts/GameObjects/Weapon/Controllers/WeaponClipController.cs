@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class WeaponClipController : IInitializable
+    public class WeaponClipController : WeaponReloadComponent.IAction
     {
         private readonly Inventory _inventory;
         private readonly WeaponClipComponent _clip;
@@ -13,12 +13,22 @@ namespace Gameplay
             _clip = clip;
         }
 
-        public void Initialize()
+        public void StartRealod()
         {
-            /*_inventory.OnBulletCountChanget += SetBulletCount;
-            SetBulletCount(_inventory.BulletCount);*/
         }
 
-        
+        public void FinishReload()
+        {
+            if (_clip.MaxCapacity <= _inventory.BulletCount)
+            {
+                _clip.CurrentCapacity = _clip.MaxCapacity;
+                _inventory.BulletCount -= _clip.MaxCapacity;
+            }
+            else
+            {
+                _clip.CurrentCapacity = _inventory.BulletCount;
+                _inventory.BulletCount = 0;
+            }
+        }
     }
 }

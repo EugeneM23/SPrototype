@@ -6,7 +6,6 @@ namespace Gameplay
     public class UICameraRotationComponent : MonoBehaviour
     {
         private Camera _camera;
-        [SerializeField] private GameObject _healthBar;
         [SerializeField] private Vector3 _offset;
 
         [Inject(Id = CharacterParameterID.CharacterEntity)]
@@ -16,13 +15,13 @@ namespace Gameplay
 
         private void Update()
         {
-            Vector3 directionToCamera = _camera.transform.position - _healthBar.transform.position;
+            Vector3 directionToCamera = _camera.transform.position - transform.position;
 
             directionToCamera.x = 0f;
 
             Quaternion targetRotation = Quaternion.LookRotation(directionToCamera);
-            _healthBar.transform.rotation = targetRotation;
-            _healthBar.transform.position = _entity.transform.position + _offset;
+            transform.rotation = targetRotation;
+            transform.position = _entity.transform.position + _offset;
         }
     }
 }
