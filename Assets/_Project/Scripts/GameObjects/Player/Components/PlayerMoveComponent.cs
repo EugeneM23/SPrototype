@@ -5,7 +5,7 @@ namespace Gameplay
     public class PlayerMoveComponent
     {
         private readonly CharacterController _characterController;
-        private readonly float _speed;
+        private float _speed;
 
         public PlayerMoveComponent(float speed, CharacterController characterController)
         {
@@ -17,6 +17,11 @@ namespace Gameplay
         {
             direction += Physics.gravity;
             _characterController.Move(direction * _speed * Time.deltaTime);
+        }
+
+        public void SetSpeed(float speed)
+        {
+            _speed += speed;
         }
     }
 }

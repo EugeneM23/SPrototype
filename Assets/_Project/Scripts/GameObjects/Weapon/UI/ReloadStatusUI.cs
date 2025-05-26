@@ -10,27 +10,39 @@ namespace Gameplay
         private readonly float _reloadTime;
 
         private DelayedAction _delayedAction;
-
         private PlayerCharacterProvider _player;
+        private Entity _entity;
 
         [Inject]
-        public void Counstruct(DelayedAction delayedAction, DiContainer container, PlayerCharacterProvider player)
+        public void Counstruct(DelayedAction delayedAction, DiContainer container, PlayerCharacterProvider player,
+            Entity entity)
         {
             _delayedAction = delayedAction;
             _player = player;
+            _entity = entity;
         }
 
-        public void Invoke()
+        private void OnEnable()
+        {
+            _entity.OnEntityDisable += () => gameObject.SetActive(false);
+        }
+
+
+        public void StartRealod()
         {
             transform.gameObject.SetActive(true);
-            _delayedAction.Schedule(_reloadTime, () => transform.gameObject.SetActive(false));
+        }
+
+        public void FinishReload()
+        {
+            transform.gameObject.SetActive(false);
         }
 
         private void Start()
         {
+            _entity.Get<WeaponReloadComponent>().OnReload += () => gameObject.SetActive(false);
             transform.SetParent(_player.Character.transform);
             transform.localPosition += new Vector3(0, 2, 0);
-            transform.gameObject.SetActive(false);
         }
     }
 }

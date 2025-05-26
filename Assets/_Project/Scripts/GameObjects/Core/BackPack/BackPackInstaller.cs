@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -6,8 +7,7 @@ namespace Gameplay
     public class BackPackInstaller : MonoInstaller
     {
         [SerializeField] private int _bulletCount;
-        [SerializeField] private Entity _rangeWeapon;
-        [SerializeField] private Entity _melleWeapon;
+        [SerializeField] private List<Entity> _weapons;
 
         public override void InstallBindings()
         {
@@ -16,19 +16,9 @@ namespace Gameplay
                 .FromInstance(_bulletCount)
                 .AsCached();
 
-            Container.Bind<Entity>()
-                .WithId(WeaponParameterID.SecondWeapon)
-                .FromComponentInNewPrefab(_melleWeapon)
-                .AsCached()
-                .NonLazy();
 
-            Container.Bind<Entity>()
-                .WithId(WeaponParameterID.FisrstWeapon)
-                .FromComponentInNewPrefab(_rangeWeapon)
-                .AsCached()
+            Container.BindInterfacesAndSelfTo<Inventory>().AsSingle().WithArguments(_weapons, Container, _bulletCount)
                 .NonLazy();
-
-            Container.BindInterfacesAndSelfTo<BackPack>().AsSingle().NonLazy();
         }
     }
 }

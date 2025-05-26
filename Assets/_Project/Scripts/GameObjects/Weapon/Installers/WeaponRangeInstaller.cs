@@ -93,6 +93,7 @@ namespace Gameplay
                 Container.BindInterfacesAndSelfTo<WeaponSootCounAction>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<ReloadAnimationAction>().AsSingle().NonLazy();
                 Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().NonLazy();
+                Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle().NonLazy();
 
                 Container.BindInterfacesAndSelfTo<ReloadStatusUI>().FromInstance(_reloadStatusPrefab).AsSingle()
                     .NonLazy();

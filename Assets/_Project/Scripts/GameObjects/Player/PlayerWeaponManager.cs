@@ -7,16 +7,29 @@ namespace Gameplay
 {
     public class PlayerWeaponManager : IInitializable
     {
-        private readonly BackPack _backpack;
+        private readonly Inventory _inventory;
+
         private Entity _currentWeapon;
+
+        public Entity CurrentWeapon
+        {
+            get
+            {
+                if (_currentWeapon == null)
+                    _currentWeapon = _inventory[0];
+
+                return _currentWeapon;
+            }
+            private set { }
+        }
 
         private readonly Button _button;
         private int _index;
 
-        public PlayerWeaponManager(Button button, BackPack backpack)
+        public PlayerWeaponManager(Button button, Inventory inventory)
         {
             _button = button;
-            _backpack = backpack;
+            _inventory = inventory;
         }
 
         public void Initialize()
@@ -26,15 +39,15 @@ namespace Gameplay
 
         public void SwitchItem()
         {
-            if (_currentWeapon == null)
-                _currentWeapon = _backpack[0];
+            if (CurrentWeapon == null)
+                CurrentWeapon = _inventory[0];
 
-            _currentWeapon.gameObject.SetActive(false);
-            _currentWeapon.Get<WeaponFireController>().TurnOff();
-            _index = (_index + 1) % _backpack.WeaponCount;
-            _currentWeapon = _backpack[_index];
-            _currentWeapon.gameObject.SetActive(true);
-            _currentWeapon.Get<WeaponFireController>().TurnOn();
+            CurrentWeapon.gameObject.SetActive(false);
+            CurrentWeapon.Get<WeaponFireController>().TurnOff();
+            _index = (_index + 1) % _inventory.WeaponCount;
+            CurrentWeapon = _inventory[_index];
+            CurrentWeapon.gameObject.SetActive(true);
+            CurrentWeapon.Get<WeaponFireController>().TurnOn();
         }
     }
 }

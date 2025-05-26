@@ -24,5 +24,10 @@ namespace Gameplay
         {
             lastTimeShoot -= Time.deltaTime;
         }
+
+        public void SetFireRate(float value)
+        {
+            _fireRate += value;
+        }
     }
 }

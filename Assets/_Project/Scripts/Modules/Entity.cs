@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -12,7 +13,13 @@ namespace Gameplay
 
     public class Entity : MonoBehaviour, IEntity
     {
+        public event Action OnEntityDisable;
+        public event Action OnEntityEnable;
         [SerializeField] private GameObjectContext _context;
+
+        private void OnEnable() => OnEntityEnable?.Invoke();
+
+        private void OnDisable() => OnEntityDisable?.Invoke();
 
         public T Get<T>()
         {

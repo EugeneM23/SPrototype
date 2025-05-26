@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 5215295857785136043}
   - component: {fileID: 8689783308582159464}
   - component: {fileID: 6898676644082228745}
+  - component: {fileID: -3084512640100155572}
   - component: {fileID: 7487418093101285224}
   - component: {fileID: 6203890669384559494}
   - component: {fileID: 3750572362710063219}
@@ -548,6 +549,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 7487418093101285224}
+--- !u!114 &-3084512640100155572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504467924791662847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 6898676644082228745}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 7487418093101285224}
+  _bindType: 2
 --- !u!114 &7487418093101285224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7644156909559589053, guid: 1c328b48210414bc0997f7b93995f222, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

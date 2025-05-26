@@ -39,5 +39,15 @@ namespace Gameplay
                 OnHealthChanged?.Invoke(_currentHealth);
             }
         }
+
+        public void Heal(int value)
+        {
+            if (_currentHealth + value <= _maxhealth)
+                _currentHealth += value;
+            else
+                _currentHealth = _maxhealth;
+
+            OnHealthChanged?.Invoke(_currentHealth);
+        }
     }
 }
