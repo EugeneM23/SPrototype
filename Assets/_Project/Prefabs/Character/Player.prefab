@@ -5059,7 +5059,6 @@ MonoBehaviour:
   _bulletCount: 10
   _weapons:
   - {fileID: 6898676644082228745, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
-  - {fileID: 6254490439261344806, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0

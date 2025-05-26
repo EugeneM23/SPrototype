@@ -8,8 +8,13 @@ namespace Gameplay
         private Camera _camera;
         [SerializeField] private Vector3 _offset;
 
+        [SerializeField] private bool _excludePosition;
+        /*
         [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _entity;
+        */
+
+        [Inject] private ICharacterProvider _player;
 
         private void Start() => _camera = Camera.main;
 
@@ -21,7 +26,8 @@ namespace Gameplay
 
             Quaternion targetRotation = Quaternion.LookRotation(directionToCamera);
             transform.rotation = targetRotation;
-            transform.position = _entity.transform.position + _offset;
+            if (_excludePosition) return;
+            transform.position = _player.Character.transform.position + _offset;
         }
     }
 }

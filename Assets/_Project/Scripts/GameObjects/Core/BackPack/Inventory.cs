@@ -9,8 +9,10 @@ namespace Gameplay
     public class Inventory : IInitializable, IEnumerable<Entity>, WeaponReloadComponent.IAction
     {
         public event Action OnBulletCountChanget;
+        public event Action OnWeaponAdded;
 
         private int _bulletCount;
+
         public int BulletCount
         {
             get => _bulletCount;
@@ -24,7 +26,7 @@ namespace Gameplay
         private readonly Transform _weaponBone;
 
         private readonly List<Entity> _startWeapons;
-        private readonly List<Entity> _weapons = new();
+        private readonly List<Entity> _weapons = new(10);
         private readonly DiContainer _container;
 
         public Inventory([Inject(Id = DamageRootID.MelleWeaponRoot)] Transform weaponBone, int bulletCount,
@@ -36,23 +38,32 @@ namespace Gameplay
             _container = container;
         }
 
-        public int WeaponCount => _startWeapons.Count;
+        public int WeaponCount => _weapons.Count;
 
         public void Initialize()
         {
+            //if (_weapons.Count == 0) return;
             foreach (var item in _startWeapons)
-            {
-                var go = _container.InstantiatePrefab(item);
-                var weapon = go.GetComponent<Entity>();
-                weapon.transform.SetParent(_weaponBone);
-                weapon.transform.position = _weaponBone.position;
-                weapon.transform.rotation = _weaponBone.rotation;
-                weapon.Get<WeaponFireController>().TurnOn();
-                weapon.gameObject.SetActive(false);
-                _weapons.Add(weapon);
-            }
+                SpawnWeapon(item);
 
             _weapons[0].gameObject.SetActive(true);
+        }
+
+        private void SpawnWeapon(Entity item)
+        {
+            foreach (var entity in _weapons)
+                if (entity.name == item.name + "(Clone)")
+                    return;
+
+            var go = _container.InstantiatePrefab(item);
+            var weapon = go.GetComponent<Entity>();
+            weapon.transform.SetParent(_weaponBone);
+            weapon.transform.position = _weaponBone.position;
+            weapon.transform.rotation = _weaponBone.rotation;
+            weapon.Get<WeaponFireController>().TurnOn();
+            weapon.gameObject.SetActive(false);
+            _weapons.Add(weapon);
+            OnWeaponAdded?.Invoke();
         }
 
         IEnumerator<Entity> IEnumerable<Entity>.GetEnumerator()
@@ -67,20 +78,18 @@ namespace Gameplay
 
         public Entity this[int i] => _weapons[i];
 
-        public void SetBullet(int count)
+        public void AddBullets(int count)
         {
             BulletCount += count;
             OnBulletCountChanget?.Invoke();
-            Debug.Log(BulletCount);
         }
+
+        public void AddWeapon(Entity entity) => SpawnWeapon(entity);
 
         public void StartRealod()
         {
         }
 
-        public void FinishReload()
-        {
-            OnBulletCountChanget?.Invoke();
-        }
+        public void FinishReload() => OnBulletCountChanget?.Invoke();
     }
 }
