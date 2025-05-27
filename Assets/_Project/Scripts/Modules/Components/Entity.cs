@@ -13,6 +13,7 @@ namespace Gameplay
 
     public class Entity : MonoBehaviour, IEntity
     {
+        public event Action<Entity> OnDispose;
         public event Action OnEntityDisable;
         public event Action OnEntityEnable;
         public event Action OnEntityStart;
@@ -44,5 +45,7 @@ namespace Gameplay
                 return false;
             }
         }
+
+        public void Dispose() => OnDispose?.Invoke(this);
     }
 }

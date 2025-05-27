@@ -10,17 +10,29 @@ namespace Gameplay
         [Inject] private readonly DiContainer _container;
 
         private GameObject _viewMesh;
+        private bool _IsEnable;
+
+        private void OnEnable()
+        {
+            _IsEnable = true;
+        }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.GetComponent<CharacterController>())
             {
-                Entity go = other.GetComponent<Entity>();
+                if (_IsEnable)
+                {
+                    _IsEnable = false;
+                    Entity go = other.GetComponent<Entity>();
 
-                var inventory = go.Get<Inventory>();
-                inventory.AddWeapon(_weapon);
+                    var inventory = go.Get<Inventory>();
+                    inventory.AddWeapon(_weapon);
 
-                gameObject.SetActive(false);
+                    var entity = gameObject.GetComponent<Entity>();
+
+                    entity.Dispose();
+                }
             }
         }
     }

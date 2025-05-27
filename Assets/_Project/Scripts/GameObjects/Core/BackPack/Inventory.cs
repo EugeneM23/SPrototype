@@ -42,7 +42,6 @@ namespace Gameplay
 
         public void Initialize()
         {
-            //if (_weapons.Count == 0) return;
             foreach (var item in _startWeapons)
                 SpawnWeapon(item);
 
