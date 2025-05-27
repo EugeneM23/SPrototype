@@ -14,7 +14,6 @@ namespace Gameplay
         private void Start()
         {
             _pool.Create(_entity);
-            //_pool.CreateLoot(_entity.name);
         }
 
         private void Update()

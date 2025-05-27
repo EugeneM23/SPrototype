@@ -5,14 +5,16 @@ namespace Gameplay
 {
     public class PlayerSpawnerInstaller : MonoInstaller
     {
-        [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private Entity _playerPrefab;
+        [Inject] private readonly GameFactory _gameFactory;
         [Inject] private PlayerCharacterProvider _playerCharacterProvider;
 
         public override void InstallBindings()
         {
-            Entity entity = Container.InstantiatePrefab(_playerPrefab).GetComponent<Entity>();
-            _playerCharacterProvider.SetCharacter(entity);
+            var entity = _gameFactory.Create(_playerPrefab);
 
+            _playerCharacterProvider.SetCharacter(entity);
+            
             Container
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)

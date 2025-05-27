@@ -1,13 +1,12 @@
 using System;
 using UnityEngine;
-using Zenject;
+using UnityEngine.Serialization;
 
 namespace Gameplay
 {
-    public class TestWeaponPickUp : MonoBehaviour
+    public class WeaponPickUp : MonoBehaviour
     {
         [SerializeField] private Entity _weapon;
-        [Inject] private readonly DiContainer _container;
 
         private GameObject _viewMesh;
         private bool _IsEnable;

@@ -1602,7 +1602,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3cf4b820565924aa5aad8d189ff6cb4b, type: 2}
+  - {fileID: 2100000, guid: 606bfd70c716346618b0a25a9a12f1f0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1912,9 +1912,9 @@ GameObject:
   - component: {fileID: 2483082337731817145}
   - component: {fileID: -6075899849557144983}
   - component: {fileID: -7242182617438852645}
-  - component: {fileID: 849130336443538414}
+  - component: {fileID: 4337397116989126073}
   m_Layer: 7
-  m_Name: Enemy_Ghoul
+  m_Name: Enemy_Samon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1930,7 +1930,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4992397611402000642}
@@ -2025,7 +2025,7 @@ MonoBehaviour:
   - {fileID: 5332799809238412975}
   - {fileID: -7776074291255282540}
   - {fileID: 7553199498613522881}
-  - {fileID: 849130336443538414}
+  - {fileID: 4337397116989126073}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
@@ -2171,7 +2171,7 @@ MonoBehaviour:
   _damage: 10
   _health: 1000
   _isPushable: 0
---- !u!114 &849130336443538414
+--- !u!114 &4337397116989126073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2183,13 +2183,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d9422f260246a684af3a6c84ba41c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefabs:
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
-  moveTime: 0.7
-  curveHeight: 16
-  _radius: 5
+  lootPrefabs: []
+  moveTime: 1
+  curveHeight: 3
+  _radius: 3
 --- !u!1 &5585570460900715633
 GameObject:
   m_ObjectHideFlags: 0
