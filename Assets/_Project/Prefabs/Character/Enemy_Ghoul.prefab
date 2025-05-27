@@ -2167,7 +2167,7 @@ MonoBehaviour:
   _patrolSpeed: 2
   _attackRotationSpeed: 10
   _damage: 10
-  _health: 100
+  _health: 1000
   _isPushable: 0
 --- !u!1 &5585570460900715633
 GameObject:

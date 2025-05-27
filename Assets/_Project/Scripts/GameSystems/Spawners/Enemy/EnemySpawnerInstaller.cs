@@ -18,14 +18,11 @@ namespace Gameplay
                 .FromComponentOn(_patrolPoints)
                 .AsSingle();
 
-            Container
-                .BindMemoryPool<Entity, EnemyPool>()
-                .FromComponentInNewPrefab(_enemyPrefab);
 
             Container
                 .BindInterfacesAndSelfTo<EnemySpawner>()
                 .AsSingle()
-                .WithArguments(transform.position, _isCycle, _spawnTime, _startCount)
+                .WithArguments(transform.position, _isCycle, _spawnTime, _startCount, _enemyPrefab)
                 .NonLazy();
         }
     }

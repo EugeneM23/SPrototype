@@ -9,9 +9,9 @@ namespace Gameplay
         [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _player;
 
-        public void Initialize() => _player.Get<HealthComponent>().OnDespawn += Despawn;
+        public void Initialize() => _player.OnDispose += Despawn;
 
-        public void Dispose() => _player.Get<HealthComponent>().OnDespawn -= Despawn;
+        public void Dispose() => _player.OnDispose -= Despawn;
 
         private void Despawn(Entity entity)
         {

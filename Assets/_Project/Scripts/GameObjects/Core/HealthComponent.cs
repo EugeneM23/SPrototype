@@ -5,14 +5,12 @@ namespace Gameplay
 {
     public class HealthComponent : IInitializable, IDamageable
     {
-        private readonly Entity _entity;
         public event Action<int> OnHealthChanged;
         public event Action<int> OnTakeDamaged;
-        public event Action<Entity> OnDespawn;
+        
+        private readonly Entity _entity;
 
-        [Inject(Id = CharacterParameterID.Health)]
         private int _maxhealth;
-
         private int _currentHealth;
 
         public void Initialize()
@@ -20,9 +18,15 @@ namespace Gameplay
             _currentHealth = _maxhealth;
         }
 
-        public HealthComponent([Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
+        public HealthComponent(
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
+            Entity entity,
+            [Inject(Id = CharacterParameterID.Health)]
+            int maxhealth
+        )
         {
             _entity = entity;
+            _maxhealth = maxhealth;
         }
 
         public virtual void TakeDamage(int damage)
@@ -34,7 +38,7 @@ namespace Gameplay
 
             if (_currentHealth <= 0)
             {
-                OnDespawn?.Invoke(_entity);
+                _entity.Dispose();
                 _currentHealth = _maxhealth;
                 OnHealthChanged?.Invoke(_currentHealth);
             }

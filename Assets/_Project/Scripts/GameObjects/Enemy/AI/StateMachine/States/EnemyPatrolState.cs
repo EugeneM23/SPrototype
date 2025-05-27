@@ -28,7 +28,8 @@ namespace Gameplay
 
         public void Initialize()
         {
-            _waypoints = _entity.Get<EnemyPatrolPoints>().GetWaypoints();
+            if (_entity.TryGet<EnemyPatrolPoints>(out EnemyPatrolPoints points))
+                _waypoints = points.GetWaypoints();
         }
 
         public void Enter()
@@ -61,6 +62,11 @@ namespace Gameplay
             {
                 _entity.Get<EnemyMoveComponent>().MoveTo(targetPosition);
             }
+        }
+
+        public void SetWaypoints(EnemyPatrolPoints waypoints)
+        {
+            _waypoints = waypoints.GetWaypoints();
         }
     }
 }

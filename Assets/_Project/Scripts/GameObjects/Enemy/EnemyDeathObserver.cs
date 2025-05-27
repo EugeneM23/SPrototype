@@ -2,14 +2,14 @@ namespace Gameplay
 {
     public class EnemyDeathObserver
     {
-        private readonly HealthComponent _health;
+        private readonly Entity _health;
         private readonly PushComponent _pushComponent;
 
-        public EnemyDeathObserver(PushComponent pushComponent, HealthComponent health)
+        public EnemyDeathObserver(PushComponent pushComponent, Entity health)
         {
             _pushComponent = pushComponent;
             _health = health;
-            _health.OnDespawn += _ => ResetComponents();
+            _health.OnDispose += _ => ResetComponents();
         }
 
         private void ResetComponents()

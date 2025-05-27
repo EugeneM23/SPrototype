@@ -3,7 +3,7 @@ using UnityEngine;
 using Zenject;
 
 public class RagDollSpawne : MonoBehaviour
-{
+{/*
     [SerializeField] private GameObject _dollPrefab;
 
     [Inject] private readonly HealthComponent _collision;
@@ -34,5 +34,5 @@ public class RagDollSpawne : MonoBehaviour
             rb.AddForce(impulseDirection.normalized * impulseForce, ForceMode.Impulse);
             rb.AddTorque(impulseDirection.normalized * impulseForce, ForceMode.Impulse);
         }
-    }
+    }*/
 }
