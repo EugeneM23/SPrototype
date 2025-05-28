@@ -14,15 +14,14 @@ Material:
   m_ValidKeywords:
   - AMBIENT
   - ANIME_SOFT
+  - BASE_CONTRAST
+  - BASE_SATURATION
   - DIFFUSE
   - FOG
-  - LIGHT_MAP
   - MATCAP_PERSPECTIVE
-  - NORMAL_MAP
   - OUTLINE_PASS_DISABLED
   - SHADOWS_ENABLED
   - SPECULAR
-  - SPECULAR_MAP
   - _DETAILBLEND_MULTIPLY
   - _DETAILUV_UV1
   - _HEIGHTCOLORSBLEND_ALPHA_BLEND
@@ -99,7 +98,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LightmapTex:
-        m_Texture: {fileID: 2800000, guid: a4dc5f3cee9799d44a73b0c94f2c1203, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -115,7 +114,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: 3e56e544d0894e14fafc54eccddc4394, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex2:
@@ -139,7 +138,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularTex:
-        m_Texture: {fileID: 2800000, guid: 0b26261b80626a2418c8a70a872c1fa4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransparencyMaskTex:
@@ -154,11 +153,11 @@ Material:
     - _AnimeThreshold1: 0.45
     - _AnimeThreshold2: 0.85
     - _BlendOp: 0
-    - _Brightness: 1
+    - _Brightness: 2.3
     - _BumpScale: 1
     - _CameraFadeEnd: 0
     - _CameraFadeStart: 0
-    - _Contrast: 1
+    - _Contrast: 0.6
     - _Cull: 2
     - _Cutoff: 0.5
     - _Cutout: 0
@@ -172,10 +171,10 @@ Material:
     - _DetailUV: 0
     - _DetailVertexColors: 0
     - _Diffuse: 1
-    - _DiffuseBrightness: 1
-    - _DiffuseContrast: 1
+    - _DiffuseBrightness: 1.5
+    - _DiffuseContrast: 1.8
     - _DiffusePerPixel: 0
-    - _DiffuseWrap: 0
+    - _DiffuseWrap: -0.09
     - _DstBlend: 0
     - _Flat: 0
     - _Fog: 1
@@ -241,11 +240,11 @@ Material:
     - _ReflectionRim: 0
     - _ReflectionSpecular: 0
     - _Rim: 0
-    - _RimAmount: 1
+    - _RimAmount: 0.2
     - _RimBlend: 1
     - _RimContrast: 5
     - _RimInverse: 0
-    - _Saturation: 1
+    - _Saturation: 2
     - _ShadowOverlayAnimation: 0
     - _ShadowOverlayBrightness: 1
     - _ShadowOverlaySpeedU: 0.1

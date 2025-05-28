@@ -42,7 +42,7 @@ namespace Gameplay.Components
             }
 
             transform.position = end;
-            gameObject.GetComponent<EnemyPickUp>().SpawnEnemy();
+            _view.transform.rotation = Quaternion.identity;
         }
     }
 }

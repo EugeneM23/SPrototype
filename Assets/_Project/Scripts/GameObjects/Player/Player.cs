@@ -14,6 +14,7 @@ namespace Gameplay
         private readonly LeanComponent _leanComponent;
         private readonly CharacterConditions _characterConditions;
         private float _timer = 0.05f;
+        private bool _canShoot;
 
         public Player(
             CharacterController characterController,
@@ -30,6 +31,8 @@ namespace Gameplay
 
         public void Tick()
         {
+            _canShoot = false;
+
             _leanComponent.Lean();
 
             if (_characterController.velocity.magnitude > 0.05f)
@@ -48,10 +51,21 @@ namespace Gameplay
                     _timer -= Time.deltaTime;
                     if (_timer < 0)
                     {
-                        OnShoot?.Invoke();
+                        _canShoot = true;
+                    }
+                    else
+                    {
+                        _canShoot = false;
                     }
                 }
             }
+        }
+
+        public void Shoot()
+        {
+            if (!_canShoot || _characterController.velocity.magnitude > 0.05f) return;
+            Debug.Log("ASdasd");
+            OnShoot?.Invoke();
         }
     }
 }

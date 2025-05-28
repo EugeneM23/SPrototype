@@ -2184,9 +2184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootPrefabs:
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
-  - {fileID: -4949460836686396443, guid: 5231aaf7900a34edead0919612c74ae2, type: 3}
+  - {fileID: 8132150132489295341, guid: 15d7dc8e39cbe460eabc075f2b9aa588, type: 3}
+  - {fileID: 8132150132489295341, guid: 15d7dc8e39cbe460eabc075f2b9aa588, type: 3}
+  - {fileID: 8132150132489295341, guid: 15d7dc8e39cbe460eabc075f2b9aa588, type: 3}
   moveTime: 0.7
   curveHeight: 16
   _radius: 5
