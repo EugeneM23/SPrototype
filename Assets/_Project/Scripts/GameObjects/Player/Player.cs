@@ -64,7 +64,6 @@ namespace Gameplay
         public void Shoot()
         {
             if (!_canShoot || _characterController.velocity.magnitude > 0.05f) return;
-            Debug.Log("ASdasd");
             OnShoot?.Invoke();
         }
     }

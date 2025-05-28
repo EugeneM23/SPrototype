@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283d7a0be1414c96b2a2c3b9a53551dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 1692639543239270148}
   _offset: {x: 0, y: 0, z: -3}
+  _excludePosition: 0
 --- !u!1 &7591315100841362595
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: /
+  m_text: 300/
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8d34560b6d49c4469b2174ccd34ae34b, type: 2}
   m_sharedMaterial: {fileID: 8690591861142563998, guid: 8d34560b6d49c4469b2174ccd34ae34b, type: 2}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 240.95518, w: 0}
+  m_margin: {x: -22.010757, y: 0, z: 240.95518, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -304,7 +304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65.2, y: 4.4000053}
+  m_AnchoredPosition: {x: 80.2, y: 4.4000053}
   m_SizeDelta: {x: 118, y: 151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5958992516743220315
@@ -379,7 +379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -189.1, y: 0.0000052435407}
+  m_AnchoredPosition: {x: -195.4, y: 0.0000052435407}
   m_SizeDelta: {x: 318.84, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &995032573818404431
