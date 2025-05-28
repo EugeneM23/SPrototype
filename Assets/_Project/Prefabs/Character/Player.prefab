@@ -5034,7 +5034,7 @@ MonoBehaviour:
   healtBar: {fileID: -227575839315736592, guid: 6c1cc8cef5f3b4b5ab6d7ae21d931f97, type: 3}
   _hitEffect: {fileID: 8961366732276822094}
   _playerSetings:
-    <RunSpeed>k__BackingField: 20
+    <RunSpeed>k__BackingField: 10
     <RotationSpeed>k__BackingField: 20
     <LookAtSpeed>k__BackingField: 800
     <StrafeSpeed>k__BackingField: 3

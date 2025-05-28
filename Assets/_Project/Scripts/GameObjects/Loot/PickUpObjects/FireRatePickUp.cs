@@ -7,7 +7,6 @@ namespace Gameplay
 {
     public class FireRatePickUp : MonoBehaviour
     {
-        [SerializeField] private int _heals;
         [SerializeField] private Entity _effectPrefab;
         [SerializeField] private DamageNumber _damageNumber;
         [Inject] private readonly GameFactory _factory;
@@ -22,7 +21,7 @@ namespace Gameplay
                 var effect = _factory.Create(_effectPrefab);
                 effect.Get<EffectCaster>().CastEffect(traget.transform, 2);
 
-                _damageNumber.Spawn(traget.transform.position + new Vector3(0, 3, 0));
+                _damageNumber.Spawn(traget.transform.position + new Vector3(0, 3, 0), traget.transform);
                 gameObject.GetComponent<Entity>().Dispose();
             }
         }

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1259023133563206876}
-  - component: {fileID: 1259023133563206875}
   - component: {fileID: 1259023133563206874}
+  - component: {fileID: -2915332986251049647}
   m_Layer: 0
-  m_Name: HealingPopup
+  m_Name: BulletPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,19 @@ Transform:
   - {fileID: 1259023134489953938}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1259023133563206875
+--- !u!210 &1259023133563206874
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259023133563206873}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1000
+  m_SortAtRoot: 0
+--- !u!114 &-2915332986251049647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   permanent: 0
-  lifetime: 0.5
+  lifetime: 0.4
   unscaledTime: 0
   enable3DGame: 1
   faceCameraView: 1
@@ -67,7 +79,7 @@ MonoBehaviour:
   fovCamera: {fileID: 0}
   cameraOverride: {fileID: 0}
   enableNumber: 1
-  number: 30
+  number: 1
   numberSettings:
     bold: 0
     italic: 0
@@ -94,8 +106,9 @@ MonoBehaviour:
     - K
     - M
     - B
-    suffixDigits: 030000000300000003000000
-    maxDigits: 4
+    - T
+    suffixDigits: 03000000030000000300000003000000
+    maxDigits: 3
     suffixDecimals: 1
     suffixDecimalChar: .
     suffixHideZeros: 0
@@ -108,7 +121,7 @@ MonoBehaviour:
     strike: 0
     alpha: 1
     customColor: 0
-    color: {r: 1, g: 1, b: 0, a: 1}
+    color: {r: 0.7372549, g: 0.5529412, b: 0.15686275, a: 1}
     mark: 0
     markColor: {r: 0, g: 0, b: 0, a: 0.5}
     horizontal: 0
@@ -199,14 +212,14 @@ MonoBehaviour:
     toNumber: 100
   durationFadeIn: 0.25
   enableOffsetFadeIn: 1
-  offsetFadeIn: {x: 0.5, y: 0}
+  offsetFadeIn: {x: 0, y: 0.5}
   enableScaleFadeIn: 1
-  scaleFadeIn: {x: 2, y: 0.5}
-  enableCrossScaleFadeIn: 0
+  scaleFadeIn: {x: 0.5, y: 2}
+  enableCrossScaleFadeIn: 1
   crossScaleFadeIn: {x: 1, y: 1.5}
   enableShakeFadeIn: 1
-  shakeOffsetFadeIn: {x: 1.5, y: 0}
-  shakeFrequencyFadeIn: 8
+  shakeOffsetFadeIn: {x: 0, y: 2.5}
+  shakeFrequencyFadeIn: 4
   durationFadeOut: 0.2
   enableOffsetFadeOut: 0
   offsetFadeOut: {x: 0.5, y: 0}
@@ -222,10 +235,10 @@ MonoBehaviour:
     speed: 5
     minX: -0.4
     maxX: 0.4
-    minY: 0.5
-    maxY: 1
+    minY: 0.4
+    maxY: 0.7
     randomFlip: 0
-  enableVelocity: 1
+  enableVelocity: 0
   velocitySettings:
     minX: -1
     maxX: 1
@@ -235,9 +248,9 @@ MonoBehaviour:
     dragX: 0.1
     dragY: 1
     gravity: 3
-  enableShaking: 1
+  enableShaking: 0
   shakeSettings:
-    offset: {x: 0.002, y: 0.005}
+    offset: {x: 0.005, y: 0.005}
     frequency: 50
   enableFollowing: 0
   followedTarget: {fileID: 0}
@@ -294,12 +307,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enableScaleByNumber: 1
+  enableScaleByNumber: 0
   scaleByNumberSettings:
     fromNumber: 0
     toNumber: 1000
     fromScale: 1
-    toScale: 3
+    toScale: 2
   enableScaleOverTime: 0
   scaleOverTime:
     serializedVersion: 2
@@ -329,13 +342,13 @@ MonoBehaviour:
   defaultOrthographicSize: 5
   maxOrthographicSize: 1.5
   orthographicCamera: {fileID: 0}
-  spamGroup: 290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044290442904429044
+  spamGroup: Default
   enableCombination: 0
   combinationSettings:
-    method: 1
+    method: 0
     maxDistance: 10
-    spawnDelay: 0.25
-    absorbDuration: 0.35
+    spawnDelay: 0.2
+    absorbDuration: 0.4
     scaleCurve:
       serializedVersion: 2
       m_Curve:
@@ -411,7 +424,7 @@ MonoBehaviour:
   enableDestruction: 1
   destructionSettings:
     maxDistance: 2
-    spawnDelay: 0.2
+    spawnDelay: 0.3
     duration: 0.3
     scaleCurve:
       serializedVersion: 2
@@ -461,11 +474,11 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  enableCollision: 0
+  enableCollision: 1
   collisionSettings:
-    radius: 0.5
-    pushFactor: 1
-    desiredDirection: {x: 0, y: 0, z: 0}
+    radius: 2
+    pushFactor: 0.5
+    desiredDirection: {x: 0, y: 2, z: 0}
   enablePush: 0
   pushSettings:
     radius: 3
@@ -476,18 +489,6 @@ MonoBehaviour:
   disableOnSceneLoad: 1
   editorLastFont: Pixel-Glow3D
   position: {x: 0, y: 0, z: 0}
---- !u!210 &1259023133563206874
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259023133563206873}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1000
-  m_SortAtRoot: 0
 --- !u!1 &1259023134489953937
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1259023134845127203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -676,7 +677,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +30
+  m_text: +<u>1</u>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c531f7132a5fa44a87992df50ab3582, type: 2}
   m_sharedMaterial: {fileID: 7813419849211700074, guid: 9c531f7132a5fa44a87992df50ab3582, type: 2}
@@ -686,7 +687,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4282137855
-  m_fontColor: {r: 1, g: 0.23529412, b: 0.23529412, a: 1}
+  m_fontColor: {r: 0.7372549, g: 0.5529412, b: 0.15686275, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -709,7 +710,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

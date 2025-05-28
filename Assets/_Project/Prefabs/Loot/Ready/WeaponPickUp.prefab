@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 6705379347325862205}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88, y: 1.11, z: -3.71}
+  m_LocalPosition: {x: 2, y: 1.11, z: -3.71}
   m_LocalScale: {x: 1.3712, y: 1.3712, z: 1.3712}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 6898676644082228745, guid: 20721355d2a3640268b570576f1a8726, type: 3}
+  _effectPrefab: {fileID: 0}
+  _damageNumber: {fileID: -2915332986251049647, guid: 2111e4e7495674a4a826fa1ce1378bbd, type: 3}
 --- !u!114 &-4949460836686396443
 MonoBehaviour:
   m_ObjectHideFlags: 0
