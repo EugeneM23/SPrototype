@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6254490439261344806}
   - component: {fileID: 5737323738552138633}
   - component: {fileID: -6291055762530302480}
+  - component: {fileID: 4534211283834124552}
   m_Layer: 8
   m_Name: Melle_Weapon
   m_TagString: Untagged
@@ -93,6 +94,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 5737323738552138633}
   - {fileID: -6291055762530302480}
+  - {fileID: 4534211283834124552}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -138,10 +140,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackrate: 0.5
   _damageCastDelay: 0
-  _damage: 50
+  _damage: 300
   _range: 4
   _shakeDuration: 0.2
   _shakeMagnitude: 0.2
+--- !u!114 &4534211283834124552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184137841470919376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd7b2566de044a9e834f4661aa81ca13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

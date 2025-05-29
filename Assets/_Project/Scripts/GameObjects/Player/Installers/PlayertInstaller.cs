@@ -20,11 +20,12 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_weaponBone).AsCached();
-            
-            Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity)
+
+            Container
+                .Bind<Entity>()
+                .WithId(CharacterParameterID.CharacterEntity)
                 .FromInstance(gameObject.GetComponent<Entity>())
                 .AsCached();
-
 
             Container
                 .BindInterfacesAndSelfTo<Player>()
@@ -51,6 +52,7 @@ namespace Gameplay
                 .Bind<TargetComponent>()
                 .AsSingle()
                 .NonLazy();
+
         }
     }
 }

@@ -1,28 +1,31 @@
+using UnityEngine;
+
 namespace Gameplay
 {
     public class EnemyDeathObserver
     {
-        private readonly Entity _health;
-        private readonly PushComponent _pushComponent;
+        private readonly Entity _enemy;
         private readonly LootSpawnComponent _lootSpawnComponent;
+        private readonly PlayerCharacterProvider _player;
 
-        public EnemyDeathObserver(PushComponent pushComponent, Entity health, LootSpawnComponent lootSpawnComponent)
+        public EnemyDeathObserver(Entity enemy, LootSpawnComponent lootSpawnComponent, PlayerCharacterProvider player)
         {
-            _pushComponent = pushComponent;
-            _health = health;
+            _enemy = enemy;
             _lootSpawnComponent = lootSpawnComponent;
-            _health.OnDispose += _ => ResetComponents();
-            _health.OnDispose += SpawnLoot;
+            _player = player;
+            _enemy.OnDispose += SpawnLoot;
         }
 
         private void SpawnLoot(Entity enemy)
         {
-            _lootSpawnComponent.SpawnLoot(enemy);
-        }
-
-        private void ResetComponents()
-        {
-            _pushComponent.Reset();
+            var weapon = _player.Character.Get<PlayerWeaponManager>().CurrentWeapon;
+            if (weapon.TryGet<WeaponTypeHandler>(out var handler))
+            {
+                if (handler.WeaponType == WeaponType.Melle)
+                {
+                    _lootSpawnComponent.SpawnLoot(enemy);
+                }
+            }
         }
     }
 }

@@ -27,7 +27,6 @@ namespace Gameplay
                 }
                 else
                 {
-                    Debug.Log(_self.name);
                     _self.Dispose();
                     _isEnabled = false;
                 }

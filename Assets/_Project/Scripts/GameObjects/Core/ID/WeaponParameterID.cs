@@ -22,6 +22,7 @@ namespace Gameplay
         BulletCount,
         ReloadStatusUI,
         SecondWeapon,
-        FisrstWeapon
+        FisrstWeapon,
+        WeaponType
     }
 }

@@ -14,7 +14,6 @@ namespace Gameplay
         {
             Container.Bind<Transform>().WithId(DamageRootID.WeaponDamageRoot).FromInstance(_damageRoot).AsCached();
 
-
             Container
                 .BindInterfacesAndSelfTo<WeaponCameraShakeAction>()
                 .AsSingle()
