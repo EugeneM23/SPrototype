@@ -18,8 +18,8 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            GameObject go = new GameObject("BulletPool");
-
+            Container.Bind<Entity>().WithId(WeaponParameterID.BulletPrefab).FromInstance(_bulletPrefab).AsCached();
+            Container.Bind<Entity>().WithId(WeaponParameterID.ShellPrefab).FromInstance(_shellPrefab).AsCached();
 
             Container
                 .Bind<WeaponShootComponent>()
@@ -56,26 +56,6 @@ namespace Gameplay
             Container
                 .BindInterfacesAndSelfTo<WeaponCooldownAction>()
                 .AsSingle();
-
-            Container
-                .BindMemoryPool<Entity, BulletPool>()
-                .FromComponentInNewPrefab(_bulletPrefab)
-                .UnderTransform(go.transform);
-
-            Container
-                .Bind<IBulletSpawner>()
-                .To<BulletPool>()
-                .FromResolve();
-
-            Container
-                .BindMemoryPool<Shell, ShellPool>()
-                .FromComponentInNewPrefab(_shellPrefab)
-                .UnderTransform(go.transform);
-
-            Container
-                .Bind<IShellSpawner>()
-                .To<ShellPool>()
-                .FromResolve();
 
             Container
                 .BindInterfacesAndSelfTo<WeaponFireController>()

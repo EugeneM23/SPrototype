@@ -8,7 +8,6 @@ namespace Gameplay
 {
     public class EnemyInstaller : MonoInstaller
     {
-        [SerializeField] private ParticleSystem _hitEffect;
         [SerializeField] private Transform _melleWeaponRoot;
         [SerializeField] private Transform _rangeWeaponRoot;
         [SerializeField] private Entity _entity;
@@ -33,16 +32,6 @@ namespace Gameplay
             Container.Bind<CharacterConditions>().AsSingle().NonLazy();
             Container
                 .BindInterfacesAndSelfTo<CharacterAnimationController>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .Bind<PlayEffectComponent>()
-                .AsSingle()
-                .WithArguments(_hitEffect).NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<TakeDamageEffectSpawnController>()
                 .AsSingle()
                 .NonLazy();
 

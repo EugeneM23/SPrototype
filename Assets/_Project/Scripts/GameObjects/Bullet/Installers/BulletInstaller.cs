@@ -4,7 +4,7 @@ using Zenject;
 
 public class BulletInstaller : MonoInstaller
 {
-    [SerializeField] private ParticleSystem _impactEffect;
+    [SerializeField] private Entity _effect;
 
     public override void InstallBindings()
     {
@@ -14,13 +14,13 @@ public class BulletInstaller : MonoInstaller
             .NonLazy();
 
         Container
-            .BindInterfacesAndSelfTo<BulletDamageEntiyCollisionAction>()
+            .BindInterfacesAndSelfTo<BulletDamageAction>()
             .AsSingle()
             .NonLazy();
         Container
             .BindInterfacesAndSelfTo<BulletEnviromentHitAction>()
             .AsSingle()
-            .WithArguments(_impactEffect)
+            .WithArguments(_effect)
             .NonLazy();
 
         Container

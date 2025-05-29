@@ -1,5 +1,4 @@
 using DamageNumbersPro;
-using Game;
 using Gameplay.Installers;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -15,7 +14,6 @@ namespace Gameplay
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private Transform _weaponBone;
-        [SerializeField] private Entity _entityPrefab;
 
         public override void InstallBindings()
         {
@@ -36,7 +34,6 @@ namespace Gameplay
             PlayerHealthInstaller.Install(Container, _playerSetings.MaxHealth, _healtBarOffset, gameObject.transform,
                 healtBar, _popupPrefab);
             PlayerAnimationInstaller.Install(Container);
-            PlayerEffectsInstaller.Install(Container, _hitEffect);
 
             Container
                 .BindInterfacesAndSelfTo<PlayerWeaponManager>()
@@ -52,7 +49,6 @@ namespace Gameplay
                 .Bind<TargetComponent>()
                 .AsSingle()
                 .NonLazy();
-
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Gameplay
     public class BulletHitCntroller : IInitializable, IDisposable
     {
         private readonly CollisionComponent _collisionComponent;
-        BulletHitComponent _bulletHitComponent;
+        private readonly BulletHitComponent _bulletHitComponent;
 
         public BulletHitCntroller(CollisionComponent collisionComponent, BulletHitComponent bulletHitComponent)
         {

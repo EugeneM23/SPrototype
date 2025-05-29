@@ -40,10 +40,10 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container
+            /*Container
                 .BindInterfacesAndSelfTo<TakeDamageEffectSpawnController>()
                 .AsSingle()
-                .NonLazy();
+                .NonLazy();*/
 
 
             Container

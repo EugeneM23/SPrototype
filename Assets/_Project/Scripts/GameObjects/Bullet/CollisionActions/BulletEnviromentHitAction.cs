@@ -4,19 +4,22 @@ namespace Gameplay
 {
     public class BulletEnviromentHitAction : BulletHitComponent.IEnviromentCollisionAction
     {
-        private readonly ParticleSystem _particleSystem;
+        private readonly Entity _effect;
+        private readonly GameFactory _factory;
 
-        public BulletEnviromentHitAction(ParticleSystem particleSystem)
+        public BulletEnviromentHitAction(Entity effect, GameFactory factory)
         {
-            _particleSystem = particleSystem;
+            _effect = effect;
+            _factory = factory;
         }
 
         public void Invoke(Collision collision)
         {
             ContactPoint point = collision.contacts[0];
             Quaternion rotation = Quaternion.LookRotation(point.normal);
-            Object.Instantiate(_particleSystem, collision.contacts[0].point, rotation);
+            var effect = _factory.Create(_effect);
+            effect.transform.position = point.point;
+            effect.transform.rotation = rotation;
         }
-        
     }
 }

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Gameplay
@@ -10,21 +8,6 @@ namespace Gameplay
         [SerializeField] private int _lifeTime = 2;
 
         private Vector3 _impulseVector3;
-        public event Action<Shell> OnDispose;
-
-        public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
-        {
-            transform.position = position;
-            transform.rotation = rotation;
-        }
-
-        private void OnEnable() => StartCoroutine(LifeRoutine());
-
-        private IEnumerator LifeRoutine()
-        {
-            yield return new WaitForSeconds(_lifeTime);
-            OnDispose?.Invoke(this);
-        }
 
         public void SetImpulse(Vector3 impulseVecctor, float power)
         {

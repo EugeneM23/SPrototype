@@ -167,3 +167,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 0}
+  _isDisposableOverTime: 1
+  _destroyTime: 2

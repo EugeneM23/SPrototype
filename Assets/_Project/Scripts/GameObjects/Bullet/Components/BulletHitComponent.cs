@@ -5,6 +5,8 @@ namespace Gameplay
 {
     public class BulletHitComponent
     {
+        private readonly Entity _bullet;
+
         public interface IEntiyCollisionAction
         {
             void Invoke(IEntity entity);
@@ -19,10 +21,11 @@ namespace Gameplay
         private readonly List<IEnviromentCollisionAction> _enviromentActions;
 
         public BulletHitComponent(List<IEnviromentCollisionAction> enviromentActions,
-            List<IEntiyCollisionAction> entityActions)
+            List<IEntiyCollisionAction> entityActions, Entity bullet)
         {
             _enviromentActions = enviromentActions;
             _entityActions = entityActions;
+            _bullet = bullet;
         }
 
         public void OnHit(Collision collision)
@@ -30,7 +33,12 @@ namespace Gameplay
             if (collision.gameObject.TryGetComponent(out IEntity entity))
                 _entityActions.ForEach(action => action.Invoke(entity));
             else
+            {
+                Debug.Log("OnHit" + collision.gameObject.name);
                 _enviromentActions.ForEach(action => action.Invoke(collision));
+            }
+
+            _bullet.Dispose();
         }
     }
 }

@@ -19,12 +19,11 @@ namespace Gameplay
         private void SpawnLoot(Entity enemy)
         {
             var weapon = _player.Character.Get<PlayerWeaponManager>().CurrentWeapon;
+            
             if (weapon.TryGet<WeaponTypeHandler>(out var handler))
             {
-                if (handler.WeaponType == WeaponType.Melle)
-                {
+                if (handler.WeaponType == WeaponType.Melle) 
                     _lootSpawnComponent.SpawnLoot(enemy);
-                }
             }
         }
     }

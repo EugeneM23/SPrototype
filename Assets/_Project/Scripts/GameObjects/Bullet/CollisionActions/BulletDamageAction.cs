@@ -3,9 +3,8 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BulletDamageEntiyCollisionAction : BulletHitComponent.IEntiyCollisionAction
+    public class BulletDamageAction : BulletHitComponent.IEntiyCollisionAction
     {
-        [Inject(Id = WeaponParameterID.Damage)]
         private int _damage;
 
         public void Invoke(IEntity entity)
@@ -13,5 +12,7 @@ namespace Gameplay
             if (entity.TryGet(out IDamageable damageable))
                 damageable.TakeDamage(_damage);
         }
+
+        public void SetDamage(int damage) => _damage = damage;
     }
 }

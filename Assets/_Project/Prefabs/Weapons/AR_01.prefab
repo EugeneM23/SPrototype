@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 7487418093101285224}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &-3084512640100155572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,7 +263,7 @@ MonoBehaviour:
   bulletSpeed: 50
   ShakeDuration: 0.1
   shakeMagnitude: 0.1
-  shellImpulse: 15
+  shellImpulse: 4
   projectileCount: 1
   maxRicochetCount: 2
 --- !u!114 &3750572362710063219

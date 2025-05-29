@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BackPackInstaller : MonoInstaller
+    public class InventoryInstaller : MonoInstaller
     {
         [SerializeField] private int _bulletCount;
         [SerializeField] private List<Entity> _weapons;

@@ -23,6 +23,8 @@ namespace Gameplay
         ReloadStatusUI,
         SecondWeapon,
         FisrstWeapon,
-        WeaponType
+        WeaponType,
+        BulletPrefab,
+        ShellPrefab
     }
 }

@@ -140,7 +140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackrate: 0.5
   _damageCastDelay: 0
-  _damage: 300
+  _damage: 500
   _range: 4
   _shakeDuration: 0.2
   _shakeMagnitude: 0.2

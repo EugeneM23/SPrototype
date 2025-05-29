@@ -19,12 +19,30 @@ namespace Gameplay
         public event Action OnEntityStart;
 
         [SerializeField] private GameObjectContext _context;
+        [SerializeField] private bool _isDisposableOverTime;
+        [SerializeField] private float _destroyTime;
+
+        private float _timer;
 
         private void Start() => OnEntityStart?.Invoke();
 
-        private void OnEnable() => OnEntityEnable?.Invoke();
+        private void OnEnable()
+        {
+            _timer = _destroyTime;
+            OnEntityEnable?.Invoke();
+        }
 
         private void OnDisable() => OnEntityDisable?.Invoke();
+
+        private void Update()
+        {
+            if (_isDisposableOverTime)
+            {
+                _timer -= Time.deltaTime;
+                if (_timer <= 0)
+                    Dispose();
+            }
+        }
 
         public T Get<T>()
         {
@@ -39,11 +57,9 @@ namespace Gameplay
                 value = typedValue;
                 return true;
             }
-            else
-            {
-                value = default;
-                return false;
-            }
+
+            value = default;
+            return false;
         }
 
         public void Dispose() => OnDispose?.Invoke(this);

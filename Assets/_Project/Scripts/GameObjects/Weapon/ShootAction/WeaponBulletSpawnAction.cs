@@ -14,20 +14,36 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.ProjectileSpawnDelay)]
         private float _delay;
 
-        private readonly Entity _entity;
+        [Inject(Id = WeaponParameterID.BulletSpeed)]
+        private float _bulletSpeed;
+
+        [Inject(Id = WeaponParameterID.Damage)]
+        private int _bulletDamage;
+
+        private readonly GameFactory _factory;
+        private readonly Entity _bulletPrefab;
+
+        private readonly Entity _character;
         private readonly TargetComponent _targetComponent;
         private readonly Transform _firePoint;
-        private IBulletSpawner _bulletSpawner;
         private float _timer;
         private bool _needSpawn;
 
-        public WeaponBulletSpawnAction(TargetComponent targetComponent, Transform firePoint,
-            IBulletSpawner bulletSpawner, [Inject(Id = CharacterParameterID.CharacterEntity)] Entity entity)
+        public WeaponBulletSpawnAction(
+            TargetComponent targetComponent,
+            Transform firePoint,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
+            Entity character,
+            GameFactory factory,
+            [Inject(Id = WeaponParameterID.BulletPrefab)]
+            Entity bulletPrefab
+        )
         {
             _targetComponent = targetComponent;
             _firePoint = firePoint;
-            _bulletSpawner = bulletSpawner;
-            _entity = entity;
+            _character = character;
+            _factory = factory;
+            _bulletPrefab = bulletPrefab;
         }
 
         public void Tick()
@@ -40,9 +56,12 @@ namespace Gameplay
                 for (int i = 0; i < _projectileCount; i++)
                 {
                     Quaternion rotation = CalculatRotation();
-                    Entity bullet = _bulletSpawner.Create();
+                    //Entity bullet = _bulletSpawner.Create();
+                    Entity bullet = _factory.Create(_bulletPrefab);
                     bullet.gameObject.transform.position = _firePoint.position;
                     bullet.gameObject.transform.rotation = rotation;
+                    bullet.Get<BulletMoveComponent>().SetSeed(_bulletSpeed);
+                    bullet.Get<BulletDamageAction>().SetDamage(_bulletDamage);
                 }
 
                 _needSpawn = false;
@@ -61,7 +80,7 @@ namespace Gameplay
 
             Vector3 targetPosition = _targetComponent.Target.position + Vector3.up * 1.5f;
 
-            Vector3 directionToTarget = (targetPosition - _entity.transform.position).normalized;
+            Vector3 directionToTarget = (targetPosition - _character.transform.position).normalized;
             //Vector3 directionToTarget =  _firePoint.forward.normalized;
 
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);

@@ -586,7 +586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _isCycle
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _spawnTime
@@ -1486,6 +1486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponPickUp
       objectReference: {fileID: 0}
+    - target: {fileID: 8107050508049470670, guid: 1c85b82a31b2e43319ed34445c24220e, type: 3}
+      propertyPath: _weapon
+      value: 
+      objectReference: {fileID: 6254490439261344806, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

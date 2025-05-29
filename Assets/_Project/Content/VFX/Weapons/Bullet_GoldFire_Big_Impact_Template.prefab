@@ -33519,9 +33519,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4541196389373984}
   - component: {fileID: 114442657134609654}
-  - component: {fileID: 114355610240550960}
   - component: {fileID: 199670649110357256}
   - component: {fileID: 198063466146349274}
+  - component: {fileID: 9018395558218758256}
   m_Layer: 0
   m_Name: Bullet_GoldFire_Big_Impact_Template
   m_TagString: Untagged
@@ -33763,19 +33763,6 @@ MonoBehaviour:
       m_NumAlphaKeys: 4
   applyChanges: 0
   Keep_applyChanges: 0
---- !u!114 &114355610240550960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1879272669879180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a895231490da6545890b1e1794f8704, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathtimer: 5
 --- !u!199 &199670649110357256
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -38588,6 +38575,21 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &9018395558218758256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879272669879180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b8b812c65e45c6bb1ce2958d1943a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _context: {fileID: 0}
+  _isDisposableOverTime: 1
+  _destroyTime: 1
 --- !u!1 &1947723841646622
 GameObject:
   m_ObjectHideFlags: 0

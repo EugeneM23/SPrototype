@@ -5,7 +5,6 @@ namespace Gameplay
 {
     public class BulletMoveComponent : IBulletMoveComponent
     {
-        [Inject(Id = WeaponParameterID.BulletSpeed)]
         private float _bulletSpeed;
 
         private readonly Entity _bullet;
@@ -20,5 +19,7 @@ namespace Gameplay
         {
             _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _bulletSpeed;
         }
+
+        public void SetSeed(float seed) => _bulletSpeed = seed;
     }
 }

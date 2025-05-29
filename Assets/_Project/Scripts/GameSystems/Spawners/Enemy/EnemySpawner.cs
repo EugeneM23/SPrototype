@@ -13,6 +13,7 @@ namespace Gameplay
         private float _spawnTime;
         private bool IsCycle;
         private int _startCount;
+        private float _timer;
 
         public EnemySpawner(
             GameFactory spawner,
@@ -20,7 +21,9 @@ namespace Gameplay
             bool isCycle,
             float spawnTime,
             int startCount,
-            Entity enemyPrefab, EnemyPatrolPoints waypoints)
+            Entity enemyPrefab,
+            EnemyPatrolPoints waypoints
+        )
         {
             _spawner = spawner;
             _spawnPosition = spawnPosition;
@@ -39,20 +42,22 @@ namespace Gameplay
                 go.transform.position = _spawnPosition;
                 go.Get<EnemyPatrolState>().SetWaypoints(_waypoints);
             }
+
+            _timer = _spawnTime;
         }
 
         public void Tick()
         {
             if (IsCycle)
             {
-                _spawnTime -= Time.deltaTime;
-                if (_spawnTime <= 0)
+                _timer -= Time.deltaTime;
+                if (_timer <= 0)
                 {
                     var go = _spawner.Create(_enemyPrefab);
                     go.transform.position = _spawnPosition;
                     go.Get<EnemyPatrolState>().SetWaypoints(_waypoints);
                     go.Get<HealthComponent>();
-                    _spawnTime = 3;
+                    _timer = _spawnTime;
                 }
             }
         }

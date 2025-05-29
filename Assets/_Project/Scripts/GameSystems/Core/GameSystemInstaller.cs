@@ -16,7 +16,6 @@ namespace Gameplay
         {
             Application.targetFrameRate = _maximumFPS;
 
-            UIInstaller.Install(Container, _HUD);
             CameraInstaller.Install(Container, _cameraSmoothTime, _camera);
 
             Container
@@ -37,6 +36,7 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<DelayedAction>()
                 .AsSingle()
                 .NonLazy();
+            //UIInstaller.Install(Container, _HUD);
         }
     }
 }

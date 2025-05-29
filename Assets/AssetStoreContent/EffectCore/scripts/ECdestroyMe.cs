@@ -1,26 +1,35 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
+using Gameplay;
 
-public class ECdestroyMe : MonoBehaviour{
-
+public class ECdestroyMe : MonoBehaviour
+{
+    [SerializeField] private int destroyTime;
     float timer;
-    public float deathtimer = 10;
+    private Entity _entity;
+    private bool _isActive;
 
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    private void Start()
     {
-        timer += Time.deltaTime;
+        _entity = gameObject.GetComponent<Entity>();
+    }
 
-        if(timer >= deathtimer)
+    private void OnEnable()
+    {
+        timer = destroyTime;
+        _isActive = true;
+    }
+
+    void Update()
+    {
+        if (!_isActive) return;
+        timer -= Time.deltaTime;
+
+        if (timer <= 0)
         {
-            Destroy(gameObject);
+            _isActive = false;
+            _entity.Dispose();
         }
-	
-	}
+    }
 }

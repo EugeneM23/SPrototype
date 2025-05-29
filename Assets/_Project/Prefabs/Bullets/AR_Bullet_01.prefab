@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4234ed4764c32439da48669c3d79fc88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impactEffect: {fileID: 198063466146349274, guid: 019abd81a10c54ce8bdd5285084861ff, type: 3}
+  _effect: {fileID: 9018395558218758256, guid: 019abd81a10c54ce8bdd5285084861ff, type: 3}
 --- !u!114 &8699156800269933710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +275,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 3100162212723733663}
+  _isDisposableOverTime: 1
+  _destroyTime: 2
 --- !u!114 &-6308802520766017869
 MonoBehaviour:
   m_ObjectHideFlags: 0
