@@ -203,6 +203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 7487418093101285224}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &-3084512640100155572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
+  fireRate: 0.1
   projectileSpawnDelay: 0
   damage: 10
   scatter: 10
@@ -283,7 +285,7 @@ MonoBehaviour:
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
   _isRelodeable: 1
   _reloadTime: 2
-  _clipCapacity: 10
+  _clipCapacity: 300
 --- !u!114 &-1785734590832131113
 MonoBehaviour:
   m_ObjectHideFlags: 0

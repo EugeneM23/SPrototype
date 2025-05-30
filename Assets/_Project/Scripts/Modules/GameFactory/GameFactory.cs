@@ -10,28 +10,24 @@ namespace Gameplay
         private readonly DiContainer _container;
         private readonly Transform _poolsParent;
 
-        public GameFactory(DiContainer container, Entity[] lootPrefabs,
+        public GameFactory(
+            DiContainer container,
             [Inject(Id = "PoolsParent", Optional = true)]
-            Transform poolsParent)
+            Transform poolsParent
+        )
         {
             _pools = new Dictionary<string, EntityMemoryPool>();
             _container = container;
             _poolsParent = poolsParent;
-
-            foreach (var prefab in lootPrefabs)
-            {
-                var pool = container.ResolveId<EntityMemoryPool>(prefab.name);
-                _pools[prefab.name] = pool;
-            }
         }
 
-        public Entity Create(Entity prefab)
+        public Entity Create(Entity prefab, int initSize = 0)
         {
             string prefabName = prefab.name;
 
             if (!_pools.TryGetValue(prefabName, out var pool))
             {
-                RegisterNewPrefab(prefab);
+                RegisterNewPrefab(prefab, initSize);
                 pool = _pools[prefabName];
             }
 
@@ -39,7 +35,7 @@ namespace Gameplay
             return entity;
         }
 
-        private void RegisterNewPrefab(Entity prefab)
+        private void RegisterNewPrefab(Entity prefab, int iniSize = 0)
         {
             string prefabName = prefab.name;
 
@@ -48,11 +44,12 @@ namespace Gameplay
 
             _container.BindMemoryPool<Entity, EntityMemoryPool>()
                 .WithId(prefabName)
+                .WithInitialSize(iniSize)
                 .FromComponentInNewPrefab(prefab)
                 .UnderTransform(poolContainer.transform)
                 .NonLazy();
 
-            var pool = _container.ResolveId<EntityMemoryPool>(prefabName);
+            EntityMemoryPool pool = _container.ResolveId<EntityMemoryPool>(prefabName);
             _pools[prefabName] = pool;
         }
     }

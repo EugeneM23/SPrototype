@@ -1994,6 +1994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: -6075899849557144983}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &-7776074291255282540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2142,7 +2144,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   - {fileID: 11400000, guid: c7024dc2a82474142ba67b1672e5cb2a, type: 2}
   - {fileID: 11400000, guid: 67a2197a23a254120a49f97e79d4cd1b, type: 2}
-  - {fileID: 11400000, guid: c215007b38f3d4ddb839f4d14bceee4f, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}

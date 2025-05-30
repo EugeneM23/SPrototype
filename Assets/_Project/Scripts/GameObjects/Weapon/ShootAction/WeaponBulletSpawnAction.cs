@@ -56,8 +56,7 @@ namespace Gameplay
                 for (int i = 0; i < _projectileCount; i++)
                 {
                     Quaternion rotation = CalculatRotation();
-                    //Entity bullet = _bulletSpawner.Create();
-                    Entity bullet = _factory.Create(_bulletPrefab);
+                    Entity bullet = _factory.Create(_bulletPrefab, 10);
                     bullet.gameObject.transform.position = _firePoint.position;
                     bullet.gameObject.transform.rotation = rotation;
                     bullet.Get<BulletMoveComponent>().SetSeed(_bulletSpeed);

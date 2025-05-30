@@ -36,7 +36,7 @@ namespace Gameplay
                 .BindInterfacesAndSelfTo<DelayedAction>()
                 .AsSingle()
                 .NonLazy();
-            //UIInstaller.Install(Container, _HUD);
+            UIInstaller.Install(Container, _HUD);
         }
     }
 }
