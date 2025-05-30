@@ -9,12 +9,11 @@ namespace Modules
         [Inject(Id = CharacterParameterID.CharacterEntity)]
         private readonly Entity _root;
 
-        private readonly float _aimingSpeed;
         private readonly TargetComponent _targetComponent;
+        private readonly CharacterStats _stats;
 
-        public LookAtComponent(float aimingSpeed, TargetComponent targetComponent)
+        public LookAtComponent(TargetComponent targetComponent)
         {
-            _aimingSpeed = aimingSpeed;
             _targetComponent = targetComponent;
         }
 
@@ -32,7 +31,7 @@ namespace Modules
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
             _root.transform.rotation = Quaternion.RotateTowards(_root.transform.rotation, targetRotation,
-                _aimingSpeed * Time.deltaTime);
+                _stats.LookAtSpeed * Time.deltaTime);
 
             float angle = Quaternion.Angle(_root.transform.rotation, targetRotation);
             bool complite = angle < 0.1f;

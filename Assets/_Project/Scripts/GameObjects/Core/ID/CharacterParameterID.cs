@@ -11,6 +11,12 @@ namespace Gameplay
         Health,
         IsPushable,
         CharacterEntity,
-        MoveSpeed
+        MoveSpeed,
+        RunSpeed,
+        RotationSpeed,
+        LookAtSpeed,
+        StrafeSpeed,
+        StrafePower,
+        MaxHealth
     }
 }

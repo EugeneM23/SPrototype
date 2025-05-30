@@ -6,14 +6,11 @@ namespace Modules
 {
     public class RotationComponent
     {
-        [Inject(Id = CharacterParameterID.CharacterEntity)]
-        private readonly Entity _target;
+        private readonly CharacterStats _stats;
 
-        private readonly float _speed;
-
-        public RotationComponent(float speed)
+        public RotationComponent(CharacterStats stats)
         {
-            _speed = speed;
+            _stats = stats;
         }
 
         public void Ratation(Vector3 direction)
@@ -24,8 +21,9 @@ namespace Modules
 
                 Quaternion targetRotation = Quaternion.LookRotation(direction, Vector3.up);
 
-                _target.transform.rotation =
-                    Quaternion.Slerp(_target.transform.rotation, targetRotation, _speed * Time.deltaTime);
+                _stats.CharacterEntity.transform.rotation =
+                    Quaternion.Slerp(_stats.CharacterEntity.transform.rotation, targetRotation,
+                        _stats.RotationSpeed * Time.deltaTime);
             }
         }
     }

@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine.TextCore.Text;
 using Zenject;
 
 namespace Gameplay
@@ -13,23 +10,15 @@ namespace Gameplay
 
         private readonly Entity _entity;
 
-        private int _maxhealth;
+        private readonly CharacterStats _stats;
         private int _currentHealth;
 
-        public void Initialize()
-        {
-            _currentHealth = _maxhealth;
-        }
+        public void Initialize() => _currentHealth = _stats.MaxHealth;
 
-        public HealthComponent(
-            [Inject(Id = CharacterParameterID.CharacterEntity)]
-            Entity entity,
-            [Inject(Id = CharacterParameterID.Health)]
-            int maxhealth
-        )
+        public HealthComponent(CharacterStats stats, Entity entity)
         {
+            _stats = stats;
             _entity = entity;
-            _maxhealth = maxhealth;
         }
 
         public virtual void TakeDamage(int damage)
@@ -42,31 +31,19 @@ namespace Gameplay
             if (_currentHealth <= 0)
             {
                 _entity.Dispose();
-                _currentHealth = _maxhealth;
+                _currentHealth = _stats.MaxHealth;
                 OnHealthChanged?.Invoke(_currentHealth);
             }
         }
 
         public void Heal(int value)
         {
-            if (_currentHealth + value <= _maxhealth)
+            if (_currentHealth + value <= _stats.MaxHealth)
                 _currentHealth += value;
             else
-                _currentHealth = _maxhealth;
+                _currentHealth = _stats.MaxHealth;
 
             OnHealthChanged?.Invoke(_currentHealth);
         }
-    }
-
-    public class CharacterStats
-    {
-        [Inject(Id = CharacterParameterID.Health)]
-        private int _CurrentHealth;
-
-        [Inject(Id = CharacterParameterID.MoveSpeed, Optional = true)]
-        private int _movespeed;
-
-        [Inject(Id = CharacterParameterID.MoveSpeed, Optional = true)]
-        private float _attackrate;
     }
 }

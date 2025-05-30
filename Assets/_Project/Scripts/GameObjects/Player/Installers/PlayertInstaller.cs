@@ -1,7 +1,5 @@
 using DamageNumbersPro;
-using Gameplay.Installers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -9,8 +7,6 @@ namespace Gameplay
     public class PlayertInstaller : MonoInstaller
     {
         [SerializeField] private HealtBar healtBar;
-        [SerializeField] private ParticleSystem _hitEffect;
-        [SerializeField] private PlayerSetings _playerSetings;
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private Transform _weaponBone;
@@ -30,8 +26,8 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            PlayerMovementInstaller.Install(Container, _playerSetings);
-            PlayerHealthInstaller.Install(Container, _playerSetings.MaxHealth, _healtBarOffset, gameObject.transform,
+            PlayerMovementInstaller.Install(Container);
+            PlayerHealthInstaller.Install(Container, _healtBarOffset, gameObject.transform,
                 healtBar, _popupPrefab);
             PlayerAnimationInstaller.Install(Container);
 
@@ -50,7 +46,7 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container.Bind<CharacterStats>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
         }
     }
 }

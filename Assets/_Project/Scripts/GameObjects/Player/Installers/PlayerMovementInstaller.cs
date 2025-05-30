@@ -3,16 +3,14 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerMovementInstaller : Installer<PlayerSetings, PlayerMovementInstaller>
+    public class PlayerMovementInstaller : Installer<PlayerMovementInstaller>
     {
-        [Inject] private PlayerSetings _playerSetings;
 
         public override void InstallBindings()
         {
             Container
                 .Bind<PlayerMoveComponent>()
                 .AsSingle()
-                .WithArguments(_playerSetings.RunSpeed)
                 .NonLazy();
 
             Container
@@ -28,7 +26,6 @@ namespace Gameplay
             Container
                 .Bind<RotationComponent>()
                 .AsSingle()
-                .WithArguments( _playerSetings.RotationSpeed)
                 .NonLazy();
 
             Container
@@ -40,7 +37,6 @@ namespace Gameplay
             Container
                 .Bind<LookAtComponent>()
                 .AsSingle()
-                .WithArguments(_playerSetings.LookAtSpeed)
                 .NonLazy();
         }
     }

@@ -9,7 +9,7 @@ namespace Gameplay.Loot.PickUpObjects
             if (other.GetComponent<CharacterController>())
             {
                 Entity go = other.GetComponent<Entity>();
-                go.Get<PlayerMoveComponent>().SetSpeed(5);
+                go.Get<CharacterStats>().MoveSpeed = 20;
                 gameObject.SetActive(false);
             }
         }

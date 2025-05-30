@@ -6,18 +6,15 @@ using Zenject;
 namespace Gameplay
 {
     public class
-        PlayerHealthInstaller : Installer<int, Vector3, Transform, HealtBar, DamageNumber, PlayerHealthInstaller>
+        PlayerHealthInstaller : Installer<Vector3, Transform, HealtBar, DamageNumber, PlayerHealthInstaller>
     {
         [Inject] private HealtBar _healtBar;
         [Inject] private Transform _parent;
         [Inject] private Vector3 _hpBarOffset;
-        [Inject] private int _maxHealth;
         [Inject] private DamageNumber _damageNumber;
 
         public override void InstallBindings()
         {
-            Container.Bind<int>().WithId(CharacterParameterID.Health).FromInstance(_maxHealth).AsCached();
-
             Container
                 .BindInterfacesAndSelfTo<HealthComponent>()
                 .AsSingle()
@@ -49,7 +46,6 @@ namespace Gameplay
                 .FromComponentInNewPrefab(_healtBar)
                 .UnderTransform(_parent)
                 .AsSingle()
-                .WithArguments(_maxHealth)
                 .NonLazy();
         }
     }

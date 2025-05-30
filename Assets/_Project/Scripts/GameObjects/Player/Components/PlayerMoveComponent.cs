@@ -1,15 +1,19 @@
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
     public class PlayerMoveComponent
     {
         private readonly CharacterController _characterController;
+
+        [Inject(Id = CharacterParameterID.RunSpeed)]
         private float _speed;
 
-        public PlayerMoveComponent(float speed, CharacterController characterController)
+        public PlayerMoveComponent(
+            CharacterController characterController
+        )
         {
-            _speed = speed;
             _characterController = characterController;
         }
 
@@ -19,9 +23,15 @@ namespace Gameplay
             _characterController.Move(direction * _speed * Time.deltaTime);
         }
 
-        public void SetSpeed(float speed)
+        public void AddSpeed(float speedPerStack)
         {
-            _speed += speed;
+            if (_speed + speedPerStack < 0)
+            {
+                _speed = 0;
+                return;
+            }
+            
+            _speed += speedPerStack;
         }
     }
 }

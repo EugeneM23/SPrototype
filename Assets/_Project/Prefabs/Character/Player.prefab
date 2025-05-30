@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5696128465114512940}
   - component: {fileID: -3092696866831824943}
   - component: {fileID: 2092574877954839100}
+  - component: {fileID: 7525267871010334025}
   - component: {fileID: 8851841367444768159}
   - component: {fileID: 7387085180644060854}
   - component: {fileID: -1200308631884723926}
@@ -92,6 +93,7 @@ MonoBehaviour:
   - {fileID: 5696128465114512940}
   - {fileID: 1230073186054927667}
   - {fileID: 4326042711198811838}
+  - {fileID: 2625381723154630738}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 2092574877954839100}
@@ -113,9 +115,28 @@ MonoBehaviour:
   - {fileID: 8851841367444768159}
   - {fileID: 7387085180644060854}
   - {fileID: -2025946490574288008}
+  - {fileID: 7525267871010334025}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: -4519202324036515794}
+--- !u!114 &7525267871010334025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969062347157005148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a34a989f9094a1989fbb48d52592f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _runSpeed: 10
+  _rotationSpeed: 20
+  _lookAtSpeed: 50
+  _strafeSpeed: 0
+  _strafePower: 0
+  _maxHealth: 100
 --- !u!114 &8851841367444768159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,14 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healtBar: {fileID: -227575839315736592, guid: 6c1cc8cef5f3b4b5ab6d7ae21d931f97, type: 3}
-  _hitEffect: {fileID: 0}
-  _playerSetings:
-    <RunSpeed>k__BackingField: 10
-    <RotationSpeed>k__BackingField: 20
-    <LookAtSpeed>k__BackingField: 800
-    <StrafeSpeed>k__BackingField: 3
-    <StrafePower>k__BackingField: 5
-    <MaxHealth>k__BackingField: 1000
   _healtBarOffset: {x: 0, y: 2, z: -2.5}
   _popupPrefab: {fileID: 1259023133563206875, guid: bc1bb8c54137147a6b63b144771df4cf, type: 3}
   _weaponBone: {fileID: 1230073187006417640}
