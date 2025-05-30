@@ -49,6 +49,8 @@ namespace Gameplay
                 .Bind<TargetComponent>()
                 .AsSingle()
                 .NonLazy();
+
+            Container.Bind<CharacterStats>().AsSingle().NonLazy();
         }
     }
 }

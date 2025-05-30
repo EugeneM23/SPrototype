@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using UnityEngine.TextCore.Text;
 using Zenject;
 
 namespace Gameplay
@@ -7,7 +10,7 @@ namespace Gameplay
     {
         public event Action<int> OnHealthChanged;
         public event Action<int> OnTakeDamaged;
-        
+
         private readonly Entity _entity;
 
         private int _maxhealth;
@@ -53,5 +56,17 @@ namespace Gameplay
 
             OnHealthChanged?.Invoke(_currentHealth);
         }
+    }
+
+    public class CharacterStats
+    {
+        [Inject(Id = CharacterParameterID.Health)]
+        private int _CurrentHealth;
+
+        [Inject(Id = CharacterParameterID.MoveSpeed, Optional = true)]
+        private int _movespeed;
+
+        [Inject(Id = CharacterParameterID.MoveSpeed, Optional = true)]
+        private float _attackrate;
     }
 }
