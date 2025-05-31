@@ -46,7 +46,10 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
+            Container
+                .BindInterfacesAndSelfTo<BuffManager>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

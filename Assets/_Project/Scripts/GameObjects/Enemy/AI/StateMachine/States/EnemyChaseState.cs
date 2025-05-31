@@ -6,6 +6,7 @@ namespace Gameplay
 {
     public class EnemyChaseState : IState
     {
+        private readonly CharacterStats _stats;
         private EnemyMoveComponent _moveComponent;
         private readonly CharacterConditions _conditions;
         private readonly TargetComponent _targetComponent;
@@ -14,15 +15,19 @@ namespace Gameplay
         public EnemyChaseState(
             CharacterConditions conditions,
             TargetComponent targetComponent,
-            EnemyMoveComponent moveComponent
-        )
+            EnemyMoveComponent moveComponent, CharacterStats stats)
         {
             _conditions = conditions;
             _targetComponent = targetComponent;
             _moveComponent = moveComponent;
+            _stats = stats;
         }
 
-        public void Enter() => _conditions.IsChasing = true;
+        public void Enter()
+        {
+            _conditions.IsChasing = true;
+            _moveComponent.AddSpeed(_stats.ChaseSpeed);
+        }
 
         public void Update(float deltaTime)
         {
@@ -30,9 +35,13 @@ namespace Gameplay
 
             if (_target == null) return;
 
-            _moveComponent.MoveTo(_target.position);
+            _moveComponent.Move(_target.position);
         }
 
-        public void Exit() => _conditions.IsChasing = false;
+        public void Exit()
+        {
+            _conditions.IsChasing = false;
+            _moveComponent.AddSpeed(-_stats.ChaseSpeed);
+        }
     }
 }

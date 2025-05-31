@@ -64,12 +64,7 @@ namespace Gameplay
         public float AttackRotationSpeed => _attackRotationSpeed;
         public float AttackRange => _attackRange;
         public float ChaseRange => _chaseRange;
-
-        public float MoveSpeed
-        {
-            get => _moveSpeed;
-            set => _moveSpeed = value;
-        }
+        public float MoveSpeed => _moveSpeed;
 
         public bool IsPushable => _isPushable;
         public Entity CharacterEntity => _characterEntity;

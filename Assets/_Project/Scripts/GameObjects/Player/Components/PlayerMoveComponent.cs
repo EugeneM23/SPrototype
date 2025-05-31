@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerMoveComponent
+    public class PlayerMoveComponent : IMove
     {
         private readonly CharacterController _characterController;
 
@@ -19,6 +19,7 @@ namespace Gameplay
 
         public void Move(Vector3 direction)
         {
+            Debug.Log(_speed);
             direction += Physics.gravity;
             _characterController.Move(direction * _speed * Time.deltaTime);
         }
@@ -30,7 +31,7 @@ namespace Gameplay
                 _speed = 0;
                 return;
             }
-            
+
             _speed += speedPerStack;
         }
     }

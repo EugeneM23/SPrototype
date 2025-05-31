@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runSpeed: 10
   _rotationSpeed: 20
-  _lookAtSpeed: 50
+  _lookAtSpeed: 500
   _strafeSpeed: 0
   _strafePower: 0
   _maxHealth: 100

@@ -1,4 +1,3 @@
-using System;
 using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
@@ -9,22 +8,36 @@ namespace Gameplay
     {
         [SerializeField] private int _speed;
         [SerializeField] private Entity _effectPrefab;
+        [SerializeField] private Entity _uiPrefab;
         [SerializeField] private DamageNumber _damageNumber;
         [Inject] private readonly GameFactory _factory;
         [Inject] private readonly DiContainer _container;
 
         private BuffBase _buff;
+        private Entity _target;
+        private Entity go;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<CharacterController>())
+            if (other.GetComponent<Entity>().TryGet<BuffManager>(out var value))
             {
-                Entity target = other.GetComponent<Entity>();
-                _buff = new BuffRunSpeed(target, _speed);
-                target.Get<BuffManager>().AddBuff(_buff);
+                _target = other.GetComponent<Entity>();
+                _buff = new BuffRage(_target, _speed, true, true, 3, 3);
+                _buff.OnApply += SpawnUi;
+                value.AddBuff(_buff);
 
-                SpawnEffects(target);
+                SpawnEffects(_target);
             }
+        }
+
+        private void SpawnUi()
+        {
+            go = _factory.Create(_uiPrefab);
+            go.transform.SetParent(_target.transform);
+
+            _buff.OnDiscard += go.Dispose;
+            _buff.OnStack += go.GetComponent<RageUI>().UpdateStack;
+            go.GetComponent<RageUI>().UpdateStack(1);
         }
 
         private void SpawnEffects(Entity target)
@@ -37,8 +50,10 @@ namespace Gameplay
 
         private void OnTriggerExit(Collider other)
         {
-            Entity target = other.GetComponent<Entity>();
-            target.Get<BuffManager>().RemoveBuff(_buff);
+            if (other.GetComponent<Entity>().TryGet<BuffManager>(out var value))
+            {
+                Entity target = other.GetComponent<Entity>();
+            }
         }
     }
 }

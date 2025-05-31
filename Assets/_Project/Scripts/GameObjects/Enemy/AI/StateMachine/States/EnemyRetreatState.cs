@@ -36,7 +36,7 @@ namespace Gameplay
             _characterConditions.IsChasing = true;
 
             _destination = _randomPosition.GetRandomPositionInSquare();
-            _entity.Get<EnemyMoveComponent>().MoveTo(_destination);
+            _entity.Get<EnemyMoveComponent>().Move(_destination);
         }
 
         public void Exit()

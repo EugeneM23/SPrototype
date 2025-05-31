@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyMoveComponent : IInitializable, IDisposable
+    public class EnemyMoveComponent : IInitializable, IDisposable, IMove
     {
         public interface IAction
         {
@@ -14,18 +14,30 @@ namespace Gameplay
             void Action();
         }
 
+        private float _enemySpeed;
+
+        private readonly CharacterStats _stats;
         private readonly NavMeshAgent _agent;
         private readonly CharacterConditions _conditions;
         private readonly List<IAction> _actions;
 
-        public EnemyMoveComponent(NavMeshAgent agent, CharacterConditions conditions, List<IAction> actions)
+        public EnemyMoveComponent(NavMeshAgent agent, CharacterConditions conditions, List<IAction> actions,
+            CharacterStats stats)
         {
             _agent = agent;
             _conditions = conditions;
             _actions = actions;
+            _stats = stats;
+            _enemySpeed = _stats.PatrolSpeed;
         }
 
-        public void MoveTo(Vector3 destination) => _agent.SetDestination(destination);
+        public void Move(Vector3 destination)
+        {
+            _agent.SetDestination(destination);
+            _agent.speed = _enemySpeed;
+        }
+
+        public void AddSpeed(float speed) => _enemySpeed += speed;
 
         public void Initialize() => _conditions.OnValueChanged += DoAction;
 
@@ -37,5 +49,11 @@ namespace Gameplay
                 if (action.Condition())
                     action.Action();
         }
+    }
+
+    public interface IMove
+    {
+        void Move(Vector3 destination);
+        void AddSpeed(float speed);
     }
 }

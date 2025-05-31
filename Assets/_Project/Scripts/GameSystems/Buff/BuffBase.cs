@@ -1,23 +1,29 @@
+using System;
 using UnityEngine;
 
 namespace Gameplay
 {
     public abstract class BuffBase
     {
+        public event Action OnApply;
+        public event Action OnDiscard;
+        public event Action<int> OnStack;
+
+        private readonly Entity rageUi;
         protected readonly Entity target;
         private readonly bool isStackable;
         private readonly bool isTimed;
         private readonly float duration;
         private readonly int maxStack;
 
-        private float startTime;
+        public float StartTime { get; private set; }
         protected int stackCount = 1;
 
         public bool IsStackable => isStackable;
         public bool IsTimed => isTimed;
         public int StackCount => stackCount;
 
-        protected BuffBase(Entity target, bool isStackable = false, bool isTimed = false,
+        protected BuffBase(Entity target, Entity rageUi, bool isStackable = false, bool isTimed = false,
             float duration = 0f, int maxStack = 1)
         {
             this.target = target;
@@ -25,21 +31,26 @@ namespace Gameplay
             this.isTimed = isTimed;
             this.duration = duration;
             this.maxStack = maxStack;
+            this.rageUi = rageUi;
         }
 
         public virtual void Apply()
         {
             if (isTimed)
-                startTime = Time.time;
+                StartTime = Time.time;
+            OnApply?.Invoke();
         }
 
         public virtual void Tick()
         {
         }
 
-        public abstract void Discard();
+        public virtual void Discard()
+        {
+            OnDiscard?.Invoke();
+        }
 
-        public bool IsExpired() => isTimed && (Time.time - startTime) >= duration;
+        public bool IsExpired() => isTimed && (Time.time - StartTime) >= duration;
 
         public void AddStack()
         {
@@ -51,11 +62,9 @@ namespace Gameplay
         public void RefreshTimer()
         {
             if (isTimed)
-                startTime = Time.time;
+                StartTime = Time.time;
         }
 
-        protected virtual void OnStackAdded()
-        {
-        }
+        protected virtual void OnStackAdded() => OnStack?.Invoke(stackCount);
     }
 }

@@ -7,28 +7,21 @@ namespace Gameplay
 {
     public class EnemyPatrolState : IState, IInitializable
     {
-        [Inject(Id = CharacterParameterID.PatrolSpeed)]
-        private readonly float _patrolSpeed;
-
-        private readonly Entity _entity;
+        private readonly CharacterStats _stats;
         private readonly CharacterConditions _conditions;
         private Transform[] _waypoints;
         private int _currentWaypointIndex;
         private const float StoppingDistance = 3f;
 
-        public EnemyPatrolState(
-            [Inject(Id = CharacterParameterID.CharacterEntity)]
-            Entity entity,
-            CharacterConditions conditions
-        )
+        public EnemyPatrolState(CharacterConditions conditions, CharacterStats stats)
         {
-            _entity = entity;
             _conditions = conditions;
+            _stats = stats;
         }
 
         public void Initialize()
         {
-            if (_entity.TryGet<EnemyPatrolPoints>(out EnemyPatrolPoints points))
+            if (_stats.CharacterEntity.TryGet<EnemyPatrolPoints>(out EnemyPatrolPoints points))
                 _waypoints = points.GetWaypoints();
         }
 
@@ -48,7 +41,7 @@ namespace Gameplay
                 return;
 
             var targetPosition = _waypoints[_currentWaypointIndex].position;
-            var currentPosition = _entity.gameObject.transform.position;
+            var currentPosition = _stats.CharacterEntity.gameObject.transform.position;
 
             targetPosition.y = currentPosition.y; // Keep movement on XZ plane
 
@@ -60,7 +53,7 @@ namespace Gameplay
             }
             else
             {
-                _entity.Get<EnemyMoveComponent>().MoveTo(targetPosition);
+                _stats.CharacterEntity.Get<EnemyMoveComponent>().Move(targetPosition);
             }
         }
 

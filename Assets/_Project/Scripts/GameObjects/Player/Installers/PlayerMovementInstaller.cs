@@ -5,11 +5,10 @@ namespace Gameplay
 {
     public class PlayerMovementInstaller : Installer<PlayerMovementInstaller>
     {
-
         public override void InstallBindings()
         {
             Container
-                .Bind<PlayerMoveComponent>()
+                .BindInterfacesAndSelfTo<PlayerMoveComponent>()
                 .AsSingle()
                 .NonLazy();
 

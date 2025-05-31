@@ -12,9 +12,10 @@ namespace Modules
         private readonly TargetComponent _targetComponent;
         private readonly CharacterStats _stats;
 
-        public LookAtComponent(TargetComponent targetComponent)
+        public LookAtComponent(TargetComponent targetComponent, CharacterStats stats)
         {
             _targetComponent = targetComponent;
+            _stats = stats;
         }
 
         public bool LookAtAndCheck()

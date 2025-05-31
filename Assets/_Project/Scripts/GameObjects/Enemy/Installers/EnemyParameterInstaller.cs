@@ -23,7 +23,7 @@ namespace Gameplay
             Container.Bind<float>().WithId(CharacterParameterID.AttackRotationSpeed).FromInstance(_attackRotationSpeed)
                 .AsCached();
             Container.Bind<int>().WithId(CharacterParameterID.Damage).FromInstance(_damage).AsCached();
-            Container.Bind<int>().WithId(CharacterParameterID.Health).FromInstance(_health).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.MaxHealth).FromInstance(_health).AsCached();
             Container.Bind<bool>().WithId(CharacterParameterID.IsPushable).FromInstance(_isPushable).AsCached();
         }
     }

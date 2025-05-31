@@ -33,9 +33,12 @@ namespace Gameplay
 
         public void RemoveBuff(BuffBase buffToRemove)
         {
-            BuffBase existingBuff = buffs.Find(b => b.GetType() == buffToRemove.GetType());
-            existingBuff.Discard();
-            buffs.Remove(buffToRemove);
+            var existingBuff = buffs.FindAll(b => b.GetType() == buffToRemove.GetType());
+            foreach (var item in existingBuff)
+            {
+                item.Discard();
+                buffs.Remove(item);
+            }
         }
 
         public void Tick()

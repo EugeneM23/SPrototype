@@ -75,8 +75,14 @@ namespace Gameplay
                 .Bind<TargetComponent>()
                 .AsSingle()
                 .NonLazy();
+            Container
+                .Bind<CharacterStats>()
+                .AsSingle()
+                .NonLazy();
+            Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
 
             EnemyMovementInstaller.Install(Container);
+            
         }
     }
 }

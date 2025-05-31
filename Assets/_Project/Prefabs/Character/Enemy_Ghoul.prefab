@@ -2143,7 +2143,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   - {fileID: 11400000, guid: c7024dc2a82474142ba67b1672e5cb2a, type: 2}
-  - {fileID: 11400000, guid: 67a2197a23a254120a49f97e79d4cd1b, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}

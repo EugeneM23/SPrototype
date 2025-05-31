@@ -9,13 +9,8 @@ namespace Gameplay
         private readonly CharacterConditions _conditions;
         private readonly NavMeshAgent _agent;
 
-        public ChaseAction(
-            [Inject(Id = CharacterParameterID.ChaseSpeed)]
-            float chaseSpeed,
-            CharacterConditions conditions,
-            NavMeshAgent agent)
+        public ChaseAction(CharacterConditions conditions, NavMeshAgent agent)
         {
-            _chaseSpeed = chaseSpeed;
             _conditions = conditions;
             _agent = agent;
         }
@@ -25,7 +20,6 @@ namespace Gameplay
         public void Action()
         {
             _agent.enabled = true;
-            _agent.speed = _chaseSpeed;
         }
     }
 }
