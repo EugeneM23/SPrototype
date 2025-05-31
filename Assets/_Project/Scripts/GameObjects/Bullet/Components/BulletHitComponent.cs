@@ -34,7 +34,6 @@ namespace Gameplay
                 _entityActions.ForEach(action => action.Invoke(entity));
             else
             {
-                Debug.Log("OnHit" + collision.gameObject.name);
                 _enviromentActions.ForEach(action => action.Invoke(collision));
             }
 

@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 7969624372058240327}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &5737323738552138633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _attackrate: 1
   _damageCastDelay: 0.1
-  _damage: 50
+  _damage: 10
   _range: 3
   _shakeDuration: 0
   _shakeMagnitude: 0

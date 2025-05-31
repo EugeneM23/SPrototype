@@ -136,7 +136,7 @@ MonoBehaviour:
   _lookAtSpeed: 500
   _strafeSpeed: 0
   _strafePower: 0
-  _maxHealth: 100
+  _maxHealth: 10000
 --- !u!114 &8851841367444768159
 MonoBehaviour:
   m_ObjectHideFlags: 0

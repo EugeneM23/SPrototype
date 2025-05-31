@@ -19,7 +19,6 @@ namespace Gameplay
 
         public void Move(Vector3 direction)
         {
-            Debug.Log(_speed);
             direction += Physics.gravity;
             _characterController.Move(direction * _speed * Time.deltaTime);
         }

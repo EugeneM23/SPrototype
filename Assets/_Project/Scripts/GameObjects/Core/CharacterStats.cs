@@ -49,6 +49,7 @@ namespace Gameplay
         [Inject(Id = CharacterParameterID.CharacterEntity, Optional = true)]
         private Entity _characterEntity;
 
+        private float _fireRateMultupleyer = 1;
 
         public int MaxHealth => _maxHealth;
         public int Damage => _damage;
@@ -68,5 +69,11 @@ namespace Gameplay
 
         public bool IsPushable => _isPushable;
         public Entity CharacterEntity => _characterEntity;
+
+        public float FireRateMultupleyer
+        {
+            get => _fireRateMultupleyer;
+            set => _fireRateMultupleyer = value;
+        }
     }
 }

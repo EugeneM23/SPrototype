@@ -2184,10 +2184,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootPrefabs:
-  - {fileID: 8012428026282339947, guid: aa2fb5bdf6cf6486881ec1520481cc6c, type: 3}
+  - {fileID: 4863055707070059571, guid: 5f6cb55c4cf0c4ab182877a0d8b4f159, type: 3}
   - {fileID: 8012428026282339947, guid: f31ad644a54e44315a47861dea795eca, type: 3}
   - {fileID: 8132150132489295341, guid: 15d7dc8e39cbe460eabc075f2b9aa588, type: 3}
-  - {fileID: -4949460836686396443, guid: 1c85b82a31b2e43319ed34445c24220e, type: 3}
+  - {fileID: 4863055707070059571, guid: 5f6cb55c4cf0c4ab182877a0d8b4f159, type: 3}
+  - {fileID: 4863055707070059571, guid: 5f6cb55c4cf0c4ab182877a0d8b4f159, type: 3}
+  - {fileID: 4863055707070059571, guid: 5f6cb55c4cf0c4ab182877a0d8b4f159, type: 3}
   moveTime: 0.7
   curveHeight: 16
   _radius: 10

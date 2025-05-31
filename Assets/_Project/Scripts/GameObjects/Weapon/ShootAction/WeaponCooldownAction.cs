@@ -8,6 +8,7 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.FireRate)]
         private float _fireRate;
 
+        [Inject] private readonly CharacterStats _stats;
         private float lastTimeShoot;
 
         bool WeaponShootComponent.ICondition.Invoke()
@@ -17,17 +18,12 @@ namespace Gameplay
 
         void WeaponShootComponent.IAction.Invoke()
         {
-            lastTimeShoot = _fireRate;
+            lastTimeShoot = _fireRate * _stats.FireRateMultupleyer;
         }
 
         public void Tick()
         {
             lastTimeShoot -= Time.deltaTime;
-        }
-
-        public void SetFireRate(float value)
-        {
-            _fireRate += value;
         }
     }
 }
