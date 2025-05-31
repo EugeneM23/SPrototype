@@ -22,22 +22,20 @@ namespace Gameplay
             if (other.GetComponent<Entity>().TryGet<BuffManager>(out var value))
             {
                 _target = other.GetComponent<Entity>();
-                _buff = new BuffRage(_target, _speed, true, true, 3, 3);
-                _buff.OnApply += SpawnUi;
+
+                _buff = BuffRage
+                    .Create()
+                    .Target(_target)
+                    .Stackable(5)
+                    .Speed(15f)
+                    .UI(_uiPrefab)
+                    .Timed(3)
+                    .Build();
+
                 value.AddBuff(_buff);
 
                 SpawnEffects(_target);
             }
-        }
-
-        private void SpawnUi()
-        {
-            go = _factory.Create(_uiPrefab);
-            go.transform.SetParent(_target.transform);
-
-            _buff.OnDiscard += go.Dispose;
-            _buff.OnStack += go.GetComponent<RageUI>().UpdateStack;
-            go.GetComponent<RageUI>().UpdateStack(1);
         }
 
         private void SpawnEffects(Entity target)

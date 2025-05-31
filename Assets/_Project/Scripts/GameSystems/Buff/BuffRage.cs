@@ -5,89 +5,92 @@ using Zenject;
 namespace Gameplay
 {
     public class BuffRage : BuffBase, ITickable
-{
-    private readonly float speedPerStack;
-    private float _timer;
-
-    private BuffRage(Entity target, Entity rageUi, float speedPerStack,
-        bool isStackable, bool isTimed, float duration, int maxStack)
-        : base(target, rageUi, isStackable, isTimed, duration, maxStack)
     {
-        this.speedPerStack = speedPerStack;
-    }
-
-    public override void Apply()
-    {
-        base.Apply();
-        target.Get<IMove>().AddSpeed(speedPerStack);
-    }
-
-    public override void Tick()
-    {
-        Debug.Log(Time.time - StartTime);
-    }
-
-    public override void Discard()
-    {
-        target.Get<IMove>().AddSpeed(speedPerStack * stackCount * -1);
-    }
-
-    protected override void OnStackAdded()
-    {
-        base.OnStackAdded();
-        target.Get<IMove>().AddSpeed(speedPerStack);
-    }
-
-    public class Prototype
-    {
-        private Entity target;
-        private Entity rageUi;
         private float speedPerStack;
-        private bool isStackable = false;
-        private bool isTimed = false;
-        private float duration = 0f;
-        private int maxStack = 1;
+        private RageUI rageUI;
 
-        public Prototype SetTarget(Entity target)
+        public override void Apply()
         {
-            this.target = target;
-            return this;
+            Debug.Log("BuffRage Apply");
+            base.Apply();
+            target.Get<IMove>().AddSpeed(speedPerStack);
+            rageUI = target.Get<GameFactory>().Create(ui).GetComponent<RageUI>();
         }
 
-        public Prototype SetUI(Entity rageUi)
+        public override void Tick()
         {
-            this.rageUi = rageUi;
-            return this;
+            if (rageUI == null) return;
+
+            float remainingTime = duration - (Time.time - StartTime);
+            rageUI.UpdateSlider(remainingTime, duration);
         }
 
-        public Prototype SetSpeedPerStack(float value)
+        public override void Discard()
         {
-            this.speedPerStack = value;
-            return this;
+            base.Discard();
+            target.Get<IMove>().AddSpeed(-speedPerStack * stackCount);
+            rageUI.GetComponent<Entity>().Dispose();
         }
 
-        public Prototype SetTimed(float duration)
+        protected override void OnStackAdded()
         {
-            this.isTimed = true;
-            this.duration = duration;
-            return this;
+            base.OnStackAdded();
+            target.Get<IMove>().AddSpeed(speedPerStack);
+            rageUI.UpdateStack(stackCount);
         }
 
-        public Prototype SetStackable(int maxStack)
-        {
-            this.isStackable = true;
-            this.maxStack = maxStack;
-            return this;
-        }
+        public static Builder Create() => new Builder();
 
-        public BuffRage Build()
+        public class Builder
         {
-            if (target == null || rageUi == null)
-                throw new InvalidOperationException("Target and RageUI must be set.");
+            private Entity target;
+            private float speedPerStack;
+            private Entity ui;
+            private bool stackable = false, timed = false;
+            private int maxStack = 1;
+            private float duration = 0;
 
-            return new BuffRage(target, rageUi, speedPerStack, isStackable, isTimed, duration, maxStack);
+            public Builder Target(Entity target)
+            {
+                this.target = target;
+                return this;
+            }
+
+            public Builder Speed(float speed)
+            {
+                speedPerStack = speed;
+                return this;
+            }
+
+            public Builder UI(Entity ui)
+            {
+                this.ui = ui;
+                return this;
+            }
+
+            public Builder Stackable(int max = 5)
+            {
+                stackable = true;
+                maxStack = max;
+                return this;
+            }
+
+            public Builder Timed(float time)
+            {
+                timed = true;
+                duration = time;
+                return this;
+            }
+
+            public BuffRage Build()
+            {
+                var buff = new BuffRage();
+                buff.SetTarget(target);
+                buff.speedPerStack = speedPerStack;
+                buff.SetUI(ui);
+                buff.Configure(stackable, timed, duration, maxStack);
+                return buff;
+            }
         }
     }
-}
-
 }
