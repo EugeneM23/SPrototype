@@ -15,7 +15,6 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<float>().WithId(WeaponParameterID.AttackRate).FromInstance(_attackrate).AsCached();
             Container.Bind<float>().WithId(WeaponParameterID.FireRate).FromInstance(_attackrate).AsCached();
             Container.Bind<float>().WithId(WeaponParameterID.DamageCastDelay).FromInstance(_damageCastDelay).AsCached();
             Container.Bind<float>().WithId(WeaponParameterID.FireRange).FromInstance(_range).AsCached();

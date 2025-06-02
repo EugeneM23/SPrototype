@@ -140,12 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4624d81d1a44e459b257e801f8fe868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackrate: 1
+  _attackrate: 0.3
   _damageCastDelay: 0
-  _damage: 500
-  _range: 4
-  _shakeDuration: 0.2
-  _shakeMagnitude: 0.2
+  _damage: 1
+  _range: 5
+  _shakeDuration: 0
+  _shakeMagnitude: 0
 --- !u!114 &4534211283834124552
 MonoBehaviour:
   m_ObjectHideFlags: 0

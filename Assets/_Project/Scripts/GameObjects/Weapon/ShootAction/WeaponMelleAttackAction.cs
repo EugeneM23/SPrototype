@@ -5,29 +5,38 @@ namespace Gameplay
 {
     public class WeaponMelleAttackAction : WeaponShootComponent.IAction
     {
-        private readonly ICharacterProvider _character;
+        private CharacterStats _stats;
 
-        [Inject(Id = CharacterParameterID.CharacterEntity)]
-        private readonly Entity _characterEntity;
-
-        [Inject(Id = WeaponParameterID.AttackRate)]
-        private readonly float _attackRate;
-
-        private CharacterStats _characterStats;
-
-        public WeaponMelleAttackAction(ICharacterProvider character, CharacterStats characterStats)
-        {
-            _character = character;
-            _characterStats = characterStats;
-        }
+        [Inject(Id = WeaponParameterID.FireRate)]
+        private float _fireRate;
 
         void WeaponShootComponent.IAction.Invoke()
         {
-            float animationSpeed = 1f * (1 + _characterStats.FireRateMultupleyer / 100f);
+            _stats.CharacterEntity.Get<Animator>().SetFloat("AttackSpeed", GetAnimatTime());
+            _stats.CharacterEntity.Get<Animator>().Play("MelleAttack", 0);
+        }
 
-            Debug.Log(animationSpeed);
-            _character.Character.Get<Animator>().Play("MelleAttack");
-            _character.Character.Get<Animator>().SetFloat("AttackSpeed", animationSpeed);
+        public WeaponMelleAttackAction(CharacterStats stats)
+        {
+            _stats = stats;
+        }
+
+        private float GetAnimatTime()
+        {
+            RuntimeAnimatorController controller = _stats.CharacterEntity.Get<Animator>().runtimeAnimatorController;
+
+            foreach (AnimationClip clip in controller.animationClips)
+            {
+                if (clip.name == "MelleAttack")
+                {
+                    Debug.Log(clip.length / _fireRate);
+                    float baseMultiplier = clip.length / _fireRate;
+                    float finalMultiplier = baseMultiplier * (1 + _stats.FireRateMultupleyer / 100f);
+                    return finalMultiplier;
+                }
+            }
+
+            return 1;
         }
     }
 }
