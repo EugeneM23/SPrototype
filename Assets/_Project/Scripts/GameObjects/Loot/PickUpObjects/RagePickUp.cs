@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
@@ -6,6 +8,7 @@ namespace Gameplay
 {
     public class RagePickUp : MonoBehaviour
     {
+        public event Action OnExit;
         [SerializeField] private float _fireRate;
         [SerializeField] private int _speed;
         [SerializeField] private Entity _effectPrefab;
@@ -24,22 +27,24 @@ namespace Gameplay
             {
                 _target = other.GetComponent<Entity>();
 
-                _buff = BuffRage
-                    .Create()
+
+                _buff = new BuffBuilder<BuffRage>()
                     .Target(_target)
+                    .BuffUIOnTarget(_uiPrefab)
+                    .Timed(10)
                     .Stackable(3)
-                    .SetStats(_speed, _fireRate)
-                    .UI(_uiPrefab)
-                    .Timed(5)
+                    .Stats((BuffMultiplayerID.Speed, 2f), (BuffMultiplayerID.FireRate, 0.3f))
                     .Build();
 
-                _target.Get<BuffManager>().AddBuff(_buff);
 
+                _target.Get<BuffManager>().AddBuff(_buff);
                 SpawnEffects(_target);
 
                 gameObject.GetComponent<Entity>().Dispose();
             }
         }
+
+        private void InvokeOnExit() => OnExit?.Invoke();
 
         private void SpawnEffects(Entity target)
         {

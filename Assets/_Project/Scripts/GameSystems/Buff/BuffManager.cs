@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace Gameplay
@@ -10,34 +10,31 @@ namespace Gameplay
 
         public void Initialize()
         {
-            buffs = new(10);
+            buffs = new List<IBuff>(10);
         }
 
         public void AddBuff(IBuff newBuff)
         {
-            IBuff existingBuff = buffs.Find(b => b.GetType() == newBuff.GetType());
+            var existingBuff = GetBuffOfType(newBuff.GetType());
 
             if (existingBuff == null)
             {
-                newBuff.Apply();
-                buffs.Add(newBuff);
+                AddNewBuff(newBuff);
                 return;
             }
 
-            if (newBuff.IsStackable)
-                existingBuff.AddStack();
-
-            if (newBuff.IsTimed)
-                existingBuff.RefreshTimer();
+            UpdateExistingBuff(existingBuff);
         }
 
-        public void RemoveBuff(BuffBase buffToRemove)
+        public void RemoveBuff<T>() where T : IBuff
         {
-            var existingBuff = buffs.FindAll(b => b.GetType() == buffToRemove.GetType());
-            foreach (var item in existingBuff)
+            for (int i = buffs.Count - 1; i >= 0; i--)
             {
-                item.Discard();
-                buffs.Remove(item);
+                if (buffs[i] is T)
+                {
+                    buffs[i].Discard();
+                    buffs.RemoveAt(i);
+                }
             }
         }
 
@@ -45,15 +42,41 @@ namespace Gameplay
         {
             for (int i = buffs.Count - 1; i >= 0; i--)
             {
-                buffs[i].Tick();
-
                 var buff = buffs[i];
-                if (buff.IsTimed && buff.IsExpired())
+                buff.Tick();
+
+                if (ShouldRemoveBuff(buff))
                 {
                     buff.Discard();
                     buffs.RemoveAt(i);
                 }
             }
+        }
+
+        private IBuff GetBuffOfType(Type buffType)
+        {
+            return buffs.Find(b => b.GetType() == buffType);
+        }
+
+        private void AddNewBuff(IBuff buff)
+        {
+
+            buff.Apply();
+            buffs.Add(buff);
+        }
+
+        private void UpdateExistingBuff(IBuff existingBuff)
+        {
+            if (existingBuff.IsStackable)
+                existingBuff.AddStack();
+
+            if (existingBuff.IsTimed)
+                existingBuff.RefreshTimer();
+        }
+
+        private bool ShouldRemoveBuff(IBuff buff)
+        {
+            return buff.IsTimed && buff.IsExpired();
         }
     }
 }
