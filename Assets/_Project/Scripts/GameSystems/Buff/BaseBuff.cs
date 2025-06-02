@@ -23,6 +23,8 @@ namespace Gameplay
         public bool IsStackable => isStackable;
         public bool IsTimed => isTimed;
 
+        private CharacterStats _stats;
+
         public void Configure(BuffConfig config)
         {
             target = config.Target;
@@ -39,6 +41,8 @@ namespace Gameplay
 
             speedPerStack = statValues[BuffMultiplayerID.Speed];
             fireRatePerStack = statValues[BuffMultiplayerID.FireRate];
+
+            _stats = target.Get<CharacterStats>();
         }
 
         public void Apply()
@@ -46,14 +50,14 @@ namespace Gameplay
             if (isTimed)
                 startTime = Time.time;
 
-            target.Get<IMove>().AddSpeed(speedPerStack);
-            target.Get<CharacterStats>().FireRateMultupleyer -= fireRatePerStack;
+            _stats.RunSpeedMultiplayer += speedPerStack;
+            _stats.FireRateMultupleyer += fireRatePerStack;
         }
 
         public void Discard()
         {
-            target.Get<IMove>().AddSpeed(-speedPerStack * stackCount);
-            target.Get<CharacterStats>().FireRateMultupleyer += fireRatePerStack * stackCount;
+            _stats.RunSpeedMultiplayer -= speedPerStack * stackCount;
+            _stats.FireRateMultupleyer -= fireRatePerStack * stackCount;
         }
 
         public void AddStack()
@@ -61,19 +65,12 @@ namespace Gameplay
             if (stackCount >= maxStack) return;
 
             stackCount++;
-            target.Get<IMove>().AddSpeed(speedPerStack);
-            target.Get<CharacterStats>().FireRateMultupleyer -= fireRatePerStack;
+            _stats.RunSpeedMultiplayer += speedPerStack;
+            _stats.FireRateMultupleyer += fireRatePerStack;
         }
 
         public void Tick()
         {
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
-            {
-                target.Get<HealthComponent>().TakeDamage(1);
-
-                _timer = 0.2f;
-            }
         }
 
         public bool IsExpired() => isTimed && (Time.time - startTime) >= duration;

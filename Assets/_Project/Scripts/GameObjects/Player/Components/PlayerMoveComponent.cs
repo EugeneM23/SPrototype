@@ -3,35 +3,27 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerMoveComponent : IMove
+    public class PlayerMoveComponent : IInitializable, IMove
     {
         private readonly CharacterController _characterController;
+        private readonly CharacterStats _stats;
 
-        [Inject(Id = CharacterParameterID.RunSpeed)]
         private float _speed;
 
-        public PlayerMoveComponent(
-            CharacterController characterController
-        )
+        public PlayerMoveComponent(CharacterController characterController, CharacterStats stats)
         {
             _characterController = characterController;
+            _stats = stats;
         }
+
+        public void Initialize() => _speed = _stats.RunSpeed;
 
         public void Move(Vector3 direction)
         {
             direction += Physics.gravity;
-            _characterController.Move(direction * _speed * Time.deltaTime);
+            _characterController.Move(direction * GetSpeed() * Time.deltaTime);
         }
 
-        public void AddSpeed(float speedPerStack)
-        {
-            if (_speed + speedPerStack < 0)
-            {
-                _speed = 0;
-                return;
-            }
-
-            _speed += speedPerStack;
-        }
+        private float GetSpeed() => _stats.RunSpeed * (1 + _stats.RunSpeedMultiplayer / 100f);
     }
 }

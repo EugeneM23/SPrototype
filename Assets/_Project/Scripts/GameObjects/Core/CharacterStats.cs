@@ -50,5 +50,6 @@ namespace Gameplay
         public Entity CharacterEntity { get; private set; }
 
         public float FireRateMultupleyer { get; set; } = 1;
+        public float RunSpeedMultiplayer { get; set; }
     }
 }

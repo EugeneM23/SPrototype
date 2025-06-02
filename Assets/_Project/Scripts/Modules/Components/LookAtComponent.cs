@@ -6,9 +6,6 @@ namespace Modules
 {
     public class LookAtComponent
     {
-        [Inject(Id = CharacterParameterID.CharacterEntity)]
-        private readonly Entity _root;
-
         private readonly TargetComponent _targetComponent;
         private readonly CharacterStats _stats;
 
@@ -20,9 +17,9 @@ namespace Modules
 
         public bool LookAtAndCheck()
         {
-            if (_targetComponent.Target == null || _root == null) return false;
+            if (_targetComponent.Target == null || _stats.CharacterEntity == null) return false;
 
-            Vector3 direction = _targetComponent.Target.position - _root.transform.position;
+            Vector3 direction = _targetComponent.Target.position - _stats.CharacterEntity.transform.position;
             direction.y = 0f;
 
 
@@ -31,10 +28,11 @@ namespace Modules
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
 
-            _root.transform.rotation = Quaternion.RotateTowards(_root.transform.rotation, targetRotation,
+            _stats.CharacterEntity.transform.rotation = Quaternion.RotateTowards(
+                _stats.CharacterEntity.transform.rotation, targetRotation,
                 _stats.LookAtSpeed * Time.deltaTime);
 
-            float angle = Quaternion.Angle(_root.transform.rotation, targetRotation);
+            float angle = Quaternion.Angle(_stats.CharacterEntity.transform.rotation, targetRotation);
             bool complite = angle < 0.1f;
 
             return complite;

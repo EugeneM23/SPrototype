@@ -2,17 +2,19 @@ using System;
 using System.Collections.Generic;
 using DamageNumbersPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
 {
     public class RagePickUp : MonoBehaviour
     {
-        [SerializeField] private float _fireRate;
-        [SerializeField] private int _speed;
+        [SerializeField] private float _fireRatePercentage;
+        [SerializeField] private float _speedPercentage;
         [SerializeField] private Entity _effectPrefab;
         [SerializeField] private Entity _uiPrefab;
         [SerializeField] private DamageNumber _damageNumber;
+
         [Inject] private readonly GameFactory _factory;
         [Inject] private readonly DiContainer _container;
 
@@ -28,8 +30,9 @@ namespace Gameplay
                 _baseBuff = new BuffBuilder<BaseBuff>()
                     .Target(_target)
                     .Timed(10)
-                    .Stackable(3)
-                    .Stats((BuffMultiplayerID.Speed, 2f), (BuffMultiplayerID.FireRate, 0.3f))
+                    .Stackable(8)
+                    .Stats((BuffMultiplayerID.Speed, _speedPercentage),
+                        (BuffMultiplayerID.FireRate, _fireRatePercentage))
                     .Build();
 
 
@@ -42,7 +45,7 @@ namespace Gameplay
 
         private void OnTriggerExit(Collider other)
         {
-            _target.Get<BuffManager>().RemoveBuff<BaseBuff>();
+            //_target.Get<BuffManager>().RemoveBuff<BaseBuff>();
         }
 
         private void SpawnEffects(Entity target)

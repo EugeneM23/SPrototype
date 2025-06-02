@@ -54,6 +54,5 @@ namespace Gameplay
     public interface IMove
     {
         void Move(Vector3 destination);
-        void AddSpeed(float speed);
     }
 }
