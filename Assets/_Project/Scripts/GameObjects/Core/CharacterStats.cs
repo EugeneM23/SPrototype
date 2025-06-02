@@ -49,7 +49,7 @@ namespace Gameplay
         [Inject(Id = CharacterParameterID.CharacterEntity, Optional = true)]
         public Entity CharacterEntity { get; private set; }
 
-        public float FireRateMultupleyer { get; set; } = 1;
+        public float FireRateMultupleyer { get; set; }
         public float RunSpeedMultiplayer { get; set; }
     }
 }

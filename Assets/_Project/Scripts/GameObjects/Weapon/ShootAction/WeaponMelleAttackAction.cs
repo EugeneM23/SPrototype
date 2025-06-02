@@ -13,17 +13,19 @@ namespace Gameplay
         [Inject(Id = WeaponParameterID.AttackRate)]
         private readonly float _attackRate;
 
-        [Inject] private CharacterStats _characterStats;
+        private CharacterStats _characterStats;
 
-        public WeaponMelleAttackAction(ICharacterProvider character)
+        public WeaponMelleAttackAction(ICharacterProvider character, CharacterStats characterStats)
         {
             _character = character;
+            _characterStats = characterStats;
         }
 
         void WeaponShootComponent.IAction.Invoke()
         {
-            float animationSpeed = 1f / _attackRate / (_characterStats.FireRateMultupleyer);
+            float animationSpeed = 1f * (1 + _characterStats.FireRateMultupleyer / 100f);
 
+            Debug.Log(animationSpeed);
             _character.Character.Get<Animator>().Play("MelleAttack");
             _character.Character.Get<Animator>().SetFloat("AttackSpeed", animationSpeed);
         }
