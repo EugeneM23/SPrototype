@@ -3,100 +3,85 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public abstract class BaseBuff : IBuff
+    public class BaseBuff : IBuff
     {
-        protected Entity target;
-        protected Entity ui;
+        private Entity target;
 
-        protected bool isStackable;
-        protected bool isTimed;
-        protected float duration;
-        protected int maxStack = 1;
-        protected int stackCount = 1;
-        protected float startTime;
+        private bool isStackable;
+        private bool isTimed;
+        private float duration;
+        private int maxStack = 1;
+        private int stackCount = 1;
+        private float startTime;
 
-        protected Dictionary<BuffMultiplayerID, float> statValues = new();
+        private float speedPerStack;
+        private float fireRatePerStack;
+
+        private Dictionary<BuffMultiplayerID, float> statValues = new();
+        private float _timer;
 
         public bool IsStackable => isStackable;
         public bool IsTimed => isTimed;
-        public float StartTime => startTime;
 
-        public virtual void Configure(BuffConfig config)
+        public void Configure(BuffConfig config)
         {
             target = config.Target;
-            ui = config.UI;
             isStackable = config.IsStackable;
             maxStack = config.MaxStack;
             isTimed = config.IsTimed;
             duration = config.Duration;
 
             if (config.Stats != null)
+            {
                 foreach (var stat in config.Stats)
                     statValues[stat.Key] = stat.Value;
+            }
+
+            speedPerStack = statValues[BuffMultiplayerID.Speed];
+            fireRatePerStack = statValues[BuffMultiplayerID.FireRate];
         }
 
-        public virtual void Apply()
+        public void Apply()
         {
             if (isTimed)
                 startTime = Time.time;
 
-            if (target != null)
-            {
-                ApplyEffects();
-            }
-
-            CreateUI();
+            target.Get<IMove>().AddSpeed(speedPerStack);
+            target.Get<CharacterStats>().FireRateMultupleyer -= fireRatePerStack;
         }
 
-        public virtual void Tick()
+        public void Discard()
         {
-            UpdateUI();
+            target.Get<IMove>().AddSpeed(-speedPerStack * stackCount);
+            target.Get<CharacterStats>().FireRateMultupleyer += fireRatePerStack * stackCount;
         }
 
-        public virtual void Discard()
-        {
-            RemoveEffects();
-            DestroyUI();
-        }
-
-        public virtual bool IsExpired()
-        {
-            return isTimed && (Time.time - startTime) >= duration;
-        }
-
-        public virtual void AddStack()
+        public void AddStack()
         {
             if (stackCount >= maxStack) return;
 
             stackCount++;
-            ApplyStackEffect();
-            UpdateStackUI();
+            target.Get<IMove>().AddSpeed(speedPerStack);
+            target.Get<CharacterStats>().FireRateMultupleyer -= fireRatePerStack;
         }
 
-        public virtual void RefreshTimer()
+        public void Tick()
+        {
+            _timer -= Time.deltaTime;
+            if (_timer <= 0)
+            {
+                target.Get<HealthComponent>().TakeDamage(1);
+
+                _timer = 0.2f;
+            }
+        }
+
+        public bool IsExpired() => isTimed && (Time.time - startTime) >= duration;
+
+        public void RefreshTimer()
         {
             if (isTimed)
                 startTime = Time.time;
-        }
-
-        protected abstract void ApplyEffects();
-        protected abstract void RemoveEffects();
-        protected abstract void ApplyStackEffect();
-
-        protected virtual void CreateUI()
-        {
-        }
-
-        protected virtual void UpdateUI()
-        {
-        }
-
-        protected virtual void UpdateStackUI()
-        {
-        }
-
-        protected virtual void DestroyUI()
-        {
         }
     }
 }

@@ -8,7 +8,6 @@ namespace Gameplay
 {
     public class RagePickUp : MonoBehaviour
     {
-        public event Action OnExit;
         [SerializeField] private float _fireRate;
         [SerializeField] private int _speed;
         [SerializeField] private Entity _effectPrefab;
@@ -17,9 +16,8 @@ namespace Gameplay
         [Inject] private readonly GameFactory _factory;
         [Inject] private readonly DiContainer _container;
 
-        private BuffRage _buff;
+        private BaseBuff _baseBuff;
         private Entity _target;
-        private Entity go;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -27,24 +25,25 @@ namespace Gameplay
             {
                 _target = other.GetComponent<Entity>();
 
-
-                _buff = new BuffBuilder<BuffRage>()
+                _baseBuff = new BuffBuilder<BaseBuff>()
                     .Target(_target)
-                    .BuffUIOnTarget(_uiPrefab)
                     .Timed(10)
                     .Stackable(3)
                     .Stats((BuffMultiplayerID.Speed, 2f), (BuffMultiplayerID.FireRate, 0.3f))
                     .Build();
 
 
-                _target.Get<BuffManager>().AddBuff(_buff);
+                _target.Get<BuffManager>().AddBuff(_baseBuff);
                 SpawnEffects(_target);
 
                 gameObject.GetComponent<Entity>().Dispose();
             }
         }
 
-        private void InvokeOnExit() => OnExit?.Invoke();
+        private void OnTriggerExit(Collider other)
+        {
+            _target.Get<BuffManager>().RemoveBuff<BaseBuff>();
+        }
 
         private void SpawnEffects(Entity target)
         {

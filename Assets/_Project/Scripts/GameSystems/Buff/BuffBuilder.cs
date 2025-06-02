@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace Gameplay
 {
@@ -12,12 +10,6 @@ namespace Gameplay
         public BuffBuilder<T> Target(Entity target)
         {
             config.Target = target;
-            return this;
-        }
-
-        public BuffBuilder<T> BuffUIOnTarget(Entity ui)
-        {
-            config.UI = ui;
             return this;
         }
 

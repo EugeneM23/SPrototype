@@ -5,75 +5,50 @@ namespace Gameplay
     public class CharacterStats
     {
         [Inject(Id = CharacterParameterID.MaxHealth, Optional = true)]
-        private int _maxHealth;
+        public int MaxHealth { get; private set; }
 
         [Inject(Id = CharacterParameterID.Damage, Optional = true)]
-        private int _damage;
+        public int Damage { get; private set; }
 
         [Inject(Id = CharacterParameterID.ChaseSpeed, Optional = true)]
-        private float _chaseSpeed;
+        public float ChaseSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.PatrolSpeed, Optional = true)]
-        private float _patrolSpeed;
+        public float PatrolSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.RunSpeed, Optional = true)]
-        private float _runSpeed;
+        public float RunSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.RotationSpeed, Optional = true)]
-        private float _rotationSpeed;
+        public float RotationSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.LookAtSpeed, Optional = true)]
-        private float _lookAtSpeed;
+        public float LookAtSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.StrafeSpeed, Optional = true)]
-        private float _strafeSpeed;
+        public float StrafeSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.StrafePower, Optional = true)]
-        private float _strafePower;
+        public float StrafePower { get; private set; }
 
         [Inject(Id = CharacterParameterID.AttackRotationSpeed, Optional = true)]
-        private float _attackRotationSpeed;
+        public float AttackRotationSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.AttackRange, Optional = true)]
-        private float _attackRange;
+        public float AttackRange { get; private set; }
 
         [Inject(Id = CharacterParameterID.ChaseRange, Optional = true)]
-        private float _chaseRange;
+        public float ChaseRange { get; private set; }
 
         [Inject(Id = CharacterParameterID.MoveSpeed, Optional = true)]
-        private float _moveSpeed;
+        public float MoveSpeed { get; private set; }
 
         [Inject(Id = CharacterParameterID.IsPushable, Optional = true)]
-        private bool _isPushable;
+        public bool IsPushable { get; private set; }
 
         [Inject(Id = CharacterParameterID.CharacterEntity, Optional = true)]
-        private Entity _characterEntity;
+        public Entity CharacterEntity { get; private set; }
 
-        private float _fireRateMultupleyer = 1;
-
-        public int MaxHealth => _maxHealth;
-        public int Damage => _damage;
-        public float ChaseSpeed => _chaseSpeed;
-        public float PatrolSpeed => _patrolSpeed;
-
-        public float RunSpeed => _runSpeed;
-
-        public float RotationSpeed => _rotationSpeed;
-        public float LookAtSpeed => _lookAtSpeed;
-        public float StrafeSpeed => _strafeSpeed;
-        public float StrafePower => _strafePower;
-        public float AttackRotationSpeed => _attackRotationSpeed;
-        public float AttackRange => _attackRange;
-        public float ChaseRange => _chaseRange;
-        public float MoveSpeed => _moveSpeed;
-
-        public bool IsPushable => _isPushable;
-        public Entity CharacterEntity => _characterEntity;
-
-        public float FireRateMultupleyer
-        {
-            get => _fireRateMultupleyer;
-            set => _fireRateMultupleyer = value;
-        }
+        public float FireRateMultupleyer { get; set; } = 1;
     }
 }
