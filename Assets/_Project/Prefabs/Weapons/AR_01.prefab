@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c36eec9680346658767c4c2216bd420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.3
+  fireRate: 0.5
   projectileSpawnDelay: 0
   damage: 10
   scatter: 10
