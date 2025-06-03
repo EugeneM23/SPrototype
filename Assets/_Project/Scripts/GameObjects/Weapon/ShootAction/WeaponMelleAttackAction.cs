@@ -29,7 +29,6 @@ namespace Gameplay
             {
                 if (clip.name == "MelleAttack")
                 {
-                    Debug.Log(clip.length / _fireRate);
                     float baseMultiplier = clip.length / _fireRate;
                     float finalMultiplier = baseMultiplier * (1 + _stats.FireRateMultupleyer / 100f);
                     return finalMultiplier;

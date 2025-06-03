@@ -52,14 +52,13 @@ namespace Gameplay
                     {
                         damageable.TakeDamage(cast.Parameters.Damage);
                         damageApplied = true;
-                        _activeCasts.Remove(cast);
                         break;
                     }
                 }
 
                 if (damageApplied || cast.Timer <= 0f || cast == null)
                 {
-                    _activeCasts.Remove(cast);
+                    _activeCasts.RemoveAt(i);
                 }
             }
         }

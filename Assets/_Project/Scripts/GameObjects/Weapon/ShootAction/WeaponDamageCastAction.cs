@@ -50,7 +50,7 @@ namespace Gameplay
         public void EnableDamageCast()
         {
             float timeCast = _fireRate * (1 - _stats.FireRateMultupleyer / 100f);
-            DamageCastParams damageCast = new DamageCastParams(_damage, 2, timeCast, _damageCastLayer, _damageRoot);
+            DamageCastParams damageCast = new DamageCastParams(_damage, 1, timeCast, _damageCastLayer, _damageRoot);
             _damageCasterManager.CastDamage(damageCast);
         }
 

@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
@@ -19,7 +20,8 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            return distance >= 2f && distance < _chaseRange;
+            Debug.Log(_conditions.IsBusy);
+            return distance >= 2f && distance < _chaseRange && !_conditions.IsBusy;
         }
 
         protected override Type GetTargetState() => typeof(EnemyChaseState);
