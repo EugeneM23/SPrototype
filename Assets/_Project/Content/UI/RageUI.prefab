@@ -400,6 +400,8 @@ GameObject:
   - component: {fileID: 6123014032971673930}
   - component: {fileID: 6672416938524535675}
   - component: {fileID: 8993636267090057422}
+  - component: {fileID: -7953144389606290972}
+  - component: {fileID: 1387891088151655215}
   m_Layer: 11
   m_Name: RageUI
   m_TagString: Untagged
@@ -435,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6b8b812c65e45c6bb1ce2958d1943a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _context: {fileID: 0}
+  _context: {fileID: -7953144389606290972}
   _isDisposableOverTime: 0
   _destroyTime: 0
 --- !u!114 &8993636267090057422
@@ -452,6 +454,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 1313937745208441952}
   _slider: {fileID: 1648523288393687379}
+--- !u!114 &-7953144389606290972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088457188714482216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08eca9f7688a0a24685b89133b020c8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 1387891088151655215}
+  _installerPrefabs: []
+  _autoRun: 1
+  _kernel: {fileID: 0}
+--- !u!114 &1387891088151655215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4088457188714482216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb9581993ed4f14bbeeb485e58ae82b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8710134463299450761
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +568,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.6999999
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -574,7 +606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.5750046, y: 1}
+  m_AnchoredPosition: {x: -0.57502747, y: 1}
   m_SizeDelta: {x: 16.890015, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1001104592241200142

@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using DamageNumbersPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -43,17 +40,24 @@ namespace Gameplay
             }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            //_target.Get<BuffManager>().RemoveBuff<BaseBuff>();
-        }
-
         private void SpawnEffects(Entity target)
         {
             var effect = _factory.Create(_effectPrefab);
             effect.Get<EffectCaster>().CastEffect(target.transform, 2);
             _damageNumber.Spawn(target.transform.position + new Vector3(0, 3, 0), target.transform);
             gameObject.GetComponent<Entity>().Dispose();
+
+            var ui = _factory.Create(_uiPrefab);
+
+            ui.GetComponent<RageUI>().SetDuration(10);
+
+            _baseBuff.OnStack += ui.Dispose;
+
+            ui.GetComponent<RageUI>().SetStuck(_baseBuff.StackCount);
+            _baseBuff.Ondiscad += ui.Dispose;
+            _baseBuff.OnTick += ui.GetComponent<RageUI>().UpdateSlider;
+
+            ui.Get<EffectCaster>().CastEffect(target.transform, -1);
         }
     }
 }

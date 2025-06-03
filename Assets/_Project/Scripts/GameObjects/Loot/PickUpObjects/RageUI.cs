@@ -9,20 +9,30 @@ namespace Gameplay
     {
         [SerializeField] private TextMeshProUGUI _text;
         [SerializeField] private Slider _slider;
+        private float totalDuration;
 
         private void OnEnable()
         {
             _text.text = "X 1";
         }
 
-        public void UpdateStack(int stackCount)
+        public void SetStuck(int stackCount)
         {
+            Debug.Log(stackCount);
             _text.text = "X " + stackCount;
         }
 
-        public void UpdateSlider(float remainingTime, float totalDuration)
+        public void UpdateSlider(float remainingTime)
         {
-            _slider.value = remainingTime / totalDuration;
+            if (totalDuration > 0f)
+                _slider.value = Mathf.Clamp01((totalDuration - remainingTime) / totalDuration);
+            else
+                _slider.value = 0f;
+        }
+
+        public void SetDuration(float duration)
+        {
+            totalDuration = duration;
         }
     }
 }

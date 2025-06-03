@@ -18,6 +18,12 @@ namespace Gameplay
 
         public void Tick()
         {
+            if (_timer == -1)
+            {
+                _self.transform.position = _target.transform.position;
+                return;
+            }
+
             if (_isEnabled)
             {
                 _timer -= Time.deltaTime;

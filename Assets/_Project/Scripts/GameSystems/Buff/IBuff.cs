@@ -1,3 +1,5 @@
+using System;
+
 namespace Gameplay
 {
     // Интерфейс для баффов
@@ -12,5 +14,9 @@ namespace Gameplay
         bool IsExpired();
         void AddStack();
         void RefreshTimer();
+        event Action OnStack;
+        event Action OnApply;
+        event Action<float> OnTick;
+        event Action Ondiscad;
     }
 }

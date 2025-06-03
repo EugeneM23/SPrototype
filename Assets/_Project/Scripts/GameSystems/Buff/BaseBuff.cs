@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +6,11 @@ namespace Gameplay
 {
     public class BaseBuff : IBuff
     {
+        public event Action OnStack;
+        public event Action OnApply;
+        public event Action Ondiscad;
+        public event Action<float> OnTick;
+
         private Entity target;
 
         private bool isStackable;
@@ -19,6 +25,8 @@ namespace Gameplay
 
         private Dictionary<BuffMultiplayerID, float> statValues = new();
         private float _timer;
+
+        public int StackCount => stackCount;
 
         public bool IsStackable => isStackable;
         public bool IsTimed => isTimed;
@@ -56,12 +64,14 @@ namespace Gameplay
 
         public void Discard()
         {
+            Ondiscad?.Invoke();
             _stats.RunSpeedMultiplayer -= speedPerStack * stackCount;
             _stats.FireRateMultupleyer -= fireRatePerStack * stackCount;
         }
 
         public void AddStack()
         {
+            OnStack?.Invoke();
             if (stackCount >= maxStack) return;
 
             stackCount++;
@@ -71,6 +81,7 @@ namespace Gameplay
 
         public void Tick()
         {
+            OnTick?.Invoke(Time.time - startTime);
         }
 
         public bool IsExpired() => isTimed && (Time.time - startTime) >= duration;

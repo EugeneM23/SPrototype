@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce121e71fbf4e64b97e47314e1dc2a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fireRate: 0.25
-  _speed: 2
+  _fireRatePercentage: 30
+  _speedPercentage: 30
   _effectPrefab: {fileID: 2502088852688961053, guid: b7e86126d66444183b228ca3ea86dc6f, type: 3}
   _uiPrefab: {fileID: 6672416938524535675, guid: 1cc33fe63ed9c42c596274d08cebe7f6, type: 3}
   _damageNumber: {fileID: -2915332986251049647, guid: 1f370867265414b3f908a5efb0257862, type: 3}
