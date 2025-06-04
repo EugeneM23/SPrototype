@@ -24,7 +24,11 @@ namespace Gameplay
             lastTimeShoot = GetFireRate();
         }
 
-        private float GetFireRate() => Mathf.Max(_fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0);
+        private float GetFireRate()
+        {
+            Debug.Log(Mathf.Max(_fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0));
+            return Mathf.Max(_fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0);
+        }
 
         public void Tick()
         {

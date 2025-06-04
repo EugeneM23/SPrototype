@@ -23,7 +23,6 @@ namespace Gameplay
             point0 = start;
             point2 = end;
 
-            // Контрольная точка по середине, поднятая вверх
             point1 = (point0 + point2) * 0.5f;
             point1.y += height;
 
@@ -33,6 +32,8 @@ namespace Gameplay
 
         public Vector3 MoveAlongCurve(float speed)
         {
+            if (curveLength <= 0f) return point2;
+
             float deltaProgress = (speed * Time.deltaTime) / curveLength;
             Progress = Mathf.Clamp01(Progress + deltaProgress);
             return GetBezierPoint(Progress);
@@ -48,10 +49,11 @@ namespace Gameplay
         {
             float length = 0f;
             Vector3 prev = GetBezierPoint(0f);
+            int segments = 20;
 
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= segments; i++)
             {
-                float t = i / 10f;
+                float t = i / (float)segments;
                 Vector3 current = GetBezierPoint(t);
                 length += Vector3.Distance(prev, current);
                 prev = current;

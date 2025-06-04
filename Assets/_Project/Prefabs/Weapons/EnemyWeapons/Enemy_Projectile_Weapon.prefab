@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -8701876110790033558}
   - component: {fileID: -1401453317626529520}
   - component: {fileID: -836574190185772095}
+  - component: {fileID: 8817091812117123614}
   - component: {fileID: 5942307734497076881}
   m_Layer: 0
   m_Name: Enemy_Projectile_Weapon
@@ -99,6 +100,7 @@ MonoBehaviour:
   - {fileID: -8701876110790033558}
   - {fileID: -836574190185772095}
   - {fileID: 7570428121991785035}
+  - {fileID: 8817091812117123614}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 5942307734497076881}
@@ -117,6 +119,7 @@ MonoBehaviour:
   fireRate: 1
   projectileSpawnDelay: 0.5
   damage: 50
+  bulletLayerMask: 12
   scatter: 40
   fireRange: 10
   bulletSpeed: 20
@@ -142,6 +145,9 @@ MonoBehaviour:
   _muzzleFlash: {fileID: 0}
   _bulletPrefab: {fileID: 8699156800269933710, guid: 737aefe356c6d46a4ac3bd23a2f5dc41, type: 3}
   _shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
+  _isRelodeable: 1
+  _reloadTime: 1
+  _clipCapacity: 5
 --- !u!114 &-1401453317626529520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 6113824976840661105}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &-836574190185772095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +173,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 529b1ecc87154959befa9520ef59da12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8817091812117123614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4987170329088819174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d073815c78a74b8e98be4c4f33e19f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &5942307734497076881

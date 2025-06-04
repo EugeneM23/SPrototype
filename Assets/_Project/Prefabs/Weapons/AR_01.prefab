@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 3750572362710063219}
   - component: {fileID: -1785734590832131113}
   - component: {fileID: 8571865293689129961}
+  - component: {fileID: 8912669078161484255}
   m_Layer: 0
   m_Name: AR_01
   m_TagString: Untagged
@@ -240,6 +241,7 @@ MonoBehaviour:
   - {fileID: 3750572362710063219}
   - {fileID: 6203890669384559494}
   - {fileID: 8571865293689129961}
+  - {fileID: 8912669078161484255}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: -1785734590832131113}
@@ -258,8 +260,9 @@ MonoBehaviour:
   fireRate: 0.5
   projectileSpawnDelay: 0
   damage: 10
+  bulletLayerMask: 8
   scatter: 10
-  fireRange: 2
+  fireRange: 15
   bulletSpeed: 50
   ShakeDuration: 0.1
   shakeMagnitude: 0.1
@@ -313,6 +316,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clipUI: {fileID: 8283816077809050388, guid: 811706c09f90246099ba9915df47500c, type: 3}
   _reloadStatus: {fileID: 2703456018401647098, guid: 1c328b48210414bc0997f7b93995f222, type: 3}
+--- !u!114 &8912669078161484255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8504467924791662847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d073815c78a74b8e98be4c4f33e19f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9137652681675294895
 GameObject:
   m_ObjectHideFlags: 0

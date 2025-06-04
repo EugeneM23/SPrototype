@@ -14,7 +14,7 @@ namespace Gameplay
         bool IsExpired();
         void AddStack();
         void RefreshTimer();
-        event Action OnStack;
+        event Action<int> OnStack;
         event Action OnApply;
         event Action<float> OnTick;
         event Action Ondiscad;

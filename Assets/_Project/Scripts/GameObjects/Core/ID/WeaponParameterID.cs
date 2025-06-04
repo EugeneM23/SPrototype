@@ -10,21 +10,16 @@ namespace Gameplay
         ShakeDuration,
         ShakeMagnitude,
         ShellImpulse,
-        RecoilPower,
         ProjectileCount,
         MaxRicochetCount,
         ProjectileSpawnDelay,
-        AttackRate,
         DamageCastDelay,
-        MaxCapacity,
-        ClipCapacity,
         ReloadTime,
         BulletCount,
-        ReloadStatusUI,
-        SecondWeapon,
-        FisrstWeapon,
-        WeaponType,
         BulletPrefab,
-        ShellPrefab
+        ShellPrefab,
+        Bulletlayer,
+        MeleeWeapon,
+        RangeWeapon
     }
 }

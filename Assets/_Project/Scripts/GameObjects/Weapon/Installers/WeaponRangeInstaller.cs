@@ -18,30 +18,24 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<Entity>().WithId(WeaponParameterID.BulletPrefab).FromInstance(_bulletPrefab).AsCached();
-            Container.Bind<Entity>().WithId(WeaponParameterID.ShellPrefab).FromInstance(_shellPrefab).AsCached();
-
             Container
-                .Bind<WeaponShootComponent>()
-                .AsSingle()
-                .NonLazy();
+                .Bind<Entity>()
+                .WithId(WeaponParameterID.BulletPrefab)
+                .FromInstance(_bulletPrefab)
+                .AsCached();
+            
+            Container
+                .Bind<Entity>()
+                .WithId(WeaponParameterID.ShellPrefab)
+                .FromInstance(_shellPrefab)
+                .AsCached();
 
             Container
                 .BindInterfacesTo<WeaponShellSpawnAction>()
                 .AsSingle()
                 .WithArguments(_shellPoint)
                 .NonLazy();
-
-            Container
-                .BindInterfacesTo<WeaponShootAnimationAction>()
-                .AsSingle()
-                .NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<WeaponCameraShakeAction>()
-                .AsSingle()
-                .NonLazy();
-
+            
             Container
                 .BindInterfacesTo<WeaponMuzzleFlashAction>()
                 .AsSingle()
@@ -51,15 +45,6 @@ namespace Gameplay
             Container
                 .BindInterfacesTo<WeaponBulletSpawnAction>()
                 .AsSingle().WithArguments(_firePoint)
-                .NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<WeaponCooldownAction>()
-                .AsSingle();
-
-            Container
-                .BindInterfacesAndSelfTo<WeaponFireController>()
-                .AsSingle()
                 .NonLazy();
 
             if (_isRelodeable)

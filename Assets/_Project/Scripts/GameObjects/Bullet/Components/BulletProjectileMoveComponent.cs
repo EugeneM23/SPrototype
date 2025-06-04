@@ -5,63 +5,78 @@ namespace Gameplay
 {
     public class BulletProjectileMoveComponent : IBulletMoveComponent, IInitializable
     {
-        [Inject(Id = WeaponParameterID.BulletSpeed)]
-        private float bulletSpeed;
-
         private readonly Entity bullet;
-        private readonly PlayerCharacterProvider player;
-        private readonly PlayerSpeedObserver playerSpeed;
-        private readonly BezierCurveMover curveMover;
+        private Vector3 _startPos;
+        private Vector3 _targetPos;
+        private float _speed;
+        private float progress;
+        private bool initialized;
+        private float curveLength;
 
-        public bool Initialized { get; set; } = false;
-
-        public BulletProjectileMoveComponent(Entity bullet, PlayerCharacterProvider player,
-            PlayerSpeedObserver playerSpeed)
+        public BulletProjectileMoveComponent(Entity bullet)
         {
             this.bullet = bullet;
-            this.player = player;
-            this.playerSpeed = playerSpeed;
-            this.curveMover = new BezierCurveMover(height: 10f); // Можно сделать параметром
         }
 
-        public void Initialize()
+        public void Initialize() => bullet.OnEntityEnable += Reset;
+
+        private void Reset()
         {
-            bullet.Get<Bullet>().OnDispose += _ => Initialized = false;
+            progress = 0;
+            initialized = false;
         }
 
         public void Move()
         {
-            if (!Initialized)
-                InitTrajectory();
+            if (!initialized)
+            {
+                _startPos = bullet.transform.position;
+                curveLength = CalculateCurveLength();
+                initialized = true;
+            }
 
-            Vector3 newPosition = curveMover.MoveAlongCurve(bulletSpeed);
-            bullet.transform.position = newPosition;
+            // Нормализация скорости по длине кривой
+            float deltaProgress = (_speed * Time.deltaTime) / curveLength;
+            progress += deltaProgress;
 
-            if (curveMover.IsComplete)
+            if (progress >= 1f)
+            {
                 bullet.Get<Bullet>().Dispose();
+                return;
+            }
+
+            Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
+            midPoint.y += 10f;
+
+            float t = progress;
+            float u = 1f - t;
+            Vector3 newPos = u * u * _startPos + 2f * u * t * midPoint + t * t * _targetPos;
+
+            bullet.transform.position = newPos;
         }
 
-        private void InitTrajectory()
+        private float CalculateCurveLength()
         {
-            Vector3 start = bullet.transform.position;
-            Vector3 end = CalculatePredictedPosition();
-            curveMover.Initialize(start, end);
+            Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
+            midPoint.y += 10f;
 
-            Initialized = true;
+            float length = 0f;
+            Vector3 prev = _startPos;
+
+            for (int i = 1; i <= 10; i++)
+            {
+                float t = i / 10f;
+                float u = 1f - t;
+                Vector3 current = u * u * _startPos + 2f * u * t * midPoint + t * t * _targetPos;
+                length += Vector3.Distance(prev, current);
+                prev = current;
+            }
+
+            return length;
         }
 
-        private Vector3 CalculatePredictedPosition()
-        {
-            Vector3 playerPosition = player.Character.transform.position;
-            float playerSpeedValue = playerSpeed.Speed;
+        public void SetSeed(int seed) => _speed = seed;
 
-            Vector3 toPlayer = playerPosition - bullet.transform.position;
-            float distance = toPlayer.magnitude;
-
-            float timeToReach = distance / bulletSpeed;
-            Vector3 direction = player.Character.transform.forward;
-
-            return playerPosition + direction * playerSpeedValue * timeToReach;
-        }
+        public void SetTargetPos(Vector3 targetPos) => _targetPos = targetPos;
     }
 }

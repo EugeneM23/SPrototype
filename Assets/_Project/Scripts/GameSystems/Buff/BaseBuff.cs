@@ -6,7 +6,7 @@ namespace Gameplay
 {
     public class BaseBuff : IBuff
     {
-        public event Action OnStack;
+        public event Action<int> OnStack;
         public event Action OnApply;
         public event Action Ondiscad;
         public event Action<float> OnTick;
@@ -32,6 +32,8 @@ namespace Gameplay
         public bool IsTimed => isTimed;
 
         private CharacterStats _stats;
+        private Action _stackAction;
+        private Action _applyAction;
 
         public void Configure(BuffConfig config)
         {
@@ -40,6 +42,8 @@ namespace Gameplay
             maxStack = config.MaxStack;
             isTimed = config.IsTimed;
             duration = config.Duration;
+            _stackAction = config.StackAction;
+            _applyAction = config.ApplyAction;
 
             if (config.Stats != null)
             {
@@ -55,6 +59,9 @@ namespace Gameplay
 
         public void Apply()
         {
+            _stackAction?.Invoke();
+            _applyAction?.Invoke();
+            OnApply?.Invoke();
             if (isTimed)
                 startTime = Time.time;
 
@@ -71,10 +78,10 @@ namespace Gameplay
 
         public void AddStack()
         {
-            OnStack?.Invoke();
-            if (stackCount >= maxStack) return;
-
             stackCount++;
+            _applyAction?.Invoke();
+            if (stackCount >= maxStack) return;
+            OnStack?.Invoke(stackCount);
             _stats.RunSpeedMultiplayer += speedPerStack;
             _stats.FireRateMultupleyer += fireRatePerStack;
         }

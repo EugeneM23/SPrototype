@@ -1,7 +1,4 @@
-using System.ComponentModel;
-using Gameplay.Installers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -26,7 +23,7 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeWeaponRoot).AsCached();
 
             Container.Bind<CharacterConditions>().AsSingle().NonLazy();
@@ -82,7 +79,11 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
 
             EnemyMovementInstaller.Install(Container);
-            
+
+            Container
+                .BindInterfacesAndSelfTo<EnemyWeaponManager>()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

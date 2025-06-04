@@ -51,8 +51,9 @@ namespace Gameplay
                 _assistComponent.RotateToTarget(_stats.CharacterEntity.Get<TargetComponent>().Target,
                     _stats.CharacterEntity.transform, 10, 0.7f);
 
-                var fireRate = _stats.CharacterEntity.Get<MelleWeaponManager>().CurrentWeapon.GetComponent<Entity>()
+                var fireRate = _stats.CharacterEntity.Get<EnemyWeaponManager>().CurrentWeapon
                     .Get<WeaponCooldownAction>().FireRate;
+
                 fireRate *= 1 - _stats.FireRateMultupleyer / 100f;
                 _delayedAction.Schedule(fireRate, () => _characterConditions.IsBusy = false);
                 _delayedAction.Schedule(fireRate, () => _isEnable = true);

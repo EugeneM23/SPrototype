@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _runSpeed: 10
   _rotationSpeed: 20
-  _lookAtSpeed: 500
+  _lookAtSpeed: 1000
   _strafeSpeed: 0
   _strafePower: 0
   _maxHealth: 10000
@@ -168,6 +168,7 @@ MonoBehaviour:
   _bulletCount: 10
   _weapons:
   - {fileID: 6898676644082228745, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
+  - {fileID: -1401453317626529520, guid: ee5d2b221b37643af9f1874ce77122e9, type: 3}
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 128
-  _radius: 20
+  _radius: 50
   _shouldCast: 1
 --- !u!114 &2625381723154630738
 MonoBehaviour:

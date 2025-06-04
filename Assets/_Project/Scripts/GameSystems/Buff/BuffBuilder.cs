@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -5,7 +6,7 @@ namespace Gameplay
 {
     public class BuffBuilder<T> where T : IBuff, new()
     {
-        private BuffConfig config;
+        private BuffConfig config = new BuffConfig();
 
         public BuffBuilder<T> Target(Entity target)
         {
@@ -17,6 +18,18 @@ namespace Gameplay
         {
             config.IsStackable = true;
             config.MaxStack = max;
+            return this;
+        }
+
+        public BuffBuilder<T> StackAction(Action action = null)
+        {
+            config.StackAction = action;
+            return this;
+        }
+
+        public BuffBuilder<T> ApplyAction(Action action = null)
+        {
+            config.ApplyAction = action;
             return this;
         }
 
@@ -41,6 +54,5 @@ namespace Gameplay
             buff.Configure(config);
             return buff;
         }
-        
     }
 }

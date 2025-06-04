@@ -15,6 +15,8 @@ namespace Gameplay
 
         public void Invoke(Collision collision)
         {
+            if (_effect == null) return;
+
             ContactPoint point = collision.contacts[0];
             Quaternion rotation = Quaternion.LookRotation(point.normal);
             var effect = _factory.Create(_effect);

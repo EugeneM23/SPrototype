@@ -15,10 +15,13 @@ namespace Gameplay
         private float _delay;
 
         [Inject(Id = WeaponParameterID.BulletSpeed)]
-        private float _bulletSpeed;
+        private int _bulletSpeed;
 
         [Inject(Id = WeaponParameterID.Damage)]
         private int _bulletDamage;
+
+        [Inject(Id = WeaponParameterID.Bulletlayer)]
+        private readonly LayerMask _layerMask;
 
         private readonly GameFactory _factory;
         private readonly Entity _bulletPrefab;
@@ -59,8 +62,12 @@ namespace Gameplay
                     Entity bullet = _factory.Create(_bulletPrefab, 10);
                     bullet.gameObject.transform.position = _firePoint.position;
                     bullet.gameObject.transform.rotation = rotation;
-                    bullet.Get<BulletMoveComponent>().SetSeed(_bulletSpeed);
+                    bullet.gameObject.layer = _layerMask;
+                    bullet.Get<IBulletMoveComponent>().SetSeed(_bulletSpeed);
                     bullet.Get<BulletDamageAction>().SetDamage(_bulletDamage);
+
+                    if (bullet.TryGet<BulletProjectileMoveComponent>(out var component))
+                        component.SetTargetPos(_character.Get<TargetComponent>().Target.position);
                 }
 
                 _needSpawn = false;
@@ -80,7 +87,6 @@ namespace Gameplay
             Vector3 targetPosition = _targetComponent.Target.position + Vector3.up * 1.5f;
 
             Vector3 directionToTarget = (targetPosition - _character.transform.position).normalized;
-            //Vector3 directionToTarget =  _firePoint.forward.normalized;
 
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
             float randomY = Random.Range(-_scater, _scater);

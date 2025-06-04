@@ -7,7 +7,7 @@ namespace Gameplay.Installers
     [CreateAssetMenu(fileName = "EnemyRangeInstaller", menuName = "Installers/AI/EnemyRangeInstaller")]
     public class EnemyRangeInstaller : ScriptableObjectInstaller<EnemyRangeInstaller>
     {
-        [SerializeField] private GameObject _weaponPrefab;
+        [SerializeField] private Entity _weapon;
 
         public override void InstallBindings()
         {
@@ -16,17 +16,12 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .NonLazy();
 
-
             Container
                 .BindInterfacesAndSelfTo<EnemyRangeAttackState>()
                 .AsSingle()
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<RangeWeaponManager>()
-                .AsSingle()
-                .WithArguments(_weaponPrefab)
-                .NonLazy();
+            Container.Bind<Entity>().WithId(WeaponParameterID.RangeWeapon).FromInstance(_weapon).AsCached().NonLazy();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Container.Bind<Transform>().WithId(DamageRootID.MelleWeaponRoot).FromInstance(_weaponBone).AsCached();
+            Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
 
             Container
                 .Bind<Entity>()

@@ -20,6 +20,7 @@ namespace Gameplay
             _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _bulletSpeed;
         }
 
-        public void SetSeed(float seed) => _bulletSpeed = seed;
+        public void SetSeed(int seed) => _bulletSpeed = seed;
+        
     }
 }

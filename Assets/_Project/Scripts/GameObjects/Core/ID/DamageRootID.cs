@@ -2,7 +2,7 @@ namespace Gameplay
 {
     public enum DamageRootID
     {
-        MelleWeaponRoot,
+        MeleeWeaponRoot,
         RangeWeaponRoot,
         WeaponDamageRoot
     }

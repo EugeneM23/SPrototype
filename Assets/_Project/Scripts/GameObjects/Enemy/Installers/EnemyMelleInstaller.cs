@@ -6,7 +6,7 @@ namespace Gameplay.Installers
     [CreateAssetMenu(fileName = "EnemyMelleInstaller", menuName = "Installers/AI/EnemyMelleInstaller")]
     public class EnemyMelleInstaller : ScriptableObjectInstaller<EnemyMelleInstaller>
     {
-        [SerializeField] private GameObject _weaponPrefab;
+        [SerializeField] private Entity _weapon;
 
         public override void InstallBindings()
         {
@@ -20,11 +20,7 @@ namespace Gameplay.Installers
                 .AsSingle()
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<MelleWeaponManager>()
-                .AsSingle()
-                .WithArguments(_weaponPrefab)
-                .NonLazy();
+            Container.Bind<Entity>().WithId(WeaponParameterID.MeleeWeapon).FromInstance(_weapon).AsCached().NonLazy();
         }
     }
 }

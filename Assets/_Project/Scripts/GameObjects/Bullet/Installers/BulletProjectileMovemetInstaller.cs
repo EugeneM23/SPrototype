@@ -14,10 +14,5 @@ public class BulletProjectileMovemetInstaller : MonoInstaller
             .BindInterfacesAndSelfTo<BulletMoveController>()
             .AsSingle()
             .NonLazy();
-
-        Container
-            .BindInterfacesAndSelfTo<PlayerSpeedObserver>()
-            .AsSingle()
-            .NonLazy();
     }
 }

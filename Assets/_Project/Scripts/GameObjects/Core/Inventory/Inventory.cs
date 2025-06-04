@@ -29,7 +29,7 @@ namespace Gameplay
         private readonly List<Entity> _weapons = new(10);
         private readonly DiContainer _container;
 
-        public Inventory([Inject(Id = DamageRootID.MelleWeaponRoot)] Transform weaponBone, int bulletCount,
+        public Inventory([Inject(Id = DamageRootID.MeleeWeaponRoot)] Transform weaponBone, int bulletCount,
             List<Entity> startWeapons, DiContainer container)
         {
             _weaponBone = weaponBone;
