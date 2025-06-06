@@ -8,9 +8,9 @@ namespace Gameplay
 
         private readonly WeaponClipComponent _clip;
         private readonly Entity _weaponEntity;
-        private readonly Inventory _inventory;
+        private readonly IInventory _inventory;
 
-        public ClipUIPresentor(ClipUI clipUI, WeaponClipComponent clip, Entity weaponEntity, Inventory inventory)
+        public ClipUIPresentor(ClipUI clipUI, WeaponClipComponent clip, Entity weaponEntity, IInventory inventory)
         {
             _clipUI = clipUI;
             _clip = clip;

@@ -24,22 +24,21 @@ namespace Gameplay
 
         private readonly WeaponClipComponent _clip;
         private readonly Entity _weaponEntity;
-        private readonly Inventory _inventory;
-
-        [Inject(Id = WeaponParameterID.ReloadTime)]
-        private readonly float _reloadTime;
+        private readonly IInventory _inventory;
+        private readonly WeaponConfig _config;
 
         private float _reloadTimer;
         private bool _isReloading;
 
         public WeaponReloadComponent(List<ICondition> conditions, List<IAction> actions, WeaponClipComponent clip,
-            Entity weaponEntity, Inventory inventory)
+            Entity weaponEntity, IInventory inventory, WeaponConfig config)
         {
             _conditions = conditions;
             _actions = actions;
             _clip = clip;
             _weaponEntity = weaponEntity;
             _inventory = inventory;
+            _config = config;
         }
 
         public void Initialize() => _weaponEntity.OnEntityDisable += () => _isReloading = false;
@@ -72,7 +71,7 @@ namespace Gameplay
 
         public void StartReload()
         {
-            _reloadTimer = _reloadTime;
+            _reloadTimer = _config.reloadTime;
             _isReloading = true;
             foreach (var item in _actions)
                 item.StartRealod();

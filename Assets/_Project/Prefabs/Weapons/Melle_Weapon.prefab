@@ -43,9 +43,8 @@ GameObject:
   - component: {fileID: 8208131177066352199}
   - component: {fileID: 7969624372058240327}
   - component: {fileID: 6254490439261344806}
-  - component: {fileID: 5737323738552138633}
-  - component: {fileID: -6291055762530302480}
   - component: {fileID: 4534211283834124552}
+  - component: {fileID: 3735024707087147732}
   m_Layer: 8
   m_Name: Melle_Weapon
   m_TagString: Untagged
@@ -92,9 +91,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 5737323738552138633}
-  - {fileID: -6291055762530302480}
   - {fileID: 4534211283834124552}
+  - {fileID: 3735024707087147732}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
@@ -113,39 +111,6 @@ MonoBehaviour:
   _context: {fileID: 7969624372058240327}
   _isDisposableOverTime: 0
   _destroyTime: 0
---- !u!114 &5737323738552138633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184137841470919376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c0696dc03ea4897a5253f87cc7bbb5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageCastLayer: 0
-  _muzzleFlash: {fileID: 198741542255655676, guid: 234a1000ebc9c477d8be55c7b8c0f575, type: 3}
-  _damageRoot: {fileID: 1956108049342527132}
---- !u!114 &-6291055762530302480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184137841470919376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4624d81d1a44e459b257e801f8fe868, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackrate: 0.3
-  _damageCastDelay: 0
-  _damage: 100
-  _range: 5
-  _shakeDuration: 0
-  _shakeMagnitude: 0
 --- !u!114 &4534211283834124552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +124,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
+--- !u!114 &3735024707087147732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9184137841470919376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b906f5a17340d4a0a4a260494cae7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clipUI: {fileID: 0}
+  _reloadStatus: {fileID: 0}
+  meleeConfig:
+    fireRate: 1
+    damage: 1
+    range: 5
+    shakeDuration: 0
+    shakeMagnitude: 0
+    isReloadable: 0
+    reloadTime: 2
+    clipCapacity: 30
+    damageCastDelay: 0.1
+  damageRoot: {fileID: 1956108049342527132}
+  damageCastLayer: 0
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ namespace Modules
         public bool LookAtAndCheck()
         {
             if (_targetComponent.Target == null || _stats.CharacterEntity == null) return false;
+            Debug.Log("Asdasd");
 
             Vector3 direction = _targetComponent.Target.position - _stats.CharacterEntity.transform.position;
             direction.y = 0f;
@@ -33,7 +34,7 @@ namespace Modules
                 _stats.LookAtSpeed * Time.deltaTime);
 
             float angle = Quaternion.Angle(_stats.CharacterEntity.transform.rotation, targetRotation);
-            bool complite = angle < 0.1f;
+            bool complite = angle < 0.01f;
 
             return complite;
         }

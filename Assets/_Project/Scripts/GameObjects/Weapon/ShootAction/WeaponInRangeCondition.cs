@@ -5,14 +5,13 @@ namespace Gameplay
 {
     public class WeaponInRangeCondition : WeaponShootComponent.ICondition
     {
-        [Inject(Id = WeaponParameterID.FireRange)]
-        private float _fireRange;
-
+        private readonly WeaponConfig _config;
         private readonly ICharacterProvider _character;
 
-        public WeaponInRangeCondition(ICharacterProvider character)
+        public WeaponInRangeCondition(ICharacterProvider character, WeaponConfig config)
         {
             _character = character;
+            _config = config;
         }
 
         public bool Invoke()
@@ -20,7 +19,7 @@ namespace Gameplay
             float distance = Vector3.Distance(_character.Character.transform.position,
                 _character.Character.Get<TargetComponent>().Target.transform.position);
 
-            return distance <= _fireRange;
+            return distance <= _config.range;
         }
     }
 }

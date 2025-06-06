@@ -8,9 +8,16 @@ namespace Gameplay
         [SerializeField] private Transform _melleWeaponRoot;
         [SerializeField] private Transform _rangeWeaponRoot;
         [SerializeField] private Entity _entity;
+        [SerializeField] private LayerMask _damageLayer;
 
         public override void InstallBindings()
         {
+            Container
+                .Bind<DamagelayerComponent>()
+                .AsSingle()
+                .WithArguments(_damageLayer)
+                .NonLazy();
+            
             Container
                 .BindInterfacesAndSelfTo<EnemyCharacterProvider>()
                 .AsSingle()
@@ -20,7 +27,7 @@ namespace Gameplay
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)
                 .FromInstance(gameObject.GetComponent<Entity>())
-                .AsSingle()
+                .AsCached()
                 .NonLazy();
 
             Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_melleWeaponRoot).AsCached();

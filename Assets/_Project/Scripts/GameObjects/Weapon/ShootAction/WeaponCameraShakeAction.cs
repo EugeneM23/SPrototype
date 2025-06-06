@@ -5,23 +5,19 @@ namespace Gameplay
 {
     public class WeaponCameraShakeAction : WeaponShootComponent.IAction
     {
-        [Inject(Id = WeaponParameterID.ShakeMagnitude)]
-        private float _cameraShakeMagnitude;
-
-        [Inject(Id = WeaponParameterID.ShakeDuration)]
-        private float _cameraShakeDuration;
-
+        private readonly WeaponConfig _config;
         private readonly CameraShaker _cameraShaker;
 
-        public WeaponCameraShakeAction(CameraShaker cameraShaker)
+        public WeaponCameraShakeAction(CameraShaker cameraShaker, WeaponConfig config)
 
         {
             _cameraShaker = cameraShaker;
+            _config = config;
         }
 
         public void Invoke()
         {
-            _cameraShaker.CameraShake(_cameraShakeMagnitude, _cameraShakeDuration);
+            _cameraShaker.CameraShake(_config.shakeMagnitude, _config.shakeDuration);
         }
     }
 }

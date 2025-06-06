@@ -10,9 +10,16 @@ namespace Gameplay
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private DamageNumber _popupPrefab;
         [SerializeField] private Transform _weaponBone;
+        [SerializeField] private LayerMask _damageLayer;
 
         public override void InstallBindings()
         {
+            Container
+                .Bind<DamagelayerComponent>()
+                .AsSingle()
+                .WithArguments(_damageLayer)
+                .NonLazy();
+
             Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
 
             Container

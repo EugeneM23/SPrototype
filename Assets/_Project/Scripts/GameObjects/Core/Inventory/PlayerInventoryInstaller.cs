@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class InventoryInstaller : MonoInstaller
+    public class PlayerInventoryInstaller : MonoInstaller
     {
         [SerializeField] private int _bulletCount;
         [SerializeField] private List<Entity> _weapons;
@@ -16,8 +16,8 @@ namespace Gameplay
                 .FromInstance(_bulletCount)
                 .AsCached();
 
-
-            Container.BindInterfacesAndSelfTo<Inventory>().AsSingle().WithArguments(_weapons, Container, _bulletCount)
+            Container.BindInterfacesAndSelfTo<PlayerInventory>().AsSingle()
+                .WithArguments(_weapons, Container, _bulletCount)
                 .NonLazy();
         }
     }

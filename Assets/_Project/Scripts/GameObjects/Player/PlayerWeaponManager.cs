@@ -7,33 +7,61 @@ namespace Gameplay
 {
     public class PlayerWeaponManager : IInitializable
     {
-        private readonly Inventory _inventory;
-        private Entity _currentWeapon;
-        private readonly Button _button;
-        private int _index;
+        private readonly PlayerInventory _playerInventory;
+        private readonly Button switchButton;
+        private readonly bool isPlayer;
 
-        public Entity CurrentWeapon
+        private Entity currentWeapon;
+        private int currentIndex = 0;
+
+        public Entity CurrentWeapon;
+
+        public PlayerWeaponManager(PlayerInventory playerInventory, Button switchButton = null, bool isPlayer = true)
         {
-            get
-            {
-                if (_currentWeapon == null && _inventory.WeaponCount > 0)
-                    _currentWeapon = _inventory[0];
-
-                return _currentWeapon;
-            }
-            private set => _currentWeapon = value;
-        }
-
-        public PlayerWeaponManager(Button button, Inventory inventory)
-        {
-            _button = button;
-            _inventory = inventory;
+            this._playerInventory = playerInventory;
+            this.switchButton = switchButton;
+            this.isPlayer = isPlayer;
         }
 
         public void Initialize()
         {
-            _button.onClick.AddListener(SwitchItem);
-            _inventory.OnWeaponAdded += SetCurrentWeapon;
+            if (isPlayer && switchButton != null)
+            {
+                switchButton.onClick.AddListener(SwitchWeapon);
+            }
+
+            _playerInventory.OnWeaponAdded += OnWeaponAdded;
+
+            if (_playerInventory.WeaponCount > 0)
+            {
+                EquipWeapon(_playerInventory[0]);
+            }
+        }
+
+        private void OnWeaponAdded()
+        {
+            if (currentWeapon == null)
+            {
+                EquipWeapon(_playerInventory[_playerInventory.WeaponCount - 1]);
+            }
+        }
+
+        public void SwitchWeapon()
+        {
+            if (_playerInventory.WeaponCount <= 1) return;
+
+            UnequipWeapon(currentWeapon);
+            currentIndex = (currentIndex + 1) % _playerInventory.WeaponCount;
+            EquipWeapon(_playerInventory[currentIndex]);
+        }
+
+        private void EquipWeapon(Entity weapon)
+        {
+            if (weapon == null) return;
+
+            currentWeapon = weapon;
+            weapon.gameObject.SetActive(true);
+            weapon.Get<WeaponFireController>()?.TurnOn();
         }
 
         private void UnequipWeapon(Entity weapon)
@@ -41,43 +69,7 @@ namespace Gameplay
             if (weapon == null) return;
 
             weapon.gameObject.SetActive(false);
-            weapon.Get<WeaponFireController>().TurnOff();
-        }
-
-        private void EquipWeapon(Entity weapon)
-        {
-            if (weapon == null) return;
-
-            weapon.Get<WeaponFireController>().TurnOn();
-            weapon.gameObject.SetActive(true);
-        }
-
-        private void SetCurrentWeapon()
-        {
-            UnequipWeapon(CurrentWeapon);
-
-            CurrentWeapon = _inventory[_inventory.WeaponCount - 1];
-            _index = -1;
-
-            EquipWeapon(CurrentWeapon);
-        }
-
-        public void SwitchItem()
-        {
-            if (_inventory.WeaponCount == 0) return;
-            
-            if (CurrentWeapon == null && _inventory.WeaponCount > 0)
-                CurrentWeapon = _inventory[0];
-
-            UnequipWeapon(CurrentWeapon);
-
-            _index = (_index + 1) % _inventory.WeaponCount;
-            Debug.Log(_index);
-
-            CurrentWeapon = _inventory[_index];
-
-            EquipWeapon(CurrentWeapon);
+            weapon.Get<WeaponFireController>()?.TurnOff();
         }
     }
-
 }

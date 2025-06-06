@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class Inventory : IInitializable, IEnumerable<Entity>, WeaponReloadComponent.IAction
+    public class PlayerInventory : IInitializable, IEnumerable<Entity>, WeaponReloadComponent.IAction, IInventory
     {
         public event Action OnBulletCountChanget;
         public event Action OnWeaponAdded;
@@ -29,7 +29,7 @@ namespace Gameplay
         private readonly List<Entity> _weapons = new(10);
         private readonly DiContainer _container;
 
-        public Inventory([Inject(Id = DamageRootID.MeleeWeaponRoot)] Transform weaponBone, int bulletCount,
+        public PlayerInventory([Inject(Id = DamageRootID.MeleeWeaponRoot)] Transform weaponBone, int bulletCount,
             List<Entity> startWeapons, DiContainer container)
         {
             _weaponBone = weaponBone;
@@ -44,6 +44,8 @@ namespace Gameplay
         {
             foreach (var item in _startWeapons)
                 SpawnWeapon(item);
+
+            if (_weapons.Count == 0) return;
 
             _weapons[0].gameObject.SetActive(true);
         }

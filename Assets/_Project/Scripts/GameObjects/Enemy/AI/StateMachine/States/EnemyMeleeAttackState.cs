@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using Zenject;
 
 namespace Gameplay
@@ -15,6 +12,7 @@ namespace Gameplay
         private readonly Enemy _enemy;
 
         private bool _isEnable;
+        private float _fireRate;
 
         public EnemyMeleeAttackState(
             CharacterConditions characterConditions,
@@ -51,13 +49,15 @@ namespace Gameplay
                 _assistComponent.RotateToTarget(_stats.CharacterEntity.Get<TargetComponent>().Target,
                     _stats.CharacterEntity.transform, 10, 0.7f);
 
-                var fireRate = _stats.CharacterEntity.Get<EnemyWeaponManager>().CurrentWeapon
-                    .Get<WeaponCooldownAction>().FireRate;
-
-                fireRate *= 1 - _stats.FireRateMultupleyer / 100f;
-                _delayedAction.Schedule(fireRate, () => _characterConditions.IsBusy = false);
-                _delayedAction.Schedule(fireRate, () => _isEnable = true);
+                _fireRate *= 1 - _stats.FireRateMultupleyer / 100f;
+                _delayedAction.Schedule(_fireRate, () => _characterConditions.IsBusy = false);
+                _delayedAction.Schedule(_fireRate, () => _isEnable = true);
             }
+        }
+
+        public void SetFireRate(float fireRate)
+        {
+            _fireRate = fireRate;
         }
     }
 }

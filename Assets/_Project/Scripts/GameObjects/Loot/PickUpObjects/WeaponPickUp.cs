@@ -21,7 +21,7 @@ namespace Gameplay
             if (other.GetComponent<CharacterController>())
             {
                 Entity target = other.GetComponent<Entity>();
-                target.Get<Inventory>().AddWeapon(_weapon);
+                target.Get<PlayerInventory>().AddWeapon(_weapon);
 
                 if (_effectPrefab != null)
                 {

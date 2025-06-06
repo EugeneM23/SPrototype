@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
@@ -27,7 +28,6 @@ namespace Gameplay
         public void Shoot()
         {
             if (!CanShoot()) return;
-
             foreach (var item in _actions)
                 item.Invoke();
         }

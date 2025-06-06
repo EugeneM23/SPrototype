@@ -6,19 +6,16 @@ namespace Gameplay
     public class ReloadAnimationAction : ITickable, WeaponReloadComponent.IAction,
         WeaponShootComponent.ICondition
     {
-        [Inject(Id = WeaponParameterID.ReloadTime)]
-        private readonly float _reloadTime;
-
-        private readonly Entity _entity;
+        private readonly WeaponConfig _config;
 
         private readonly Animator _animator;
         private bool _reloading;
         private float _timer;
 
-        public ReloadAnimationAction(Animator animator, Entity entity)
+        public ReloadAnimationAction(Animator animator, WeaponConfig config)
         {
             _animator = animator;
-            _entity = entity;
+            _config = config;
         }
 
         public void Tick()
@@ -34,7 +31,7 @@ namespace Gameplay
         public void StartRealod()
         {
             _reloading = true;
-            _timer = _reloadTime;
+            _timer = _config.reloadTime;
             _animator.Play("Reload", 1);
         }
 

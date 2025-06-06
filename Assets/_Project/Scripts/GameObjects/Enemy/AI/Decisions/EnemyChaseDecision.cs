@@ -20,7 +20,6 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            Debug.Log(_conditions.IsBusy);
             return distance >= 2f && distance < _chaseRange && !_conditions.IsBusy;
         }
 

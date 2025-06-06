@@ -153,6 +153,9 @@ MonoBehaviour:
   _healtBarOffset: {x: 0, y: 2, z: -2.5}
   _popupPrefab: {fileID: 1259023133563206875, guid: bc1bb8c54137147a6b63b144771df4cf, type: 3}
   _weaponBone: {fileID: 1230073187006417640}
+  _damageLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &7387085180644060854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +171,6 @@ MonoBehaviour:
   _bulletCount: 10
   _weapons:
   - {fileID: 6898676644082228745, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
-  - {fileID: -1401453317626529520, guid: ee5d2b221b37643af9f1874ce77122e9, type: 3}
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0

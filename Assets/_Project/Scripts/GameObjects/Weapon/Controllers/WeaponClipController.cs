@@ -1,16 +1,17 @@
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
 {
     public class WeaponClipController : WeaponReloadComponent.IAction
     {
-        private readonly Inventory _inventory;
-        private readonly WeaponClipComponent _clip;
+        private readonly IInventory _inventory;
+        private readonly WeaponClipComponent clip;
 
-        public WeaponClipController(Inventory inventory, WeaponClipComponent clip)
+        public WeaponClipController(IInventory inventory, WeaponClipComponent clip)
         {
-            _inventory = inventory;
-            _clip = clip;
+            this._inventory = inventory;
+            this.clip = clip;
         }
 
         public void StartRealod()
@@ -19,16 +20,9 @@ namespace Gameplay
 
         public void FinishReload()
         {
-            if (_clip.MaxCapacity <= _inventory.BulletCount)
-            {
-                _clip.CurrentCapacity = _clip.MaxCapacity;
-                _inventory.BulletCount -= _clip.MaxCapacity;
-            }
-            else
-            {
-                _clip.CurrentCapacity = _inventory.BulletCount;
-                _inventory.BulletCount = 0;
-            }
+            var bulletsToReload = Mathf.Min(clip.MaxCapacity, _inventory.BulletCount);
+            clip.CurrentCapacity = bulletsToReload;
+            _inventory.BulletCount -= bulletsToReload;
         }
     }
 }

@@ -5,14 +5,18 @@ namespace Gameplay
 {
     public class WeaponCooldownAction : WeaponShootComponent.ICondition, WeaponShootComponent.IAction, ITickable
     {
-        [Inject(Id = WeaponParameterID.FireRate)]
-        private float _fireRate;
+        private readonly WeaponConfig _config;
 
-        public float FireRate => _fireRate;
+        public float FireRate => _config.fireRate;
 
         [Inject] private readonly CharacterStats _stats;
 
         private float lastTimeShoot;
+
+        public WeaponCooldownAction(WeaponConfig config)
+        {
+            _config = config;
+        }
 
         bool WeaponShootComponent.ICondition.Invoke()
         {
@@ -26,8 +30,8 @@ namespace Gameplay
 
         private float GetFireRate()
         {
-            Debug.Log(Mathf.Max(_fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0));
-            return Mathf.Max(_fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0);
+            Debug.Log(Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0));
+            return Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0);
         }
 
         public void Tick()

@@ -45,7 +45,6 @@ namespace Gameplay
             {
                 _characterConditions.IsChasing = false;
                 _characterConditions.IsAdling = true;
-
                 if (_lookAtComponent.LookAtAndCheck())
                 {
                     _timer -= Time.deltaTime;

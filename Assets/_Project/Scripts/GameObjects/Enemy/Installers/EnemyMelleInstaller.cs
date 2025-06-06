@@ -1,12 +1,11 @@
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Installers
+namespace Gameplay
 {
     [CreateAssetMenu(fileName = "EnemyMelleInstaller", menuName = "Installers/AI/EnemyMelleInstaller")]
     public class EnemyMelleInstaller : ScriptableObjectInstaller<EnemyMelleInstaller>
     {
-        [SerializeField] private Entity _weapon;
 
         public override void InstallBindings()
         {
@@ -19,8 +18,6 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<EnemyMeleeAttackState>()
                 .AsSingle()
                 .NonLazy();
-
-            Container.Bind<Entity>().WithId(WeaponParameterID.MeleeWeapon).FromInstance(_weapon).AsCached().NonLazy();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Gameplay.Loot.PickUpObjects
             if (other.GetComponent<CharacterController>())
             {
                 Entity traget = other.GetComponent<Entity>();
-                traget.Get<PlayerWeaponManager>().CurrentWeapon.Get<Inventory>().AddBullets(_bullets);
+                traget.Get<PlayerWeaponManager>().CurrentWeapon.Get<PlayerInventory>().AddBullets(_bullets);
 
                 if (_effectPrefab != null)
                 {
