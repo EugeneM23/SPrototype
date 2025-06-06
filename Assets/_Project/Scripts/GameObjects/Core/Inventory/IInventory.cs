@@ -6,5 +6,6 @@ namespace Gameplay
     {
         int BulletCount { get; set; }
         event Action OnBulletCountChanget;
+        void AddBullets(int bullets);
     }
 }

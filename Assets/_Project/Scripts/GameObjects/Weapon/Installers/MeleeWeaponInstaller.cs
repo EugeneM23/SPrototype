@@ -6,11 +6,6 @@ namespace Gameplay
     {
         [SerializeField] private MeleeWeaponConfig meleeConfig;
 
-        [Header("Melee Components")] [SerializeField]
-        private Transform damageRoot;
-
-        [SerializeField] private DamageCastLayer damageCastLayer;
-
         public override void InstallBindings()
         {
             config = meleeConfig;
@@ -20,10 +15,7 @@ namespace Gameplay
 
         protected override void SetupWeaponSpecific()
         {
-            Container.Bind<Transform>().WithId(DamageRootID.WeaponDamageRoot).FromInstance(damageRoot);
             Container.BindInterfacesAndSelfTo<WeaponMelleAttackAction>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<WeaponDamageCastAction>().AsSingle().WithArguments(damageCastLayer)
-                .NonLazy();
         }
     }
 }

@@ -97,7 +97,7 @@ MonoBehaviour:
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 2092574877954839100}
-  _bindType: 0
+  _bindType: 2
 --- !u!114 &2092574877954839100
 MonoBehaviour:
   m_ObjectHideFlags: 0

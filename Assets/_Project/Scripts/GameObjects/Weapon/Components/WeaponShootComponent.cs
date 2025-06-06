@@ -29,7 +29,10 @@ namespace Gameplay
         {
             if (!CanShoot()) return;
             foreach (var item in _actions)
+            {
+                Debug.Log("Spawn");
                 item.Invoke();
+            }
         }
     }
 }

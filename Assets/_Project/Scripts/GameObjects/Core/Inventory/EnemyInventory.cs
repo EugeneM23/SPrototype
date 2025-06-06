@@ -74,5 +74,9 @@ namespace Gameplay
         }
 
         public event Action OnBulletCountChanget;
+        public void AddBullets(int bullets)
+        {
+            
+        }
     }
 }

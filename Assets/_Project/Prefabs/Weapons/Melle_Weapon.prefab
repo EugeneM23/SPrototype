@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 8208131177066352199}
   - component: {fileID: 7969624372058240327}
   - component: {fileID: 6254490439261344806}
-  - component: {fileID: 4534211283834124552}
   - component: {fileID: 3735024707087147732}
   m_Layer: 8
   m_Name: Melle_Weapon
@@ -91,7 +90,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 4534211283834124552}
   - {fileID: 3735024707087147732}
   _installerPrefabs: []
   _autoRun: 1
@@ -111,19 +109,6 @@ MonoBehaviour:
   _context: {fileID: 7969624372058240327}
   _isDisposableOverTime: 0
   _destroyTime: 0
---- !u!114 &4534211283834124552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184137841470919376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd7b2566de044a9e834f4661aa81ca13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 1
 --- !u!114 &3735024707087147732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b906f5a17340d4a0a4a260494cae7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clipUI: {fileID: 0}
-  _reloadStatus: {fileID: 0}
+  _type: 1
   meleeConfig:
     fireRate: 1
     damage: 1
@@ -149,7 +133,6 @@ MonoBehaviour:
     clipCapacity: 30
     damageCastDelay: 0.1
   damageRoot: {fileID: 1956108049342527132}
-  damageCastLayer: 0
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

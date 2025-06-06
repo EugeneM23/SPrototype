@@ -10,12 +10,13 @@ namespace Gameplay
         public LayerMask LayerMask;
         public Transform Source;
 
-        public DamageCastParams(int damage, float radius, float time, DamageCastLayer layer, Transform source)
+        public DamageCastParams(int damage, float radius, float time, LayerMask damagelayer,
+            Transform source)
         {
             Damage = damage;
             Radius = radius;
             Time = time;
-            LayerMask = LayerMask.GetMask(layer.ToString());
+            LayerMask = damagelayer;
             Source = source;
         }
     }

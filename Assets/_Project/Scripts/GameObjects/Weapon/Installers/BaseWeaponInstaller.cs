@@ -7,50 +7,32 @@ namespace Gameplay
     public abstract class BaseWeaponInstaller : MonoInstaller
     {
         [SerializeField] protected WeaponConfig config;
-        [SerializeField] private ClipUI _clipUI;
-        [SerializeField] private ReloadStatusUI _reloadStatus;
+        [SerializeField] private WeaponType _type;
+        [SerializeField] private Transform damageRoot;
 
         public override void InstallBindings()
         {
+            Container.Bind<Transform>().WithId(DamageRootID.WeaponDamageRoot).FromInstance(damageRoot);
+
             Container.Bind<WeaponConfig>().FromInstance(config).AsSingle();
+        
+            Container
+                .Bind<WeaponTypeHandler>()
+                .AsSingle()
+                .WithArguments(_type)
+                .NonLazy();
 
             Container.Bind<WeaponShootComponent>().AsSingle();
             Container.Bind<WeaponFireController>().AsSingle();
             Container.BindInterfacesAndSelfTo<WeaponCooldownAction>().AsSingle();
             Container.BindInterfacesAndSelfTo<WeaponCameraShakeAction>().AsSingle();
             Container.BindInterfacesTo<WeaponInRangeCondition>().AsSingle();
+            Container.BindInterfacesTo<WeaponDamageCastAction>().AsSingle();
 
             SetupWeaponSpecific();
-
-            if (config.isReloadable)
-            {
-                SetupReload();
-            }
         }
 
         protected abstract void SetupWeaponSpecific();
-
-        private void SetupReload()
-        {
-            Container.BindInterfacesAndSelfTo<WeaponReloadComponent>().AsSingle();
-            Container.BindInterfacesAndSelfTo<WeaponSootCounAction>().AsSingle();
-            Container.BindInterfacesAndSelfTo<ReloadAnimationAction>().AsSingle();
-            Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().WithArguments(config.clipCapacity);
-            Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle();
-
-            if (_reloadStatus != null)
-            {
-                Container.BindInterfacesAndSelfTo<ReloadStatusUI>().FromComponentInNewPrefab(_reloadStatus).AsSingle()
-                    .NonLazy();
-                Container.BindInterfacesAndSelfTo<ReloadStatusUIPresentor>().AsSingle().NonLazy();
-            }
-
-            if (_clipUI != null)
-            {
-                Container.BindInterfacesAndSelfTo<ClipUI>().FromComponentInNewPrefab(_clipUI).AsSingle().NonLazy();
-                Container.BindInterfacesAndSelfTo<ClipUIPresentor>().AsSingle().NonLazy();
-            }
-        }
     }
 
     [System.Serializable]

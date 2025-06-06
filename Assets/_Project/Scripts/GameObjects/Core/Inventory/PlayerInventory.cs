@@ -61,7 +61,6 @@ namespace Gameplay
             weapon.transform.SetParent(_weaponBone);
             weapon.transform.position = _weaponBone.position;
             weapon.transform.rotation = _weaponBone.rotation;
-            weapon.Get<WeaponFireController>().TurnOn();
             weapon.gameObject.SetActive(false);
             _weapons.Add(weapon);
             OnWeaponAdded?.Invoke();

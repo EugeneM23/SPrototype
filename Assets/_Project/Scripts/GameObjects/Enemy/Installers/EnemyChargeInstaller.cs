@@ -10,7 +10,6 @@ namespace Gameplay.Installers
         [SerializeField] private ChargeEffectMarker chargeEffectMarker;
         [SerializeField] private LayerMask _detectionEnviromentLayer;
 
-        [SerializeField] private DamageCastLayer _damageLayer;
         [SerializeField] private float _chargeDuration;
         [SerializeField] private int _chargeDamage;
         [SerializeField] private float _damageCastDuration;
@@ -31,7 +30,7 @@ namespace Gameplay.Installers
                     _chargeDamage,
                     _damageCastRadius,
                     _damageCastDuration,
-                    _damageLayer,
+                    12,
                     _entity.transform))
                 .NonLazy();
 

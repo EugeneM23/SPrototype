@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _context: {fileID: 0}
+  _isDisposableOverTime: 0
+  _destroyTime: 0
 --- !u!114 &2404942988829372896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullets: 30
-  _effectPrefab: {fileID: 0}
+  _effectPrefab: {fileID: 2502088852688961053, guid: b7e86126d66444183b228ca3ea86dc6f, type: 3}
   _damageNumber: {fileID: -2915332986251049647, guid: bed8a06bfd4184e4db400cb46f07bb8b, type: 3}
 --- !u!1 &514900816290752965
 GameObject:
