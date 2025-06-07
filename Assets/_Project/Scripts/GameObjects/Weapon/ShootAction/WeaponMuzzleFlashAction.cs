@@ -4,18 +4,24 @@ namespace Gameplay
 {
     public class WeaponMuzzleFlashAction : WeaponShootComponent.IAction
     {
-        private readonly ParticleSystem _particle;
+        private readonly Entity _particle;
+        private readonly GameFactory _factory;
+        private readonly Transform _firePoint;
 
-        public WeaponMuzzleFlashAction(ParticleSystem particle)
+        public WeaponMuzzleFlashAction(Entity particle, GameFactory factory, Transform firePoint)
         {
             _particle = particle;
+            _factory = factory;
+            _firePoint = firePoint;
         }
 
         public void Invoke()
         {
             if (_particle == null) return;
 
-            _particle.Play(true);
+            var effect = _factory.Create(_particle);
+            effect.transform.position = _firePoint.position;
+            effect.transform.rotation = _firePoint.rotation;
         }
     }
 }

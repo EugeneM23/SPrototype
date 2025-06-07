@@ -53,6 +53,9 @@ namespace Gameplay
             weapon.transform.SetParent(parent);
             weapon.transform.SetPositionAndRotation(parent.position, parent.rotation);
             weapon.Get<WeaponFireController>().TurnOn();
+            
+            if (weapon.TryGet<WeaponSlahController>(out var controller))
+                controller.TurnOn();
 
             return weapon;
         }

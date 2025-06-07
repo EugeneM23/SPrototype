@@ -65,12 +65,11 @@ namespace Gameplay
         {
             Vector3 targetPosition = _targetComponent.Target.position;
 
-            Vector3 directionToTarget = (targetPosition - _firePoint.position).normalized;
+            Vector3 directionToTarget = (targetPosition + Vector3.up * 1.5f - _firePoint.position).normalized;
             Debug.DrawRay(_firePoint.position, directionToTarget * 2000f, Color.red, 1f);
 
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
             float randomY = Random.Range(-_config.scatter, _config.scatter);
-            //float randomX = Random.Range(-_config.scatter, _config.scatter);
             Quaternion scatterRotation = Quaternion.Euler(0, randomY, 0f);
             Quaternion finalRotation = scatterRotation * lookRotation;
 

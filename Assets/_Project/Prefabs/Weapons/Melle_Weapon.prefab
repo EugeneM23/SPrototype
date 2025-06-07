@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 6396849097479230591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.614, z: 0}
+  m_LocalPosition: {x: 0.07324219, y: 0.4638672, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -129,9 +129,8 @@ MonoBehaviour:
     range: 5
     shakeDuration: 0
     shakeMagnitude: 0
-    damageCastDelay: 0.1
-  _slashPoint: {fileID: 0}
-  _slash: {fileID: 0}
+  _slashPoint: {fileID: 1457970844388273319}
+  _slash: {fileID: -5735226433674640030, guid: 78dceeb7a621b4a4c9d831ea56bd3870, type: 3}
 --- !u!114 &7606434032748138096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +148,7 @@ MonoBehaviour:
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 7969624372058240327}
-  _bindType: 0
+  _bindType: 2
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

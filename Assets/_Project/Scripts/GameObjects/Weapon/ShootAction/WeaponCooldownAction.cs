@@ -7,8 +7,6 @@ namespace Gameplay
     {
         private readonly WeaponConfig _config;
 
-        public float FireRate => _config.fireRate;
-
         [Inject] private readonly CharacterStats _stats;
 
         private float lastTimeShoot;
@@ -30,7 +28,6 @@ namespace Gameplay
 
         private float GetFireRate()
         {
-            Debug.Log(Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultiplier / 100f), 0));
             return Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultiplier / 100f), 0);
         }
 
