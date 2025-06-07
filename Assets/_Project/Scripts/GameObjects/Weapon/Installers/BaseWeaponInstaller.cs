@@ -31,11 +31,10 @@ namespace Gameplay
         protected abstract void SetupWeaponSpecific();
     }
 
-    [System.Serializable]
+    [Serializable]
     public class RangedWeaponConfig : WeaponConfig
     {
-        [Header("Ranged Stats")] public float projectileSpawnDelay = 0f;
-        public int bulletSpeed = 50;
+        [Header("Ranged Stats")] public int bulletSpeed = 50;
         public float scatter = 0f;
         public int projectileCount = 1;
         public float shellImpulse = 5f;
@@ -48,7 +47,6 @@ namespace Gameplay
     [System.Serializable]
     public class MeleeWeaponConfig : WeaponConfig
     {
-        [Header("Melee Stats")] public float damageCastDelay = 0.1f;
     }
 
     public class WeaponConfig

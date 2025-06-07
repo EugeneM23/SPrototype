@@ -39,31 +39,26 @@ namespace Gameplay
         {
             if (!_needSpawn) return;
 
-            _timer -= Time.deltaTime;
-            if (_timer <= 0)
+            for (int i = 0; i < _config.projectileCount; i++)
             {
-                for (int i = 0; i < _config.projectileCount; i++)
-                {
-                    Quaternion rotation = CalculatRotation();
-                    Entity bullet = _factory.Create(_bulletPrefab, 10);
-                    bullet.gameObject.transform.position = _firePoint.position;
-                    bullet.gameObject.transform.rotation = rotation;
-                    bullet.gameObject.layer = _damageLayer.GetDamageLayer();
-                    bullet.Get<IBulletMoveComponent>().SetSeed(_config.bulletSpeed);
-                    bullet.Get<BulletDamageAction>().SetDamage(_config.damage);
+                Quaternion rotation = CalculatRotation();
+                Entity bullet = _factory.Create(_bulletPrefab, 10);
+                bullet.gameObject.transform.position = _firePoint.position;
+                bullet.gameObject.transform.rotation = rotation;
+                bullet.gameObject.layer = _damageLayer.GetDamageLayer();
+                bullet.Get<IBulletMoveComponent>().SetSeed(_config.bulletSpeed);
+                bullet.Get<BulletDamageAction>().SetDamage(_config.damage);
 
-                    if (bullet.TryGet<BulletProjectileMoveComponent>(out var component))
-                        component.SetTargetPos(_character.Get<TargetComponent>().Target.position);
-                }
-
-                _needSpawn = false;
+                if (bullet.TryGet<BulletProjectileMoveComponent>(out var component))
+                    component.SetTargetPos(_character.Get<TargetComponent>().Target.position);
             }
+
+            _needSpawn = false;
         }
 
         void WeaponShootComponent.IAction.Invoke()
         {
             _needSpawn = true;
-            _timer = _config.projectileSpawnDelay;
         }
 
         private Quaternion CalculatRotation()
@@ -75,12 +70,12 @@ namespace Gameplay
 
             Quaternion lookRotation = Quaternion.LookRotation(directionToTarget);
             float randomY = Random.Range(-_config.scatter, _config.scatter);
-            float randomX = Random.Range(-_config.scatter, _config.scatter);
-            Quaternion scatterRotation = Quaternion.Euler(randomX, randomY, 0f);
+            //float randomX = Random.Range(-_config.scatter, _config.scatter);
+            Quaternion scatterRotation = Quaternion.Euler(0, randomY, 0f);
             Quaternion finalRotation = scatterRotation * lookRotation;
 
 
-            return lookRotation;
+            return finalRotation;
         }
     }
 }

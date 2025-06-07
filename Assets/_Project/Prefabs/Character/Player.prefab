@@ -167,6 +167,7 @@ MonoBehaviour:
   _hitRoot: {fileID: 1230073187006417556}
   _bulletCount: 300
   _weapons:
+  - {fileID: 6898676644082228745, guid: e8404f19d32354694b640cc3c4ed3a6c, type: 3}
   - {fileID: 6254490439261344806, guid: 1f62a9145e63d453f8e1668b4cbca8fd, type: 3}
   _runSpeed: 10
   _rotationSpeed: 20
