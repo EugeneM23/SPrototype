@@ -124,7 +124,7 @@ MonoBehaviour:
   _type: 1
   damageRoot: {fileID: 1956108049342527132}
   meleeConfig:
-    fireRate: 1
+    fireRate: 4
     damage: 50
     range: 5
     shakeDuration: 0
