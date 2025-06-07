@@ -1,63 +1,99 @@
+using System.Collections.Generic;
 using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
 
 namespace Gameplay
 {
-    public class PlayertInstaller : MonoInstaller
+    public class PlayerInstaller : MonoInstaller
     {
-        [SerializeField] private HealtBar healtBar;
+        [Header("Health")] [SerializeField] private HealtBar healtBar;
         [SerializeField] private Vector3 _healtBarOffset;
         [SerializeField] private DamageNumber _popupPrefab;
-        [SerializeField] private Transform _weaponBone;
+
+        [Header("Combat")] [SerializeField] private Transform _weaponBone;
         [SerializeField] private LayerMask _damageLayer;
+        [SerializeField] private Entity _hitEffect;
+        [SerializeField] private Transform _hitRoot;
+
+        [Header("Inventory")] [SerializeField] private int _bulletCount;
+        [SerializeField] private List<Entity> _weapons;
+
+        [Header("Settings")] [SerializeField] private float _runSpeed;
+        [SerializeField] private float _rotationSpeed;
+        [SerializeField] private float _lookAtSpeed;
+        [SerializeField] private float _strafeSpeed;
+        [SerializeField] private float _strafePower;
+        [SerializeField] private int _maxHealth;
 
         public override void InstallBindings()
         {
+            // Core player components
+            BindCoreComponents();
 
-            Container
-                .Bind<DamagelayerComponent>()
-                .AsSingle()
-                .WithArguments(_damageLayer)
-                .NonLazy();
+            // Health system
+            BindHealthSystem();
 
-            Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
+            // Combat system
+            BindCombatSystem();
 
-            Container
-                .Bind<Entity>()
-                .WithId(CharacterParameterID.CharacterEntity)
-                .FromInstance(gameObject.GetComponent<Entity>())
-                .AsCached();
+            // Inventory system
+            BindInventorySystem();
 
-            Container
-                .BindInterfacesAndSelfTo<Player>()
-                .AsSingle()
-                .NonLazy();
+            // Settings
+            BindSettings();
 
+            // Movement and animation
             PlayerMovementInstaller.Install(Container);
-            PlayerHealthInstaller.Install(Container, _healtBarOffset, gameObject.transform,
-                healtBar, _popupPrefab);
             PlayerAnimationInstaller.Install(Container);
+        }
 
-            Container
-                .BindInterfacesAndSelfTo<PlayerWeaponManager>()
-                .AsSingle()
-                .NonLazy();
+        private void BindCoreComponents()
+        {
+            Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity)
+                .FromInstance(gameObject.GetComponent<Entity>()).AsCached();
+            Container.BindInterfacesAndSelfTo<Player>().AsSingle().NonLazy();
+            Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
+            Container.Bind<TargetComponent>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
+        }
 
-            Container
-                .Bind<PlayerCameraController>()
-                .AsSingle()
+        private void BindHealthSystem()
+        {
+            Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().NonLazy();
+            Container.Bind<DamageNumberSpawner>().AsSingle().WithArguments(_popupPrefab).NonLazy();
+            Container.BindInterfacesAndSelfTo<PlayerDeathObserver>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<TakeDamageNumberSpawController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
+            Container.Bind<HealtBar>().FromComponentInNewPrefab(healtBar).UnderTransform(transform).AsSingle()
                 .NonLazy();
+        }
 
-            Container
-                .Bind<TargetComponent>()
-                .AsSingle()
-                .NonLazy();
+        private void BindCombatSystem()
+        {
+            Container.Bind<DamagelayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
+            Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
+            Container.BindInterfacesAndSelfTo<PlayerWeaponManager>().AsSingle().NonLazy();
+            Container.Bind<HitComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
+            Container.BindInterfacesAndSelfTo<HitController>().AsSingle().NonLazy();
+        }
 
-            Container
-                .BindInterfacesAndSelfTo<BuffManager>()
-                .AsSingle()
-                .NonLazy();
+        private void BindInventorySystem()
+        {
+            Container.Bind<int>().WithId(WeaponParameterID.BulletCount).FromInstance(_bulletCount).AsCached();
+            Container.BindInterfacesAndSelfTo<PlayerInventory>().AsSingle()
+                .WithArguments(_weapons, Container, _bulletCount).NonLazy();
+        }
+
+        private void BindSettings()
+        {
+            Container.Bind<float>().WithId(CharacterParameterID.RunSpeed).FromInstance(_runSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.RotationSpeed).FromInstance(_rotationSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.LookAtSpeed).FromInstance(_lookAtSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.StrafeSpeed).FromInstance(_strafeSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.StrafePower).FromInstance(_strafePower).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.MaxHealth).FromInstance(_maxHealth).AsCached();
+            Container.Bind<CharacterStats>().AsSingle().NonLazy();
         }
     }
 }

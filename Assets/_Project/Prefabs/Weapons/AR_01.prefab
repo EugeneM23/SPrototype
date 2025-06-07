@@ -73,7 +73,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5215295857785136043}
   - component: {fileID: 8689783308582159464}
-  - component: {fileID: -1785734590832131113}
   - component: {fileID: -2300542694383393556}
   - component: {fileID: 6898676644082228745}
   - component: {fileID: 7487418093101285224}
@@ -110,19 +109,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8504467924791662847}
   m_Mesh: {fileID: 4300010, guid: d406f8f3cbe268f4e9d0234d45cca60c, type: 3}
---- !u!114 &-1785734590832131113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8504467924791662847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b37873e8d9f4d0cacc80f0090084daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isEnable: 1
 --- !u!114 &-2300542694383393556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +159,7 @@ MonoBehaviour:
   - {fileID: 2567994077217293745}
   _installerPrefabs: []
   _autoRun: 1
-  _kernel: {fileID: -1785734590832131113}
+  _kernel: {fileID: 0}
 --- !u!114 &2567994077217293745
 MonoBehaviour:
   m_ObjectHideFlags: 0
