@@ -16,6 +16,8 @@ namespace Gameplay
         protected override void SetupWeaponSpecific()
         {
             Container.BindInterfacesAndSelfTo<WeaponMelleAttackAction>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<MeleeDamageComponent>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<MeleeDamageController>().AsSingle().NonLazy();
         }
     }
 }

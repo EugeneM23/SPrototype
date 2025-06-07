@@ -17,6 +17,6 @@ namespace Gameplay
         event Action<int> OnStack;
         event Action OnApply;
         event Action<float> OnTick;
-        event Action Ondiscad;
+        event Action OnDiscard;
     }
 }

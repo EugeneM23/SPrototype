@@ -17,6 +17,6 @@ namespace Gameplay
         LookAtSpeed,
         StrafeSpeed,
         StrafePower,
-        MaxHealth
+        MaxHealth,
     }
 }

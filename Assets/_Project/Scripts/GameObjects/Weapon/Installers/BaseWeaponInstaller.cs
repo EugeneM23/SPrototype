@@ -15,7 +15,7 @@ namespace Gameplay
             Container.Bind<Transform>().WithId(DamageRootID.WeaponDamageRoot).FromInstance(damageRoot);
 
             Container.Bind<WeaponConfig>().FromInstance(config).AsSingle();
-        
+
             Container
                 .Bind<WeaponTypeHandler>()
                 .AsSingle()
@@ -27,7 +27,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<WeaponCooldownAction>().AsSingle();
             Container.BindInterfacesAndSelfTo<WeaponCameraShakeAction>().AsSingle();
             Container.BindInterfacesTo<WeaponInRangeCondition>().AsSingle();
-            Container.BindInterfacesTo<WeaponDamageCastAction>().AsSingle();
+            //Container.BindInterfacesTo<WeaponDamageCastAction>().AsSingle();
 
             SetupWeaponSpecific();
         }

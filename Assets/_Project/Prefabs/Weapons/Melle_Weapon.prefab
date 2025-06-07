@@ -122,9 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
+  damageRoot: {fileID: 1956108049342527132}
   meleeConfig:
     fireRate: 1
-    damage: 1
+    damage: 50
     range: 5
     shakeDuration: 0
     shakeMagnitude: 0
@@ -132,7 +133,6 @@ MonoBehaviour:
     reloadTime: 2
     clipCapacity: 30
     damageCastDelay: 0.1
-  damageRoot: {fileID: 1956108049342527132}
 --- !u!1001 &3189634146618026880
 PrefabInstance:
   m_ObjectHideFlags: 0

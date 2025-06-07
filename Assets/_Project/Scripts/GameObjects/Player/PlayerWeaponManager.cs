@@ -11,10 +11,10 @@ namespace Gameplay
         private readonly Button switchButton;
         private readonly bool isPlayer;
 
-        private Entity currentWeapon;
+        private Entity _currentWeapon;
         private int currentIndex = 0;
 
-        public Entity CurrentWeapon;
+        public Entity CurrentWeapon => _currentWeapon;
 
         public PlayerWeaponManager(PlayerInventory playerInventory, Button switchButton = null, bool isPlayer = true)
         {
@@ -40,7 +40,7 @@ namespace Gameplay
 
         private void OnWeaponAdded()
         {
-            if (currentWeapon == null)
+            if (_currentWeapon == null)
             {
                 EquipWeapon(_playerInventory[_playerInventory.WeaponCount - 1]);
             }
@@ -50,7 +50,7 @@ namespace Gameplay
         {
             if (_playerInventory.WeaponCount <= 1) return;
 
-            UnequipWeapon(currentWeapon);
+            UnequipWeapon(_currentWeapon);
             currentIndex = (currentIndex + 1) % _playerInventory.WeaponCount;
             EquipWeapon(_playerInventory[currentIndex]);
         }
@@ -59,7 +59,7 @@ namespace Gameplay
         {
             if (weapon == null) return;
 
-            currentWeapon = weapon;
+            _currentWeapon = weapon;
             weapon.gameObject.SetActive(true);
             weapon.Get<WeaponFireController>()?.TurnOn();
         }

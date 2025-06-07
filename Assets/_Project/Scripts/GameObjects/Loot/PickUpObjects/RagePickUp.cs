@@ -50,7 +50,7 @@ namespace Gameplay
             _baseBuff.OnStack += ui.GetComponent<RageUI>().SetStuck;
 
             ui.GetComponent<RageUI>().SetStuck(_baseBuff.StackCount);
-            _baseBuff.Ondiscad += ui.Dispose;
+            _baseBuff.OnDiscard += ui.Dispose;
             _baseBuff.OnTick += ui.GetComponent<RageUI>().UpdateSlider;
 
             ui.Get<EffectCaster>().CastEffect(_target.transform, -1);

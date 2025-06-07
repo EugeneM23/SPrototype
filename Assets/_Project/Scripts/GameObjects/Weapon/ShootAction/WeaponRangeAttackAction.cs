@@ -1,21 +1,20 @@
 using UnityEngine;
-using Zenject;
 
 namespace Gameplay
 {
-    public class WeaponMelleAttackAction : WeaponShootComponent.IAction
+    public class WeaponRangeAttackAction : WeaponShootComponent.IAction
     {
         private CharacterStats _stats;
 
-        private readonly MeleeWeaponConfig _config;
+        private readonly RangedWeaponConfig _config;
 
         void WeaponShootComponent.IAction.Invoke()
         {
             _stats.CharacterEntity.Get<Animator>().SetFloat("AttackSpeed", GetAnimatTime());
-            _stats.CharacterEntity.Get<Animator>().Play("MelleAttack", 0);
+            _stats.CharacterEntity.Get<Animator>().Play("RangeAttack", 0);
         }
 
-        public WeaponMelleAttackAction(CharacterStats stats, MeleeWeaponConfig config)
+        public WeaponRangeAttackAction(CharacterStats stats, RangedWeaponConfig config)
         {
             _stats = stats;
             _config = config;

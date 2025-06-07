@@ -2,7 +2,7 @@ using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Loot.PickUpObjects
+namespace Gameplay
 {
     public class BulletsPickUp : MonoBehaviour
     {

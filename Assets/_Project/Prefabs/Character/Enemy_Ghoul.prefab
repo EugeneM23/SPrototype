@@ -1905,6 +1905,7 @@ GameObject:
   - component: {fileID: 7553199498613522881}
   - component: {fileID: -7776074291255282540}
   - component: {fileID: 2815754463479340632}
+  - component: {fileID: 4289002147675931677}
   - component: {fileID: 3196630611226905001}
   - component: {fileID: 5053622383324445560}
   - component: {fileID: 5332799809238412975}
@@ -2013,10 +2014,23 @@ MonoBehaviour:
   - {fileID: -7776074291255282540}
   - {fileID: 7553199498613522881}
   - {fileID: 849130336443538414}
+  - {fileID: 4289002147675931677}
   _identifier: 
   _useSceneContext: 0
   _context: {fileID: 0}
   _bindType: 2
+--- !u!114 &4289002147675931677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481907973978787791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b453a3240e4f5eb1683ae9f5151203, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!95 &3196630611226905001
 Animator:
   serializedVersion: 7
@@ -2128,7 +2142,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 872db6379cc8b456b96a9c409d02cbb6, type: 2}
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
   - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
-  - {fileID: 11400000, guid: 3ee60df9306a34d02ba1280c7c9c66ac, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   - {fileID: 7474303141457973273}
@@ -2170,7 +2183,7 @@ MonoBehaviour:
   _patrolSpeed: 2
   _attackRotationSpeed: 10
   _damage: 10
-  _health: 1000
+  _health: 10000
   _isPushable: 0
 --- !u!114 &8882518856053437140
 MonoBehaviour:
