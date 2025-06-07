@@ -57,7 +57,7 @@ namespace Gameplay
         private void BindCore()
         {
             // Core components
-            Container.Bind<DamagelayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
+            Container.Bind<DamageLayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
             Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity).FromInstance(GetComponent<Entity>()).AsCached().NonLazy();
             
             // Transform roots

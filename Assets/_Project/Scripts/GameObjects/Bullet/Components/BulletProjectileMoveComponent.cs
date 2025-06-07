@@ -35,15 +35,9 @@ namespace Gameplay
                 initialized = true;
             }
 
-            // Нормализация скорости по длине кривой
             float deltaProgress = (_speed * Time.deltaTime) / curveLength;
             progress += deltaProgress;
 
-            if (progress >= 1f)
-            {
-                bullet.Get<Bullet>().Dispose();
-                return;
-            }
 
             Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
             midPoint.y += 10f;

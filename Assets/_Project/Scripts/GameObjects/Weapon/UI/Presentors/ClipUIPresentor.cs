@@ -21,7 +21,7 @@ namespace Gameplay
         public void Initialize()
         {
             _clip.OnCurrentCapacityChanget += UpdataCurrentCapacity;
-            _inventory.OnBulletCountChanget += UpdateBulletCount;
+            _inventory.OnBulletCountChanged += UpdateBulletCount;
 
             _weaponEntity.OnEntityDisable += () => _clipUI.Disable();
             _weaponEntity.OnEntityEnable += () => _clipUI.Enable();
@@ -37,7 +37,7 @@ namespace Gameplay
             _clipUI.UpdataCurrentCapacity(value);
         }
 
-        public void StartRealod()
+        public void StartReload()
         {
         }
 

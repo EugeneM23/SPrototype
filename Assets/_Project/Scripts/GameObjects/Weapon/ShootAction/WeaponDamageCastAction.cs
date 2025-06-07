@@ -6,7 +6,7 @@ namespace Gameplay
     public class WeaponDamageCastAction : ITickable, WeaponShootComponent.IAction
     {
         private readonly DamageCasterManager _damageCasterManager;
-        private readonly DamagelayerComponent _damageCastLayer;
+        private readonly DamageLayerComponent _damageCastLayer;
 
         private Transform _damageRoot;
 
@@ -16,7 +16,7 @@ namespace Gameplay
         private bool _enable;
         private float _timer;
 
-        public WeaponDamageCastAction(DamageCasterManager damageCasterManager, DamagelayerComponent damageCastLayer,
+        public WeaponDamageCastAction(DamageCasterManager damageCasterManager, DamageLayerComponent damageCastLayer,
             CharacterStats stats, WeaponConfig config,
             [Inject(Id = DamageRootID.WeaponDamageRoot)]
             Transform damageRoot)
@@ -41,7 +41,7 @@ namespace Gameplay
 
         public void EnableDamageCast()
         {
-            float timeCast = _config.fireRate * (1 - _stats.FireRateMultupleyer / 100f);
+            float timeCast = _config.fireRate * (1 - _stats.FireRateMultiplier / 100f);
             DamageCastParams damageCast =
                 new DamageCastParams(_config.damage, 3, timeCast / 2, _damageCastLayer.GetDamageLayer(), _damageRoot);
             _damageCasterManager.CastDamage(damageCast);

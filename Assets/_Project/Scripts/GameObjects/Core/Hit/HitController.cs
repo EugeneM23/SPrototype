@@ -4,18 +4,18 @@ namespace Gameplay
 {
     public class HitController : IInitializable
     {
-        private readonly HealthComponent _healthComponent;
+        private readonly HealthComponent _health;
         private readonly HitComponent _hitComponent;
 
-        public HitController(HealthComponent healthComponent, HitComponent hitComponent)
+        public HitController(HealthComponent health, HitComponent hitComponent)
         {
-            _healthComponent = healthComponent;
+            _health = health;
             _hitComponent = hitComponent;
         }
 
         public void Initialize()
         {
-            _healthComponent.OnTakeDamaged += _hitComponent.Hit;
+            _health.OnTakeDamaged += _hitComponent.CreateHitEffect;
         }
     }
 }

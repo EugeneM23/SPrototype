@@ -2,11 +2,11 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class DamagelayerComponent
+    public class DamageLayerComponent
     {
         private readonly LayerMask _layerMask;
 
-        public DamagelayerComponent(LayerMask layerMask)
+        public DamageLayerComponent(LayerMask layerMask)
         {
             _layerMask = layerMask;
         }

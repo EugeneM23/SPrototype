@@ -6,13 +6,13 @@ namespace Gameplay
     public class ReloadAnimationAction : ITickable, WeaponReloadComponent.IAction,
         WeaponShootComponent.ICondition
     {
-        private readonly WeaponConfig _config;
+        private readonly RangedWeaponConfig _config;
 
         private readonly Animator _animator;
         private bool _reloading;
         private float _timer;
 
-        public ReloadAnimationAction(Animator animator, WeaponConfig config)
+        public ReloadAnimationAction(Animator animator, RangedWeaponConfig config)
         {
             _animator = animator;
             _config = config;
@@ -28,7 +28,7 @@ namespace Gameplay
                 _reloading = false;
         }
 
-        public void StartRealod()
+        public void StartReload()
         {
             _reloading = true;
             _timer = _config.reloadTime;
@@ -37,7 +37,6 @@ namespace Gameplay
 
         public void FinishReload()
         {
-            //_animator.SetTrigger("FinishReload");
         }
 
         bool WeaponShootComponent.ICondition.Invoke()

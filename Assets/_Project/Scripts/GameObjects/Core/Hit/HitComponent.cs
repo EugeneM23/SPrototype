@@ -15,10 +15,10 @@ namespace Gameplay
             _hitPoint = hitPoint;
         }
 
-        public void Hit(int i)
+        public void CreateHitEffect(int damage)
         {
-            var go = _factory.Create(_hitEffect);
-            go.transform.position = _hitPoint.position;
+            Entity hitEffect = _factory.Create(_hitEffect);
+            hitEffect.transform.position = _hitPoint.position;
         }
     }
 }

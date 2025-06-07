@@ -12,7 +12,7 @@ namespace Gameplay
         void WeaponShootComponent.IAction.Invoke()
         {
             _stats.CharacterEntity.Get<Animator>().SetFloat("AttackSpeed", GetAnimatTime());
-            _stats.CharacterEntity.Get<Animator>().Play("MelleAttack", 0);
+            _stats.CharacterEntity.Get<Animator>().Play("MeleeAttack", 0);
         }
 
         public WeaponMelleAttackAction(CharacterStats stats, MeleeWeaponConfig config)
@@ -27,10 +27,10 @@ namespace Gameplay
 
             foreach (AnimationClip clip in controller.animationClips)
             {
-                if (clip.name == "MelleAttack")
+                if (clip.name == "MeleeAttack")
                 {
                     float baseMultiplier = clip.length / _config.fireRate;
-                    float finalMultiplier = baseMultiplier * (1 + _stats.FireRateMultupleyer / 100f);
+                    float finalMultiplier = baseMultiplier * (1 + _stats.FireRateMultiplier / 100f);
                     return finalMultiplier;
                 }
             }

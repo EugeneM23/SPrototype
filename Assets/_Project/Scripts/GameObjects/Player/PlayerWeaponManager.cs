@@ -62,6 +62,8 @@ namespace Gameplay
             _currentWeapon = weapon;
             weapon.gameObject.SetActive(true);
             weapon.Get<WeaponFireController>()?.TurnOn();
+            weapon.Get<WeaponSlahController>()?.TurnOn();
+            
         }
 
         private void UnequipWeapon(Entity weapon)
@@ -70,6 +72,7 @@ namespace Gameplay
 
             weapon.gameObject.SetActive(false);
             weapon.Get<WeaponFireController>()?.TurnOff();
+            weapon.Get<WeaponSlahController>()?.TurnOff();
         }
     }
 }

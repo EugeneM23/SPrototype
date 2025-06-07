@@ -30,8 +30,8 @@ namespace Gameplay
 
         private float GetFireRate()
         {
-            Debug.Log(Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0));
-            return Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultupleyer / 100f), 0);
+            Debug.Log(Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultiplier / 100f), 0));
+            return Mathf.Max(_config.fireRate * (1 - _stats.FireRateMultiplier / 100f), 0);
         }
 
         public void Tick()

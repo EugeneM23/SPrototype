@@ -13,21 +13,19 @@ namespace Gameplay
         private readonly Transform _meleeWeaponRoot;
 
         private readonly DiContainer _container;
-
-        private Entity _rangeWepaonPrefab;
-        private Entity _meleeWeaponPrefab;
-
-        public Entity _rangeWepaon { get; private set; }
-        public Entity _meleeWeapon { get; private set; }
-
         private readonly Entity _character;
+        private readonly Entity _rangeWeaponPrefab;
+        private readonly Entity _meleeWeaponPrefab;
 
-        public EnemyInventory(DiContainer container, Entity rangeWepaon, Entity meleeWeapon,
+        public Entity RangeWeapon { get; private set; }
+        public Entity MeleeWeapon { get; private set; }
+
+        public EnemyInventory(DiContainer container, Entity rangeWeapon, Entity meleeWeapon,
             [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity character)
         {
             _container = container;
-            _rangeWepaonPrefab = rangeWepaon;
+            _rangeWeaponPrefab = rangeWeapon;
             _meleeWeaponPrefab = meleeWeapon;
             _character = character;
         }
@@ -36,47 +34,39 @@ namespace Gameplay
         {
             if (_character.TryGet<EnemyRangeAttackState>(out var rangeState))
             {
-                SpawnRangeWeapon(_rangeWeaponRoot);
-                rangeState.SetFireRate(_rangeWepaon.Get<RangedWeaponConfig>().fireRate);
+                RangeWeapon = CreateWeapon(_rangeWeaponPrefab, _rangeWeaponRoot);
+                rangeState.SetFireRate(RangeWeapon.Get<RangedWeaponConfig>().fireRate);
             }
 
             if (_character.TryGet<EnemyMeleeAttackState>(out var meleeState))
             {
-                SpawnMeleeWeapon(_meleeWeaponRoot);
-                meleeState.SetFireRate(_meleeWeapon.Get<MeleeWeaponConfig>().fireRate);
+                MeleeWeapon = CreateWeapon(_meleeWeaponPrefab, _meleeWeaponRoot);
+                meleeState.SetFireRate(MeleeWeapon.Get<MeleeWeaponConfig>().fireRate);
             }
         }
 
-        private void SpawnRangeWeapon(Transform parent)
+        private Entity CreateWeapon(Entity prefab, Transform parent)
         {
-            var go = _container.InstantiatePrefab(_rangeWepaonPrefab);
-            _rangeWepaon = go.GetComponent<Entity>();
-            _rangeWepaon.transform.SetParent(parent);
-            _rangeWepaon.transform.position = parent.position;
-            _rangeWepaon.transform.rotation = parent.rotation;
-            _rangeWepaon.Get<WeaponFireController>().TurnOn();
-        }
+            var weaponObject = _container.InstantiatePrefab(prefab);
+            var weapon = weaponObject.GetComponent<Entity>();
 
-        private void SpawnMeleeWeapon(Transform parent)
-        {
-            var go = _container.InstantiatePrefab(_meleeWeaponPrefab);
-            _meleeWeapon = go.GetComponent<Entity>();
-            _meleeWeapon.transform.SetParent(parent);
-            _meleeWeapon.transform.position = parent.position;
-            _meleeWeapon.transform.rotation = parent.rotation;
-            _meleeWeapon.Get<WeaponFireController>().TurnOn();
+            weapon.transform.SetParent(parent);
+            weapon.transform.SetPositionAndRotation(parent.position, parent.rotation);
+            weapon.Get<WeaponFireController>().TurnOn();
+
+            return weapon;
         }
 
         public int BulletCount
         {
-            get { return 100; }
+            get => 100;
             set { }
         }
 
-        public event Action OnBulletCountChanget;
+        public event Action OnBulletCountChanged;
+
         public void AddBullets(int bullets)
         {
-            
         }
     }
 }

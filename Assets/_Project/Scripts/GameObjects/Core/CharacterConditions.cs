@@ -13,12 +13,12 @@ namespace Gameplay
         private bool _isBusy;
         private bool _isPatroling;
         private bool _isChasing;
-        private bool _isAdling;
+        private bool _isIdling;
 
-        public bool IsAdling
+        public bool IsIdling
         {
-            get => _isAdling;
-            set => SetField(ref _isAdling, value);
+            get => _isIdling;
+            set => SetField(ref _isIdling, value);
         }
 
         public bool CanPush

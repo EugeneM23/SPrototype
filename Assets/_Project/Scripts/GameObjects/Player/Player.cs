@@ -38,13 +38,13 @@ namespace Gameplay
             if (_characterController.velocity.magnitude > 0.05f)
             {
                 _characterConditions.IsChasing = true;
-                _characterConditions.IsAdling = false;
+                _characterConditions.IsIdling = false;
                 _timer = 0.05f;
             }
             else
             {
                 _characterConditions.IsChasing = false;
-                _characterConditions.IsAdling = true;
+                _characterConditions.IsIdling = true;
                 if (_lookAtComponent.LookAtAndCheck())
                 {
                     _timer -= Time.deltaTime;

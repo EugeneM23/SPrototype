@@ -22,7 +22,7 @@ namespace Gameplay
             _weaponEntity.OnEntityStart += () => _reloadStatusUI.transform.SetParent(_player.Character.transform);
         }
 
-        public void StartRealod() => _reloadStatusUI.gameObject.SetActive(true);
+        public void StartReload() => _reloadStatusUI.gameObject.SetActive(true);
 
         public void FinishReload() => _reloadStatusUI.gameObject.SetActive(false);
     }

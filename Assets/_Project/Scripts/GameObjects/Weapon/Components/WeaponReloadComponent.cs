@@ -15,7 +15,7 @@ namespace Gameplay
 
         public interface IAction
         {
-            void StartRealod();
+            void StartReload();
             void FinishReload();
         }
 
@@ -25,13 +25,13 @@ namespace Gameplay
         private readonly WeaponClipComponent _clip;
         private readonly Entity _weaponEntity;
         private readonly IInventory _inventory;
-        private readonly WeaponConfig _config;
+        private readonly RangedWeaponConfig _config;
 
         private float _reloadTimer;
         private bool _isReloading;
 
         public WeaponReloadComponent(List<ICondition> conditions, List<IAction> actions, WeaponClipComponent clip,
-            Entity weaponEntity, IInventory inventory, WeaponConfig config)
+            Entity weaponEntity, IInventory inventory, RangedWeaponConfig config)
         {
             _conditions = conditions;
             _actions = actions;
@@ -74,7 +74,7 @@ namespace Gameplay
             _reloadTimer = _config.reloadTime;
             _isReloading = true;
             foreach (var item in _actions)
-                item.StartRealod();
+                item.StartReload();
         }
     }
 }

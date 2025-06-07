@@ -6,7 +6,7 @@ namespace Gameplay
     public class WeaponBulletSpawnAction : WeaponShootComponent.IAction, ITickable
     {
         private readonly RangedWeaponConfig _config;
-        private readonly DamagelayerComponent _damagelayer;
+        private readonly DamageLayerComponent _damageLayer;
         private readonly GameFactory _factory;
         private readonly Entity _bulletPrefab;
 
@@ -24,7 +24,7 @@ namespace Gameplay
             GameFactory factory,
             [Inject(Id = WeaponParameterID.BulletPrefab)]
             Entity bulletPrefab,
-            RangedWeaponConfig config, DamagelayerComponent damagelayer)
+            RangedWeaponConfig config, DamageLayerComponent damageLayer)
         {
             _targetComponent = targetComponent;
             _firePoint = firePoint;
@@ -32,7 +32,7 @@ namespace Gameplay
             _factory = factory;
             _bulletPrefab = bulletPrefab;
             _config = config;
-            _damagelayer = damagelayer;
+            _damageLayer = damageLayer;
         }
 
         public void Tick()
@@ -48,7 +48,7 @@ namespace Gameplay
                     Entity bullet = _factory.Create(_bulletPrefab, 10);
                     bullet.gameObject.transform.position = _firePoint.position;
                     bullet.gameObject.transform.rotation = rotation;
-                    bullet.gameObject.layer = _damagelayer.GetDamageLayer();
+                    bullet.gameObject.layer = _damageLayer.GetDamageLayer();
                     bullet.Get<IBulletMoveComponent>().SetSeed(_config.bulletSpeed);
                     bullet.Get<BulletDamageAction>().SetDamage(_config.damage);
 

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Gameplay
 {
     public class EnemyDeathObserver
@@ -18,7 +16,6 @@ namespace Gameplay
 
         private void SpawnLoot(Entity enemy)
         {
-            Debug.Log(_player.Character.Get<PlayerWeaponManager>().CurrentWeapon);
             var weapon = _player.Character.Get<PlayerWeaponManager>().CurrentWeapon;
 
             if (weapon.TryGet<WeaponTypeHandler>(out var handler))

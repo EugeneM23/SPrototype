@@ -5,7 +5,7 @@ namespace Gameplay
     public interface IInventory
     {
         int BulletCount { get; set; }
-        event Action OnBulletCountChanget;
+        event Action OnBulletCountChanged;
         void AddBullets(int bullets);
     }
 }

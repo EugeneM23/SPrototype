@@ -14,7 +14,7 @@ namespace Gameplay
             this.clip = clip;
         }
 
-        public void StartRealod()
+        public void StartReload()
         {
         }
 

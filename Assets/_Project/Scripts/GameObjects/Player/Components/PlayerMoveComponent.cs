@@ -24,6 +24,6 @@ namespace Gameplay
             _characterController.Move(direction * GetSpeed() * Time.deltaTime);
         }
 
-        private float GetSpeed() => _stats.RunSpeed * (1 + _stats.RunSpeedMultiplayer / 100f);
+        private float GetSpeed() => _stats.RunSpeed * (1 + _stats.RunSpeedMultiplier / 100f);
     }
 }

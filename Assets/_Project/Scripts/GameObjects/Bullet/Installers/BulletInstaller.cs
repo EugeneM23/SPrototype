@@ -9,11 +9,6 @@ public class BulletInstaller : MonoInstaller
     public override void InstallBindings()
     {
         Container
-            .BindInterfacesAndSelfTo<Bullet>()
-            .AsSingle()
-            .NonLazy();
-
-        Container
             .BindInterfacesAndSelfTo<BulletDamageAction>()
             .AsSingle()
             .NonLazy();

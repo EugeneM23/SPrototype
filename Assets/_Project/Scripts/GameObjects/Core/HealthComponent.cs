@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using Zenject;
 
 namespace Gameplay
@@ -9,16 +10,18 @@ namespace Gameplay
         public event Action<int> OnTakeDamaged;
 
         private readonly Entity _entity;
-
         private readonly CharacterStats _stats;
         private int _currentHealth;
-
-        public void Initialize() => _currentHealth = _stats.MaxHealth;
 
         public HealthComponent(CharacterStats stats, Entity entity)
         {
             _stats = stats;
             _entity = entity;
+        }
+
+        public void Initialize()
+        {
+            _currentHealth = _stats.MaxHealth;
         }
 
         public virtual void TakeDamage(int damage)
@@ -28,21 +31,20 @@ namespace Gameplay
             OnHealthChanged?.Invoke(_currentHealth);
             OnTakeDamaged?.Invoke(damage);
 
-            if (_currentHealth <= 0)
-            {
-                _entity.Dispose();
-                _currentHealth = _stats.MaxHealth;
-                OnHealthChanged?.Invoke(_currentHealth);
-            }
+            if (_currentHealth <= 0) 
+                HandleDeath();
+        }
+
+        private void HandleDeath()
+        {
+            _entity.Dispose();
+            _currentHealth = _stats.MaxHealth;
+            OnHealthChanged?.Invoke(_currentHealth);
         }
 
         public void Heal(int value)
         {
-            if (_currentHealth + value <= _stats.MaxHealth)
-                _currentHealth += value;
-            else
-                _currentHealth = _stats.MaxHealth;
-
+            _currentHealth = Mathf.Min(_currentHealth + value, _stats.MaxHealth);
             OnHealthChanged?.Invoke(_currentHealth);
         }
     }

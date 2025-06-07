@@ -23,7 +23,7 @@ namespace Gameplay
         Container.Bind<RangedWeaponConfig>().FromInstance(rangedConfig).AsSingle();
         base.InstallBindings();
         
-        if (config.isReloadable)
+        if (rangedConfig.isReloadable)
         {
             SetupReload();
         }
@@ -47,7 +47,7 @@ namespace Gameplay
         Container.BindInterfacesAndSelfTo<WeaponReloadComponent>().AsSingle();
         Container.BindInterfacesAndSelfTo<WeaponSootCounAction>().AsSingle();
         Container.BindInterfacesAndSelfTo<ReloadAnimationAction>().AsSingle();
-        Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().WithArguments(config.clipCapacity);
+        Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle().WithArguments(rangedConfig.clipCapacity);
         Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle();
 
         if (_reloadStatus != null)

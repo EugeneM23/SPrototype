@@ -12,7 +12,7 @@ ModelImporter:
   internalIDToNameTable:
   - first:
       74: 9010633086962729190
-    second: MelleAttack
+    second: MeleeAttack
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -41,7 +41,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: MelleAttack
+      name: MeleeAttack
       takeName: Attack_Right
       internalID: 0
       firstFrame: 180

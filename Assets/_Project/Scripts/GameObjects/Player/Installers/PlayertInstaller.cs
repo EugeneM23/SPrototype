@@ -71,7 +71,7 @@ namespace Gameplay
 
         private void BindCombatSystem()
         {
-            Container.Bind<DamagelayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
+            Container.Bind<DamageLayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
             Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
             Container.BindInterfacesAndSelfTo<PlayerWeaponManager>().AsSingle().NonLazy();
             Container.Bind<HitComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();

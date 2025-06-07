@@ -1,6 +1,3 @@
-using UnityEngine;
-using Zenject;
-
 namespace Gameplay
 {
     public class BulletDamageAction : BulletHitComponent.IEntiyCollisionAction

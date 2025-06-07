@@ -2108,8 +2108,8 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 6f3aaec77e1f14c19988d010e011d4fb, type: 2}
   - {fileID: 11400000, guid: 872db6379cc8b456b96a9c409d02cbb6, type: 2}
-  - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
   - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
+  - {fileID: 11400000, guid: 3ee60df9306a34d02ba1280c7c9c66ac, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   _installerPrefabs: []
@@ -2138,9 +2138,9 @@ MonoBehaviour:
   _damageLayer:
     serializedVersion: 2
     m_Bits: 4096
-  _chaseRange: 15
+  _chaseRange: 10
   _attackRange: 4
-  _chaseSpeed: 10
+  _chaseSpeed: 7
   _patrolSpeed: 2
   _attackRotationSpeed: 10
   _health: 100
