@@ -5,7 +5,6 @@ namespace Gameplay
     public class Shell : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rb;
-        [SerializeField] private int _lifeTime = 2;
 
         private Vector3 _impulseVector3;
 

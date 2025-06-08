@@ -18,7 +18,6 @@ namespace Modules
         public bool LookAtAndCheck()
         {
             if (_targetComponent.Target == null || _stats.CharacterEntity == null) return false;
-            Debug.Log("Asdasd");
 
             Vector3 direction = _targetComponent.Target.position - _stats.CharacterEntity.transform.position;
             direction.y = 0f;
