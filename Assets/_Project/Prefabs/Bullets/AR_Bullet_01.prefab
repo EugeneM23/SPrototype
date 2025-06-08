@@ -262,6 +262,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: {fileID: 9018395558218758256, guid: 019abd81a10c54ce8bdd5285084861ff, type: 3}
+  _hitSFX:
+    bank: {fileID: 11400000, guid: d4068c180dff54137ac6f72fa080a899, type: 2}
+    eventId: enviromentHit
+    identifier: Weapons.enviromentHit
 --- !u!114 &8699156800269933710
 MonoBehaviour:
   m_ObjectHideFlags: 0

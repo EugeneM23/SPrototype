@@ -22,7 +22,7 @@ MonoBehaviour:
   pitch:
     rid: 2546989188679467291
   volume:
-    rid: 2546989188679467294
+    rid: 2546989188679467392
   reverbZoneMix:
     rid: 2546989188679467263
   rolloffMode: 0
@@ -68,14 +68,13 @@ MonoBehaviour:
     - rid: 2546989188679467287
       type: {class: ClipConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        clip: {fileID: 8300000, guid: d6dbb92a655eeb549a408aa59fed63f4, type: 3}
+        clip: {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
     - rid: 2546989188679467291
       type: {class: FloatRandom, ns: AudioEngine, asm: AudioEngine}
       data:
-        minValue: 0.7
+        minValue: 0.8
         maxValue: 1
-    - rid: 2546989188679467294
-      type: {class: FloatRandom, ns: AudioEngine, asm: AudioEngine}
+    - rid: 2546989188679467392
+      type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        minValue: 0.2
-        maxValue: 0.4
+        value: 0.12

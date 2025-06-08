@@ -1,4 +1,6 @@
+using AudioEngine;
 using UnityEngine;
+using Zenject;
 
 namespace Gameplay
 {
@@ -22,6 +24,26 @@ namespace Gameplay
             var effect = _factory.Create(_effect);
             effect.transform.position = point.point;
             effect.transform.rotation = rotation;
+        }
+    }
+
+    public class BulletEnviromentHitSFXAction : IInitializable, BulletHitComponent.IEnviromentCollisionAction
+    {
+        private readonly AudioEventKey _hitSfx;
+
+        private AudioSystem _audioSystem;
+
+        public BulletEnviromentHitSFXAction(AudioEventKey hitSfx)
+        {
+            _hitSfx = hitSfx;
+        }
+
+        public void Initialize() => _audioSystem = AudioSystem.Instance;
+
+        public void Invoke(Collision collision)
+        {
+            ContactPoint point = collision.contacts[0];
+            _audioSystem.PlayEvent(_hitSfx, point.point);
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Gameplay
         [SerializeField] private int _maxHealth;
 
         [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
+        [SerializeField] private AudioEventKey _footStepsSound;
 
         public override void InstallBindings()
         {
@@ -59,6 +60,7 @@ namespace Gameplay
             Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
             Container.Bind<TargetComponent>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<PlayerFootStepSFX>().AsSingle().WithArguments(_footStepsSound).NonLazy();
         }
 
         private void BindHealthSystem()

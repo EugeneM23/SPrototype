@@ -180,6 +180,10 @@ MonoBehaviour:
     bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
     eventId: PlayerHit
     identifier: Character.PlayerHit
+  _footStepsSound:
+    bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
+    eventId: PlayerSteps
+    identifier: Character.PlayerSteps
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0

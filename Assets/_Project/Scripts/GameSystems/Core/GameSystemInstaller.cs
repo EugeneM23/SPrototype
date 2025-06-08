@@ -1,3 +1,4 @@
+using AudioEngine;
 using DPrototype.Game;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,7 @@ namespace Gameplay
         [SerializeField] private GameObject _HUD;
         [SerializeField] private float _cameraSmoothTime;
         [SerializeField] private Camera _camera;
+        [SerializeField] private AudioEventKey _hitSfx;
 
         public override void InstallBindings()
         {
@@ -37,7 +39,31 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
+            Container
+                .BindInterfacesAndSelfTo<AnabienGameSound>()
+                .AsSingle()
+                .WithArguments(_hitSfx)
+                .NonLazy();
+
             Container.InstantiatePrefab(_HUD);
+        }
+    }
+
+    public class AnabienGameSound : IInitializable
+    {
+        private readonly AudioEventKey _hitSfx;
+
+        private AudioSystem _audioSystem;
+
+        public AnabienGameSound(AudioEventKey hitSfx)
+        {
+            _hitSfx = hitSfx;
+        }
+
+        public void Initialize()
+        {
+            _audioSystem = AudioSystem.Instance;
+            _audioSystem.PlayEvent(_hitSfx);
         }
     }
 }

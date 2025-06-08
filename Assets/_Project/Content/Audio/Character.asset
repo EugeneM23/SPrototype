@@ -17,6 +17,8 @@ MonoBehaviour:
   eventParameters:
   - identifier: PlayerHit
     value: {fileID: 11400000, guid: efd13059761634f179ae7e99e2615075, type: 2}
+  - identifier: PlayerSteps
+    value: {fileID: 11400000, guid: 44f6165018ecb4d33b1eedbe8542bfe7, type: 2}
   boolParameters: []
   intParameters: []
   floatParameters: []
