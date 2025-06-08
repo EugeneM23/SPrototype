@@ -1,3 +1,4 @@
+using AudioEngine;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,6 +19,8 @@ namespace Gameplay
         [Header("Prefabs")] [SerializeField] private Entity bulletPrefab;
         [SerializeField] private Entity shellPrefab;
 
+        [Header("SFX")] [SerializeField] private AudioEventKey _shoot;
+
         public override void InstallBindings()
         {
             config = rangedConfig;
@@ -25,9 +28,7 @@ namespace Gameplay
             base.InstallBindings();
 
             if (rangedConfig.isReloadable)
-            {
                 SetupReload();
-            }
         }
 
         protected override void SetupWeaponSpecific()
@@ -41,6 +42,8 @@ namespace Gameplay
             Container.BindInterfacesTo<WeaponShellSpawnAction>().AsSingle().WithArguments(shellPoint);
             Container.BindInterfacesTo<WeaponMuzzleFlashAction>().AsSingle().WithArguments(muzzleFlash, firePoint);
             Container.BindInterfacesTo<WeaponRangeAttackAction>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<WeaponShootSFXAction>().AsSingle().WithArguments(firePoint, _shoot)
+                .NonLazy();
         }
 
         private void SetupReload()

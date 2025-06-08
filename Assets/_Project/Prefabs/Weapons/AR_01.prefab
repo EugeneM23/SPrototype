@@ -192,6 +192,10 @@ MonoBehaviour:
   muzzleFlash: {fileID: 8670184861835027802, guid: c20bd0c5ad9ba473994c49d35194736c, type: 3}
   bulletPrefab: {fileID: 8699156800269933710, guid: 6ab5ae5c0cf164047ac58cf63c71cf9a, type: 3}
   shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
+  _shoot:
+    bank: {fileID: 11400000, guid: d4068c180dff54137ac6f72fa080a899, type: 2}
+    eventId: shoot
+    identifier: Weapons.shoot
 --- !u!1 &9137652681675294895
 GameObject:
   m_ObjectHideFlags: 0

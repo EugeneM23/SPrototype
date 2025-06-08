@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: -1200308631884723926}
   - component: {fileID: 2625381723154630738}
   - component: {fileID: 4326042711198811838}
+  - component: {fileID: 566514750674854699}
   m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
@@ -175,6 +176,10 @@ MonoBehaviour:
   _strafeSpeed: 0
   _strafePower: 0
   _maxHealth: 1000
+  _hitSound:
+    bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
+    eventId: PlayerHit
+    identifier: Character.PlayerHit
 --- !u!114 &-1200308631884723926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +225,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &566514750674854699
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4969062347157005148}
+  m_Enabled: 1
 --- !u!1001 &3911827078995512297
 PrefabInstance:
   m_ObjectHideFlags: 0

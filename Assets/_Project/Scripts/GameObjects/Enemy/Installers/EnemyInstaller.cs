@@ -1,3 +1,4 @@
+using AudioEngine;
 using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
@@ -6,33 +7,36 @@ namespace Gameplay
 {
     public class EnemyInstaller : MonoInstaller
     {
-        [Header("Weapon Roots")]
-        [SerializeField] private Transform _meleeWeaponRoot;
+        [Header("Weapon Roots")] [SerializeField]
+        private Transform _meleeWeaponRoot;
+
         [SerializeField] private Transform _rangeWeaponRoot;
-        
-        [Header("Weapons")]
-        [SerializeField] private Entity _rangeWeapon;
+
+        [Header("Weapons")] [SerializeField] private Entity _rangeWeapon;
         [SerializeField] private Entity _meleeWeapon;
-        
-        [Header("Hit Effects")]
-        [SerializeField] private Entity _hitEffect;
+
+        [Header("Hit Effects")] [SerializeField]
+        private Entity _hitEffect;
+
         [SerializeField] private Transform _hitRoot;
-        
-        [Header("Health UI")]
-        [SerializeField] private DamageNumber _damageNumbers;
+
+        [Header("Health UI")] [SerializeField] private DamageNumber _damageNumbers;
         [SerializeField] private HealtBar _healthBar;
-        
-        [Header("Layer Settings")]
-        [SerializeField] private LayerMask _damageLayer;
-        
-        [Header("Character Parameters")]
-        [SerializeField] private float _chaseRange = 5f;
+
+        [Header("Layer Settings")] [SerializeField]
+        private LayerMask _damageLayer;
+
+        [Header("Character Parameters")] [SerializeField]
+        private float _chaseRange = 5f;
+
         [SerializeField] private float _attackRange = 2f;
         [SerializeField] private float _chaseSpeed = 3f;
         [SerializeField] private float _patrolSpeed = 1f;
         [SerializeField] private float _attackRotationSpeed = 5f;
         [SerializeField] private int _health = 100;
         [SerializeField] private bool _isPushable = true;
+
+        [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
 
         public override void InstallBindings()
         {
@@ -49,7 +53,8 @@ namespace Gameplay
             Container.Bind<float>().WithId(CharacterParameterID.AttackRange).FromInstance(_attackRange).AsCached();
             Container.Bind<float>().WithId(CharacterParameterID.ChaseSpeed).FromInstance(_chaseSpeed).AsCached();
             Container.Bind<float>().WithId(CharacterParameterID.PatrolSpeed).FromInstance(_patrolSpeed).AsCached();
-            Container.Bind<float>().WithId(CharacterParameterID.AttackRotationSpeed).FromInstance(_attackRotationSpeed).AsCached();
+            Container.Bind<float>().WithId(CharacterParameterID.AttackRotationSpeed).FromInstance(_attackRotationSpeed)
+                .AsCached();
             Container.Bind<int>().WithId(CharacterParameterID.MaxHealth).FromInstance(_health).AsCached();
             Container.Bind<bool>().WithId(CharacterParameterID.IsPushable).FromInstance(_isPushable).AsCached();
         }
@@ -58,8 +63,9 @@ namespace Gameplay
         {
             // Core components
             Container.Bind<DamageLayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
-            Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity).FromInstance(GetComponent<Entity>()).AsCached().NonLazy();
-            
+            Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity).FromInstance(GetComponent<Entity>())
+                .AsCached().NonLazy();
+
             // Transform roots
             Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_meleeWeaponRoot).AsCached();
             Container.Bind<Transform>().WithId(DamageRootID.RangeWeaponRoot).FromInstance(_rangeWeaponRoot).AsCached();
@@ -91,7 +97,7 @@ namespace Gameplay
         {
             // Weapon manager
             Container.BindInterfacesAndSelfTo<EnemyWeaponManager>().AsSingle().NonLazy();
-            
+
             // Inventory
             Container.BindInterfacesAndSelfTo<EnemyInventory>()
                 .AsSingle()
@@ -106,13 +112,16 @@ namespace Gameplay
             Container.Bind<DamageNumberSpawner>().AsSingle().WithArguments(_damageNumbers).NonLazy();
             Container.Bind<EnemyDeathObserver>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
-            Container.Bind<HealtBar>().FromComponentInNewPrefab(_healthBar).UnderTransform(transform).AsSingle().NonLazy();
+            Container.Bind<HealtBar>().FromComponentInNewPrefab(_healthBar).UnderTransform(transform).AsSingle()
+                .NonLazy();
         }
 
         private void BindHit()
         {
-            Container.Bind<HitComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
-            Container.BindInterfacesAndSelfTo<HitController>().AsSingle().NonLazy();
+            Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
+            Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
     }
 }

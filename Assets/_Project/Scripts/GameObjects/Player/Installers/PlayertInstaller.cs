@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AudioEngine;
 using DamageNumbersPro;
 using UnityEngine;
 using Zenject;
@@ -25,6 +26,8 @@ namespace Gameplay
         [SerializeField] private float _strafeSpeed;
         [SerializeField] private float _strafePower;
         [SerializeField] private int _maxHealth;
+
+        [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
 
         public override void InstallBindings()
         {
@@ -74,8 +77,10 @@ namespace Gameplay
             Container.Bind<DamageLayerComponent>().AsSingle().WithArguments(_damageLayer).NonLazy();
             Container.Bind<Transform>().WithId(DamageRootID.MeleeWeaponRoot).FromInstance(_weaponBone).AsCached();
             Container.BindInterfacesAndSelfTo<PlayerWeaponManager>().AsSingle().NonLazy();
-            Container.Bind<HitComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
-            Container.BindInterfacesAndSelfTo<HitController>().AsSingle().NonLazy();
+            Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
+            Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
 
         private void BindInventorySystem()
