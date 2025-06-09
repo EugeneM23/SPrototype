@@ -180,7 +180,7 @@ MonoBehaviour:
     shakeMagnitude: 0
     bulletSpeed: 50
     scatter: 10
-    projectileCount: 1
+    projectileCount: 3
     shellImpulse: 5
     isReloadable: 1
     reloadTime: 2

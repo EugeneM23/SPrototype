@@ -859,6 +859,10 @@ MonoBehaviour:
   _HUD: {fileID: 5683781169268484242, guid: 25a96dc1b87c0401ca54e7b82e166d13, type: 3}
   _cameraSmoothTime: 0.15
   _camera: {fileID: 330585545}
+  _hitSfx:
+    bank: {fileID: 11400000, guid: 1dec5938c28314a1da08547fd7beb01e, type: 2}
+    eventId: ambient
+    identifier: .ambient
 --- !u!114 &929216160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,6 +1217,7 @@ MonoBehaviour:
   initialBanks:
   - {fileID: 11400000, guid: d4068c180dff54137ac6f72fa080a899, type: 2}
   - {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
+  - {fileID: 11400000, guid: 1dec5938c28314a1da08547fd7beb01e, type: 2}
 --- !u!4 &1252172283
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,11 +1964,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6631591822617481948, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _patrolPoints.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _isCycle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
