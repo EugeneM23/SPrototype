@@ -16,7 +16,7 @@ namespace Gameplay
         {
         }
 
-        protected override bool IsOnCondition(float distance) => distance < 2f;
+        protected override bool IsOnCondition(float distance) => distance < 3f;
         protected override Type GetTargetState() => typeof(EnemyMeleeAttackState);
     }
 }

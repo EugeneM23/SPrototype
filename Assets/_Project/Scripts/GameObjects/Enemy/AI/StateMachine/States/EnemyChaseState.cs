@@ -27,7 +27,6 @@ namespace Gameplay
         {
             _conditions.IsChasing = true;
             _moveComponent.AddSpeed(_stats.ChaseSpeed);
-            Debug.Log("Chasing");
         }
 
         public void Update(float deltaTime)

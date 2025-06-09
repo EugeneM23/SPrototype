@@ -20,7 +20,7 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            return distance >= 2f && distance < _chaseRange && !_conditions.IsBusy;
+            return distance >= 3f && distance < _chaseRange && !_conditions.IsBusy;
         }
 
         protected override Type GetTargetState() => typeof(EnemyChaseState);

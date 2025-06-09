@@ -15,7 +15,7 @@ MonoBehaviour:
   _poolable: 1
   duration: 0.39633334
   loop: 0
-  spartialBlend: 0
+  spartialBlend: 1
   output: {fileID: 0}
   clip:
     rid: 2546989188679467499
@@ -52,7 +52,7 @@ MonoBehaviour:
     - rid: 2546989188679467477
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 0.2
+        value: 0.16
     - rid: 2546989188679467478
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
@@ -60,11 +60,11 @@ MonoBehaviour:
     - rid: 2546989188679467479
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 1
+        value: 4
     - rid: 2546989188679467480
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 500
+        value: 50
     - rid: 2546989188679467481
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:

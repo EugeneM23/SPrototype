@@ -48,7 +48,7 @@ MonoBehaviour:
     - rid: 2546989188679467463
       type: {class: ClipConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        clip: {fileID: 8300000, guid: c5a6af7adb029df4ba0967bc4de9e7ac, type: 3}
+        clip: {fileID: 8300000, guid: 6d2e2db0b97a8c84e9b7aba22496d5fe, type: 3}
     - rid: 2546989188679467464
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
@@ -56,7 +56,7 @@ MonoBehaviour:
     - rid: 2546989188679467465
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 0.08
+        value: 0.12
     - rid: 2546989188679467466
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
