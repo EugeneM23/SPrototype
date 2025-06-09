@@ -37,6 +37,7 @@ namespace Gameplay
         [SerializeField] private bool _isPushable = true;
 
         [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
+        [SerializeField] private AudioEventKey _stepsSound;
 
         public override void InstallBindings()
         {
@@ -45,6 +46,16 @@ namespace Gameplay
             BindWeapons();
             BindHealth();
             BindHit();
+            BindSFX();
+        }
+
+        private void BindSFX()
+        {
+            Container.BindInterfacesAndSelfTo<FootStepSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StepSFXComponent>().AsSingle().WithArguments(_stepsSound).NonLazy();
+
+            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
 
         private void BindCharacterParameters()
@@ -120,8 +131,6 @@ namespace Gameplay
         {
             Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
     }
 }

@@ -2108,6 +2108,8 @@ MonoBehaviour:
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 6f3aaec77e1f14c19988d010e011d4fb, type: 2}
   - {fileID: 11400000, guid: 872db6379cc8b456b96a9c409d02cbb6, type: 2}
+  - {fileID: 11400000, guid: dff3e628de2354f6883232237bcdab24, type: 2}
+  - {fileID: 11400000, guid: 276cf186fe4b0409b8aeb103a5fc8712, type: 2}
   _monoInstallers:
   - {fileID: 8882518856053437140}
   _installerPrefabs: []
@@ -2136,7 +2138,7 @@ MonoBehaviour:
   _damageLayer:
     serializedVersion: 2
     m_Bits: 4096
-  _chaseRange: 10
+  _chaseRange: 15
   _attackRange: 4
   _chaseSpeed: 7
   _patrolSpeed: 2
@@ -2147,6 +2149,10 @@ MonoBehaviour:
     bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
     eventId: PlayerHit
     identifier: Character.PlayerHit
+  _stepsSound:
+    bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
+    eventId: PlayerSteps
+    identifier: Character.PlayerSteps
 --- !u!114 &849130336443538414
 MonoBehaviour:
   m_ObjectHideFlags: 0

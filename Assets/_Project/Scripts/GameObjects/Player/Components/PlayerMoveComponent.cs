@@ -1,7 +1,5 @@
 using System;
-using AudioEngine;
 using UnityEngine;
-using Zenject;
 
 namespace Gameplay
 {
@@ -23,35 +21,5 @@ namespace Gameplay
         }
 
         private float GetSpeed() => _stats.RunSpeed * (1 + _stats.RunSpeedMultiplier / 100f);
-    }
-
-    public class PlayerFootStepSFX : ITickable, IInitializable
-    {
-        private readonly AudioEventKey _stepSound;
-        private readonly CharacterConditions _character;
-
-        private AudioSystem _audioSystem;
-        private float _timer;
-        private const float STEP_TIME = 0.3f;
-
-        public PlayerFootStepSFX(AudioEventKey stepSound, CharacterConditions character)
-        {
-            _stepSound = stepSound;
-            _character = character;
-        }
-
-        public void Initialize()
-        {
-            _audioSystem = AudioSystem.Instance;
-        }
-
-        public void Tick()
-        {
-            _timer -= Time.deltaTime;
-            if (_timer >= 0 || !_character.IsChasing) return;
-
-            _audioSystem.PlayEvent(_stepSound);
-            _timer = STEP_TIME;
-        }
     }
 }

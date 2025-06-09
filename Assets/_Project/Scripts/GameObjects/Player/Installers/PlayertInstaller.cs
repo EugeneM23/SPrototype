@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using AudioEngine;
 using DamageNumbersPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -28,28 +29,35 @@ namespace Gameplay
         [SerializeField] private int _maxHealth;
 
         [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
-        [SerializeField] private AudioEventKey _footStepsSound;
+
+        [FormerlySerializedAs("_footStepsSound")] [SerializeField]
+        private AudioEventKey _stepsSound;
 
         public override void InstallBindings()
         {
-            // Core player components
             BindCoreComponents();
 
-            // Health system
             BindHealthSystem();
 
-            // Combat system
             BindCombatSystem();
 
-            // Inventory system
             BindInventorySystem();
 
-            // Settings
             BindSettings();
 
-            // Movement and animation
+            BindSFX();
+
             PlayerMovementInstaller.Install(Container);
             PlayerAnimationInstaller.Install(Container);
+        }
+
+        private void BindSFX()
+        {
+            Container.BindInterfacesAndSelfTo<FootStepSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<StepSFXComponent>().AsSingle().WithArguments(_stepsSound).NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
 
         private void BindCoreComponents()
@@ -60,7 +68,6 @@ namespace Gameplay
             Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
             Container.Bind<TargetComponent>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<PlayerFootStepSFX>().AsSingle().WithArguments(_footStepsSound).NonLazy();
         }
 
         private void BindHealthSystem()
@@ -81,8 +88,6 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<PlayerWeaponManager>().AsSingle().NonLazy();
             Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
-            Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
 
         private void BindInventorySystem()
