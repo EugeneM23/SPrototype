@@ -10,14 +10,11 @@ namespace Gameplay
         [SerializeField] private Slider _slider;
         [SerializeField] private TextMeshProUGUI _text;
 
-        public void Hide() => _loadingScreen.SetActive(false);
+        public void Hide() => _loadingScreen.SetActive (false);
         public void Show() => _loadingScreen.SetActive(true);
 
         public void SetProgress(int value) => _slider.value = value;
 
-        public void SetError(string loadingFailed)
-        {
-            _text.text = loadingFailed;
-        }
+        public void SetError(string loadingFailed) => _text.text = loadingFailed;
     }
 }
