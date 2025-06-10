@@ -1418,7 +1418,7 @@ MonoBehaviour:
     m_Bits: 4096
   _chaseRange: 15
   _attackRange: 7
-  _chaseSpeed: 6
+  _chaseSpeed: 4
   _patrolSpeed: 2
   _attackRotationSpeed: 10
   _health: 100

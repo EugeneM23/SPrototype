@@ -1,10 +1,7 @@
 using System;
-using UnityEngine;
 
 namespace Gameplay
 {
-    using System;
-
     public class CharacterConditions
     {
         public event Action OnValueChanged;

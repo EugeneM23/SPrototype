@@ -16,6 +16,11 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
+            Container
+                .BindInterfacesAndSelfTo<GameLauncher>()
+                .AsSingle()
+                .NonLazy();
+
             Application.targetFrameRate = _maximumFPS;
 
             CameraInstaller.Install(Container, _cameraSmoothTime, _camera);

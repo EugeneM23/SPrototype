@@ -820,7 +820,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 6229a861602f04d9a839e8f4eb97c834, type: 2}
   _monoInstallers:
   - {fileID: 929216159}
   - {fileID: 929216160}
@@ -1968,7 +1969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7383892478345163698, guid: c642cb9f012c04861acc2c8708b16639, type: 3}
       propertyPath: _isCycle
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -52,7 +52,7 @@ MonoBehaviour:
     - rid: 2546989188679467401
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 0.4
+        value: 0.2
     - rid: 2546989188679467402
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
@@ -64,7 +64,7 @@ MonoBehaviour:
     - rid: 2546989188679467404
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
-        value: 100
+        value: 200
     - rid: 2546989188679467405
       type: {class: FloatConst, ns: AudioEngine, asm: AudioEngine}
       data:
@@ -77,4 +77,4 @@ MonoBehaviour:
       type: {class: FloatRandom, ns: AudioEngine, asm: AudioEngine}
       data:
         minValue: 0.7
-        maxValue: 1.2
+        maxValue: 1

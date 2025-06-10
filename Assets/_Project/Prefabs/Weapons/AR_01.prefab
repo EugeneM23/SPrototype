@@ -176,11 +176,11 @@ MonoBehaviour:
     fireRate: 0.1
     damage: 10
     range: 20
-    shakeDuration: 0
-    shakeMagnitude: 0
+    shakeDuration: 0.1
+    shakeMagnitude: 0.1
     bulletSpeed: 50
     scatter: 10
-    projectileCount: 3
+    projectileCount: 1
     shellImpulse: 5
     isReloadable: 1
     reloadTime: 2

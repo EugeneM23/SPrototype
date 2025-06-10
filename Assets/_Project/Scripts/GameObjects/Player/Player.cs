@@ -33,7 +33,7 @@ namespace Gameplay
         {
             _canShoot = false;
 
-            _leanComponent.Lean();
+            // _leanComponent.Lean();
 
             if (_characterController.velocity.magnitude > 0.05f)
             {
