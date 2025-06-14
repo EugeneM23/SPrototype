@@ -57,7 +57,6 @@ namespace Gameplay
 
             _loadingScreen.Show();
 
-
             for (int i = 0; i < _operations.Count; i++)
             {
                 _currentOperation = _operations[i];
