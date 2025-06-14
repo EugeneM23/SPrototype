@@ -53,7 +53,6 @@ namespace Gameplay
             var bundle = new LoadingBundle();
             bundle.Add(BundleKeys.Level, level);
             bundle.Add(BundleKeys.BootLevel, 2);
-
             if (SceneManager.GetActiveScene().buildIndex == level) return;
 
             _loadingScreen.Show();
