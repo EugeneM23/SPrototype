@@ -4,24 +4,24 @@ using Zenject;
 
 namespace DPrototype.Game
 {
-    public class CameraInstaller : Installer<float, Camera, CameraInstaller>
+    public class CameraInstaller : Installer<float, CameraInstaller>
     {
-        [Inject] private float _smoothTime;
-        [Inject] private Camera _camera;
+        [Inject] private float _smoothTime; 
+       // [Inject] private Camera _camera;
 
         public override void InstallBindings()
         {
             Container
                 .BindInterfacesAndSelfTo<FollowComponent>()
                 .AsSingle()
-                .WithArguments(_camera.transform, _smoothTime)
+                .WithArguments(Camera.main.transform, _smoothTime)
                 .NonLazy();
 
-            Container
+            /*Container
                 .BindInterfacesAndSelfTo<CameraShaker>()
                 .AsSingle()
-                .WithArguments(_camera)
-                .NonLazy();
+                .WithArguments(Camera.main)
+                .NonLazy();*/
         }
     }
 }

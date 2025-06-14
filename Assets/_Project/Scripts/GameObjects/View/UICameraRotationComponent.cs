@@ -20,6 +20,7 @@ namespace Gameplay
 
         private void Update()
         {
+            if (_camera == null) return;
             Vector3 directionToCamera = _camera.transform.position - transform.position;
 
             directionToCamera.x = 0f;

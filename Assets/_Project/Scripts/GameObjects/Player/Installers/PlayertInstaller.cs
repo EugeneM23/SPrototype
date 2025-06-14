@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AudioEngine;
 using DamageNumbersPro;
+using Modules;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -35,6 +36,7 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
+            Debug.Log("PlayerInstaller install");
             BindCoreComponents();
 
             BindHealthSystem();
@@ -47,6 +49,8 @@ namespace Gameplay
 
             BindSFX();
 
+            BindPlayerCamera();
+
             PlayerMovementInstaller.Install(Container);
             PlayerAnimationInstaller.Install(Container);
         }
@@ -55,7 +59,7 @@ namespace Gameplay
         {
             Container.BindInterfacesAndSelfTo<FootStepSFXController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<StepSFXComponent>().AsSingle().WithArguments(_stepsSound).NonLazy();
-            
+
             Container.BindInterfacesAndSelfTo<HitSFXController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<HitSFXComponent>().AsSingle().WithArguments(_hitSound).NonLazy();
         }
@@ -65,9 +69,19 @@ namespace Gameplay
             Container.Bind<Entity>().WithId(CharacterParameterID.CharacterEntity)
                 .FromInstance(gameObject.GetComponent<Entity>()).AsCached();
             Container.BindInterfacesAndSelfTo<Player>().AsSingle().NonLazy();
-            Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
             Container.Bind<TargetComponent>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<BuffManager>().AsSingle().NonLazy();
+        }
+
+        private void BindPlayerCamera()
+        {
+            Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
+
+            Container
+                .BindInterfacesAndSelfTo<FollowComponent>()
+                .AsSingle()
+                .WithArguments(Camera.main.transform, 0.2f)
+                .NonLazy();
         }
 
         private void BindHealthSystem()

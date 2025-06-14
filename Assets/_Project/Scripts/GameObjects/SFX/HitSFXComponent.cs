@@ -21,7 +21,6 @@ namespace Gameplay
 
         public void PlayHitSFX(int obj)
         {
-            Debug.Log("sadasd");
             _audioSystem.PlayEvent(_key, _character.transform.position, _character.transform.rotation, 0.05f);
         }
     }

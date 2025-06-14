@@ -16,6 +16,7 @@ namespace Gameplay
         private readonly List<Entity> _startWeapons;
         private readonly List<Entity> _weapons = new();
         private readonly DiContainer _container;
+        private readonly PlayerWeaponManager _weaponManager;
 
         public int BulletCount
         {
@@ -31,26 +32,19 @@ namespace Gameplay
         public Entity this[int index] => _weapons[index];
 
         public PlayerInventory([Inject(Id = DamageRootID.MeleeWeaponRoot)] Transform weaponBone,
-            int bulletCount, List<Entity> startWeapons, DiContainer container)
+            int bulletCount, List<Entity> startWeapons, DiContainer container, PlayerWeaponManager weaponManager)
         {
             _weaponBone = weaponBone;
             _bulletCount = bulletCount;
             _startWeapons = startWeapons;
             _container = container;
+            _weaponManager = weaponManager;
         }
 
         public void Initialize()
         {
             foreach (var weapon in _startWeapons)
                 SpawnWeapon(weapon);
-
-            ActivateFirstWeapon();
-        }
-
-        private void ActivateFirstWeapon()
-        {
-            if (_weapons.Count > 0)
-                _weapons[0].gameObject.SetActive(true);
         }
 
         private void SpawnWeapon(Entity weaponPrefab)
@@ -63,6 +57,7 @@ namespace Gameplay
 
             SetupWeapon(weapon);
             _weapons.Add(weapon);
+            _weaponManager.AddWeapon(weapon);
             OnWeaponAdded?.Invoke();
         }
 

@@ -21,7 +21,7 @@ namespace Modules
 
         public void Tick()
         {
-            if (_target == null) return;
+            if (_target == null || _folowObject == null) return;
 
             Vector3 targetPosition = _target.transform.position + _offset;
             _folowObject.position =

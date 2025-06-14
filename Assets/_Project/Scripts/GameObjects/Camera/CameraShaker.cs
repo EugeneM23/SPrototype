@@ -14,7 +14,10 @@ namespace DPrototype.Game
         private bool _isReturning;
         private float maxAngle = 2;
 
-        public CameraShaker(Camera camera) => _camera = camera.transform;
+        public CameraShaker(Camera camera)
+        {
+            _camera = camera.transform;
+        }
 
         public void Initialize() => _originalRotation = _camera.localRotation;
 

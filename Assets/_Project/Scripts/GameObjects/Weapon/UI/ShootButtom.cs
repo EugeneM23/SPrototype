@@ -16,7 +16,9 @@ namespace Gameplay
         private void Update()
         {
             if (_shoot)
+            {
                 _player.Character.Get<Player>().Shoot();
+            }
         }
     }
 }

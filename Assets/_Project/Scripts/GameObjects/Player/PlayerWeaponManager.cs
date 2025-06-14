@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,20 +6,19 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerWeaponManager : IInitializable
+    public class PlayerWeaponManager : IInitializable, IDisposable
     {
-        private readonly PlayerInventory _playerInventory;
         private readonly Button switchButton;
         private readonly bool isPlayer;
+        private readonly List<Entity> _weapons = new();
 
         private Entity _currentWeapon;
         private int currentIndex = 0;
 
         public Entity CurrentWeapon => _currentWeapon;
 
-        public PlayerWeaponManager(PlayerInventory playerInventory, Button switchButton = null, bool isPlayer = true)
+        public PlayerWeaponManager(Button switchButton = null, bool isPlayer = true)
         {
-            this._playerInventory = playerInventory;
             this.switchButton = switchButton;
             this.isPlayer = isPlayer;
         }
@@ -29,30 +29,34 @@ namespace Gameplay
             {
                 switchButton.onClick.AddListener(SwitchWeapon);
             }
+        }
 
-            _playerInventory.OnWeaponAdded += OnWeaponAdded;
-
-            if (_playerInventory.WeaponCount > 0)
+        public void Dispose()
+        {
+            if (isPlayer && switchButton != null)
             {
-                EquipWeapon(_playerInventory[0]);
+                switchButton.onClick.RemoveListener(SwitchWeapon);
             }
         }
 
-        private void OnWeaponAdded()
+        public void AddWeapon(Entity weapon)
         {
+            _weapons.Add(weapon);
+
             if (_currentWeapon == null)
             {
-                EquipWeapon(_playerInventory[_playerInventory.WeaponCount - 1]);
+                EquipWeapon(weapon);
+                currentIndex = _weapons.Count - 1;
             }
         }
 
         public void SwitchWeapon()
         {
-            if (_playerInventory.WeaponCount <= 1) return;
+            if (_weapons.Count <= 1) return;
 
             UnequipWeapon(_currentWeapon);
-            currentIndex = (currentIndex + 1) % _playerInventory.WeaponCount;
-            EquipWeapon(_playerInventory[currentIndex]);
+            currentIndex = (currentIndex + 1) % _weapons.Count;
+            EquipWeapon(_weapons[currentIndex]);
         }
 
         private void EquipWeapon(Entity weapon)
@@ -69,11 +73,9 @@ namespace Gameplay
 
         private void UnequipWeapon(Entity weapon)
         {
-            if (weapon == null) return;
-
             weapon.gameObject.SetActive(false);
             weapon.Get<WeaponFireController>()?.TurnOff();
-            
+
             if (weapon.TryGet<WeaponSlahController>(out var controller))
                 controller.TurnOff();
         }
