@@ -40,6 +40,7 @@ namespace Gameplay
             {
                 var go = _spawner.Create(_enemyPrefab);
                 go.transform.position = _spawnPosition;
+
                 go.Get<EnemyPatrolState>().SetWaypoints(_waypoints);
             }
 

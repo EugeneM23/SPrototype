@@ -25,13 +25,14 @@ namespace Gameplay
         {
             string prefabName = prefab.name;
 
-            if (!_pools.TryGetValue(prefabName, out var pool))
+            if (!_pools.TryGetValue(prefabName, out EntityMemoryPool pool))
             {
                 RegisterNewPrefab(prefab, initSize);
                 pool = _pools[prefabName];
             }
 
             Entity entity = pool.Spawn();
+            
             return entity;
         }
 
