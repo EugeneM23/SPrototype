@@ -130,6 +130,10 @@ MonoBehaviour:
     shakeMagnitude: 0
   _slashPoint: {fileID: 1956108049342527132}
   _slash: {fileID: -5735226433674640030, guid: 78dceeb7a621b4a4c9d831ea56bd3870, type: 3}
+  _slashSound:
+    bank: {fileID: 11400000, guid: d4068c180dff54137ac6f72fa080a899, type: 2}
+    eventId: weaponSlah
+    identifier: Weapons.weaponSlah
 --- !u!114 &7606434032748138096
 MonoBehaviour:
   m_ObjectHideFlags: 0

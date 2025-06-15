@@ -1,4 +1,6 @@
+using AudioEngine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Gameplay
 {
@@ -7,6 +9,8 @@ namespace Gameplay
         [SerializeField] private MeleeWeaponConfig meleeConfig;
         [SerializeField] private Transform _slashPoint;
         [SerializeField] private Entity _slash;
+
+        [Header("SFX")] [SerializeField] private AudioEventKey _slashSound;
 
         public override void InstallBindings()
         {
@@ -23,6 +27,9 @@ namespace Gameplay
                 .WithArguments(_slashPoint, _slash).NonLazy();
             Container.BindInterfacesAndSelfTo<MeleeDamageComponent>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<MeleeDamageController>().AsSingle().NonLazy();
+            Container.BindInterfacesTo<WeaponShootSFXAction>().AsSingle()
+                .WithArguments(gameObject.transform, _slashSound)
+                .NonLazy();
         }
     }
 }

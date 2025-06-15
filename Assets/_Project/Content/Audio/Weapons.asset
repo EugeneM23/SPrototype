@@ -21,6 +21,8 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: bf1e2c0c72fb14821a9618926a0383f9, type: 2}
   - identifier: enviromentHit
     value: {fileID: 11400000, guid: f86e6e81a69114125a1c0c16d7a7eeec, type: 2}
+  - identifier: weaponSlah
+    value: {fileID: 11400000, guid: 6c56c4047d1e4423d8fbf5da5c0f2318, type: 2}
   boolParameters: []
   intParameters: []
   floatParameters: []

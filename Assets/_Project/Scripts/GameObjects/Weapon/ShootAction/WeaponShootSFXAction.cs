@@ -21,6 +21,7 @@ namespace Gameplay
 
         public void Invoke()
         {
+            Debug.Log("asdasd");
             _audioSystem.PlayEvent(_key, _firePoint.position, _firePoint.rotation, 0.05f);
         }
     }
