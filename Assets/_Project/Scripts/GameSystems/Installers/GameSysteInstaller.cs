@@ -11,6 +11,7 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
+            Application.targetFrameRate = 100;
             GameObject poolsParent = new GameObject("GamePools");
 
             Container.Bind<LoadingScreen>()
@@ -18,9 +19,9 @@ namespace Gameplay
                 .AsSingle()
                 .OnInstantiated<LoadingScreen>((_, it) => it.Hide())
                 .NonLazy();
-            
+
             Container.BindInterfacesAndSelfTo<GameLauncher>().AsSingle().NonLazy();
-            
+
             Container.Install<LoadingPipeLineInstaller>();
 
             Container
