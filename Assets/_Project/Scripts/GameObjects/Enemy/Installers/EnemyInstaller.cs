@@ -15,8 +15,8 @@ namespace Gameplay
         [Header("Weapons")] [SerializeField] private Entity _rangeWeapon;
         [SerializeField] private Entity _meleeWeapon;
 
-        [Header("Hit Effects")] [SerializeField]
-        private Entity _hitEffect;
+        [Header("VFX")] [SerializeField] private Entity _hitEffect;
+        private Entity _deathEffect;
 
         [SerializeField] private Transform _hitRoot;
 
@@ -121,7 +121,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageNumberSpawController>().AsSingle().NonLazy();
             Container.Bind<DamageNumberSpawner>().AsSingle().WithArguments(_damageNumbers).NonLazy();
-            Container.Bind<EnemyDeathObserver>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyDeathObserver>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
             Container.Bind<HealtBar>().FromComponentInNewPrefab(_healthBar).UnderTransform(transform).AsSingle()
                 .NonLazy();
@@ -131,6 +131,9 @@ namespace Gameplay
         {
             Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
+
+            Container.BindInterfacesAndSelfTo<DeathEffectController>().AsSingle().NonLazy();
+            Container.Bind<DeathEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
         }
     }
 }

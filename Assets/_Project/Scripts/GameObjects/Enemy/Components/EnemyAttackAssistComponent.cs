@@ -10,6 +10,13 @@ namespace Gameplay
         private float _speed;
         private float _time;
 
+        private readonly CharacterConditions _conditions;
+
+        public EnemyAttackAssistComponent(CharacterConditions conditions)
+        {
+            _conditions = conditions;
+        }
+
         public void RotateToTarget(Transform target, Transform enemy, int speed, float time)
         {
             _target = target.transform;
@@ -20,8 +27,8 @@ namespace Gameplay
 
         public void Tick()
         {
-            if (_target == null) return;
-            
+            if (_target == null || !_conditions.IsAlive) return;
+
             _time -= Time.deltaTime;
             if (_time > 0)
             {

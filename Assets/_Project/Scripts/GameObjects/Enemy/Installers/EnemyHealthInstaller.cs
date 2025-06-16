@@ -28,7 +28,7 @@ namespace Gameplay.Installers
                 .NonLazy();
 
             Container
-                .Bind<EnemyDeathObserver>()
+                .BindInterfacesAndSelfTo<EnemyDeathObserver>()
                 .AsSingle()
                 .NonLazy();
 

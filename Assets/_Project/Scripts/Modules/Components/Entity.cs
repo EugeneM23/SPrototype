@@ -62,6 +62,20 @@ namespace Gameplay
             return false;
         }
 
-        public void Dispose() => OnDispose?.Invoke(this);
+        public void Dispose()
+        {
+            OnDispose?.Invoke(this);
+        }
+
+        public void TurnOnDisposeTime(float time)
+        {
+            _destroyTime = time;
+            _isDisposableOverTime = true;
+        }
+
+        public void TurnOffDisposeOverTime()
+        {
+            _isDisposableOverTime = false;
+        }
     }
 }

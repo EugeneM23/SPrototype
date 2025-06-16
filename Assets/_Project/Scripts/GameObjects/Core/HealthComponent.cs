@@ -9,6 +9,8 @@ namespace Gameplay
         public event Action<int> OnHealthChanged;
         public event Action<int> OnTakeDamaged;
 
+        public event Action<Entity> OnDead;
+
         private readonly Entity _entity;
         private readonly CharacterStats _stats;
         private int _currentHealth;
@@ -31,13 +33,13 @@ namespace Gameplay
             OnHealthChanged?.Invoke(_currentHealth);
             OnTakeDamaged?.Invoke(damage);
 
-            if (_currentHealth <= 0) 
+            if (_currentHealth <= 0)
                 HandleDeath();
         }
 
         private void HandleDeath()
         {
-            _entity.Dispose();
+            OnDead?.Invoke(_entity);
             _currentHealth = _stats.MaxHealth;
             OnHealthChanged?.Invoke(_currentHealth);
         }

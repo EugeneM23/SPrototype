@@ -11,6 +11,13 @@ namespace Gameplay
         private bool _isPatroling;
         private bool _isChasing;
         private bool _isIdling;
+        private bool _isAlive = true;
+
+        public bool IsAlive
+        {
+            get => _isAlive;
+            set => SetField(ref _isAlive, value);
+        }
 
         public bool IsIdling
         {
