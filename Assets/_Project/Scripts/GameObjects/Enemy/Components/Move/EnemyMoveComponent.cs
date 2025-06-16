@@ -34,7 +34,7 @@ namespace Gameplay
         public void Move(Vector3 destination)
         {
             Debug.Log(_conditions.IsAlive);
-            if (!_conditions.IsAlive) return;
+            if (!_conditions.IsAlive || !_agent.enabled) return;
             _agent.SetDestination(destination);
             _agent.speed = _enemySpeed;
         }

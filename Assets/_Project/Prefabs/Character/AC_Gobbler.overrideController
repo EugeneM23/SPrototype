@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AC_Gobbler
+  m_Controller: {fileID: 9100000, guid: 9628b84204719477880f3c2f32fabcce, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: fc1dd3c29d42f9340964b0ec777af477, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: c166d06012e131944914a80c958289e8, type: 3}
+  - m_OriginalClip: {fileID: 5522812681064789136, guid: 27f47c1cca29fb049a955d5604cdb9ab, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 3d5aa6d7ff2fe6241a19f7c16f1fa5b1, type: 3}
+  - m_OriginalClip: {fileID: 2667949614841947897, guid: 2fb51310bb5d9174c80ddab0062351f2, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 71baed67575d9744081394b4319d0427, type: 3}
+  - m_OriginalClip: {fileID: 9010633086962729190, guid: 42704a9024a7bc04ba306ed357215927, type: 3}
+    m_OverrideClip: {fileID: 1827226128182048838, guid: 113114a479b5a564fabeaf0cc75b863e, type: 3}
