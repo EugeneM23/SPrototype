@@ -15,16 +15,12 @@ Material:
   - AMBIENT
   - ANIME_SOFT
   - DIFFUSE
-  - EMISSIVE_MAP
   - FOG
-  - LIGHT_MAP
   - MATCAP_PERSPECTIVE
   - NORMAL_MAP
   - OUTLINE_PASS_DISABLED
-  - RIM
   - SHADOWS_ENABLED
   - SPECULAR
-  - SPECULAR_MAP
   - _DETAILBLEND_MULTIPLY
   - _DETAILUV_UV1
   - _HEIGHTCOLORSBLEND_ALPHA_BLEND
@@ -46,7 +42,7 @@ Material:
   - _EMISSION
   - _METALLICGLOSSMAP
   - _NORMALMAP
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -58,32 +54,12 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BumpMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailMask:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _DetailNormalMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _DetailTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissiveTex:
-        m_Texture: {fileID: 2800000, guid: 65df6b5ba6a48f04a90d531f85d3e3db, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HeightColorsTex:
@@ -103,7 +79,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LightmapTex:
-        m_Texture: {fileID: 2800000, guid: 5daaa248fff14354aa71dfe35c5afc24, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -111,10 +87,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCapTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -126,14 +98,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _OcclusionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _ParallaxMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _ReflectionTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -142,12 +106,8 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecularTex:
-        m_Texture: {fileID: 2800000, guid: 0cc7d260805e28a49ab4aa3be470a6e4, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransparencyMaskTex:
@@ -163,12 +123,10 @@ Material:
     - _AnimeThreshold2: 0.85
     - _BlendOp: 0
     - _Brightness: 1
-    - _BumpScale: 1
     - _CameraFadeEnd: 0
     - _CameraFadeStart: 0
     - _Contrast: 1
     - _Cull: 2
-    - _Cutoff: 0.5
     - _Cutout: 0
     - _CutoutCutoff: 0.5
     - _DestBlend: 0
@@ -176,7 +134,6 @@ Material:
     - _DetailBrightness: 1
     - _DetailContrast: 1
     - _DetailLighting: 0
-    - _DetailNormalMapScale: 1
     - _DetailUV: 0
     - _DetailVertexColors: 0
     - _Diffuse: 1
@@ -184,12 +141,8 @@ Material:
     - _DiffuseContrast: 1
     - _DiffusePerPixel: 0
     - _DiffuseWrap: 0
-    - _DstBlend: 0
     - _Flat: 0
     - _Fog: 1
-    - _GlossMapScale: 1
-    - _Glossiness: 0.33
-    - _GlossyReflections: 1
     - _HeightColors: 0
     - _HeightColorsAlpha: 1
     - _HeightColorsBlend: 0
@@ -220,14 +173,11 @@ Material:
     - _MatCapContrast: 1
     - _MatCapPerspective: 1
     - _MatCapStatic: 0
-    - _Metallic: 0
     - _MixedLighting: 0
-    - _Mode: 0
     - _Normal2Strength: 1
-    - _NormalStrength: 1
+    - _NormalStrength: 5
     - _NormalUV: 0
     - _NormalUV2: 0
-    - _OcclusionStrength: 1
     - _Outline: 0
     - _OutlineComp: 8
     - _OutlineGroup: 0
@@ -235,7 +185,6 @@ Material:
     - _OutlineWidth: 0.002
     - _OutlineWidthIndependent: 0
     - _OutlineZPos: 0
-    - _Parallax: 0.02
     - _Plant: 0
     - _PlantBaseHeight: 0
     - _PlantLocal: 0
@@ -248,8 +197,8 @@ Material:
     - _ReflectionAmount: 1
     - _ReflectionRim: 0
     - _ReflectionSpecular: 0
-    - _Rim: 1
-    - _RimAmount: 0.54
+    - _Rim: 0
+    - _RimAmount: 1
     - _RimBlend: 1
     - _RimContrast: 5
     - _RimInverse: 0
@@ -260,18 +209,14 @@ Material:
     - _ShadowOverlaySpeedV: 0.03
     - _ShadowOverlaySwayAmount: 0.01
     - _ShadowsEnabled: 1
-    - _SmoothnessTextureChannel: 0
     - _SourceBlend: 1
     - _Specular: 1
-    - _SpecularBrightness: 12.8
+    - _SpecularBrightness: 1
     - _SpecularHair: 0
-    - _SpecularHighlights: 1
-    - _SpecularSmoothness: 12
+    - _SpecularSmoothness: 20
     - _SpecularUV: 0
-    - _SrcBlend: 1
     - _TransparencyMaskAmount: 1
     - _TransparencyMaskContrast: 1
-    - _UVSec: 0
     - _UVTile: 0
     - _UVTileDiscardUV: 1
     - _UVTileV0U0: 0
@@ -302,8 +247,7 @@ Material:
     - _AnimeColor3: {r: 2, g: 2, b: 2, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emissive: {r: 1, g: 1, b: 1, a: 1}
+    - _Emissive: {r: 0, g: 0, b: 0, a: 0}
     - _HeightColorsColor: {r: 1, g: 1, b: 1, a: 1}
     - _Layer1Color: {r: 1, g: 1, b: 1, a: 1}
     - _Layer2Color: {r: 1, g: 1, b: 1, a: 1}

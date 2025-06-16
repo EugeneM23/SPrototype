@@ -146,7 +146,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 32767
 --- !u!1001 &2440263143031893989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +160,10 @@ PrefabInstance:
       value: Joystick
       objectReference: {fileID: 0}
     - target: {fileID: 114282555968907678, guid: e0815e227ed46e445b99930271e8942c, type: 3}
+      propertyPath: canFollowPointer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114282555968907678, guid: e0815e227ed46e445b99930271e8942c, type: 3}
       propertyPath: isDynamicJoystick
       value: 1
       objectReference: {fileID: 0}
@@ -170,11 +174,11 @@ PrefabInstance:
     - target: {fileID: 114592483299003616, guid: e0815e227ed46e445b99930271e8942c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 59d87526176caab439f96d2ffbea2424, type: 3}
+      objectReference: {fileID: 21300000, guid: 56e956d14397ba4449147532a01d6a92, type: 3}
     - target: {fileID: 114675716580427132, guid: e0815e227ed46e445b99930271e8942c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 56cafa9a8953bac47b343db9f6434f5f, type: 3}
+      objectReference: {fileID: 21300000, guid: 8b6fd9a051c4d8c48ab93f6c2e5d6e15, type: 3}
     - target: {fileID: 224977699150327530, guid: e0815e227ed46e445b99930271e8942c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bca1086759d469499c10d32f564162a, type: 3}
   m_Name: GameSystemInstaller
   m_EditorClassIdentifier: 
-  _loadingScreen: {fileID: 6018358997848996496, guid: dfacc945843f24b7ab66943658045400, type: 3}
+  _loadingScreen: {fileID: 1045577939702924027, guid: 17b234579a2444826931d6edbb80e411, type: 3}

@@ -1,13 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Cysharp.Threading.Tasks;
-using UnityEngine;
 using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace Gameplay
 {
-    public class GameLauncher : IInitializable
+    public class GameLauncher
     {
         private IReadOnlyList<IloadingOperation> _operations;
         private readonly LoadingScreen _loadingScreen;
@@ -74,11 +73,6 @@ namespace Gameplay
             _currentOperation = null;
             _currentWeight = _fullWeight;
             _loadingScreen.Hide();
-        }
-
-        public void Initialize()
-        {
-            Launch();
         }
     }
 }
