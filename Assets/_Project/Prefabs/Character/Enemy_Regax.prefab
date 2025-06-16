@@ -227,6 +227,7 @@ MonoBehaviour:
   _rangeWeapon: {fileID: 6898676644082228745, guid: a2b5b0fefa63048769d869c43639dc7d, type: 3}
   _meleeWeapon: {fileID: 6254490439261344806, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
   _hitEffect: {fileID: 4909965928866057038, guid: 39253c93f65e94d32ba771c74993304b, type: 3}
+  _deathEffect: {fileID: -6178718533296735369, guid: 93c383a7bb6b65547bc569e7d7f10507, type: 3}
   _hitRoot: {fileID: 2575046023756732232}
   _damageNumbers: {fileID: 1259023133563206875, guid: aea097f0b68cc4868a93469220296bdf, type: 3}
   _healthBar: {fileID: -227575839315736592, guid: 87a8bc1dc97aa4d03b9a0d1ce960971e, type: 3}

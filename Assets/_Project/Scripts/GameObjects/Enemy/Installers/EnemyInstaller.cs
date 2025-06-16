@@ -16,8 +16,7 @@ namespace Gameplay
         [SerializeField] private Entity _meleeWeapon;
 
         [Header("VFX")] [SerializeField] private Entity _hitEffect;
-        private Entity _deathEffect;
-
+        [SerializeField] private Entity _deathEffect;
         [SerializeField] private Transform _hitRoot;
 
         [Header("Health UI")] [SerializeField] private DamageNumber _damageNumbers;
@@ -133,7 +132,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<DeathEffectController>().AsSingle().NonLazy();
-            Container.Bind<DeathEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
+            Container.Bind<DeathEffectComponent>().AsSingle().WithArguments(_deathEffect, _hitRoot).NonLazy();
         }
     }
 }
