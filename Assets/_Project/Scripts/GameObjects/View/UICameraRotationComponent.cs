@@ -7,13 +7,7 @@ namespace Gameplay
     {
         private Camera _camera;
         [SerializeField] private Vector3 _offset;
-
         [SerializeField] private bool _excludePosition;
-        /*
-        [Inject(Id = CharacterParameterID.CharacterEntity)]
-        private readonly Entity _entity;
-        */
-
         [Inject] private ICharacterProvider _player;
 
         private void Start() => _camera = Camera.main;

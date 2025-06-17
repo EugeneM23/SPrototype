@@ -102,6 +102,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<PlayerWeaponManager>().AsSingle().NonLazy();
             Container.Bind<HitEffectComponent>().AsSingle().WithArguments(_hitEffect, _hitRoot).NonLazy();
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<PlayerImpulseComponent>().AsSingle().NonLazy();
         }
 
         private void BindInventorySystem()

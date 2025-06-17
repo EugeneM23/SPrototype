@@ -25,4 +25,26 @@ namespace Gameplay
 
         protected override Type GetTargetState() => typeof(EnemyChaseState);
     }
+
+    public class EnemyKamikazeDecision : EnemyDecisionBase
+    {
+        private readonly float _kamikazeRange;
+
+        public override int Priority => 20;
+
+        public EnemyKamikazeDecision(PlayerCharacterProvider provider,
+            [Inject(Id = CharacterParameterID.CharacterEntity)]
+            Entity entity, CharacterConditions conditions, float kamikazeRange)
+            : base(provider, entity, conditions)
+        {
+            _kamikazeRange = kamikazeRange;
+        }
+
+        protected override bool IsOnCondition(float distance)
+        {
+            return distance < _kamikazeRange && !_conditions.IsBusy;
+        }
+
+        protected override Type GetTargetState() => typeof(EnemyKamikazeState);
+    }
 }

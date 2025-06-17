@@ -25,6 +25,8 @@ namespace Gameplay
         [Header("Layer Settings")] [SerializeField]
         private LayerMask _damageLayer;
 
+        [Header("Raggdoll")] [SerializeField] private bool _isRaggdollEnemy;
+
         [Header("Character Parameters")] [SerializeField]
         private float _chaseRange = 5f;
 
@@ -46,6 +48,14 @@ namespace Gameplay
             BindHealth();
             BindHit();
             BindSFX();
+
+            if (_isRaggdollEnemy)
+                BindRaggol();
+        }
+
+        private void BindRaggol()
+        {
+            Container.BindInterfacesAndSelfTo<EnemyRaggdolComponent>().AsSingle().NonLazy();
         }
 
         private void BindSFX()

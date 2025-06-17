@@ -34,10 +34,10 @@ namespace Gameplay
             OnTakeDamaged?.Invoke(damage);
 
             if (_currentHealth <= 0)
-                HandleDeath();
+                Death();
         }
 
-        private void HandleDeath()
+        public void Death()
         {
             OnDead?.Invoke(_entity);
             _currentHealth = _stats.MaxHealth;

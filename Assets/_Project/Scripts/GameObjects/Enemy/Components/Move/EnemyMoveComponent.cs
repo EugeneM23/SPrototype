@@ -31,17 +31,16 @@ namespace Gameplay
             _enemySpeed = _stats.PatrolSpeed;
         }
 
+        public void Initialize() => _conditions.OnValueChanged += DoAction;
+
         public void Move(Vector3 destination)
         {
-            Debug.Log(_conditions.IsAlive);
             if (!_conditions.IsAlive || !_agent.enabled) return;
             _agent.SetDestination(destination);
             _agent.speed = _enemySpeed;
         }
 
         public void AddSpeed(float speed) => _enemySpeed += speed;
-
-        public void Initialize() => _conditions.OnValueChanged += DoAction;
 
         public void Dispose() => _conditions.OnValueChanged -= DoAction;
 
@@ -51,10 +50,5 @@ namespace Gameplay
                 if (action.Condition())
                     action.Action();
         }
-    }
-
-    public interface IMove
-    {
-        void Move(Vector3 destination);
     }
 }

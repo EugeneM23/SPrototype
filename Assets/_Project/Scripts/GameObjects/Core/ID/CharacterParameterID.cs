@@ -18,5 +18,6 @@ namespace Gameplay
         StrafeSpeed,
         StrafePower,
         MaxHealth,
+        KamikazeRange
     }
 }
