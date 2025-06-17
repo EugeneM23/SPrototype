@@ -44,7 +44,6 @@ namespace Gameplay
                 Quaternion rotation = CalculatRotation();
                 Entity bullet = _factory.Create(_bulletPrefab, 10);
                 bullet.gameObject.SetActive(false);
-                //bullet.Get<Rigidbody>().isKinematic = true;
                 bullet.gameObject.transform.position = _firePoint.position;
                 bullet.gameObject.transform.rotation = rotation;
                 bullet.gameObject.layer = _damageLayer.GetDamageLayer();
@@ -54,7 +53,6 @@ namespace Gameplay
                 if (bullet.TryGet<BulletProjectileMoveComponent>(out var component))
                     component.SetTargetPos(_character.Get<TargetComponent>().Target.position);
                 bullet.gameObject.SetActive(true);
-                //bullet.Get<Rigidbody>().isKinematic = false;
             }
 
             _needSpawn = false;

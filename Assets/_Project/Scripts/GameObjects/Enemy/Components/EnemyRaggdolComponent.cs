@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyRaggdolComponent : ITickable
+    public class EnemyRaggdolComponent : ITickable, IInitializable
     {
         private readonly Entity _enemy;
 
@@ -41,6 +41,7 @@ namespace Gameplay
             var go = _enemy.GetComponentsInChildren<Rigidbody>();
             foreach (var item in go)
             {
+                item.isKinematic = false;
                 item.linearVelocity = Vector3.zero;
                 item.angularVelocity = Vector3.zero;
 
@@ -61,6 +62,15 @@ namespace Gameplay
             _enemy.Get<Rigidbody>().isKinematic = true;
             _enemy.Dispose();
             _isDead = false;
+        }
+
+        public void Initialize()
+        {
+            var go = _enemy.GetComponentsInChildren<Rigidbody>();
+            foreach (var item in go)
+            {
+                item.isKinematic = true;
+            }
         }
     }
 }
