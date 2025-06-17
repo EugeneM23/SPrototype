@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2996678859422021887}
   - component: {fileID: 143759517149739816}
+  - component: {fileID: -7001876861324031140}
   m_Layer: 0
   m_Name: Blood1
   m_TagString: Untagged
@@ -50,9 +51,24 @@ MonoBehaviour:
   AutomaticGroundHeightDetection: 1
   GroundHeight: 0
   LightIntensityMultiplier: 1
-  DecalLifeTimeSeconds: 58
+  DecalLifeTimeSeconds: 30
   DecalRenderingMode: 0
   DebugAnimationTime: 0.25
+--- !u!114 &-7001876861324031140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2656253210798625995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6b8b812c65e45c6bb1ce2958d1943a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _context: {fileID: 0}
+  _isDisposableOverTime: 1
+  _destroyTime: 5
 --- !u!1 &3006206550808034607
 GameObject:
   m_ObjectHideFlags: 0
