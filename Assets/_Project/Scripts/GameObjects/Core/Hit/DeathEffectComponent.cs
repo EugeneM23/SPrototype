@@ -4,11 +4,11 @@ namespace Gameplay
 {
     public class DeathEffectComponent
     {
-        private readonly Entity _deathEffect;
+        private readonly Entity[] _deathEffect;
         private readonly GameFactory _factory;
         private readonly Transform _hitPoint;
 
-        public DeathEffectComponent(Entity deathEffect, GameFactory factory, Transform hitPoint)
+        public DeathEffectComponent(Entity[] deathEffect, GameFactory factory, Transform hitPoint)
         {
             _deathEffect = deathEffect;
             _factory = factory;
@@ -17,8 +17,11 @@ namespace Gameplay
 
         public void CreateDeathEffect(Entity obj)
         {
-            Entity hitEffect = _factory.Create(_deathEffect);
-            hitEffect.transform.position = _hitPoint.position;
+            foreach (var deathEffect in _deathEffect)
+            {
+                var effect = _factory.Create(deathEffect);
+                effect.transform.position = _hitPoint.position;
+            }
         }
     }
 }

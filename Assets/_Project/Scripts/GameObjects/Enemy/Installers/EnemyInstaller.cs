@@ -1,6 +1,7 @@
 using AudioEngine;
 using DamageNumbersPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
@@ -16,7 +17,7 @@ namespace Gameplay
         [SerializeField] private Entity _meleeWeapon;
 
         [Header("VFX")] [SerializeField] private Entity _hitEffect;
-        [SerializeField] private Entity _deathEffect;
+         [SerializeField] private Entity[] _deathEffects;
         [SerializeField] private Transform _hitRoot;
 
         [Header("Health UI")] [SerializeField] private DamageNumber _damageNumbers;
@@ -142,7 +143,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<HitEffectController>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<DeathEffectController>().AsSingle().NonLazy();
-            Container.Bind<DeathEffectComponent>().AsSingle().WithArguments(_deathEffect, _hitRoot).NonLazy();
+            Container.Bind<DeathEffectComponent>().AsSingle().WithArguments(_deathEffects, _hitRoot).NonLazy();
         }
     }
 }
