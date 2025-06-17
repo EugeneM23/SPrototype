@@ -19,6 +19,7 @@ namespace Gameplay
             _pools = new Dictionary<string, EntityMemoryPool>();
             _container = container;
             _poolsParent = poolsParent;
+            
         }
 
         public Entity Create(Entity prefab, int initSize = 0)

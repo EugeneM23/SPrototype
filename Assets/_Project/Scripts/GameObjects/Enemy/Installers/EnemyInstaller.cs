@@ -17,7 +17,7 @@ namespace Gameplay
         [SerializeField] private Entity _meleeWeapon;
 
         [Header("VFX")] [SerializeField] private Entity _hitEffect;
-         [SerializeField] private Entity[] _deathEffects;
+        [SerializeField] private Entity[] _deathEffects;
         [SerializeField] private Transform _hitRoot;
 
         [Header("Health UI")] [SerializeField] private DamageNumber _damageNumbers;
@@ -35,7 +35,7 @@ namespace Gameplay
         [SerializeField] private float _chaseSpeed = 3f;
         [SerializeField] private float _patrolSpeed = 1f;
         [SerializeField] private float _attackRotationSpeed = 5f;
-        [SerializeField] private int _health = 100;
+        [SerializeField] private int _health;
         [SerializeField] private bool _isPushable = true;
 
         [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
@@ -128,12 +128,13 @@ namespace Gameplay
 
         private void BindHealth()
         {
-            Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().WithArguments(_health).NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageNumberSpawController>().AsSingle().NonLazy();
             Container.Bind<DamageNumberSpawner>().AsSingle().WithArguments(_damageNumbers).NonLazy();
             Container.BindInterfacesAndSelfTo<EnemyDeathObserver>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
             Container.Bind<HealtBar>().FromComponentInNewPrefab(_healthBar).UnderTransform(transform).AsSingle()
+                .WithArguments(_health)
                 .NonLazy();
         }
 

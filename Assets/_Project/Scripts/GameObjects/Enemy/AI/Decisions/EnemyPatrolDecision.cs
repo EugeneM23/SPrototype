@@ -24,4 +24,19 @@ namespace Gameplay
 
         protected override Type GetTargetState() => typeof(EnemyPatrolState);
     }
+
+    public class EnemyReloadState : IState
+    {
+        public void Enter()
+        {
+        }
+
+        public void Update(float deltaTime)
+        {
+        }
+
+        public void Exit()
+        {
+        }
+    }
 }

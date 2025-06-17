@@ -37,6 +37,7 @@ namespace Gameplay
 
         public void Enter()
         {
+            _timer = 0;
             OnEnter?.Invoke();
             _characterConditions.IsBusy = true;
         }

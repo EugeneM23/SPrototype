@@ -20,8 +20,10 @@ namespace Gameplay
             if (_particle == null) return;
 
             var effect = _factory.Create(_particle);
+            effect.gameObject.SetActive(false);
             effect.transform.position = _firePoint.position;
             effect.transform.rotation = _firePoint.rotation;
+            effect.gameObject.SetActive(true);
         }
     }
 }

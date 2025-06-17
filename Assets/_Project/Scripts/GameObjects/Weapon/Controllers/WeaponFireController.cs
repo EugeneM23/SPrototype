@@ -20,6 +20,7 @@ namespace Gameplay
 
         public void TurnOn()
         {
+            Debug.Log(this._character.Character);
             _character.Character.Get<IShootable>().OnShoot += _weaponShootComponent.Shoot;
         }
     }

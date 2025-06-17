@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class HealthComponent : IInitializable, IDamageable
+    public class HealthComponent : IDamageable
     {
         public event Action<int> OnHealthChanged;
         public event Action<int> OnTakeDamaged;
@@ -15,15 +15,11 @@ namespace Gameplay
         private readonly CharacterStats _stats;
         private int _currentHealth;
 
-        public HealthComponent(CharacterStats stats, Entity entity)
+        public HealthComponent(CharacterStats stats, Entity entity, int currentHealth)
         {
             _stats = stats;
             _entity = entity;
-        }
-
-        public void Initialize()
-        {
-            _currentHealth = _stats.MaxHealth;
+            _currentHealth = currentHealth;
         }
 
         public virtual void TakeDamage(int damage)

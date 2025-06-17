@@ -36,10 +36,12 @@ namespace Gameplay
             if (bulletPrefab)
                 Container.Bind<Entity>().WithId(WeaponParameterID.BulletPrefab).FromInstance(bulletPrefab);
             if (shellPrefab)
+            {
+                Container.BindInterfacesTo<WeaponShellSpawnAction>().AsSingle().WithArguments(shellPoint);
                 Container.Bind<Entity>().WithId(WeaponParameterID.ShellPrefab).FromInstance(shellPrefab);
+            }
 
             Container.BindInterfacesTo<WeaponBulletSpawnAction>().AsSingle().WithArguments(firePoint);
-            Container.BindInterfacesTo<WeaponShellSpawnAction>().AsSingle().WithArguments(shellPoint);
             Container.BindInterfacesTo<WeaponMuzzleFlashAction>().AsSingle().WithArguments(muzzleFlash, firePoint);
             Container.BindInterfacesTo<WeaponRangeAttackAction>().AsSingle().NonLazy();
             Container.BindInterfacesTo<WeaponShootSFXAction>().AsSingle().WithArguments(firePoint, _shoot)
@@ -54,6 +56,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<WeaponClipComponent>().AsSingle()
                 .WithArguments(rangedConfig.clipCapacity);
             Container.BindInterfacesAndSelfTo<WeaponClipController>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WeaponRealodStatusSwitceh>().AsSingle();
 
             if (_reloadStatus != null)
             {

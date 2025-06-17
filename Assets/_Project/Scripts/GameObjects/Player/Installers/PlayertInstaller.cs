@@ -27,7 +27,7 @@ namespace Gameplay
         [SerializeField] private float _lookAtSpeed;
         [SerializeField] private float _strafeSpeed;
         [SerializeField] private float _strafePower;
-        [SerializeField] private int _maxHealth;
+        [SerializeField] private int _health;
 
         [Header("SFX")] [SerializeField] private AudioEventKey _hitSound;
 
@@ -36,7 +36,6 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            Debug.Log("PlayerInstaller install");
             BindCoreComponents();
 
             BindHealthSystem();
@@ -86,12 +85,14 @@ namespace Gameplay
 
         private void BindHealthSystem()
         {
-            Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<HealthComponent>().AsSingle().WithArguments(_health).NonLazy();
             Container.Bind<DamageNumberSpawner>().AsSingle().WithArguments(_popupPrefab).NonLazy();
             Container.BindInterfacesAndSelfTo<PlayerDeathObserver>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageNumberSpawController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
+            
             Container.Bind<HealtBar>().FromComponentInNewPrefab(healtBar).UnderTransform(transform).AsSingle()
+                .WithArguments(_health)
                 .NonLazy();
         }
 
@@ -119,7 +120,7 @@ namespace Gameplay
             Container.Bind<float>().WithId(CharacterParameterID.LookAtSpeed).FromInstance(_lookAtSpeed).AsCached();
             Container.Bind<float>().WithId(CharacterParameterID.StrafeSpeed).FromInstance(_strafeSpeed).AsCached();
             Container.Bind<float>().WithId(CharacterParameterID.StrafePower).FromInstance(_strafePower).AsCached();
-            Container.Bind<int>().WithId(CharacterParameterID.MaxHealth).FromInstance(_maxHealth).AsCached();
+            Container.Bind<int>().WithId(CharacterParameterID.MaxHealth).FromInstance(_health).AsCached();
             Container.Bind<CharacterStats>().AsSingle().NonLazy();
         }
     }

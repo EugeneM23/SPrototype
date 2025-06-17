@@ -11,7 +11,7 @@ namespace Gameplay
         void WeaponShootComponent.IAction.Invoke()
         {
             _stats.CharacterEntity.Get<Animator>().SetFloat("AttackSpeed", GetAnimationTime());
-            _stats.CharacterEntity.Get<Animator>().Play("RangeAttack", 0);
+            _stats.CharacterEntity.Get<Animator>().CrossFade("RangeAttack", 0.25f);
         }
 
         public WeaponRangeAttackAction(CharacterStats stats, RangedWeaponConfig config)

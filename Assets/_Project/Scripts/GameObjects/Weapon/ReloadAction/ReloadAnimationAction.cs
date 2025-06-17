@@ -3,8 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class ReloadAnimationAction : ITickable, WeaponReloadComponent.IAction,
-        WeaponShootComponent.ICondition
+    public class ReloadAnimationAction : ITickable, WeaponReloadComponent.IAction, WeaponShootComponent.ICondition
     {
         private readonly RangedWeaponConfig _config;
 

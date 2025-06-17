@@ -12,6 +12,7 @@ namespace Gameplay
         private bool _isChasing;
         private bool _isIdling;
         private bool _isAlive = true;
+        private bool _isReloaded;
 
         public bool IsAlive
         {
@@ -47,6 +48,12 @@ namespace Gameplay
         {
             get => _isChasing;
             set => SetField(ref _isChasing, value);
+        }
+
+        public bool IsReloaded
+        {
+            get => _isReloaded;
+            set => SetField(ref _isReloaded, value);
         }
 
         private void SetField(ref bool field, bool value)
