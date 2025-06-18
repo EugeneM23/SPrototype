@@ -31,7 +31,9 @@ namespace Gameplay
         public void OnHit(RaycastHit collider)
         {
             if (collider.collider.gameObject.TryGetComponent(out IEntity entity))
+            {
                 _entityActions.ForEach(action => action.Invoke(entity));
+            }
             else
             {
                 _enviromentActions.ForEach(action => action.Invoke(collider));

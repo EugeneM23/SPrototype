@@ -50,11 +50,6 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            Container
-                .BindInterfacesAndSelfTo<DamageCasterManager>()
-                .AsSingle()
-                .NonLazy();
-
             /*Container
                 .BindInterfacesAndSelfTo<CameraShaker>()
                 .AsSingle()

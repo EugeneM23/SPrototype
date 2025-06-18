@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using Zenject;
 
 namespace Gameplay
 {
@@ -20,52 +18,12 @@ namespace Gameplay
             _bullet.transform.position += _bullet.transform.forward * Time.deltaTime * _bulletSpeed;
         }
 
+        public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
+        {
+            _bullet.transform.position = position;
+            _bullet.transform.rotation = rotation;
+        }
+
         public void SetSeed(int seed) => _bulletSpeed = seed;
-    }
-
-    public class BulletCollisionComponent : ITickable
-    {
-        public event Action<RaycastHit> OnHit;
-
-        private readonly BulletDamageAction _damageAction;
-        private readonly Entity _bullet;
-
-        private Vector3 _previousPosition;
-        private LayerMask _layer;
-
-        public BulletCollisionComponent(Entity bullet, BulletDamageAction damageAction)
-        {
-            _bullet = bullet;
-            _damageAction = damageAction;
-            _previousPosition = _bullet.transform.position;
-        }
-
-        public void CheckCollision()
-        {
-            Vector3 currentPosition = _bullet.transform.position;
-            Vector3 direction = currentPosition - _previousPosition;
-
-            float distance = direction.magnitude;
-            if (distance > 0 && Physics.Raycast(_previousPosition, direction.normalized, out RaycastHit hit, distance,
-                    _layer))
-
-            {
-                OnHit?.Invoke(hit);
-                _bullet.Dispose();
-            }
-
-
-            _previousPosition = currentPosition;
-        }
-
-        public void Tick()
-        {
-            CheckCollision();
-        }
-
-        public void SetCollisionLayer(LayerMask layer)
-        {
-            _layer = layer;
-        }
     }
 }

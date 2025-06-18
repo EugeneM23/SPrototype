@@ -23,16 +23,7 @@ namespace Gameplay.Installers
 
         public override void InstallBindings()
         {
-            Container
-                .BindInterfacesAndSelfTo<ChargeDamageCastHandler>()
-                .AsSingle()
-                .WithArguments(new DamageCastParams(
-                    _chargeDamage,
-                    _damageCastRadius,
-                    _damageCastDuration,
-                    12,
-                    _entity.transform))
-                .NonLazy();
+            
 
             Container
                 .Bind<ChargeEffectMarker>()

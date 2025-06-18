@@ -20,9 +20,9 @@ namespace Gameplay
             if (_effect == null) return;
 
             Quaternion rotation = Quaternion.LookRotation(hit.normal);
-            var effect = _factory.Create(_effect);
-            effect.transform.position = hit.point;
-            effect.transform.rotation = rotation;
+            Entity effect = _factory.Create(_effect);
+
+            effect.transform.SetPositionAndRotation(hit.point, rotation);
         }
     }
 

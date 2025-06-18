@@ -33849,14 +33849,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1879272669879180}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -38591,6 +38591,7 @@ MonoBehaviour:
   _context: {fileID: 0}
   _isDisposableOverTime: 1
   _destroyTime: 2
+  _randomScale: 0
 --- !u!1 &1947723841646622
 GameObject:
   m_ObjectHideFlags: 0

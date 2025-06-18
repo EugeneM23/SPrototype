@@ -28,22 +28,15 @@ namespace Gameplay
 
         private void Start()
         {
-            /*if (_randomScale)
-            {
-                Debug.Log($"Random scale: {_randomScale}");
-                float startscale = gameObject.transform.localScale.x;
-                startscale /= 100 * 50;
-                float rand = Random.Range(-startscale, startscale);
-                gameObject.transform.localScale += new Vector3(rand, rand, rand);
-                
-            }*/
 
             OnEntityStart?.Invoke();
         }
 
         private void OnEnable()
         {
-            _timer = _destroyTime;
+            if (_isDisposableOverTime)
+                _timer = _destroyTime;
+
             OnEntityEnable?.Invoke();
         }
 
@@ -80,6 +73,7 @@ namespace Gameplay
         public void Dispose()
         {
             OnDispose?.Invoke(this);
+            _timer = _destroyTime;
         }
 
         public void TurnOnDisposeTime(float time)

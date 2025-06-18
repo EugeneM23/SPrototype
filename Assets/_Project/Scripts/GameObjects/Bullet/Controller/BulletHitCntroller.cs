@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class BulletHitCntroller : IInitializable, IDisposable
+    public class BulletHitCntroller
     {
         private readonly BulletCollisionComponent _collisionComponent;
         private readonly BulletHitComponent _bulletHitComponent;
@@ -13,9 +13,5 @@ namespace Gameplay
             _collisionComponent = collisionComponent;
             _bulletHitComponent = bulletHitComponent;
         }
-
-        public void Initialize() => _collisionComponent.OnHit += _bulletHitComponent.OnHit;
-
-        public void Dispose() => _collisionComponent.OnHit -= _bulletHitComponent.OnHit;
     }
 }
