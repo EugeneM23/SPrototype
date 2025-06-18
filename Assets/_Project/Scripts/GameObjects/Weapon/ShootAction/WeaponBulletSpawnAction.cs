@@ -44,7 +44,7 @@ namespace Gameplay
                 Quaternion rotation = CalculatRotation();
                 Entity bullet = _factory.Create(_bulletPrefab, 10);
                 bullet.Get<BulletCollisionComponent>().ResetRaycastPosition(_firePoint.position);
-                bullet.Get<BulletMoveComponent>().SetPositionAndRotation(_firePoint.position, rotation);
+                bullet.Get<IBulletMoveComponent>().SetPositionAndRotation(_firePoint.position, rotation);
                 bullet.Get<BulletCollisionComponent>().SetCollisionLayer(_damageLayer.LayerMask);
                 bullet.Get<IBulletMoveComponent>().SetSeed(_config.bulletSpeed);
                 bullet.Get<BulletDamageAction>().SetDamage(_config.damage);

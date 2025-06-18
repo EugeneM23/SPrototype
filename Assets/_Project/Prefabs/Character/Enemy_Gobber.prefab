@@ -20309,7 +20309,7 @@ MonoBehaviour:
   _hitEffect: {fileID: 4909965928866057038, guid: 39253c93f65e94d32ba771c74993304b, type: 3}
   _deathEffects:
   - {fileID: -7025614295030173327, guid: 7b88f11816abaa34c9e02cbaa8485321, type: 3}
-  - {fileID: 4283613737492095468, guid: 5efd19158a849be46af85f592bd58801, type: 3}
+  - {fileID: 2189954219078057890, guid: 2f8f565bd1d9e4605b7cca2197a9322d, type: 3}
   _hitRoot: {fileID: 4276692499105256762}
   _damageNumbers: {fileID: 1259023133563206875, guid: aea097f0b68cc4868a93469220296bdf, type: 3}
   _healthBar: {fileID: -227575839315736592, guid: 87a8bc1dc97aa4d03b9a0d1ce960971e, type: 3}

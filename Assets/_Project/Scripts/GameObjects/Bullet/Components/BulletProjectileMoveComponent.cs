@@ -5,48 +5,54 @@ namespace Gameplay
 {
     public class BulletProjectileMoveComponent : IBulletMoveComponent, IInitializable
     {
-        private readonly Entity bullet;
+        private readonly Entity _bullet;
         private Vector3 _startPos;
         private Vector3 _targetPos;
         private float _speed;
-        private float progress;
-        private bool initialized;
-        private float curveLength;
+        private float _progress;
+        private bool _initialized;
+        private float _curveLength;
 
         public BulletProjectileMoveComponent(Entity bullet)
         {
-            this.bullet = bullet;
+            _bullet = bullet;
         }
 
-        public void Initialize() => bullet.OnEntityEnable += Reset;
+        public void Initialize() => _bullet.OnEntityEnable += Reset;
 
         private void Reset()
         {
-            progress = 0;
-            initialized = false;
+            _progress = 0;
+            _initialized = false;
         }
 
         public void Move()
         {
-            if (!initialized)
+            if (!_initialized)
             {
-                _startPos = bullet.transform.position;
-                curveLength = CalculateCurveLength();
-                initialized = true;
+                _startPos = _bullet.transform.position;
+                _curveLength = CalculateCurveLength();
+                _initialized = true;
             }
 
-            float deltaProgress = (_speed * Time.deltaTime) / curveLength;
-            progress += deltaProgress;
-
+            float deltaProgress = (_speed * Time.deltaTime) / _curveLength;
+            _progress += deltaProgress;
 
             Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
-            midPoint.y += 10f;
+            midPoint.y += 12f;
 
-            float t = progress;
+            float t = _progress;
             float u = 1f - t;
             Vector3 newPos = u * u * _startPos + 2f * u * t * midPoint + t * t * _targetPos;
 
-            bullet.transform.position = newPos;
+            // Вычисляем направление движения
+            Vector3 direction = (newPos - _bullet.transform.position).normalized;
+            if (direction != Vector3.zero)
+            {
+                _bullet.transform.rotation = Quaternion.LookRotation(direction);
+            }
+
+            _bullet.transform.position = newPos;
         }
 
         private float CalculateCurveLength()
@@ -70,6 +76,11 @@ namespace Gameplay
         }
 
         public void SetSeed(int seed) => _speed = seed;
+
+        public void SetPositionAndRotation(Vector3 position, Quaternion rotation)
+        {
+            _bullet.transform.SetPositionAndRotation(position, rotation);
+        }
 
         public void SetTargetPos(Vector3 targetPos) => _targetPos = targetPos;
     }

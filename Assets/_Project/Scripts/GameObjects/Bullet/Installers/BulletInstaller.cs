@@ -28,10 +28,6 @@ public class BulletInstaller : MonoInstaller
             .WithArguments(_hitSFX)
             .NonLazy();
 
-        /*Container
-            .BindInterfacesAndSelfTo<BulletHitCntroller>()
-            .AsSingle()
-            .NonLazy();*/
 
         Container
             .BindInterfacesAndSelfTo<BulletHitComponent>()

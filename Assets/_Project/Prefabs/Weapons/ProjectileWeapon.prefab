@@ -143,6 +143,7 @@ MonoBehaviour:
   _context: {fileID: 7487418093101285224}
   _isDisposableOverTime: 0
   _destroyTime: 0
+  _randomScale: 0
 --- !u!114 &7487418093101285224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,28 +175,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  damageRoot: {fileID: 0}
   rangedConfig:
-    fireRate: 0.3
+    fireRate: 1
     damage: 10
     range: 20
     shakeDuration: 0
     shakeMagnitude: 0
-    isReloadable: 1
-    reloadTime: 2
-    clipCapacity: 3
-    projectileSpawnDelay: 0
-    bulletSpeed: 20
+    bulletSpeed: 15
     scatter: 10
     projectileCount: 1
     shellImpulse: 5
+    isReloadable: 0
+    reloadTime: 2
+    clipCapacity: 3
   _clipUI: {fileID: 8283816077809050388, guid: 811706c09f90246099ba9915df47500c, type: 3}
   _reloadStatus: {fileID: 2703456018401647098, guid: 1c328b48210414bc0997f7b93995f222, type: 3}
   firePoint: {fileID: 5448337597900957643}
   shellPoint: {fileID: 966996490262518290}
   muzzleFlash: {fileID: 0}
   bulletPrefab: {fileID: 8699156800269933710, guid: 737aefe356c6d46a4ac3bd23a2f5dc41, type: 3}
-  shellPrefab: {fileID: 8371884576976455230, guid: 9dfd5938602c743d7a99fd415e128341, type: 3}
+  shellPrefab: {fileID: 0}
+  _shoot:
+    bank: {fileID: 0}
+    eventId: 
+    identifier: 
 --- !u!1 &9137652681675294895
 GameObject:
   m_ObjectHideFlags: 0
