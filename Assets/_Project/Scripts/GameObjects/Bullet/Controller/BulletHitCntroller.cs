@@ -5,10 +5,10 @@ namespace Gameplay
 {
     public class BulletHitCntroller : IInitializable, IDisposable
     {
-        private readonly CollisionComponent _collisionComponent;
+        private readonly BulletCollisionComponent _collisionComponent;
         private readonly BulletHitComponent _bulletHitComponent;
 
-        public BulletHitCntroller(CollisionComponent collisionComponent, BulletHitComponent bulletHitComponent)
+        public BulletHitCntroller(BulletCollisionComponent collisionComponent, BulletHitComponent bulletHitComponent)
         {
             _collisionComponent = collisionComponent;
             _bulletHitComponent = bulletHitComponent;

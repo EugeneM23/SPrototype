@@ -1493,7 +1493,6 @@ GameObject:
   - component: {fileID: 5332799809238412975}
   - component: {fileID: 2483082337731817145}
   - component: {fileID: 7553199498613522881}
-  - component: {fileID: -7776074291255282540}
   - component: {fileID: 2815754463479340632}
   - component: {fileID: 8229539202653283170}
   - component: {fileID: 4289002147675931677}
@@ -1586,10 +1585,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.38
-  m_Height: 1.7440236
+  m_Radius: 0.71
+  m_Height: 4.28
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8953244, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &7553199498613522881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,18 +1604,7 @@ MonoBehaviour:
   _context: {fileID: -6075899849557144983}
   _isDisposableOverTime: 0
   _destroyTime: 0
---- !u!114 &-7776074291255282540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481907973978787791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _randomScale: 1
 --- !u!114 &2815754463479340632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,7 +1620,6 @@ MonoBehaviour:
   _components:
   - {fileID: 5906219501261026581}
   - {fileID: 5332799809238412975}
-  - {fileID: -7776074291255282540}
   - {fileID: 7553199498613522881}
   - {fileID: 849130336443538414}
   - {fileID: 6422974509927872360}
@@ -1704,7 +1691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _meleeWeaponRoot: {fileID: 2914469276470416594}
   _rangeWeaponRoot: {fileID: 2914469276470416594}
-  _rangeWeapon: {fileID: 6898676644082228745, guid: a2b5b0fefa63048769d869c43639dc7d, type: 3}
+  _rangeWeapon: {fileID: 0}
   _meleeWeapon: {fileID: 6254490439261344806, guid: 4d7fbc11c122740dda3713f3bfb8a95b, type: 3}
   _hitEffect: {fileID: 4909965928866057038, guid: 39253c93f65e94d32ba771c74993304b, type: 3}
   _deathEffects:
@@ -1714,7 +1701,7 @@ MonoBehaviour:
   _healthBar: {fileID: -227575839315736592, guid: 87a8bc1dc97aa4d03b9a0d1ce960971e, type: 3}
   _damageLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 3072
   _isRaggdollEnemy: 1
   _chaseRange: 15
   _attackRange: 7

@@ -4,14 +4,14 @@ namespace Gameplay
 {
     public class DamageLayerComponent
     {
-        private readonly LayerMask _layerMask;
+        public readonly LayerMask LayerMask;
 
         public DamageLayerComponent(LayerMask layerMask)
         {
-            _layerMask = layerMask;
+            LayerMask = layerMask;
         }
 
-        public int GetDamageLayer()
+        /*public int GetDamageLayer()
         {
             int value = _layerMask.value;
             for (int i = 0; i < 32; i++)
@@ -21,6 +21,6 @@ namespace Gameplay
             }
 
             return 0;
-        }
+        }*/
     }
 }

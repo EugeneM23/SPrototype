@@ -141,6 +141,7 @@ MonoBehaviour:
   _context: {fileID: 7487418093101285224}
   _isDisposableOverTime: 0
   _destroyTime: 0
+  _randomScale: 0
 --- !u!114 &7487418093101285224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ MonoBehaviour:
   _type: 0
   rangedConfig:
     fireRate: 0.1
-    damage: 10
+    damage: 100
     range: 20
     shakeDuration: 0.1
     shakeMagnitude: 0.1

@@ -25,6 +25,8 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 6c56c4047d1e4423d8fbf5da5c0f2318, type: 2}
   - identifier: shoot_laser
     value: {fileID: 11400000, guid: 5fe9a69785cf34735a7c214ed6e46ebf, type: 2}
+  - identifier: laser_hit
+    value: {fileID: 11400000, guid: cd42a0ab2429644e68b6d5e5757c23e8, type: 2}
   boolParameters: []
   intParameters: []
   floatParameters: []

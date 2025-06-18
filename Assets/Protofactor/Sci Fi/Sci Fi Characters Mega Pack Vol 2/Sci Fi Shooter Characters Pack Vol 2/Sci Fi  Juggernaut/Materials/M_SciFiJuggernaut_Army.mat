@@ -24,7 +24,6 @@ Material:
   - RIM
   - SHADOWS_ENABLED
   - SPECULAR
-  - SPECULAR_MAP
   - _DETAILBLEND_MULTIPLY
   - _DETAILUV_UV1
   - _HEIGHTCOLORSBLEND_ALPHA_BLEND
@@ -106,7 +105,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7b8fca82859ca0a4186c5de2bee0ef81, type: 3}
+        m_Texture: {fileID: 2800000, guid: 682f0f3c74037f1449343315b5b94658, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MatCapTex:
@@ -146,7 +145,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularTex:
-        m_Texture: {fileID: 2800000, guid: a5711d9620a58fb4697423d83cd92777, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransparencyMaskTex:
@@ -161,7 +160,7 @@ Material:
     - _AnimeThreshold1: 0.45
     - _AnimeThreshold2: 0.85
     - _BlendOp: 0
-    - _Brightness: 1
+    - _Brightness: 1.8
     - _BumpScale: 1
     - _CameraFadeEnd: 0
     - _CameraFadeStart: 0
@@ -248,7 +247,7 @@ Material:
     - _ReflectionRim: 0
     - _ReflectionSpecular: 0
     - _Rim: 1
-    - _RimAmount: 2.06
+    - _RimAmount: 4.91
     - _RimBlend: 1
     - _RimContrast: 5
     - _RimInverse: 0
@@ -262,10 +261,10 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SourceBlend: 1
     - _Specular: 1
-    - _SpecularBrightness: 13.99
+    - _SpecularBrightness: 1.19
     - _SpecularHair: 0
     - _SpecularHighlights: 1
-    - _SpecularSmoothness: 20
+    - _SpecularSmoothness: 25
     - _SpecularUV: 0
     - _SrcBlend: 1
     - _TransparencyMaskAmount: 1
@@ -299,7 +298,7 @@ Material:
     - _AnimeColor1: {r: 1, g: 1, b: 1, a: 1}
     - _AnimeColor2: {r: 1.35, g: 1.35, b: 1.35, a: 1}
     - _AnimeColor3: {r: 2, g: 2, b: 2, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9150943, g: 0.6863207, b: 0.6863207, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1.77, g: 1.77, b: 1.77, a: 1.77}
     - _Emissive: {r: 1.77, g: 1.77, b: 1.77, a: 1.77}

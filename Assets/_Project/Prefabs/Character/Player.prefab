@@ -2353,7 +2353,6 @@ GameObject:
   - component: {fileID: 8851841367444768159}
   - component: {fileID: -1200308631884723926}
   - component: {fileID: 2625381723154630738}
-  - component: {fileID: 4326042711198811838}
   - component: {fileID: 566514750674854699}
   m_Layer: 11
   m_Name: Player
@@ -2426,7 +2425,6 @@ MonoBehaviour:
   _components:
   - {fileID: 5696128465114512940}
   - {fileID: 1983109811882926575}
-  - {fileID: 4326042711198811838}
   - {fileID: 2625381723154630738}
   - {fileID: 560534722690325975}
   _identifier: 
@@ -2469,7 +2467,7 @@ MonoBehaviour:
   _weaponBone: {fileID: 8332088863710363448}
   _damageLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1152
   _hitEffect: {fileID: 4909965928866057038, guid: ad3b8979e5c604cf797ae15ac957ee52, type: 3}
   _hitRoot: {fileID: 1983109811873074745}
   _bulletCount: 300
@@ -2480,7 +2478,7 @@ MonoBehaviour:
   _lookAtSpeed: 600
   _strafeSpeed: 0
   _strafePower: 0
-  _maxHealth: 1000
+  _health: 100
   _hitSound:
     bank: {fileID: 11400000, guid: 4e5eb9fbb9e734c52aa610a6da403b76, type: 2}
     eventId: PlayerHit
@@ -2522,18 +2520,7 @@ MonoBehaviour:
   _context: {fileID: 2092574877954839100}
   _isDisposableOverTime: 0
   _destroyTime: 2
---- !u!114 &4326042711198811838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4969062347157005148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _randomScale: 0
 --- !u!81 &566514750674854699
 AudioListener:
   m_ObjectHideFlags: 0

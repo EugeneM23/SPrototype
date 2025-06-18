@@ -34,7 +34,6 @@ namespace Gameplay
 
         public void Shoot()
         {
-            Debug.Log(_targetComponent.Target.name);
             if (!CanShoot()) return;
 
             foreach (var item in _actions)

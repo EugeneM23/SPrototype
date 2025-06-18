@@ -7,6 +7,7 @@ public class BulletInstaller : MonoInstaller
 {
     [SerializeField] private Entity _effect;
     [SerializeField] private AudioEventKey _hitSFX;
+    [SerializeField] private LayerMask _layer;
 
     public override void InstallBindings()
     {
@@ -14,13 +15,13 @@ public class BulletInstaller : MonoInstaller
             .BindInterfacesAndSelfTo<BulletDamageAction>()
             .AsSingle()
             .NonLazy();
-        
+
         Container
             .BindInterfacesAndSelfTo<BulletEnviromentHitAction>()
             .AsSingle()
             .WithArguments(_effect)
             .NonLazy();
-        
+
         Container
             .BindInterfacesAndSelfTo<BulletEnviromentHitSFXAction>()
             .AsSingle()
@@ -34,6 +35,10 @@ public class BulletInstaller : MonoInstaller
 
         Container
             .BindInterfacesAndSelfTo<BulletHitComponent>()
+            .AsSingle()
+            .NonLazy();
+        Container
+            .BindInterfacesAndSelfTo<BulletCollisionComponent>()
             .AsSingle()
             .NonLazy();
     }

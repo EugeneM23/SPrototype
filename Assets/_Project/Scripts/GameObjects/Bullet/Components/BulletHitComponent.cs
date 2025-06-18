@@ -14,7 +14,7 @@ namespace Gameplay
 
         public interface IEnviromentCollisionAction
         {
-            void Invoke(Collision collisionComponent);
+            void Invoke(RaycastHit hit);
         }
 
         private readonly List<IEntiyCollisionAction> _entityActions;
@@ -28,13 +28,13 @@ namespace Gameplay
             _bullet = bullet;
         }
 
-        public void OnHit(Collision collision)
+        public void OnHit(RaycastHit collider)
         {
-            if (collision.gameObject.TryGetComponent(out IEntity entity))
+            if (collider.collider.gameObject.TryGetComponent(out IEntity entity))
                 _entityActions.ForEach(action => action.Invoke(entity));
             else
             {
-                _enviromentActions.ForEach(action => action.Invoke(collision));
+                _enviromentActions.ForEach(action => action.Invoke(collider));
             }
 
             _bullet.Dispose();

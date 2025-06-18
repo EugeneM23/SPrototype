@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2da113a7fa4ce1a15ddbeaae36b1b4, type: 3}
   m_Name: EnemyRangeInstaller
   m_EditorClassIdentifier: 
-  _range: 13
+  _range: 15

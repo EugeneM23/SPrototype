@@ -27,7 +27,6 @@ namespace Gameplay
             _config = config;
             _damageRoot = damageRoot;
 
-            Debug.Log(_damageCastLayer.GetDamageLayer());
         }
 
         public void Tick()
@@ -43,7 +42,7 @@ namespace Gameplay
         {
             float timeCast = _config.fireRate * (1 - _stats.FireRateMultiplier / 100f);
             DamageCastParams damageCast =
-                new DamageCastParams(_config.damage, 3, timeCast / 2, _damageCastLayer.GetDamageLayer(), _damageRoot);
+                new DamageCastParams(_config.damage, 3, timeCast / 2, _damageCastLayer.LayerMask, _damageRoot);
             _damageCasterManager.CastDamage(damageCast);
         }
 

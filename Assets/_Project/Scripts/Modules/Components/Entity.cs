@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
@@ -23,8 +24,22 @@ namespace Gameplay
         [SerializeField] private float _destroyTime;
 
         private float _timer;
+        [SerializeField] private bool _randomScale;
 
-        private void Start() => OnEntityStart?.Invoke();
+        private void Start()
+        {
+            /*if (_randomScale)
+            {
+                Debug.Log($"Random scale: {_randomScale}");
+                float startscale = gameObject.transform.localScale.x;
+                startscale /= 100 * 50;
+                float rand = Random.Range(-startscale, startscale);
+                gameObject.transform.localScale += new Vector3(rand, rand, rand);
+                
+            }*/
+
+            OnEntityStart?.Invoke();
+        }
 
         private void OnEnable()
         {

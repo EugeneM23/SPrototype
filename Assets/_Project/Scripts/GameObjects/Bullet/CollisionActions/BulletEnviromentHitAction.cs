@@ -15,14 +15,13 @@ namespace Gameplay
             _factory = factory;
         }
 
-        public void Invoke(Collision collision)
+        public void Invoke(RaycastHit hit)
         {
             if (_effect == null) return;
 
-            ContactPoint point = collision.contacts[0];
-            Quaternion rotation = Quaternion.LookRotation(point.normal);
+            Quaternion rotation = Quaternion.LookRotation(hit.normal);
             var effect = _factory.Create(_effect);
-            effect.transform.position = point.point;
+            effect.transform.position = hit.point;
             effect.transform.rotation = rotation;
         }
     }
@@ -40,10 +39,9 @@ namespace Gameplay
 
         public void Initialize() => _audioSystem = AudioSystem.Instance;
 
-        public void Invoke(Collision collision)
+        public void Invoke(RaycastHit hit)
         {
-            ContactPoint point = collision.contacts[0];
-            _audioSystem.PlayEvent(_hitSfx, point.point);
+            _audioSystem.PlayEvent(_hitSfx, hit.point);
         }
     }
 }

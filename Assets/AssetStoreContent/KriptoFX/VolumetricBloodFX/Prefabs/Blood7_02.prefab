@@ -294,7 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _context: {fileID: 0}
   _isDisposableOverTime: 1
-  _destroyTime: 5
+  _destroyTime: 10
+  _randomScale: 1
 --- !u!1 &6553911729242099609
 GameObject:
   m_ObjectHideFlags: 0

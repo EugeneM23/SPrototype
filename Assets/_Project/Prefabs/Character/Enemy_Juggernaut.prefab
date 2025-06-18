@@ -3904,7 +3904,6 @@ GameObject:
   - component: {fileID: 5332799809238412975}
   - component: {fileID: 2483082337731817145}
   - component: {fileID: 7553199498613522881}
-  - component: {fileID: -7776074291255282540}
   - component: {fileID: 2815754463479340632}
   - component: {fileID: 8229539202653283170}
   - component: {fileID: 4289002147675931677}
@@ -3994,18 +3993,7 @@ MonoBehaviour:
   _context: {fileID: -6075899849557144983}
   _isDisposableOverTime: 0
   _destroyTime: 0
---- !u!114 &-7776074291255282540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481907973978787791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ddeab9da0e044fc8e670fc2ed72c9d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _randomScale: 0
 --- !u!114 &2815754463479340632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4021,7 +4009,6 @@ MonoBehaviour:
   _components:
   - {fileID: 2615745479014907990}
   - {fileID: 5332799809238412975}
-  - {fileID: -7776074291255282540}
   - {fileID: 7553199498613522881}
   - {fileID: 849130336443538414}
   - {fileID: 8351523668569976724}
@@ -4104,7 +4091,7 @@ MonoBehaviour:
   _healthBar: {fileID: -227575839315736592, guid: e4de6029b556b489b8171e6a7cdeccb9, type: 3}
   _damageLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 3072
   _isRaggdollEnemy: 1
   _chaseRange: 20
   _attackRange: 7

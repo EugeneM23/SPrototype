@@ -6,7 +6,6 @@ namespace Gameplay
     internal class PushableObjectController : IInitializable
     {
         private readonly PushComponent _pushComponent;
-        private readonly CollisionComponent _collisionComponent;
         private readonly CharacterConditions _blackboard;
 
         public PushableObjectController(PushComponent pushComponent, CharacterConditions blackboard)
