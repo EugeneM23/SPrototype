@@ -7,8 +7,6 @@ namespace Gameplay
 {
     public class BulletCollisionComponent : ITickable
     {
-        public event Action<RaycastHit> OnHit;
-
         private readonly Entity _bullet;
         private readonly BulletHitComponent _bulletHitComponent;
 
@@ -40,19 +38,10 @@ namespace Gameplay
             _previousPosition = currentPosition;
         }
 
-        public void Tick()
-        {
-            CheckCollision();
-        }
+        public void Tick() => CheckCollision();
 
-        public void SetCollisionLayer(LayerMask layer)
-        {
-            _layer = layer;
-        }
+        public void SetCollisionLayer(LayerMask layer) => _layer = layer;
 
-        public void SetStarPosition(Vector3 position)
-        {
-            _previousPosition = position;
-        }
+        public void ResetRaycastPosition(Vector3 position) => _previousPosition = position;
     }
 }
