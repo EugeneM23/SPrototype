@@ -176,12 +176,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   rangedConfig:
-    fireRate: 1
+    fireRate: 2
     damage: 10
     range: 20
     shakeDuration: 0
     shakeMagnitude: 0
-    bulletSpeed: 15
+    bulletSpeed: 17
     scatter: 10
     projectileCount: 1
     shellImpulse: 5

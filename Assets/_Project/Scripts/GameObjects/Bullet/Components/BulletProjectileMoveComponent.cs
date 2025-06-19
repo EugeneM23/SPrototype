@@ -13,6 +13,12 @@ namespace Gameplay
         private bool _initialized;
         private float _curveLength;
 
+        // Параметры для виляния
+        private float _wiggleAmplitude = 0.4f; // Амплитуда виляния по X
+        private float _wiggleFrequency = 11f; // Частота виляния
+        private float _wiggleTime; // Время для синуса
+        private Vector3 _lastPosition; // Предыдущая позиция для расчета направления
+
         public BulletProjectileMoveComponent(Entity bullet)
         {
             _bullet = bullet;
@@ -24,6 +30,7 @@ namespace Gameplay
         {
             _progress = 0;
             _initialized = false;
+            _wiggleTime = 0f;
         }
 
         public void Move()
@@ -33,26 +40,48 @@ namespace Gameplay
                 _startPos = _bullet.transform.position;
                 _curveLength = CalculateCurveLength();
                 _initialized = true;
+                _lastPosition = _startPos;
             }
 
             float deltaProgress = (_speed * Time.deltaTime) / _curveLength;
             _progress += deltaProgress;
+            _wiggleTime += Time.deltaTime;
 
+            // Базовое движение по кривой Безье
             Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
-            midPoint.y += 12f;
+            midPoint.y += 15f;
 
             float t = _progress;
             float u = 1f - t;
-            Vector3 newPos = u * u * _startPos + 2f * u * t * midPoint + t * t * _targetPos;
+            Vector3 basePos = u * u * _startPos + 2f * u * t * midPoint + t * t * _targetPos;
 
-            // Вычисляем направление движения
-            Vector3 direction = (newPos - _bullet.transform.position).normalized;
+            // Применяем виляние
+            Vector3 finalPos = ApplyWiggle(basePos);
+
+            // Вычисляем направление движения с учетом виляния
+            Vector3 direction = (finalPos - _lastPosition).normalized;
             if (direction != Vector3.zero)
             {
                 _bullet.transform.rotation = Quaternion.LookRotation(direction);
             }
 
-            _bullet.transform.position = newPos;
+            _lastPosition = finalPos;
+            _bullet.transform.position = finalPos;
+        }
+
+        private Vector3 ApplyWiggle(Vector3 basePosition)
+        {
+            // Вычисляем направление от старта к цели для определения локальных осей
+            Vector3 forwardDirection = (_targetPos - _startPos).normalized;
+            Vector3 rightDirection = Vector3.Cross(forwardDirection, Vector3.up).normalized;
+
+            // Синусоидальный сдвиг по оси X (перпендикулярно направлению полета)
+            float wiggleOffset = Mathf.Sin(_wiggleTime * _wiggleFrequency) * _wiggleAmplitude;
+
+            // Применяем сдвиг перпендикулярно направлению полета
+            Vector3 wiggleVector = rightDirection * wiggleOffset;
+
+            return basePosition + wiggleVector;
         }
 
         private float CalculateCurveLength()
@@ -73,6 +102,13 @@ namespace Gameplay
             }
 
             return length;
+        }
+
+        // Методы для настройки параметров виляния
+        public void SetWiggleParameters(float amplitude, float frequency)
+        {
+            _wiggleAmplitude = amplitude;
+            _wiggleFrequency = frequency;
         }
 
         public void SetSeed(int seed) => _speed = seed;
