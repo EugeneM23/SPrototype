@@ -175,7 +175,7 @@ MonoBehaviour:
   _type: 0
   rangedConfig:
     fireRate: 0.1
-    damage: 100
+    damage: 10
     range: 20
     shakeDuration: 0.1
     shakeMagnitude: 0.1

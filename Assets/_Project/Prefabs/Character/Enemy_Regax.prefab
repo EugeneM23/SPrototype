@@ -1489,7 +1489,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8136789233410780891}
-  - component: {fileID: 3196630611226905001}
   - component: {fileID: 5332799809238412975}
   - component: {fileID: 2483082337731817145}
   - component: {fileID: 7553199498613522881}
@@ -1522,28 +1521,6 @@ Transform:
   - {fileID: 510938159569710959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3196630611226905001
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5481907973978787791}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 3e4c18e37528540359c9a865c87eccf9, type: 3}
-  m_Controller: {fileID: 22100000, guid: c5d0aaf076de448e385b084b9626ad4e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!195 &5332799809238412975
 NavMeshAgent:
   m_ObjectHideFlags: 0

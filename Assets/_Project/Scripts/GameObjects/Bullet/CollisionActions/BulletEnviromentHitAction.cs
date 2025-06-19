@@ -21,7 +21,6 @@ namespace Gameplay
 
             Quaternion rotation = Quaternion.LookRotation(hit.normal);
             Entity effect = _factory.Create(_effect);
-
             effect.transform.SetPositionAndRotation(hit.point, rotation);
         }
     }

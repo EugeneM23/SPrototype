@@ -109,6 +109,7 @@ MonoBehaviour:
   _context: {fileID: 7969624372058240327}
   _isDisposableOverTime: 0
   _destroyTime: 0
+  _randomScale: 0
 --- !u!114 &3735024707087147732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,9 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   meleeConfig:
-    fireRate: 1.6
+    fireRate: 0.6
     damage: 50
-    range: 4
+    range: 6
     shakeDuration: 0
     shakeMagnitude: 0
   _slashPoint: {fileID: 1956108049342527132}
