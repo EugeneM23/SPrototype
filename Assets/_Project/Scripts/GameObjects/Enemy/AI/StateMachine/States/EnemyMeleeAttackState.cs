@@ -1,10 +1,17 @@
-using UnityEngine;
-using Zenject;
+using System;
+using System.Collections.Generic;
 
 namespace Gameplay
 {
     public class EnemyMeleeAttackState : IState
     {
+        public interface IAction
+        {
+            public void EnterAction();
+            public void ExitAction();
+        }
+
+        private readonly List<IAction> _actions;
         private readonly DelayedAction _delayedAction;
         private readonly CharacterConditions _characterConditions;
         private readonly EnemyAttackAssistComponent _assistComponent;
@@ -19,22 +26,25 @@ namespace Gameplay
             EnemyAttackAssistComponent assistComponent,
             DelayedAction delayedAction,
             Enemy enemy,
-            CharacterStats stats)
+            CharacterStats stats, List<IAction> actions)
         {
             _characterConditions = characterConditions;
             _assistComponent = assistComponent;
             _delayedAction = delayedAction;
             _enemy = enemy;
             _stats = stats;
+            _actions = actions;
         }
 
         public void Enter()
         {
+            ExecuteActions(a => a.EnterAction());
             _isEnable = true;
         }
 
         public void Exit()
         {
+            ExecuteActions(a => a.ExitAction());
         }
 
         public void Update(float deltaTime)
@@ -58,6 +68,12 @@ namespace Gameplay
         public void SetFireRate(float fireRate)
         {
             _fireRate = fireRate;
+        }
+
+        private void ExecuteActions(Action<IAction> action)
+        {
+            foreach (IAction a in _actions)
+                action(a);
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Gameplay
 
         public void ExecuteActions()
         {
+            _animator.Play("Roll");
         }
     }
 }

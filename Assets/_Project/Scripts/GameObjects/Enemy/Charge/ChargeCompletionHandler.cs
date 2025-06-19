@@ -29,7 +29,7 @@ namespace Gameplay
         {
             if (!_isScheduled)
             {
-                _delayedAction.Schedule(0.5f, () => _conditions.IsBusy = false);
+                _delayedAction.Schedule(2f, () => _conditions.IsBusy = false);
                 _isScheduled = true;
             }
         }

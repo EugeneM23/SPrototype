@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace Gameplay
@@ -47,7 +48,7 @@ namespace Gameplay
             _isChargeCompleted = false;
         }
 
-        private void ExecuteActions(System.Action<IAction> action)
+        private void ExecuteActions(Action<IAction> action)
         {
             foreach (IAction a in _actions)
                 action(a);

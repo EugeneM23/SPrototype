@@ -26,7 +26,8 @@ namespace Gameplay
         [Header("Layer Settings")] [SerializeField]
         private LayerMask _damageLayer;
 
-        [Header("Raggdoll")] [SerializeField] private bool _isRaggdollEnemy;
+        [Header("DeathView")] [SerializeField] private bool _isRaggdollEnemy;
+        [SerializeField] private bool _isDeathAnimationEnemy;
 
         [Header("Character Parameters")] [SerializeField]
         private float _chaseRange = 5f;
@@ -52,11 +53,14 @@ namespace Gameplay
 
             if (_isRaggdollEnemy)
                 BindRaggol();
+
+            if (_isDeathAnimationEnemy)
+                Container.BindInterfacesAndSelfTo<DeathAnimationConmponent>().AsSingle().NonLazy();
         }
 
         private void BindRaggol()
         {
-            Container.BindInterfacesAndSelfTo<EnemyRaggdolComponent>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<EnemyDeathRaggdolComponent>().AsSingle().NonLazy();
         }
 
         private void BindSFX()

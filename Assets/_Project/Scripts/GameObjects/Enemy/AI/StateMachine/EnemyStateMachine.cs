@@ -14,20 +14,25 @@ namespace Gameplay
         private IState _currentState;
         private IEnemyDecision _currentDecision;
 
-        public EnemyStateMachine(List<IState> states, List<IEnemyDecision> decisions)
+        private readonly CharacterConditions _conditions;
+
+        public EnemyStateMachine(List<IState> states, List<IEnemyDecision> decisions, CharacterConditions conditions)
         {
             _decisions = decisions;
+            _conditions = conditions;
             _states = states.ToDictionary(state => state.GetType(), state => state);
             _currentDecision = _decisions[0];
         }
 
         public void Tick()
         {
+            if (!_conditions.IsAlive) return;
+
             EvaluateDecisions();
             _currentState?.Update(Time.deltaTime);
         }
 
-        public void  SetState(Type state)
+        public void SetState(Type state)
         {
             if (_currentState?.GetType() == state || state == null) return;
 

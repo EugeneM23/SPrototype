@@ -4,14 +4,14 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class EnemyRaggdolComponent : ITickable, IInitializable
+    public class EnemyDeathRaggdolComponent : ITickable, IInitializable
     {
         private readonly Entity _enemy;
 
         private bool _isDead;
         private float _timer;
 
-        public EnemyRaggdolComponent(Entity enemy)
+        public EnemyDeathRaggdolComponent(Entity enemy)
         {
             _enemy = enemy;
         }
@@ -36,7 +36,7 @@ namespace Gameplay
             _enemy.Get<CapsuleCollider>().enabled = false;
             _enemy.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
             _enemy.Get<Rigidbody>().isKinematic = false;
-            _timer = 2f;
+            _timer = 10f;
             _isDead = true;
             var go = _enemy.GetComponentsInChildren<Rigidbody>();
             foreach (var item in go)

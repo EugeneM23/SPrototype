@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace Gameplay
 {
@@ -13,10 +14,10 @@ namespace Gameplay
             _enemy = enemy;
             _lootSpawnComponent = lootSpawnComponent;
             _player = player;
-            _enemy.Get<HealthComponent>().OnDead += SpawnLoot;
+            _enemy.Get<HealthComponent>().OnDead += Death;
         }
 
-        private void SpawnLoot(Entity enemy)
+        private void Death(Entity enemy)
         {
             var weapon = _player.Character.Get<PlayerWeaponManager>().CurrentWeapon;
 
@@ -25,12 +26,20 @@ namespace Gameplay
                 if (handler.WeaponType == WeaponType.Melle)
                     _lootSpawnComponent.SpawnLoot(enemy);
             }
-            
-            if (_enemy.TryGet<EnemyRaggdolComponent>(out var component))
+
+            if (_enemy.TryGet<EnemyDeathRaggdolComponent>(out var raggdolComponent))
             {
-                component.ActiveteRaggdol();
+                raggdolComponent.ActiveteRaggdol();
                 return;
             }
+
+            if (_enemy.TryGet<DeathAnimationConmponent>(out var animationConmponent))
+            {
+                Debug.Log("death animation conmponent");
+                animationConmponent.ActiveteAnimation();
+                return;
+            }
+
 
             _enemy.Dispose();
         }

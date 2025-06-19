@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 2615745479014907990}
   - component: {fileID: 8351523668569976724}
   - component: {fileID: 6928913149415653948}
+  - component: {fileID: 8628673685669588803}
   m_Layer: 0
   m_Name: SciFiJuggernaut_Army Variant
   m_TagString: Untagged
@@ -238,6 +239,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8628673685669588803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2615745479007662594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ce6141e29942ffbf63f851e90e307a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _runSpeed: 1
+  _wealkSpeed: 1
+  _deathSpeed: 2
 --- !u!1 &2615745479007662596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3085,6 +3102,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3072
   _isRaggdollEnemy: 0
+  _isDeathAnimationEnemy: 1
   _chaseRange: 20
   _attackRange: 7
   _chaseSpeed: 4
