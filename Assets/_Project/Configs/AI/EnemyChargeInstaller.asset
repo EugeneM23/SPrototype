@@ -16,12 +16,12 @@ MonoBehaviour:
   _detectionEnviromentLayer:
     serializedVersion: 2
     m_Bits: 1024
-  _damageLayer: 1
   _chargeDuration: 2
   _chargeDamage: 300
-  _damageCastDuration: 0.5
-  _damageCastRadius: 3
+  _damageCastRadius: 4
   _chargeRotaionSpeed: 10
   _chargeRotaionDuration: 1.7
   _chargeMoveDuration: 1
   _chargeMoveSpeed: 50
+  _stunTime: 2
+  _stunEffect: {fileID: -1494531416486971774, guid: 2ed06ab528b7c474eb9246421cd7c791, type: 3}
