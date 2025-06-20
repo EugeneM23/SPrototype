@@ -12,19 +12,18 @@ namespace Gameplay.Installers
 
         [SerializeField] private float _chargeDuration;
         [SerializeField] private int _chargeDamage;
-        [SerializeField] private float _damageCastDuration;
         [SerializeField] private float _damageCastRadius;
         [SerializeField] private int _chargeRotaionSpeed;
         [SerializeField] private float _chargeRotaionDuration;
         [SerializeField] private float _chargeMoveDuration;
         [SerializeField] private float _chargeMoveSpeed;
+        [SerializeField] private float _stunTime;
+        [SerializeField] private Entity _stunEffect;
 
         [Inject] private readonly Entity _entity;
 
         public override void InstallBindings()
         {
-            
-
             Container
                 .Bind<ChargeEffectMarker>()
                 .FromComponentInNewPrefab(chargeEffectMarker)
@@ -35,6 +34,12 @@ namespace Gameplay.Installers
                 .BindInterfacesAndSelfTo<EnemyChargeState>()
                 .AsSingle()
                 .WithArguments(_chargeDuration)
+                .NonLazy();
+
+            Container
+                .BindInterfacesAndSelfTo<ChargeDamageCastComponent>()
+                .AsSingle()
+                .WithArguments(_chargeDamage, _stunTime, _stunEffect, _damageCastRadius)
                 .NonLazy();
 
             Container

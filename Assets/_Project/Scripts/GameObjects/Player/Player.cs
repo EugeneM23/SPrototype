@@ -62,6 +62,7 @@ namespace Gameplay
 
         public void Shoot()
         {
+            if (_characterConditions.IsBusy) return;
             if (!_canShoot || _characterController.velocity.magnitude > 0.05f) return;
 
 
