@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -59,6 +60,7 @@ namespace Gameplay
                 _root.position =
                     Vector3.MoveTowards(_root.position, _entity.transform.position,
                         speed * Time.deltaTime);
+
                 if (Vector3.Distance(_root.position, _entity.transform.position) < 1f)
                 {
                     _conditions.CanPush = true;
