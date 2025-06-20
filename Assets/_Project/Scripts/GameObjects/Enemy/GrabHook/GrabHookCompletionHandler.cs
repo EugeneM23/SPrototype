@@ -1,13 +1,15 @@
+using Gameplay.Installers;
+
 namespace Gameplay
 {
-    public class ChargeCompletionHandler : EnemyChargeState.IAction
+    public class GrabHookCompletionHandler : EnemyGrabHookState.IAction
     {
         private readonly CharacterConditions _conditions;
         private readonly DelayedAction _delayedAction;
         private readonly float _chargeDuration;
         private bool _isScheduled;
 
-        public ChargeCompletionHandler(CharacterConditions conditions, DelayedAction delayedAction,
+        public GrabHookCompletionHandler(CharacterConditions conditions, DelayedAction delayedAction,
             float chargeDuration)
         {
             _conditions = conditions;

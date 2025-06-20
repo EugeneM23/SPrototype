@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class ProtectionSieldView : MonoBehaviour, EnemyChargeState.IAction, EnemyMeleeAttackState.IAction
+    public class ProtectionShieldView : MonoBehaviour, EnemyChargeState.IAction, EnemyMeleeAttackState.IAction
     {
         [Inject] private readonly HealthComponent _healthComponent;
 

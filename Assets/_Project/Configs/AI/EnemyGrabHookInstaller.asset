@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: EnemyGrabHookInstaller
   m_EditorClassIdentifier: DPrototype.Game:Gameplay.Installers:EnemyGrabHookInstaller
+  _initialTime: 0.5
+  _rotationDuration: 0.5
+  _rotationSpeed: 10

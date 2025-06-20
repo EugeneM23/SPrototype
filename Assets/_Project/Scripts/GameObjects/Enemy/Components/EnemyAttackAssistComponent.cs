@@ -11,6 +11,7 @@ namespace Gameplay
         private float _time;
 
         private readonly CharacterConditions _conditions;
+        private bool _enable;
 
         public EnemyAttackAssistComponent(CharacterConditions conditions)
         {
@@ -23,11 +24,12 @@ namespace Gameplay
             _root = enemy.transform;
             _speed = speed;
             _time = time;
+            _enable = true;
         }
 
         public void Tick()
         {
-            if (_target == null || !_conditions.IsAlive) return;
+            if (!_enable || _target == null || !_conditions.IsAlive) return;
 
             _time -= Time.deltaTime;
             if (_time > 0)
@@ -41,6 +43,10 @@ namespace Gameplay
                     Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
                     _root.rotation = Quaternion.Slerp(_root.rotation, targetRotation, _speed * Time.deltaTime);
                 }
+            }
+            else
+            {
+                _enable = false;
             }
         }
     }
