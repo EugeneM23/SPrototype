@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Gameplay
@@ -38,8 +39,6 @@ namespace Gameplay
             {
                 _enviromentActions.ForEach(action => action.Invoke(collider));
             }
-
-            _bullet.Dispose();
         }
     }
 
@@ -50,8 +49,10 @@ namespace Gameplay
             void Invoke(RaycastHit collider);
         }
 
+        private readonly LayerMask _splashLayer = LayerMask.GetMask("Player");
         private readonly Entity _bullet;
         private readonly List<ISplash> _actions;
+        private Transform _target;
 
         public BulletSplashHitComponent(Entity bullet, List<ISplash> actions)
         {
@@ -62,7 +63,50 @@ namespace Gameplay
         public void OnHit(RaycastHit collider)
         {
             _actions.ForEach(action => action.Invoke(collider));
-            _bullet.Dispose();
+            PerformSphereCast();
+        }
+
+        void PerformSphereCast()
+        {
+            if (Physics.CheckSphere(_bullet.transform.position, 5f, _splashLayer))
+            {
+                Collider[] hitCollider = Physics.OverlapSphere(_bullet.transform.position, 5f, _splashLayer);
+
+                if (hitCollider.Length > 0)
+                {
+                    foreach (var item in hitCollider)
+                    {
+                        Debug.Log(item.gameObject.name);
+                        if (item.transform.TryGetComponent(out Entity entity))
+                        {
+                            if (entity.TryGet(out HealthComponent healthComponent))
+                                healthComponent.TakeDamage(100);
+
+                            if (entity.TryGet(out PlayerImpulseComponent impulseComponent))
+                            {
+                                Vector3 direction =
+                                    (entity.transform.position - _bullet.transform.position)
+                                    .normalized;
+
+                                impulseComponent.ApplyImpulse((direction + Vector3.up * 2) * 70, 0.1f);
+                                healthComponent.TakeDamage(100);
+                            }
+                        }
+                    }
+
+                    return;
+                }
+            }
+
+            _target = null;
+        }
+
+        void OnDrawGizmos()
+        {
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireSphere(_bullet.transform.position, 5);
+            }
         }
     }
 

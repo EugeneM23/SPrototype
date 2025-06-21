@@ -11,7 +11,7 @@ namespace Gameplay
         private readonly IBulletHIt _bulletHitComponent;
 
         private Vector3 _previousPosition;
-        private LayerMask _layer;
+        public LayerMask CollisionLayer { get; private set; }
 
         public BulletCollisionComponent(Entity bullet, IBulletHIt bulletHitComponent)
         {
@@ -27,7 +27,7 @@ namespace Gameplay
 
             float distance = direction.magnitude;
             if (distance > 0 && Physics.Raycast(_previousPosition, direction.normalized, out RaycastHit hit, distance,
-                    _layer))
+                    CollisionLayer))
 
             {
                 _bulletHitComponent.OnHit(hit);
@@ -40,7 +40,7 @@ namespace Gameplay
 
         public void Tick() => CheckCollision();
 
-        public void SetCollisionLayer(LayerMask layer) => _layer = layer;
+        public void SetCollisionLayer(LayerMask layer) => CollisionLayer = layer;
 
         public void ResetRaycastPosition(Vector3 position) => _previousPosition = position;
     }
