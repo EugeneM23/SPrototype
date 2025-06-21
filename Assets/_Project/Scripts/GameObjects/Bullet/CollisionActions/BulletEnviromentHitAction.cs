@@ -1,10 +1,8 @@
-using AudioEngine;
 using UnityEngine;
-using Zenject;
 
 namespace Gameplay
 {
-    public class BulletEnviromentHitAction : BulletHitComponent.IEnviromentCollisionAction
+    public class BulletEnviromentHitAction : BulletHitComponent.IEnviromentCollisionAction, BulletSplashHitComponent.ISplash
     {
         private readonly Entity _effect;
         private readonly GameFactory _factory;
@@ -17,30 +15,33 @@ namespace Gameplay
 
         public void Invoke(RaycastHit hit)
         {
+            Debug.Log("asdadas");
             if (_effect == null) return;
 
             Quaternion rotation = Quaternion.LookRotation(hit.normal);
+            rotation.eulerAngles += new Vector3(90, 0, 0);
             Entity effect = _factory.Create(_effect);
             effect.transform.SetPositionAndRotation(hit.point, rotation);
         }
     }
 
-    public class BulletEnviromentHitSFXAction : IInitializable, BulletHitComponent.IEnviromentCollisionAction
+    public class BulletEntityHitAction : BulletHitComponent.IEntiyCollisionAction
     {
-        private readonly AudioEventKey _hitSfx;
+        private readonly Entity _effect;
+        private readonly GameFactory _factory;
 
-        private AudioSystem _audioSystem;
-
-        public BulletEnviromentHitSFXAction(AudioEventKey hitSfx)
+        public BulletEntityHitAction(Entity effect, GameFactory factory)
         {
-            _hitSfx = hitSfx;
+            _effect = effect;
+            _factory = factory;
         }
 
-        public void Initialize() => _audioSystem = AudioSystem.Instance;
-
-        public void Invoke(RaycastHit hit)
+        public void Invoke(RaycastHit collider)
         {
-            _audioSystem.PlayEvent(_hitSfx, hit.point);
+            if (_effect == null) return;
+
+            Entity effect = _factory.Create(_effect);
+            effect.transform.SetPositionAndRotation(collider.transform.position, collider.transform.rotation);
         }
     }
 }

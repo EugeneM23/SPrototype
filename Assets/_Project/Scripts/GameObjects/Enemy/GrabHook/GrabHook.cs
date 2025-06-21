@@ -1,13 +1,13 @@
 using System;
 using Gameplay.Installers;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Gameplay
 {
     public class GrabHook : MonoBehaviour, EnemyGrabHookState.IAction
     {
+        public event Action OnGrab;
         [SerializeField] private BoxCollider _boxCollider;
         [Inject] private readonly TargetComponent _targetComponent;
 
@@ -24,6 +24,7 @@ namespace Gameplay
 
             if (distace < 4 && _time > 0f)
             {
+                OnGrab?.Invoke();
                 _targetComponent.Target.transform.position = transform.position;
             }
             else

@@ -13,9 +13,9 @@ namespace Gameplay
             _bullet = bullet;
         }
 
-        public void Invoke(IEntity entity)
+        public void Invoke(RaycastHit collider)
         {
-            if (entity.TryGet<PushableObjectController>(out PushableObjectController pushableObject))
+            if (collider.transform.GetComponent<Entity>().TryGet(out PushableObjectController pushableObject))
             {
                 pushableObject.SetImpulse(_bullet.gameObject.transform.forward, _impulsePower, _impulseTime);
             }

@@ -165,6 +165,8 @@ MonoBehaviour:
   _layer:
     serializedVersion: 2
     m_Bits: 0
+  _castEffectToEntity: 1
+  _isSplashDamageBullet: 1
 --- !u!114 &8699156800269933710
 MonoBehaviour:
   m_ObjectHideFlags: 0

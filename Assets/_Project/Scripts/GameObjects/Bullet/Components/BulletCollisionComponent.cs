@@ -8,12 +8,12 @@ namespace Gameplay
     public class BulletCollisionComponent : ITickable
     {
         private readonly Entity _bullet;
-        private readonly BulletHitComponent _bulletHitComponent;
+        private readonly IBulletHIt _bulletHitComponent;
 
         private Vector3 _previousPosition;
         private LayerMask _layer;
 
-        public BulletCollisionComponent(Entity bullet, BulletHitComponent bulletHitComponent)
+        public BulletCollisionComponent(Entity bullet, IBulletHIt bulletHitComponent)
         {
             _bullet = bullet;
             _bulletHitComponent = bulletHitComponent;

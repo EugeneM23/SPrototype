@@ -7,6 +7,7 @@ namespace Gameplay
 {
     public class GrabHookMover : ILateTickable, IInitializable
     {
+        private GrabHook _grabHook;
         private readonly TargetComponent _target;
         private readonly Entity _entity;
         private readonly Animator _animator;
@@ -25,7 +26,8 @@ namespace Gameplay
             TargetComponent target,
             Entity entity,
             [Inject(Id = DamageRootID.RangeWeaponRoot)]
-            Transform root, Animator animator, CharacterConditions conditions, NavMeshAgent navMeshAgent)
+            Transform root, Animator animator, CharacterConditions conditions, NavMeshAgent navMeshAgent,
+            GrabHook grabHook)
         {
             _target = target;
             _entity = entity;
@@ -33,10 +35,12 @@ namespace Gameplay
             _animator = animator;
             _conditions = conditions;
             _navMeshAgent = navMeshAgent;
+            _grabHook = grabHook;
         }
 
         public void Initialize()
         {
+            _grabHook.OnGrab += () => movingAway = false;
         }
 
         public void DO()
@@ -52,7 +56,7 @@ namespace Gameplay
             if (movingAway)
             {
                 _root.position = Vector3.MoveTowards(_root.position, moveToPos, speed * Time.deltaTime);
-                if (Vector3.Distance(_root.position, moveToPos) < 2f)
+                if (Vector3.Distance(_root.position, moveToPos) < 1f)
                     movingAway = false;
             }
             else
