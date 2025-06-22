@@ -128,7 +128,7 @@ MonoBehaviour:
     range: 4
     shakeDuration: 0
     shakeMagnitude: 0
-  _slashPoint: {fileID: 0}
+  _slashPoint: {fileID: 133675112324052069}
   _slash: {fileID: 0}
   _slashSound:
     bank: {fileID: 0}

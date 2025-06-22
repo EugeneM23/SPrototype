@@ -27,6 +27,8 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 5fe9a69785cf34735a7c214ed6e46ebf, type: 2}
   - identifier: laser_hit
     value: {fileID: 11400000, guid: cd42a0ab2429644e68b6d5e5757c23e8, type: 2}
+  - identifier: metal_punch
+    value: {fileID: 11400000, guid: 2928ad6d9f59c434ea6095bd8a360532, type: 2}
   boolParameters: []
   intParameters: []
   floatParameters: []

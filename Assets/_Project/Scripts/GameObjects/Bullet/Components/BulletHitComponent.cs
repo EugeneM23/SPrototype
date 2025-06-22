@@ -88,7 +88,7 @@ namespace Gameplay
                                     (entity.transform.position - _bullet.transform.position)
                                     .normalized;
 
-                                impulseComponent.ApplyImpulse((direction + Vector3.up * 2) * 70, 0.1f);
+                                impulseComponent.ApplyImpulse(direction * 70, 0.1f);
                                 healthComponent.TakeDamage(100);
                             }
                         }
@@ -99,14 +99,6 @@ namespace Gameplay
             }
 
             _target = null;
-        }
-
-        void OnDrawGizmos()
-        {
-            {
-                Gizmos.color = Color.green;
-                Gizmos.DrawWireSphere(_bullet.transform.position, 5);
-            }
         }
     }
 
