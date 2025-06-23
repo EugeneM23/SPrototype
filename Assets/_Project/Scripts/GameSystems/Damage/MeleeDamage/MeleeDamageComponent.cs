@@ -39,9 +39,9 @@ namespace Gameplay
             Vector3 playerForward = _character.transform.forward;
             float angle = Vector3.Angle(playerForward, directionToTarget);
 
-            if (angle > 45) return;
+            if (angle > _config.damageAngle) return;
 
-            Debug(playerForward, playerPos);
+            DebugCast(playerForward, playerPos);
 
 
             IDamageable healthComponent = _target.Target.GetComponent<Entity>().Get<IDamageable>();
@@ -51,10 +51,10 @@ namespace Gameplay
             }
         }
 
-        private void Debug(Vector3 playerForward, Vector3 playerPos)
+        private void DebugCast(Vector3 playerForward, Vector3 playerPos)
         {
-            Vector3 leftBoundary = Quaternion.AngleAxis(-45f, Vector3.up) * playerForward;
-            Vector3 rightBoundary = Quaternion.AngleAxis(45f, Vector3.up) * playerForward;
+            Vector3 leftBoundary = Quaternion.AngleAxis(-_config.damageAngle, Vector3.up) * playerForward;
+            Vector3 rightBoundary = Quaternion.AngleAxis(_config.damageAngle, Vector3.up) * playerForward;
             UnityEngine.Debug.DrawRay(playerPos, leftBoundary * _config.range, Color.red, 2);
             UnityEngine.Debug.DrawRay(playerPos, rightBoundary * _config.range, Color.red, 2);
         }

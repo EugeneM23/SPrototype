@@ -47,6 +47,7 @@ namespace Gameplay
     [System.Serializable]
     public class MeleeWeaponConfig : WeaponConfig
     {
+        [SerializeField] public float damageAngle = 45f;
     }
 
     public class WeaponConfig

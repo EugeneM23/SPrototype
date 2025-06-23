@@ -3461,7 +3461,7 @@ MonoBehaviour:
   _isRaggdollEnemy: 1
   _isDeathAnimationEnemy: 0
   _chaseRange: 50
-  _attackRange: 7
+  _attackRange: 12
   _chaseSpeed: 6
   _patrolSpeed: 2
   _attackRotationSpeed: 10

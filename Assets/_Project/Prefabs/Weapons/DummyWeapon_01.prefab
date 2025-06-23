@@ -123,12 +123,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
-  meleeConfig:
-    fireRate: 0.6
-    damage: 50
-    range: 6
-    shakeDuration: 0
-    shakeMagnitude: 0
+  _meleeConfig:
+    fireRate: 1
+    damage: 10
+    range: 10
+    shakeDuration: 0.1
+    shakeMagnitude: 0.5
+    damageAngle: 45
   _slashPoint: {fileID: 1956108049342527132}
   _slash: {fileID: -5735226433674640030, guid: 78dceeb7a621b4a4c9d831ea56bd3870, type: 3}
   _slashSound:

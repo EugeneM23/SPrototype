@@ -6,7 +6,7 @@ namespace Gameplay
 {
     public class MeleeWeaponInstaller : BaseWeaponInstaller
     {
-        [SerializeField] private MeleeWeaponConfig meleeConfig;
+        [SerializeField] private MeleeWeaponConfig _meleeConfig;
         [SerializeField] private Transform _slashPoint;
         [SerializeField] private Entity _slash;
 
@@ -14,8 +14,8 @@ namespace Gameplay
 
         public override void InstallBindings()
         {
-            config = meleeConfig;
-            Container.BindInterfacesAndSelfTo<MeleeWeaponConfig>().FromInstance(meleeConfig).AsSingle();
+            config = _meleeConfig;
+            Container.BindInterfacesAndSelfTo<MeleeWeaponConfig>().FromInstance(_meleeConfig).AsSingle();
             base.InstallBindings();
         }
 
@@ -25,7 +25,9 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<WeaponSlahController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<WeaponMeleeSlahEffectAction>().AsSingle()
                 .WithArguments(_slashPoint, _slash).NonLazy();
+
             Container.BindInterfacesAndSelfTo<MeleeDamageComponent>().AsSingle().NonLazy();
+
             Container.BindInterfacesAndSelfTo<MeleeDamageController>().AsSingle().NonLazy();
             Container.BindInterfacesTo<WeaponShootSFXAction>().AsSingle()
                 .WithArguments(gameObject.transform, _slashSound)
