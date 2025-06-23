@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   _meleeConfig:
-    fireRate: 1.7
+    fireRate: 2
     damage: 10
     range: 12
     shakeDuration: 0.1
