@@ -19,6 +19,8 @@ namespace Gameplay
         private float _wiggleTime; // Время для синуса
         private Vector3 _lastPosition; // Предыдущая позиция для расчета направления
 
+        public float UpPoint = 15;
+
         public BulletProjectileMoveComponent(Entity bullet)
         {
             _bullet = bullet;
@@ -49,7 +51,7 @@ namespace Gameplay
 
             // Базовое движение по кривой Безье
             Vector3 midPoint = (_startPos + _targetPos) * 0.5f;
-            midPoint.y += 15f;
+            midPoint.y += UpPoint;
 
             float t = _progress;
             float u = 1f - t;

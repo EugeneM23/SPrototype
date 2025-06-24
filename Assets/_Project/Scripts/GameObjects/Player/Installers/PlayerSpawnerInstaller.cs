@@ -6,6 +6,8 @@ namespace Gameplay
     public class PlayerSpawnerInstaller : MonoInstaller
     {
         [SerializeField] private Entity _playerPrefab;
+        [SerializeField] private Entity _cameraHandler;
+
         [Inject] private readonly GameFactory _gameFactory;
         [Inject] private PlayerCharacterProvider _playerCharacterProvider;
 
@@ -20,7 +22,8 @@ namespace Gameplay
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)
                 .FromInstance(entity.GetComponent<Entity>()).AsSingle().NonLazy();
-            
+
+            Container.InstantiatePrefab(_cameraHandler);
         }
     }
 }

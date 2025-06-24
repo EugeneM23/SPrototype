@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using AudioEngine;
 using DamageNumbersPro;
-using Modules;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -74,13 +73,7 @@ namespace Gameplay
 
         private void BindPlayerCamera()
         {
-            Container.Bind<PlayerCameraController>().AsSingle().NonLazy();
-
-            Container
-                .BindInterfacesAndSelfTo<FollowComponent>()
-                .AsSingle()
-                .WithArguments(Camera.main.transform, 0.2f)
-                .NonLazy();
+            Container.BindInterfacesAndSelfTo<CameraShakeController>().AsSingle().NonLazy();
         }
 
         private void BindHealthSystem()
@@ -90,7 +83,7 @@ namespace Gameplay
             Container.BindInterfacesAndSelfTo<PlayerDeathObserver>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageNumberSpawController>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<TakeDamageHealthController>().AsSingle().NonLazy();
-            
+
             Container.Bind<HealtBar>().FromComponentInNewPrefab(healtBar).UnderTransform(transform).AsSingle()
                 .WithArguments(_health)
                 .NonLazy();

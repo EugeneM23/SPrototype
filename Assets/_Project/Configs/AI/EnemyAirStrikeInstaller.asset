@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8c23ee272c4c8dbdb858065850c69b, type: 3}
   m_Name: EnemyAirStrikeInstaller
   m_EditorClassIdentifier: 
+  _missilePrefab: {fileID: 8699156800269933710, guid: 737aefe356c6d46a4ac3bd23a2f5dc41, type: 3}

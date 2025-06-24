@@ -2,7 +2,7 @@ using Zenject;
 
 namespace Gameplay
 {
-    public class PlayerMoveController : ITickable
+    public class PlayerMoveController : ITickable, ILateTickable
     {
         private readonly GameInput _gameInput;
 
@@ -15,6 +15,10 @@ namespace Gameplay
         }
 
         public void Tick()
+        {
+        }
+
+        public void LateTick()
         {
             _player.Get<PlayerMoveComponent>().Move(_gameInput.Axis.normalized);
         }

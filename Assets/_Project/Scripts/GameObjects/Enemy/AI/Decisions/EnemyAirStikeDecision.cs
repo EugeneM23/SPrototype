@@ -26,7 +26,7 @@ namespace Gameplay
 
         protected override bool IsOnCondition(float distance)
         {
-            return _conditions.IsChasing && _timer >= 7f;
+            return _conditions.IsChasing && _timer >= 5f;
         }
 
         protected override Type GetTargetState()

@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Modules
 {
-    public class FollowComponent : ITickable
+    public class FollowComponent : ILateTickable
     {
         private readonly Transform _folowObject;
         private readonly float _smoothTime;
@@ -21,11 +21,6 @@ namespace Modules
 
         public void Tick()
         {
-            if (_target == null || _folowObject == null) return;
-
-            Vector3 targetPosition = _target.transform.position + _offset;
-            _folowObject.position =
-                Vector3.SmoothDamp(_folowObject.position, targetPosition, ref _velocity, _smoothTime);
         }
 
         public void SetTarget(Transform target)
@@ -33,6 +28,15 @@ namespace Modules
             _target = target;
             if (_folowObject != null && target != null)
                 _offset = _folowObject.position - _target.transform.position;
+        }
+
+        public void LateTick()
+        {
+            if (_target == null || _folowObject == null) return;
+
+            Vector3 targetPosition = _target.transform.position + _offset;
+            _folowObject.position =
+                Vector3.SmoothDamp(_folowObject.position, targetPosition, ref _velocity, _smoothTime);
         }
     }
 }

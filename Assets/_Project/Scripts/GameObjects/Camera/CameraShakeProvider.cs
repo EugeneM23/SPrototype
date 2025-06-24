@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Zenject;
+using Zenject.SpaceFighter;
 
 namespace Gameplay
 {
@@ -12,6 +13,18 @@ namespace Gameplay
         private void Start()
         {
             _cameraShaker.OnShoot += PlayerShoot;
+            _cameraShaker.Onexplosion += Explosion;
+            _cameraShaker.OnSmallShake += SmallShake;
+        }
+
+        private void Explosion()
+        {
+            _animator.SetTrigger("Explosion");
+        }
+
+        private void SmallShake()
+        {
+            _animator.SetTrigger("SmallShake");
         }
 
         private void PlayerShoot()

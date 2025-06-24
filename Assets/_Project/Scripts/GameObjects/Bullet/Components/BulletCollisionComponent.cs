@@ -22,6 +22,7 @@ namespace Gameplay
 
         public void CheckCollision()
         {
+            Debug.Log(CollisionLayer.value);
             Vector3 currentPosition = _bullet.transform.position;
             Vector3 direction = currentPosition - _previousPosition;
 

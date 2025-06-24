@@ -22,7 +22,7 @@ namespace Gameplay
             Container.Bind<WeaponShootComponent>().AsSingle();
             Container.Bind<WeaponFireController>().AsSingle();
             Container.BindInterfacesAndSelfTo<WeaponCooldownAction>().AsSingle();
-            Container.BindInterfacesAndSelfTo<WeaponCameraShakeAction>().AsSingle();
+            //Container.BindInterfacesAndSelfTo<WeaponCameraShakeAction>().AsSingle();
             Container.BindInterfacesTo<WeaponInRangeCondition>().AsSingle();
 
             SetupWeaponSpecific();

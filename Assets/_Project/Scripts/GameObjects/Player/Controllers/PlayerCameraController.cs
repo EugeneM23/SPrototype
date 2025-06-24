@@ -5,19 +5,19 @@ namespace Gameplay
 {
     public class PlayerCameraController
     {
-        private readonly FollowComponent _cameraController;
+        private readonly FollowComponent _cameraFolow;
         private readonly Entity _playerTransform;
 
         public PlayerCameraController(
-            FollowComponent cameraController,
+            FollowComponent cameraFolow,
             [Inject(Id = CharacterParameterID.CharacterEntity)]
             Entity playerTransform
         )
         {
-            _cameraController = cameraController;
+            _cameraFolow = cameraFolow;
             _playerTransform = playerTransform;
 
-            _cameraController.SetTarget(_playerTransform.transform);
+            _cameraFolow.SetTarget(_playerTransform.transform);
         }
     }
 }

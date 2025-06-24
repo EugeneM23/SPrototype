@@ -50,12 +50,18 @@ namespace Gameplay
             BindHealth();
             BindHit();
             BindSFX();
+            BindCamera();
 
             if (_isRaggdollEnemy)
                 BindRaggol();
 
             if (_isDeathAnimationEnemy)
                 Container.BindInterfacesAndSelfTo<DeathAnimationConmponent>().AsSingle().NonLazy();
+        }
+
+        private void BindCamera()
+        {
+            Container.BindInterfacesAndSelfTo<CameraShakeController>().AsSingle().NonLazy();
         }
 
         private void BindRaggol()
