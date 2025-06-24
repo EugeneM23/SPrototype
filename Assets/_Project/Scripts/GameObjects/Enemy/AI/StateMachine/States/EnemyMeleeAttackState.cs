@@ -59,7 +59,7 @@ namespace Gameplay
                 _assistComponent.RotateToTarget(_stats.CharacterEntity.Get<TargetComponent>().Target,
                     _stats.CharacterEntity.transform, 10, 0.9f);
 
-                _fireRate *= 1 - _stats.FireRateMultiplier / 100f;
+                _fireRate /= 1 - _stats.FireRateMultiplier / 100f;
                 _delayedAction.Schedule(_fireRate, () => _characterConditions.IsBusy = false);
                 _delayedAction.Schedule(_fireRate, () => _isEnable = true);
             }

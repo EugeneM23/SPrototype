@@ -7,8 +7,6 @@ namespace Gameplay
 {
     public class WeaponShootComponent
     {
-        private readonly TargetComponent _targetComponent;
-
         public interface ICondition
         {
             bool Invoke();
@@ -21,11 +19,6 @@ namespace Gameplay
 
         [Inject] private readonly List<ICondition> _conditions;
         [Inject] private readonly List<IAction> _actions;
-
-        public WeaponShootComponent(TargetComponent targetComponent)
-        {
-            _targetComponent = targetComponent;
-        }
 
         public bool CanShoot()
         {

@@ -26,6 +26,7 @@ namespace Gameplay
 
         public void Tick()
         {
+
             if (!_conditions.IsAlive) return;
 
             EvaluateDecisions();
@@ -34,7 +35,6 @@ namespace Gameplay
 
         public void SetState(Type state)
         {
-            Debug.Log("SetState: " + state);
             if (_currentState?.GetType() == state || state == null) return;
 
             _currentState?.Exit();

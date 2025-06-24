@@ -20,6 +20,7 @@ namespace Gameplay
                 .Bind<Entity>()
                 .WithId(CharacterParameterID.CharacterEntity)
                 .FromInstance(entity.GetComponent<Entity>()).AsSingle().NonLazy();
+            
         }
     }
 }

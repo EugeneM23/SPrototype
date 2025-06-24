@@ -50,11 +50,10 @@ namespace Gameplay
                 .AsSingle()
                 .NonLazy();
 
-            /*Container
+            Container
                 .BindInterfacesAndSelfTo<CameraShaker>()
                 .AsSingle()
-                .WithArguments(Camera.main)
-                .NonLazy();*/
+                .NonLazy();
         }
     }
 }
